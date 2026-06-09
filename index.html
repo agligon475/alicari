@@ -1,22 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
   <head>
     <meta charset="UTF-8">
-    <title>Animated Ripples background </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="./style.css">
-
+    <title>alicari | Diseño Multimedia, UX/UI & Branding</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Portal y portfolio profesional de alicari. Proyectos de diseño multimedia, UX/UI y branding.">
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="./style.css">
   </head>
     
   <body>
-  <div class='ripple-background'>
-  <div class='circle xxlarge shade1'></div>
-  <div class='circle xlarge shade2'></div>
-  <div class='circle large shade3'></div>
-  <div class='circle mediun shade4'></div>
-  <div class='circle small shade5'></div>
-</div>
+    <!-- Fondo animado de círculos -->
+    <div class="ripple-background">
+      <div class="circle xxlarge shade1"></div>
+      <div class="circle xlarge shade2"></div>
+      <div class="circle large shade3"></div>
+      <div class="circle medium shade4"></div>
+      <div class="circle small shade5"></div>
+    </div>
     
+    <!-- Contenedor principal con efecto glassmorphism -->
+    <main class="profile-card">
+      <header class="profile-header">
+        <!-- Logo tipográfico elegante centrado -->
+        <h1 class="logo">a<span>licari</span></h1>
+        <p class="subtitle">Diseño Multimedia · UX/UI · Branding</p>
+      </header>
+
+      <!-- Enlaces principales y de redes -->
+      <div class="profile-links">
+        <a href="./next/index.html" class="btn btn-portfolio">
+          <span>Ver Portfolio</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+        
+        <div class="social-grid">
+          <a href="https://www.behance.net/gallery/232481039/Videoclip-Iruya" target="_blank" rel="noopener" class="social-item" title="Behance">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 10H7v-3h2a1.5 1.5 0 0 1 0 3zM9 15H7v-3.5h2a1.75 1.75 0 0 1 0 3.5zM4 5h5a3.5 3.5 0 0 1 0 7 3.75 3.75 0 0 1 0 7.5H4V5z"/>
+              <path d="M19 14h-4a1.75 1.75 0 0 0 3.5 0M15 11.5a2.5 2.5 0 0 1 5 0V14h-5z"/>
+              <line x1="15" y1="8" x2="20" y2="8" stroke-width="2"/>
+            </svg>
+            <span>Behance</span>
+          </a>
+
+          <a href="https://instagram.com/" target="_blank" rel="noopener" class="social-item" title="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+            <span>Instagram</span>
+          </a>
+
+          <a href="https://linkedin.com/" target="_blank" rel="noopener" class="social-item" title="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+            <span>LinkedIn</span>
+          </a>
+
+          <a href="mailto:agust@example.com" class="social-item" title="Contacto">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <span>Email</span>
+          </a>
+        </div>
+      </div>
+    </main>
   </body>
   
 </html>

@@ -1,80 +1,276 @@
-body{
-  background: #3399ff;
+/* ==========================================================================
+   RESET & BASE STYLES
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: linear-gradient(135deg, #0b0f19, #020408);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  color: #f8fafc;
+  padding: 20px;
+}
 
-.circle{
+/* ==========================================================================
+   ANIMATED BACKGROUND (GLOWING ORBS)
+   ========================================================================== */
+.ripple-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.circle {
   position: absolute;
   border-radius: 50%;
-  background: white;
-  animation: ripple 15s infinite;
-  box-shadow: 0px 0px 1px 0px #508fb9;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(99, 102, 241, 0) 70%);
+  animation: ripple 20s infinite ease-in-out;
+  filter: blur(40px);
 }
 
-.small{
-  width: 200px;
-  height: 200px;
-  left: -100px;
-  bottom: -100px;
+.small {
+  width: 300px;
+  height: 300px;
+  left: -50px;
+  bottom: -50px;
+  animation-delay: 0s;
 }
 
-.medium{
-  width: 400px;
-  height: 400px;
+.medium {
+  width: 500px;
+  height: 500px;
+  right: -100px;
+  top: -100px;
+  animation-delay: -3s;
+}
+
+.large {
+  width: 700px;
+  height: 700px;
+  left: 10%;
+  top: 30%;
+  animation-delay: -6s;
+}
+
+.xlarge {
+  width: 900px;
+  height: 900px;
+  right: 15%;
+  bottom: 10%;
+  animation-delay: -9s;
+}
+
+.xxlarge {
+  width: 1200px;
+  height: 1200px;
   left: -200px;
-  bottom: -200px;
+  top: -200px;
+  animation-delay: -12s;
 }
 
-.large{
-  width: 600px;
-  height: 600px;
-  left: -300px;
-  bottom: -300px;
-}
+.shade1 { opacity: 0.15; }
+.shade2 { opacity: 0.25; }
+.shade3 { opacity: 0.35; }
+.shade4 { opacity: 0.45; }
+.shade5 { opacity: 0.55; }
 
-.xlarge{
-  width: 800px;
-  height: 800px;
-  left: -400px;
-  bottom: -400px;
-}
-
-.xxlarge{
-  width: 1000px;
-  height: 1000px;
-  left: -500px;
-  bottom: -500px;
-}
-
-.shade1{
-  opacity: 0.2;
-}
-.shade2{
-  opacity: 0.5;
-}
-
-.shade3{
-  opacity: 0.7;
-}
-
-.shade4{
-  opacity: 0.8;
-}
-
-.shade5{
-  opacity: 0.9;
-}
-
-@keyframes ripple{
-  0%{
-    transform: scale(0.8);
+@keyframes ripple {
+  0% {
+    transform: scale(0.8) translate(0, 0);
   }
-  
-  50%{
-    transform: scale(1.2);
+  50% {
+    transform: scale(1.1) translate(30px, -30px);
   }
-  
-  100%{
-    transform: scale(0.8);
+  100% {
+    transform: scale(0.8) translate(0, 0);
+  }
+}
+
+/* ==========================================================================
+   GLASS CARD CONTAINER
+   ========================================================================== */
+.profile-card {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 440px;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 40px 30px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  animation: fadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   LOGO & HEADER
+   ========================================================================== */
+.profile-header {
+  margin-bottom: 35px;
+}
+
+.logo {
+  font-size: 3.5rem;
+  font-weight: 300;
+  letter-spacing: -2px;
+  color: #ffffff;
+  margin-bottom: 8px;
+  text-decoration: none;
+  display: inline-block;
+  user-select: none;
+}
+
+.logo span {
+  font-weight: 700;
+  color: #6366f1;
+  background: linear-gradient(135deg, #818cf8, #6366f1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   LINKS & BUTTONS
+   ========================================================================== */
+.profile-links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.btn-portfolio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #ffffff;
+  color: #0f172a;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 16px 28px;
+  border-radius: 14px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+  border: 1px solid transparent;
+}
+
+.btn-portfolio svg {
+  transition: transform 0.3s ease;
+}
+
+.btn-portfolio:hover {
+  background: #f1f5f9;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.25);
+}
+
+.btn-portfolio:hover svg {
+  transform: translateX(4px);
+}
+
+.btn-portfolio:active {
+  transform: translateY(0);
+}
+
+/* Social Grid */
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.social-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: #cbd5e1;
+  text-decoration: none;
+  padding: 14px 16px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+.social-item svg {
+  color: #94a3b8;
+  transition: color 0.25s ease;
+}
+
+.social-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(99, 102, 241, 0.4);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.social-item:hover svg {
+  color: #818cf8;
+}
+
+/* ==========================================================================
+   RESPONSIVENESS
+   ========================================================================== */
+@media (max-width: 480px) {
+  body {
+    padding: 16px;
+  }
+
+  .profile-card {
+    padding: 30px 20px;
+    border-radius: 20px;
+  }
+
+  .logo {
+    font-size: 2.8rem;
+  }
+
+  .subtitle {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+  }
+
+  .social-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
   }
 }
