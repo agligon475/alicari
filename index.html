@@ -44,7 +44,7 @@
         </a>
         
         <div class="social-grid">
-          <a href="https://www.behance.net/gallery/232481039/Videoclip-Iruya" target="_blank" rel="noopener" class="social-item" title="Behance">
+          <a href="https://behance.net/alicari" target="_blank" rel="noopener" class="social-item" title="Behance">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M9 10H7v-3h2a1.5 1.5 0 0 1 0 3zM9 15H7v-3.5h2a1.75 1.75 0 0 1 0 3.5zM4 5h5a3.5 3.5 0 0 1 0 7 3.75 3.75 0 0 1 0 7.5H4V5z"/>
               <path d="M19 14h-4a1.75 1.75 0 0 0 3.5 0M15 11.5a2.5 2.5 0 0 1 5 0V14h-5z"/>
@@ -62,7 +62,7 @@
             <span>Instagram</span>
           </a>
 
-          <a href="https://linkedin.com/" target="_blank" rel="noopener" class="social-item" title="LinkedIn">
+          <a href="https://linkedin.com/in/alicari/" target="_blank" rel="noopener" class="social-item" title="LinkedIn">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
               <rect x="2" y="9" width="4" height="12"></rect>
@@ -71,7 +71,7 @@
             <span>LinkedIn</span>
           </a>
 
-          <a href="mailto:agust@example.com" class="social-item" title="Contacto">
+          <a href="#" id="email-btn" class="social-item" title="Contacto">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
               <polyline points="22,6 12,13 2,6"></polyline>
@@ -81,6 +81,86 @@
         </div>
       </div>
     </main>
+
+    <!-- Modal de Contacto -->
+    <div id="contact-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+      <div class="modal-card">
+        <button id="close-modal" class="modal-close-btn" aria-label="Cerrar modal">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+        
+        <h2 id="modal-title" class="modal-title">Enviar Mensaje</h2>
+        <p class="modal-subtitle">Escríbeme y me pondré en contacto contigo a la brevedad.</p>
+        
+        <form action="https://formsubmit.co/licari.multimedios@gmail.com" method="POST" class="contact-form">
+          <!-- Configuración de FormSubmit -->
+          <input type="text" name="_honey" style="display:none"> <!-- Filtro de Spam -->
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          
+          <div class="form-group">
+            <label for="form-name">Nombre</label>
+            <input type="text" id="form-name" name="name" required placeholder="Tu nombre">
+          </div>
+          
+          <div class="form-group">
+            <label for="form-email">Email</label>
+            <input type="email" id="form-email" name="email" required placeholder="tu@email.com">
+          </div>
+          
+          <div class="form-group">
+            <label for="form-message">Mensaje</label>
+            <textarea id="form-message" name="message" rows="4" required placeholder="¿En qué puedo ayudarte?"></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-submit">Enviar Correo</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Script para controlar el modal -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const emailBtn = document.getElementById('email-btn');
+        const modal = document.getElementById('contact-modal');
+        const closeBtn = document.getElementById('close-modal');
+
+        if (emailBtn && modal && closeBtn) {
+          // Abrir modal
+          emailBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.classList.add('is-active');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+          });
+
+          // Cerrar modal
+          const closeModal = () => {
+            modal.classList.remove('is-active');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+          };
+
+          closeBtn.addEventListener('click', closeModal);
+
+          // Cerrar haciendo click en el overlay
+          modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+              closeModal();
+            }
+          });
+
+          // Cerrar con tecla ESC
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('is-active')) {
+              closeModal();
+            }
+          });
+        }
+      });
+    </script>
   </body>
-  
 </html>
