@@ -120,15 +120,15 @@ Free HTML CSS Template
 
     .nav__wordmark {
       font-size:      var(--font-size-wordmark);
-      font-weight:    600;
+      font-weight:    300;
       letter-spacing: var(--letter-spacing-wide);
       text-transform: uppercase;
       color:          var(--color-text-primary);
     }
 
     .nav__wordmark span {
-      font-weight:    300;
-      color:          var(--color-text-secondary);
+      font-weight:    700;
+      color:          #fc2222;
     }
 
     /* ── Desktop links (hidden on mobile) ───────────────────────── */
