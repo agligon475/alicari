@@ -62,7 +62,7 @@ Free HTML CSS Template
 
         /* Update the hero photo count to reflect the filter */
         if (photoCount) {
-          photoCount.textContent = visibleItems.length + ' Photograph' +
+          photoCount.textContent = visibleItems.length + ' Proyecto' +
             (visibleItems.length === 1 ? '' : 's');
         }
       }
