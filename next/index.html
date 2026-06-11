@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -73,7 +73,7 @@ Free HTML CSS Template
 
     <div class="hero__meta">
       <!-- ↓ EDIT: Update the photo count to match your gallery -->
-      <span class="hero__count" id="js-photo-count">24 Photographs</span>
+      <span class="hero__count" id="js-photo-count">12 Proyectos</span>
       <div class="hero__rule" aria-hidden="true"></div>
       <!-- ↓ EDIT: A one-line description of your gallery series -->
       <p class="hero__desc">A study of contrast — moments suspended between darkness and the searching, persistent
@@ -89,14 +89,10 @@ Free HTML CSS Template
   <div class="gallery-filter-wrap">
     <div class="gallery-filter" role="toolbar" aria-label="Filter gallery">
 
-      <!-- ↓ EDIT: Add or remove filter buttons to match your categories.
-                The "All" button shows all items; the others filter by
-                the data-filter attribute on each .gallery__item below. -->
-      <button class="filter__btn is-active" data-filter="all">All</button>
-      <button class="filter__btn" data-filter="portrait">Portrait</button>
-      <button class="filter__btn" data-filter="landscape">Landscape</button>
-      <button class="filter__btn" data-filter="urban">Urban</button>
-      <button class="filter__btn" data-filter="nature">Nature</button>
+      <button class="filter__btn is-active" data-filter="all">Todos</button>
+      <button class="filter__btn" data-filter="uxui">UX/UI</button>
+      <button class="filter__btn" data-filter="branding">Branding</button>
+      <button class="filter__btn" data-filter="multimedia">Multimedia</button>
 
     </div>
   </div>
@@ -117,19 +113,16 @@ Free HTML CSS Template
        ═══════════════════════════════════════════════════════════════ -->
   <main class="gallery" id="js-gallery" aria-label="Photo gallery">
 
-
-    <!-- ─── PHOTO 1 ───────────────────────────────────────────── -->
-    <div class="gallery__item" data-category="portrait" data-full="images/tooplate-exhibit-01.jpg"
-      data-title="Golden Hour" data-meta="Tuscany, Italy · 2024">
+    <!-- --- PROYECTO 1 --- -->
+    <div class="gallery__item" data-category="multimedia" data-full="https://mir-s3-cdn-cf.behance.net/projects/max_808/12f9fb232481039.Y3JvcCw5MjAsNzIwLDE4MCww.png"
+      data-title="Videoclip: Iruya" data-meta="Diseño Multimedia · Behance">
       <a href="https://www.behance.net/gallery/232481039/Videoclip-Iruya" target="_blank">
 
-        <!-- ↓ EDIT: Replace src with your thumbnail image -->
-        <img src="images/iruya.webp" width="808" height="632" alt="A portrait captured in golden hour light"
-          class="gallery__image" loading="lazy" />
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/12f9fb232481039.Y3JvcCw5MjAsNzIwLDE4MCww.png" alt="Videoclip: Iruya" class="gallery__image" loading="lazy" />
 
         <div class="gallery__caption">
-          <span class="gallery__caption-title">VIDEOCLIP</span>
-          <span class="gallery__caption-meta">Iruya - Federico Minnassian</span>
+          <span class="gallery__caption-title">Videoclip: Iruya</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
         </div>
 
         <div class="gallery__expand-icon" aria-hidden="true">
@@ -138,250 +131,216 @@ Free HTML CSS Template
           </svg>
         </div>
       </a>
-    </div><!-- /PHOTO 1 -->
-
-
-    <!-- ─── PHOTO 2 ───────────────────────────────────────────── -->
-    <div class="gallery__item" data-category="landscape" data-full="images/tooplate-exhibit-02.jpg"
-      data-title="Coastal Mist" data-meta="Big Sur, CA · 2023">
-
-      <img src="images/thumb-exhibit-02.jpg" width="600" height="400" alt="Coastal mist over a rugged shoreline"
-        class="gallery__image" loading="lazy" />
-
-      <div class="gallery__caption">
-        <span class="gallery__caption-title">Coastal Mist</span>
-        <span class="gallery__caption-meta">Big Sur, CA · 2023</span>
-      </div>
-
-      <div class="gallery__expand-icon" aria-hidden="true">
-        <svg viewBox="0 0 12 12" stroke-width="1.5">
-          <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
-        </svg>
-      </div>
-
-    </div><!-- /PHOTO 2 -->
-
-
-    <!-- ─── PHOTO 3 ───────────────────────────────────────────── -->
-    <div class="gallery__item" data-category="urban" data-full="images/tooplate-exhibit-03.jpg"
-      data-title="Steel & Glass" data-meta="New York, USA · 2024">
-
-      <img src="images/thumb-exhibit-03.jpg" width="600" height="800"
-        alt="Urban architecture reflecting steel and glass" class="gallery__image" loading="lazy" />
-
-      <div class="gallery__caption">
-        <span class="gallery__caption-title">Steel &amp; Glass</span>
-        <span class="gallery__caption-meta">New York, USA · 2024</span>
-      </div>
-
-      <div class="gallery__expand-icon" aria-hidden="true">
-        <svg viewBox="0 0 12 12" stroke-width="1.5">
-          <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
-        </svg>
-      </div>
-
-    </div><!-- /PHOTO 3 -->
-
-
-    <!-- ─── PHOTO 4 ───────────────────────────────────────────── -->
-    <div class="gallery__item" data-category="nature" data-full="images/tooplate-exhibit-04.jpg"
-      data-title="Forest Floor" data-meta="Pacific Northwest · 2023">
-
-      <img src="images/thumb-exhibit-04.jpg" width="600" height="400"
-        alt="Sunlight filtering through a dense forest floor" class="gallery__image" loading="lazy" />
-
-      <div class="gallery__caption">
-        <span class="gallery__caption-title">Forest Floor</span>
-        <span class="gallery__caption-meta">Pacific Northwest · 2023</span>
-      </div>
-
-      <div class="gallery__expand-icon" aria-hidden="true">
-        <svg viewBox="0 0 12 12" stroke-width="1.5">
-          <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
-        </svg>
-      </div>
-
-    </div><!-- /PHOTO 4 -->
-
-
-    <!-- ─── PHOTO 5 ───────────────────────────────────────────── -->
-    <div class="gallery__item" data-category="portrait" data-full="images/tooplate-exhibit-05.jpg"
-      data-title="Sunday Window" data-meta="Amsterdam · 2024">
-
-      <img src="images/thumb-exhibit-05.jpg" width="600" height="900" alt="A quiet portrait by a Sunday morning window"
-        class="gallery__image" loading="lazy" />
-
-      <div class="gallery__caption">
-        <span class="gallery__caption-title">Sunday Window</span>
-        <span class="gallery__caption-meta">Amsterdam · 2024</span>
-      </div>
-
-      <div class="gallery__expand-icon" aria-hidden="true">
-        <svg viewBox="0 0 12 12" stroke-width="1.5">
-          <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
-        </svg>
-      </div>
-
-    </div><!-- /PHOTO 5 -->
-
-
-    <!-- ─── PHOTO 6 ───────────────────────────────────────────── -->
-    <div class="gallery__item" data-category="landscape" data-full="images/tooplate-exhibit-06.jpg"
-      data-title="Salt Flats at Dusk" data-meta="Bonneville, Utah · 2023">
-
-      <img src="images/thumb-exhibit-06.jpg" width="600" height="360" alt="Salt flats stretching to the horizon at dusk"
-        class="gallery__image" loading="lazy" />
-
-      <div class="gallery__caption">
-        <span class="gallery__caption-title">Salt Flats at Dusk</span>
-        <span class="gallery__caption-meta">Bonneville, Utah · 2023</span>
-      </div>
-
-      <div class="gallery__expand-icon" aria-hidden="true">
-        <svg viewBox="0 0 12 12" stroke-width="1.5">
-          <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
-        </svg>
-      </div>
-
-    </div><!-- /PHOTO 6 -->
-
-
-    <!-- ─── PHOTO 7 ───────────────────────────────────────────── -->
-    <div class="gallery__item" data-category="urban" data-full="images/tooplate-exhibit-07.jpg"
-      data-title="Night Market" data-meta="Bangkok, Thailand · 2024">
-
-      <img src="images/thumb-exhibit-07.jpg" width="600" height="600" alt="Colorful stalls at a night market in Bangkok"
-        class="gallery__image" loading="lazy" />
-
-      <div class="gallery__caption">
-        <span class="gallery__caption-title">Night Market</span>
-        <span class="gallery__caption-meta">Bangkok, Thailand · 2024</span>
-      </div>
-
-      <div class="gallery__expand-icon" aria-hidden="true">
-        <svg viewBox="0 0 12 12" stroke-width="1.5">
-          <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
-        </svg>
-      </div>
-
-    </div><!-- /PHOTO 7 -->
-
-
-    <!-- ─── PHOTO 8 ───────────────────────────────────────────── -->
-    <div class="gallery__item" data-category="nature" data-full="images/tooplate-exhibit-08.jpg"
-      data-title="Monsoon Season" data-meta="Kerala, India · 2023">
-
-      <img src="images/thumb-exhibit-08.jpg" width="600" height="900" alt="Heavy rain falling on lush green leaves"
-        class="gallery__image" loading="lazy" />
-
-      <div class="gallery__caption">
-        <span class="gallery__caption-title">Monsoon Season</span>
-        <span class="gallery__caption-meta">Kerala, India · 2023</span>
-      </div>
-
-      <div class="gallery__expand-icon" aria-hidden="true">
-        <svg viewBox="0 0 12 12" stroke-width="1.5">
-          <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
-        </svg>
-      </div>
-
-    </div><!-- /PHOTO 8 -->
-
-
-    <!-- ─── PHOTO 9 ───────────────────────────────────────────── -->
-    <div class="gallery__item" data-category="portrait" data-full="images/tooplate-exhibit-09.jpg"
-      data-title="The Weaver" data-meta="Oaxaca, Mexico · 2024">
-
-      <img src="images/thumb-exhibit-09.jpg" width="600" height="750" alt="A traditional weaver at a handloom"
-        class="gallery__image" loading="lazy" />
-
-      <div class="gallery__caption">
-        <span class="gallery__caption-title">The Weaver</span>
-        <span class="gallery__caption-meta">Oaxaca, Mexico · 2024</span>
-      </div>
-
-      <div class="gallery__expand-icon" aria-hidden="true">
-        <svg viewBox="0 0 12 12" stroke-width="1.5">
-          <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
-        </svg>
-      </div>
-
-    </div><!-- /PHOTO 9 -->
-
-
-    <!-- ─── PHOTO 10 ──────────────────────────────────────────── -->
-    <div class="gallery__item" data-category="landscape" data-full="images/tooplate-exhibit-10.jpg"
-      data-title="Midnight Alpine" data-meta="Zermatt, Switzerland · 2023">
-
-      <img src="images/thumb-exhibit-10.jpg" width="600" height="400" alt="The Matterhorn under a midnight sky"
-        class="gallery__image" loading="lazy" />
-
-      <div class="gallery__caption">
-        <span class="gallery__caption-title">Midnight Alpine</span>
-        <span class="gallery__caption-meta">Zermatt, Switzerland · 2023</span>
-      </div>
-
-      <div class="gallery__expand-icon" aria-hidden="true">
-        <svg viewBox="0 0 12 12" stroke-width="1.5">
-          <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
-        </svg>
-      </div>
-
-    </div><!-- /PHOTO 10 -->
-
-
-    <!-- ─── PHOTO 11 ──────────────────────────────────────────── -->
-    <div class="gallery__item" data-category="urban" data-full="images/tooplate-exhibit-11.jpg"
-      data-title="Pillar Light" data-meta="Berlin, Germany · 2024">
-
-      <img src="images/thumb-exhibit-11.jpg" width="600" height="800"
-        alt="A single beam of light cutting through a dark pillar" class="gallery__image" loading="lazy" />
-
-      <div class="gallery__caption">
-        <span class="gallery__caption-title">Pillar Light</span>
-        <span class="gallery__caption-meta">Berlin, Germany · 2024</span>
-      </div>
-
-      <div class="gallery__expand-icon" aria-hidden="true">
-        <svg viewBox="0 0 12 12" stroke-width="1.5">
-          <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
-        </svg>
-      </div>
-
-    </div><!-- /PHOTO 11 -->
-
-
-    <!-- ─── PHOTO 12 ──────────────────────────────────────────── -->
-    <div class="gallery__item" data-category="nature" data-full="images/tooplate-exhibit-12.jpg" data-title="Tide Pool"
-      data-meta="Galicia, Spain · 2024">
-
-      <img src="images/thumb-exhibit-12.jpg" width="600" height="400" alt="Abstract patterns in a coastal tide pool"
-        class="gallery__image" loading="lazy" />
-
-      <div class="gallery__caption">
-        <span class="gallery__caption-title">Tide Pool</span>
-        <span class="gallery__caption-meta">Galicia, Spain · 2024</span>
-      </div>
-
-      <div class="gallery__expand-icon" aria-hidden="true">
-        <svg viewBox="0 0 12 12" stroke-width="1.5">
-          <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
-        </svg>
-      </div>
-
-    </div><!-- /PHOTO 12 -->
-
-
-    <!-- ═══════════════════════════════════════════════════════════
-         ↑  PASTE NEW PHOTOS ABOVE THIS LINE
-         Copy any .gallery__item block above and change:
-           src="..."              → your thumbnail image path
-           data-full="..."        → your high-res image path
-           data-title="..."       → your photo title
-           data-meta="..."        → location / year
-           data-category="..."    → portfolio category (for filter)
-         ═══════════════════════════════════════════════════════════ -->
-
+    </div><!-- /PROYECTO 1 -->
+    <!-- --- PROYECTO 2 --- -->
+    <div class="gallery__item" data-category="uxui" data-full="https://mir-s3-cdn-cf.behance.net/projects/max_808/29afee157960549.Y3JvcCwxMDA2LDc4NywyNzgsMA.jpg"
+      data-title="SIMpath proyecto (UX/UI design)" data-meta="UX/UI Design · Behance">
+      <a href="https://www.behance.net/gallery/157960549/SIMpath-proyecto-(UXUI-design)" target="_blank">
+
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/29afee157960549.Y3JvcCwxMDA2LDc4NywyNzgsMA.jpg" alt="SIMpath proyecto (UX/UI design)" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">SIMpath proyecto (UX/UI design)</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 2 -->
+    <!-- --- PROYECTO 3 --- -->
+    <div class="gallery__item" data-category="uxui" data-full="https://mir-s3-cdn-cf.behance.net/projects/max_808/d44edf141701733.Y3JvcCwxOTE3LDE1MDAsMzc1LDA.jpg"
+      data-title="Brand Guideline | FFO Parts | Manual de marca" data-meta="UX/UI Design · Behance">
+      <a href="https://www.behance.net/gallery/141701733/Brand-Guideline-FFO-Parts-Manual-de-marca" target="_blank">
+
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/d44edf141701733.Y3JvcCwxOTE3LDE1MDAsMzc1LDA.jpg" alt="Brand Guideline | FFO Parts | Manual de marca" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">Brand Guideline | FFO Parts | Manual de marca</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 3 -->
+    <!-- --- PROYECTO 4 --- -->
+    <div class="gallery__item" data-category="branding" data-full="https://mir-s3-cdn-cf.behance.net/projects/max_808/d93f65109330367.Y3JvcCwxMDIyLDgwMCwxMjksMA.png"
+      data-title="VEGANOTECA | Manual de Marca" data-meta="Branding & Identidad · Behance">
+      <a href="https://www.behance.net/gallery/109330367/VEGANOTECA-Manual-de-Marca" target="_blank">
+
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/d93f65109330367.Y3JvcCwxMDIyLDgwMCwxMjksMA.png" alt="VEGANOTECA | Manual de Marca" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">VEGANOTECA | Manual de Marca</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 4 -->
+    <!-- --- PROYECTO 5 --- -->
+    <div class="gallery__item" data-category="branding" data-full="https://mir-s3-cdn-cf.behance.net/projects/max_808/bb0c4f103448945.Y3JvcCw5OTksNzgyLDAsMTA4.jpg"
+      data-title="HotEnd | Diseño de logotipo" data-meta="Branding & Identidad · Behance">
+      <a href="https://www.behance.net/gallery/103448945/HotEnd-Diseno-de-logotipo" target="_blank">
+
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/bb0c4f103448945.Y3JvcCw5OTksNzgyLDAsMTA4.jpg" alt="HotEnd | Diseño de logotipo" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">HotEnd | Diseño de logotipo</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 5 -->
+    <!-- --- PROYECTO 6 --- -->
+    <div class="gallery__item" data-category="branding" data-full="https://mir-s3-cdn-cf.behance.net/projects/max_808/21e0c9103448859.Y3JvcCw5OTksNzgyLDAsMTA4.jpg"
+      data-title="WES BELL| Diseño de logotipo" data-meta="Branding & Identidad · Behance">
+      <a href="https://www.behance.net/gallery/103448859/WES-BELL-Diseno-de-logotipo" target="_blank">
+
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/21e0c9103448859.Y3JvcCw5OTksNzgyLDAsMTA4.jpg" alt="WES BELL| Diseño de logotipo" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">WES BELL| Diseño de logotipo</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 6 -->
+    <!-- --- PROYECTO 7 --- -->
+    <div class="gallery__item" data-category="branding" data-full="https://mir-s3-cdn-cf.behance.net/projects/max_808/7be27f101629005.Y3JvcCwxNTg2LDEyNDEsODIsMA.jpg"
+      data-title="SETUP | Manual de Marca - Usos y aplicaciones" data-meta="Branding & Identidad · Behance">
+      <a href="https://www.behance.net/gallery/101629005/SETUP-Manual-de-Marca-Usos-y-aplicaciones" target="_blank">
+
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/7be27f101629005.Y3JvcCwxNTg2LDEyNDEsODIsMA.jpg" alt="SETUP | Manual de Marca - Usos y aplicaciones" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">SETUP | Manual de Marca - Usos y aplicaciones</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 7 -->
+    <!-- --- PROYECTO 8 --- -->
+    <div class="gallery__item" data-category="branding" data-full="https://mir-s3-cdn-cf.behance.net/projects/max_808/9650b867833389.Y3JvcCw5OTAsNzc0LDAsMTEy.jpg"
+      data-title="Branding Garz6n Aplicaciones y Publicidad" data-meta="Branding & Identidad · Behance">
+      <a href="https://www.behance.net/gallery/67833389/Branding-Garz6n-Aplicaciones-y-Publicidad" target="_blank">
+
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/9650b867833389.Y3JvcCw5OTAsNzc0LDAsMTEy.jpg" alt="Branding Garz6n Aplicaciones y Publicidad" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">Branding Garz6n Aplicaciones y Publicidad</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 8 -->
+    <!-- --- PROYECTO 9 --- -->
+    <div class="gallery__item" data-category="branding" data-full="https://mir-s3-cdn-cf.behance.net/projects/max_808/a007ed67329539.Y3JvcCw1NzksNDUzLDE3MCw5Nw.jpg"
+      data-title="Keeper: Manual de Uso de Marca" data-meta="Branding & Identidad · Behance">
+      <a href="https://www.behance.net/gallery/67329539/Keeper-Manual-de-Uso-de-Marca" target="_blank">
+
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/a007ed67329539.Y3JvcCw1NzksNDUzLDE3MCw5Nw.jpg" alt="Keeper: Manual de Uso de Marca" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">Keeper: Manual de Uso de Marca</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 9 -->
+    <!-- --- PROYECTO 10 --- -->
+    <div class="gallery__item" data-category="branding" data-full="https://mir-s3-cdn-cf.behance.net/projects/max_808/ab50d763823491.Y3JvcCw3MjAsNTYzLDI0MCwzMTg.jpg"
+      data-title="El Extratonauta Flyer Design" data-meta="Branding & Identidad · Behance">
+      <a href="https://www.behance.net/gallery/63823491/El-Extratonauta-Flyer-Design" target="_blank">
+
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/ab50d763823491.Y3JvcCw3MjAsNTYzLDI0MCwzMTg.jpg" alt="El Extratonauta Flyer Design" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">El Extratonauta Flyer Design</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 10 -->
+    <!-- --- PROYECTO 11 --- -->
+    <div class="gallery__item" data-category="multimedia" data-full="https://mir-s3-cdn-cf.behance.net/projects/max_808/ad0dd161440311.Y3JvcCwxMDAyLDc4NCwwLDEwOA.jpg"
+      data-title="Spot Mamá Isa HD" data-meta="Diseño Multimedia · Behance">
+      <a href="https://www.behance.net/gallery/61440311/Spot-Mama-Isa-HD" target="_blank">
+
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/ad0dd161440311.Y3JvcCwxMDAyLDc4NCwwLDEwOA.jpg" alt="Spot Mamá Isa HD" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">Spot Mamá Isa HD</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 11 -->
+    <!-- --- PROYECTO 12 --- -->
+    <div class="gallery__item" data-category="multimedia" data-full="https://mir-s3-cdn-cf.behance.net/projects/max_808/bdf77359883205.Y3JvcCwxNDI0LDExMTQsMTY1LDExMg.jpg"
+      data-title="Ph. Portfolios Personales" data-meta="Diseño Multimedia · Behance">
+      <a href="https://www.behance.net/gallery/59883205/Ph-Portfolios-Personales" target="_blank">
+
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/bdf77359883205.Y3JvcCwxNDI0LDExMTQsMTY1LDExMg.jpg" alt="Ph. Portfolios Personales" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">Ph. Portfolios Personales</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 12 -->
 
   </main><!-- /GALLERY -->
 

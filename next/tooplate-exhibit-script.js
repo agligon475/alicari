@@ -132,12 +132,16 @@ Free HTML CSS Template
          GALLERY CLICK DELEGATION
          ───────────────────────────────────────────────────────────── */
       gallery.addEventListener('click', function (e) {
-        const item = e.target.closest('.gallery__item');
-        if (!item) return;
-
-        /* Only open if the item is currently visible */
-        const index = visibleItems.indexOf(item);
-        if (index !== -1) openLightbox(index);
+        const expandIcon = e.target.closest('.gallery__expand-icon');
+        if (expandIcon) {
+          e.preventDefault();
+          e.stopPropagation();
+          const item = expandIcon.closest('.gallery__item');
+          if (item) {
+            const index = visibleItems.indexOf(item);
+            if (index !== -1) openLightbox(index);
+          }
+        }
       });
 
       /* ─────────────────────────────────────────────────────────────
