@@ -138,19 +138,17 @@ body {
 }
 
 .logo {
-  font-size: 3.5rem;
-  font-weight: 300;
-  letter-spacing: -2px;
-  color: #fcfcfc; /* Accent */
   margin-bottom: 8px;
   text-decoration: none;
   display: inline-block;
   user-select: none;
 }
 
-.logo span {
-  font-weight: 700;
-  color: #fc2222; /* Primary: Red */
+.logo-img {
+  height: 3rem;
+  width: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 .subtitle {

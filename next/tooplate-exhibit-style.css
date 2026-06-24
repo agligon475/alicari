@@ -126,9 +126,10 @@ Free HTML CSS Template
       color:          var(--color-text-primary);
     }
 
-    .nav__wordmark span {
-      font-weight:    700;
-      color:          #fc2222;
+    .nav__logo-img {
+      height: 1.25rem;
+      width: auto;
+      display: block;
     }
 
     /* ── Desktop links (hidden on mobile) ───────────────────────── */
