@@ -48,153 +48,160 @@ Free HTML CSS Template
       const lbNext     = document.getElementById('js-lb-next');
       const photoCount = document.getElementById('js-photo-count');
 
-      let visibleItems  = [];   // Currently visible gallery items
-      let currentIndex  = 0;   // Active index in the lightbox
+      if (gallery) {
+        let visibleItems  = [];   // Currently visible gallery items
+        let currentIndex  = 0;   // Active index in the lightbox
 
-      /* ─────────────────────────────────────────────────────────────
-         BUILD VISIBLE ITEM LIST
-         ───────────────────────────────────────────────────────────── */
-      function buildVisibleList (filter) {
-        const all = Array.from(gallery.querySelectorAll('.gallery__item'));
-        visibleItems = filter === 'all'
-          ? all
-          : all.filter(el => el.dataset.category === filter);
+        /* ─────────────────────────────────────────────────────────────
+           BUILD VISIBLE ITEM LIST
+           ───────────────────────────────────────────────────────────── */
+        function buildVisibleList (filter) {
+          const all = Array.from(gallery.querySelectorAll('.gallery__item'));
+          visibleItems = filter === 'all'
+            ? all
+            : all.filter(el => el.dataset.category === filter);
 
-        /* Update the hero photo count to reflect the filter */
-        if (photoCount) {
-          photoCount.textContent = visibleItems.length + ' Proyecto' +
-            (visibleItems.length === 1 ? '' : 's');
-        }
-      }
-
-      /* ─────────────────────────────────────────────────────────────
-         OPEN LIGHTBOX
-         ───────────────────────────────────────────────────────────── */
-      function openLightbox (index) {
-        currentIndex = index;
-        updateLightbox();
-        lightbox.classList.add('is-open');
-        document.body.style.overflow = 'hidden';   /* Prevent page scroll */
-        lbClose.focus();
-      }
-
-      /* ─────────────────────────────────────────────────────────────
-         CLOSE LIGHTBOX
-         ───────────────────────────────────────────────────────────── */
-      function closeLightbox () {
-        lightbox.classList.remove('is-open');
-        document.body.style.overflow = '';
-      }
-
-      /* ─────────────────────────────────────────────────────────────
-         UPDATE LIGHTBOX CONTENT  (called on open + navigation)
-         ───────────────────────────────────────────────────────────── */
-      function updateLightbox () {
-        const item = visibleItems[currentIndex];
-        if (!item) return;
-
-        const fullSrc = item.dataset.full || item.querySelector('.gallery__image').src;
-        const title   = item.dataset.title || '';
-        const meta    = item.dataset.meta  || '';
-
-        /* Fade out → swap src → fade in */
-        lbImage.classList.add('is-loading');
-
-        const img = new Image();
-        img.onload = function () {
-          lbImage.src = fullSrc;
-          lbImage.alt = title;
-          lbImage.classList.remove('is-loading');
-        };
-        img.src = fullSrc;
-
-        lbTitle.textContent   = title;
-        lbMeta.textContent    = meta;
-        lbCounter.textContent = (currentIndex + 1) + ' / ' + visibleItems.length;
-
-        /* Hide prev/next buttons at the ends */
-        lbPrev.style.visibility = currentIndex === 0 ? 'hidden' : 'visible';
-        lbNext.style.visibility = currentIndex === visibleItems.length - 1 ? 'hidden' : 'visible';
-      }
-
-      /* ─────────────────────────────────────────────────────────────
-         NAVIGATE
-         ───────────────────────────────────────────────────────────── */
-      function goTo (delta) {
-        const next = currentIndex + delta;
-        if (next >= 0 && next < visibleItems.length) {
-          currentIndex = next;
-          updateLightbox();
-        }
-      }
-
-      /* ─────────────────────────────────────────────────────────────
-         GALLERY CLICK DELEGATION
-         ───────────────────────────────────────────────────────────── */
-      gallery.addEventListener('click', function (e) {
-        const expandIcon = e.target.closest('.gallery__expand-icon');
-        if (expandIcon) {
-          e.preventDefault();
-          e.stopPropagation();
-          const item = expandIcon.closest('.gallery__item');
-          if (item) {
-            const index = visibleItems.indexOf(item);
-            if (index !== -1) openLightbox(index);
+          /* Update the hero photo count to reflect the filter */
+          if (photoCount) {
+            photoCount.textContent = visibleItems.length + ' Proyecto' +
+              (visibleItems.length === 1 ? '' : 's');
           }
         }
-      });
 
-      /* ─────────────────────────────────────────────────────────────
-         LIGHTBOX CONTROLS
-         ───────────────────────────────────────────────────────────── */
-      lbClose.addEventListener('click', closeLightbox);
-      lbPrev.addEventListener ('click', function () { goTo(-1); });
-      lbNext.addEventListener ('click', function () { goTo(+1); });
-
-      /* Click the backdrop (outside the image) to close */
-      lightbox.addEventListener('click', function (e) {
-        if (e.target === lightbox || e.target === lightbox.querySelector('.lightbox__stage')) {
-          closeLightbox();
+        /* ─────────────────────────────────────────────────────────────
+           OPEN LIGHTBOX
+           ───────────────────────────────────────────────────────────── */
+        function openLightbox (index) {
+          currentIndex = index;
+          updateLightbox();
+          lightbox.classList.add('is-open');
+          document.body.style.overflow = 'hidden';   /* Prevent page scroll */
+          lbClose.focus();
         }
-      });
 
-      /* Keyboard navigation */
-      document.addEventListener('keydown', function (e) {
-        if (!lightbox.classList.contains('is-open')) return;
-        if (e.key === 'Escape')      closeLightbox();
-        if (e.key === 'ArrowLeft')   goTo(-1);
-        if (e.key === 'ArrowRight')  goTo(+1);
-      });
+        /* ─────────────────────────────────────────────────────────────
+           CLOSE LIGHTBOX
+           ───────────────────────────────────────────────────────────── */
+        function closeLightbox () {
+          lightbox.classList.remove('is-open');
+          document.body.style.overflow = '';
+        }
 
-      /* ─────────────────────────────────────────────────────────────
-         FILTER LOGIC
-         ───────────────────────────────────────────────────────────── */
-      const filterBar  = document.querySelector('.gallery-filter');
-      const filterBtns = filterBar ? filterBar.querySelectorAll('.filter__btn') : [];
+        /* ─────────────────────────────────────────────────────────────
+           UPDATE LIGHTBOX CONTENT  (called on open + navigation)
+           ───────────────────────────────────────────────────────────── */
+        function updateLightbox () {
+          const item = visibleItems[currentIndex];
+          if (!item) return;
 
-      filterBtns.forEach(function (btn) {
-        btn.addEventListener('click', function () {
+          const fullSrc = item.dataset.full || item.querySelector('.gallery__image').src;
+          const title   = item.dataset.title || '';
+          const meta    = item.dataset.meta  || '';
 
-          /* Update active class */
-          filterBtns.forEach(function (b) { b.classList.remove('is-active'); });
-          btn.classList.add('is-active');
+          /* Fade out → swap src → fade in */
+          lbImage.classList.add('is-loading');
 
-          const filter = btn.dataset.filter || 'all';
+          const img = new Image();
+          img.onload = function () {
+            lbImage.src = fullSrc;
+            lbImage.alt = title;
+            lbImage.classList.remove('is-loading');
+          };
+          img.src = fullSrc;
 
-          /* Show / hide items */
-          const allItems = Array.from(gallery.querySelectorAll('.gallery__item'));
-          allItems.forEach(function (item) {
-            if (filter === 'all' || item.dataset.category === filter) {
-              item.style.display = '';
-            } else {
-              item.style.display = 'none';
+          lbTitle.textContent   = title;
+          lbMeta.textContent    = meta;
+          lbCounter.textContent = (currentIndex + 1) + ' / ' + visibleItems.length;
+
+          /* Hide prev/next buttons at the ends */
+          if (lbPrev) lbPrev.style.visibility = currentIndex === 0 ? 'hidden' : 'visible';
+          if (lbNext) lbNext.style.visibility = currentIndex === visibleItems.length - 1 ? 'hidden' : 'visible';
+        }
+
+        /* ─────────────────────────────────────────────────────────────
+           NAVIGATE
+           ───────────────────────────────────────────────────────────── */
+        function goTo (delta) {
+          const next = currentIndex + delta;
+          if (next >= 0 && next < visibleItems.length) {
+            currentIndex = next;
+            updateLightbox();
+          }
+        }
+
+        /* ─────────────────────────────────────────────────────────────
+           GALLERY CLICK DELEGATION
+           ───────────────────────────────────────────────────────────── */
+        gallery.addEventListener('click', function (e) {
+          const expandIcon = e.target.closest('.gallery__expand-icon');
+          if (expandIcon) {
+            e.preventDefault();
+            e.stopPropagation();
+            const item = expandIcon.closest('.gallery__item');
+            if (item) {
+              const index = visibleItems.indexOf(item);
+              if (index !== -1) openLightbox(index);
+            }
+          }
+        });
+
+        /* ─────────────────────────────────────────────────────────────
+           LIGHTBOX CONTROLS
+           ───────────────────────────────────────────────────────────── */
+        if (lbClose) lbClose.addEventListener('click', closeLightbox);
+        if (lbPrev) lbPrev.addEventListener ('click', function () { goTo(-1); });
+        if (lbNext) lbNext.addEventListener ('click', function () { goTo(+1); });
+
+        /* Click the backdrop (outside the image) to close */
+        if (lightbox) {
+          lightbox.addEventListener('click', function (e) {
+            if (e.target === lightbox || e.target === lightbox.querySelector('.lightbox__stage')) {
+              closeLightbox();
             }
           });
+        }
 
-          /* Rebuild visible list for lightbox navigation */
-          buildVisibleList(filter);
+        /* Keyboard navigation */
+        document.addEventListener('keydown', function (e) {
+          if (!lightbox || !lightbox.classList.contains('is-open')) return;
+          if (e.key === 'Escape')      closeLightbox();
+          if (e.key === 'ArrowLeft')   goTo(-1);
+          if (e.key === 'ArrowRight')  goTo(+1);
         });
-      });
+
+        /* ─────────────────────────────────────────────────────────────
+           FILTER LOGIC
+           ───────────────────────────────────────────────────────────── */
+        const filterBar  = document.querySelector('.gallery-filter');
+        const filterBtns = filterBar ? filterBar.querySelectorAll('.filter__btn') : [];
+
+        filterBtns.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+
+            /* Update active class */
+            filterBtns.forEach(function (b) { b.classList.remove('is-active'); });
+            btn.classList.add('is-active');
+
+            const filter = btn.dataset.filter || 'all';
+
+            /* Show / hide items */
+            const allItems = Array.from(gallery.querySelectorAll('.gallery__item'));
+            allItems.forEach(function (item) {
+              if (filter === 'all' || item.dataset.category === filter) {
+                item.style.display = '';
+              } else {
+                item.style.display = 'none';
+              }
+            });
+
+            /* Rebuild visible list for lightbox navigation */
+            buildVisibleList(filter);
+          });
+        });
+
+        /* Initialize gallery list */
+        buildVisibleList('all');
+      }
 
       
 
@@ -213,95 +220,139 @@ Free HTML CSS Template
       var successMsg = document.getElementById('js-success');
       var errorMsg   = document.getElementById('js-error');
 
-      if (!form) return;
-
-      /* Helper: validate a single field */
-      function validateField (input, errorEl) {
-        var valid = input.validity.valid;
-        if (!valid) {
-          input.classList.add('is-invalid');
-          errorEl.classList.add('is-visible');
-        } else {
-          input.classList.remove('is-invalid');
-          errorEl.classList.remove('is-visible');
+      if (form) {
+        /* Helper: validate a single field */
+        function validateField (input, errorEl) {
+          var valid = input.validity.valid;
+          if (!valid) {
+            input.classList.add('is-invalid');
+            errorEl.classList.add('is-visible');
+          } else {
+            input.classList.remove('is-invalid');
+            errorEl.classList.remove('is-visible');
+          }
+          return valid;
         }
-        return valid;
-      }
 
-      /* Live validation on blur */
-      var nameInput    = document.getElementById('field-name');
-      var emailInput   = document.getElementById('field-email');
-      var messageInput = document.getElementById('field-message');
+        /* Live validation on blur */
+        var nameInput    = document.getElementById('field-name');
+        var emailInput   = document.getElementById('field-email');
+        var messageInput = document.getElementById('field-message');
 
-      nameInput.addEventListener   ('blur', function () { validateField(nameInput,    document.getElementById('err-name'));    });
-      emailInput.addEventListener  ('blur', function () { validateField(emailInput,   document.getElementById('err-email'));   });
-      messageInput.addEventListener('blur', function () { validateField(messageInput, document.getElementById('err-message')); });
+        if (nameInput) nameInput.addEventListener   ('blur', function () { validateField(nameInput,    document.getElementById('err-name'));    });
+        if (emailInput) emailInput.addEventListener  ('blur', function () { validateField(emailInput,   document.getElementById('err-email'));   });
+        if (messageInput) messageInput.addEventListener('blur', function () { validateField(messageInput, document.getElementById('err-message')); });
 
-      /* Clear errors on input after they've been shown */
-      [nameInput, emailInput, messageInput].forEach(function (el) {
-        el.addEventListener('input', function () {
-          if (el.classList.contains('is-invalid') && el.validity.valid) {
-            el.classList.remove('is-invalid');
-            var errId = 'err-' + el.id.replace('field-', '');
-            var errEl = document.getElementById(errId);
-            if (errEl) errEl.classList.remove('is-visible');
+        /* Clear errors on input after they've been shown */
+        [nameInput, emailInput, messageInput].forEach(function (el) {
+          if (el) {
+            el.addEventListener('input', function () {
+              if (el.classList.contains('is-invalid') && el.validity.valid) {
+                el.classList.remove('is-invalid');
+                var errId = 'err-' + el.id.replace('field-', '');
+                var errEl = document.getElementById(errId);
+                if (errEl) errEl.classList.remove('is-visible');
+              }
+            });
           }
         });
-      });
 
-      /* Submit handler */
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
+        /* Submit handler */
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
 
-        /* Validate all required fields */
-        var n = validateField(nameInput,    document.getElementById('err-name'));
-        var em = validateField(emailInput,  document.getElementById('err-email'));
-        var m = validateField(messageInput, document.getElementById('err-message'));
+          /* Validate all required fields */
+          var n = validateField(nameInput,    document.getElementById('err-name'));
+          var em = validateField(emailInput,  document.getElementById('err-email'));
+          var m = validateField(messageInput, document.getElementById('err-message'));
 
-        if (!n || !em || !m) return;
+          if (!n || !em || !m) return;
 
-        /* ── TO CONNECT A REAL BACKEND ──────────────────────────────
-           Replace the simulated timeout below with a real fetch():
+          /* Simulate a successful send for the template demo */
+          if (submitBtn) {
+            submitBtn.disabled     = true;
+            submitBtn.textContent  = 'Sending…';
+          }
+          if (successMsg) successMsg.style.display = 'none';
+          if (errorMsg) errorMsg.style.display   = 'none';
 
-           submitBtn.disabled = true;
-           submitBtn.textContent = 'Sending…';
-
-           fetch('https://formspree.io/f/YOUR_FORM_ID', {
-             method:  'POST',
-             headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-             body:    JSON.stringify({
-               name:    nameInput.value,
-               email:   emailInput.value,
-               subject: document.getElementById('field-subject').value,
-               message: messageInput.value
-             })
-           })
-           .then(function (res) {
-             if (res.ok) { showSuccess(); } else { showError(); }
-           })
-           .catch(showError)
-           .finally(function () { submitBtn.disabled = false; });
-           ───────────────────────────────────────────────────────── */
-
-        /* Simulate a successful send for the template demo */
-        submitBtn.disabled     = true;
-        submitBtn.textContent  = 'Sending…';
-        successMsg.style.display = 'none';
-        errorMsg.style.display   = 'none';
-
-        setTimeout(function () {
-          submitBtn.disabled    = false;
-          submitBtn.textContent = 'Send message';
-          successMsg.classList.add('is-success');
-          successMsg.style.display = '';
-          form.reset();
-        }, 1200);
-      });
+          setTimeout(function () {
+            if (submitBtn) {
+              submitBtn.disabled    = false;
+              submitBtn.textContent = 'Send message';
+            }
+            if (successMsg) {
+              successMsg.classList.add('is-success');
+              successMsg.style.display = '';
+            }
+            form.reset();
+          }, 1200);
+        });
+      }
 
 
       /* ─────────────────────────────────────────────────────────────
-         INIT
+         STATS ANIMATION (scroll-triggered & count-up)
          ───────────────────────────────────────────────────────────── */
-      buildVisibleList('all');
+      const statsSection = document.querySelector('.about-stats');
+      const statNumbers  = document.querySelectorAll('.about-stat__number');
+
+      if (statsSection && statNumbers.length > 0) {
+        const statsObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              // Add visibility class for CSS staggered animations
+              statsSection.classList.add('is-visible');
+              
+              // Run count-up animation for each number
+              statNumbers.forEach(statEl => {
+                animateCountUp(statEl);
+              });
+              
+              // Unobserve after firing once
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.15
+        });
+
+        statsObserver.observe(statsSection);
+
+        // Helper to animate stats count-up
+        function animateCountUp(el) {
+          const rawText = el.textContent.trim();
+          const match = rawText.match(/^([^\d]*?)(\d+)([^\d]*)$/);
+          if (!match) return;
+
+          const prefix = match[1] || '';
+          const targetVal = parseInt(match[2], 10);
+          const suffix = match[3] || '';
+
+          const duration = 1500; // 1.5s
+          let startTime = null;
+          const easeOutQuad = t => t * (2 - t);
+
+          function updateCounter(currentTime) {
+            if (!startTime) startTime = currentTime;
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            
+            const easedProgress = easeOutQuad(progress);
+            const currentVal = Math.floor(easedProgress * targetVal);
+
+            el.textContent = `${prefix}${currentVal}${suffix}`;
+
+            if (progress < 1) {
+              requestAnimationFrame(updateCounter);
+            } else {
+              el.textContent = rawText;
+            }
+          }
+
+          el.textContent = `${prefix}0${suffix}`;
+          requestAnimationFrame(updateCounter);
+        }
+      }
 
     })();
