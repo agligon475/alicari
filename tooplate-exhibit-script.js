@@ -356,19 +356,108 @@ Free HTML CSS Template
       }
 
     /* ─────────────────────────────────────────────────────────────
-       SPLASH SCREEN
+       SPLASH SCREEN & PARTICLES
        ───────────────────────────────────────────────────────────── */
     const splashScreen = document.getElementById('js-splash-screen');
     const splashBtn    = document.getElementById('js-splash-btn');
+    const canvas       = document.getElementById('js-splash-canvas');
 
     if (splashScreen && splashBtn) {
       if (sessionStorage.getItem('splashDismissed') === 'true') {
         splashScreen.style.display = 'none';
       } else {
-        splashBtn.addEventListener('click', function () {
-          splashScreen.classList.add('is-hidden');
-          sessionStorage.setItem('splashDismissed', 'true');
-        });
+        // Initialize particle system if canvas exists
+        if (canvas) {
+          const ctx = canvas.getContext('2d');
+          let animationFrameId = null;
+          let particles = [];
+
+          function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initParticles();
+          }
+
+          function initParticles() {
+            const width = canvas.width;
+            const height = canvas.height;
+            // Responsive count based on window dimensions to keep performance high
+            const particleCount = Math.min(100, Math.floor((width * height) / 15000));
+            particles = [];
+
+            for (let i = 0; i < particleCount; i++) {
+              const isRed = Math.random() < 0.08; // 8% brand-red (#fc2222) particles
+              const redColor = '252, 34, 34';
+              const whiteColor = '255, 255, 255';
+              
+              particles.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                radius: 0.5 + Math.random() * 2, // sizes 0.5px to 2.5px
+                vx: (Math.random() - 0.5) * 0.3, // slow float
+                vy: (Math.random() - 0.5) * 0.3,
+                baseColor: isRed ? redColor : whiteColor,
+                alpha: 0.15 + Math.random() * 0.65 // opacities 0.15 to 0.8
+              });
+            }
+          }
+
+          function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            const len = particles.length;
+            for (let i = 0; i < len; i++) {
+              const p = particles[i];
+              
+              // Move particle
+              p.x += p.vx;
+              p.y += p.vy;
+
+              // Boundary check (wrap around)
+              if (p.x < 0) p.x = canvas.width;
+              if (p.x > canvas.width) p.x = 0;
+              if (p.y < 0) p.y = canvas.height;
+              if (p.y > canvas.height) p.y = 0;
+
+              // Draw
+              ctx.beginPath();
+              ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+              ctx.fillStyle = `rgba(${p.baseColor}, ${p.alpha})`;
+              ctx.fill();
+            }
+
+            animationFrameId = requestAnimationFrame(animate);
+          }
+
+          // Initial setup
+          window.addEventListener('resize', resizeCanvas);
+          resizeCanvas();
+          animate();
+
+          // Cleanup event listener and cancel loop on click
+          splashBtn.addEventListener('click', function () {
+            splashScreen.classList.add('is-hidden');
+            sessionStorage.setItem('splashDismissed', 'true');
+            
+            // Clean up resize listener immediately
+            window.removeEventListener('resize', resizeCanvas);
+
+            // Wait for transition to complete, then cancel animation and hide display
+            splashScreen.addEventListener('transitionend', function onTransitionEnd(e) {
+              if (e.propertyName === 'opacity') {
+                splashScreen.style.display = 'none';
+                cancelAnimationFrame(animationFrameId);
+                splashScreen.removeEventListener('transitionend', onTransitionEnd);
+              }
+            });
+          });
+        } else {
+          // Fallback click listener if canvas is missing
+          splashBtn.addEventListener('click', function () {
+            splashScreen.classList.add('is-hidden');
+            sessionStorage.setItem('splashDismissed', 'true');
+          });
+        }
       }
     }
 
