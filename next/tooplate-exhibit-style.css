@@ -636,13 +636,28 @@ Free HTML CSS Template
        FOOTER
        ═══════════════════════════════════════════════════════════════ */
     .site-footer {
-      padding:         var(--space-footer-top) var(--space-page-x) 3rem;
-      border-top:      1px solid var(--color-border-subtle);
+      padding:         clamp(3rem, 5vw, 4rem) var(--space-page-x);
+      background-color: #000000;
+      border-top:      1px solid rgba(255, 255, 255, 0.1);
       display:         flex;
-      align-items:     flex-start;
+      align-items:     center;
       justify-content: space-between;
       gap:             2rem;
       flex-wrap:       wrap;
+    }
+
+    .footer__logo {
+      display:         inline-block;
+      transition:      opacity 0.2s ease;
+    }
+
+    .footer__logo:hover {
+      opacity:         0.8;
+    }
+
+    .footer__logo-img {
+      height:          24px;
+      display:         block;
     }
 
     .footer__brand {
@@ -650,18 +665,18 @@ Free HTML CSS Template
       font-weight:     600;
       letter-spacing:  var(--letter-spacing-wide);
       text-transform:  uppercase;
-      color:           var(--color-text-primary);
+      color:           #ffffff;
       margin-bottom:   0.5rem;
     }
 
     .footer__credit {
       font-size:       var(--font-size-footer);
-      color:           var(--color-text-secondary);
+      color:           rgba(255, 255, 255, 0.5);
       line-height:     1.7;
     }
 
     .footer__credit a {
-      color:           var(--color-text-primary);
+      color:           #ffffff;
       text-decoration: underline;
       text-underline-offset: 2px;
     }
@@ -677,11 +692,13 @@ Free HTML CSS Template
       font-weight:     500;
       letter-spacing:  var(--letter-spacing-wide);
       text-transform:  uppercase;
-      color:           var(--color-text-secondary);
+      color:           rgba(255, 255, 255, 0.6);
       transition:      color 0.2s ease;
     }
 
-    .footer__nav a:hover { color: var(--color-text-primary); }
+    .footer__nav a:hover {
+      color:           #ffffff;
+    }
 
     /* ═══════════════════════════════════════════════════════════════
        UTILITIES
