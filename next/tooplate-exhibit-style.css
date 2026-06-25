@@ -800,6 +800,7 @@ Free HTML CSS Template
     .about-bio__logo-img {
       height:          clamp(1.8rem, 3.5vw, 2.5rem);
       display:         block;
+      margin-bottom:   1.5rem;
     }
 
     .about-bio__title {
