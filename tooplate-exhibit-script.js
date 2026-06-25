@@ -355,4 +355,21 @@ Free HTML CSS Template
         }
       }
 
-    })();
+    /* ─────────────────────────────────────────────────────────────
+       SPLASH SCREEN
+       ───────────────────────────────────────────────────────────── */
+    const splashScreen = document.getElementById('js-splash-screen');
+    const splashBtn    = document.getElementById('js-splash-btn');
+
+    if (splashScreen && splashBtn) {
+      if (sessionStorage.getItem('splashDismissed') === 'true') {
+        splashScreen.style.display = 'none';
+      } else {
+        splashBtn.addEventListener('click', function () {
+          splashScreen.classList.add('is-hidden');
+          sessionStorage.setItem('splashDismissed', 'true');
+        });
+      }
+    }
+
+  })();

@@ -1,221 +1,801 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
-  <head>
-    <meta charset="UTF-8">
-    <title>ALICARI | Diseño Multimedia, UX/UI & Branding</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Portal y portfolio profesional de alicari. Proyectos de diseño multimedia, UX/UI y branding.">
-    <link rel="icon" type="image/jpeg" href="favicon.jpg">
-    
-    <!-- Google Fonts: Outfit -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="./style.css">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ALICARI | Diseño Multimedia</title>
+  <meta name="description" content="A minimalist photography portfolio gallery template." />
+  <link rel="icon" type="image/jpeg" href="favicon.jpg" />
 
-    <!-- Schema Structured Data (FAQPage & ProfessionalService) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "¿Qué servicios de diseño y desarrollo web ofrece alicari.com.ar?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Ofrezco servicios integrales de Diseño UX/UI, Desarrollo Front-End, branding corporativo y producción multimedia. Me especializo en la creación de interfaces optimizadas, maquetación ágil en HTML/CSS y activos digitales enfocados en la experiencia de usuario."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Cuál es la diferencia entre el diseño UX y UI en un sitio web?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "El diseño UX se enfoca en la lógica, usabilidad y estructura del sitio para que la navegación sea intuitiva. El diseño UI se encarga de la identidad visual: tipografías, colores y la estética final de los componentes. Ambos garantizan que una web sea atractiva y funcional."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Cómo ayuda el diseño UX/UI a mejorar las conversiones?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Mejora las conversiones eliminando fricciones en la navegación, estructurando la información mediante jerarquías claras, optimizando formularios y diseñando llamadas a la acción (CTAs) estratégicas."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Qué tecnologías y herramientas se utilizan para el desarrollo web?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Utilizo maquetación limpia basada en HTML5, CSS3, JavaScript y entornos profesionales de diseño y prototipado como Figma, asegurando una transición fluida desde el layout visual hasta el código final."
-          }
+  <!--
+Tooplate 2160 Exhibit Studio
+https://www.tooplate.com/view/2160-exhibit-studio
+Free HTML CSS Template
+-->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="tooplate-exhibit-style.css" />
+
+  <!-- Schema Structured Data (FAQPage & ProfessionalService) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Qué servicios de diseño y desarrollo web ofrece alicari.com.ar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ofrezco servicios integrales de Diseño UX/UI, Desarrollo Front-End, branding corporativo y producción multimedia. Me especializo en la creación de interfaces optimizadas, maquetación ágil en HTML/CSS y activos digitales enfocados en la experiencia de usuario."
         }
-      ]
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "Alicari - Diseño Multimedia & UX/UI",
-      "url": "https://alicari.com.ar",
-      "logo": "https://alicari.com.ar/logo.png",
-      "image": "https://alicari.com.ar/og-image.png",
-      "description": "Servicios profesionales de Diseño UX/UI, Desarrollo Front-End y Soluciones Multimedia.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Buenos Aires",
-        "addressCountry": "AR"
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuál es la diferencia entre el diseño UX y UI en un sitio web?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "El diseño UX se enfoca en la lógica, usabilidad y estructura del sitio para que la navegación sea intuitiva. El diseño UI se encarga de la identidad visual: tipografías, colores y la estética final de los componentes. Ambos garantizan que una web sea atractiva y funcional."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo ayuda el diseño UX/UI a mejorar las conversiones?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Mejora las conversiones eliminando fricciones en la navegación, estructurando la información mediante jerarquías claras, optimizando formularios y diseñando llamadas a la acción (CTAs) estratégicas."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué tecnologías y herramientas se utilizan para el desarrollo web?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Utilizo maquetación limpia basada en HTML5, CSS3, JavaScript y entornos profesionales de diseño y prototipado como Figma, asegurando una transición fluida desde el layout visual hasta el código final."
+        }
       }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Alicari - Diseño Multimedia & UX/UI",
+    "url": "https://alicari.com.ar",
+    "logo": "https://alicari.com.ar/logo.png",
+    "image": "https://alicari.com.ar/og-image.png",
+    "description": "Servicios profesionales de Diseño UX/UI, Desarrollo Front-End y Soluciones Multimedia.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Buenos Aires",
+      "addressCountry": "AR"
     }
-    </script>
-  </head>
-    
-  <body>
-    <!-- Fondo animado de círculos -->
-    <div class="ripple-background">
-      <div class="circle xxlarge shade1"></div>
-      <div class="circle xlarge shade2"></div>
-      <div class="circle large shade3"></div>
-      <div class="circle medium shade4"></div>
-      <div class="circle small shade5"></div>
+  }
+  </script>
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SPLASH SCREEN
+       ═══════════════════════════════════════════════════════════════ -->
+  <div id="js-splash-screen" class="splash-screen">
+    <button class="splash-screen__logo-btn" id="js-splash-btn" aria-label="Ingresar al sitio">
+      <svg class="splash-screen__logo" xmlns="http://www.w3.org/2000/svg" viewBox="34 10 90 120">
+        <!-- Letra 'a' en blanco -->
+        <path fill="#ffffff" d="M67.75,121.6c-6.6,0-12.55-1.67-17.85-5.03-5.3-3.35-9.48-7.85-12.53-13.5-3.05-5.65-4.57-12.12-4.57-19.42s1.52-13.82,4.57-19.58c3.05-5.75,7.2-10.25,12.45-13.5,5.25-3.25,11.22-4.88,17.92-4.88,4.9,0,9.32.95,13.28,2.85,3.95,1.9,7.17,4.53,9.67,7.88,2.5,3.35,3.9,7.18,4.2,11.47v31.5c-.3,4.3-1.68,8.13-4.12,11.47-2.45,3.35-5.65,5.98-9.6,7.88-3.95,1.9-8.43,2.85-13.43,2.85ZM72.55,100.75c4.9,0,8.82-1.6,11.77-4.8,2.95-3.2,4.42-7.35,4.42-12.45,0-3.3-.65-6.22-1.95-8.77-1.3-2.55-3.2-4.55-5.7-6-2.5-1.45-5.35-2.17-8.55-2.17s-5.88.73-8.33,2.17c-2.45,1.45-4.4,3.48-5.85,6.08-1.45,2.6-2.17,5.55-2.17,8.85s.72,6.25,2.17,8.85c1.45,2.6,3.4,4.63,5.85,6.08,2.45,1.45,5.22,2.17,8.33,2.17ZM87.85,120.1v-19.65l3.45-17.85-3.45-17.55v-17.85h22.65v72.9h-22.65Z"/>
+        <!-- Punto rojo superior de la 'i' -->
+        <circle fill="#fc2222" cx="99.17" cy="24.6" r="8.6" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       NAVIGATION
+       ═══════════════════════════════════════════════════════════════ -->
+  <nav class="site-nav" role="navigation" aria-label="Main">
+
+    <div class="nav__bar">
+
+      <!-- ↓ EDIT: Replace with your name or studio name -->
+      <a href="index.html" class="nav__wordmark">
+        <img src="images/logo-alicari-05.svg" alt="ALICARI" class="nav__logo-img">
+      </a>
+
+      <!-- ↓ EDIT: Desktop links (visible ≥680px) -->
+      <ul class="nav__links">
+        <li><a href="index.html" class="nav__link--active">Portfolio</a></li>
+        <li><a href="about.html">Conóceme</a></li>
+        <li><a href="contact.html">Contacto</a></li>
+      </ul>
+
+      <!-- Hamburger — visible on mobile only, controlled by JS -->
+      <button class="nav__hamburger" id="js-hamburger" aria-label="Open menu" aria-expanded="false"
+        aria-controls="js-mobile-menu">
+        <span class="nav__hamburger-line"></span>
+        <span class="nav__hamburger-line"></span>
+        <span class="nav__hamburger-line"></span>
+      </button>
+
+    </div><!-- /nav__bar -->
+
+    <!-- ↓ EDIT: Mobile menu links (visible <680px, toggled by hamburger) -->
+    <ul class="nav__mobile-menu" id="js-mobile-menu" aria-hidden="true">
+      <li><a href="index.html" class="nav__link--active">Portfolio</a></li>
+      <li><a href="about.html">Conóceme</a></li>
+      <li><a href="contact.html">Contacto</a></li>
+    </ul>
+
+  </nav>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       HERO
+       ═══════════════════════════════════════════════════════════════ -->
+  <header class="site-hero">
+
+    <!-- ↓ EDIT: Your gallery category / series name -->
+    <p class="hero__tag">Multimedia · UX/UI · Branding</p>
+
+    <!-- ↓ EDIT: Your gallery headline -->
+    <h1 class="hero__title">
+      Creatividad &amp;<br><strong>estrategia</strong>
+    </h1>
+
+    <div class="hero__meta">
+      <!-- ↓ EDIT: Update the photo count to match your gallery -->
+      <span class="hero__count" id="js-photo-count">27 Proyectos</span>
+      <div class="hero__rule" aria-hidden="true"></div>
+      <!-- ↓ EDIT: A one-line description of your gallery series -->
+      <p class="hero__desc">Diseño y desarrollo multimedia: experiencias interactivas y marcas memorables que conectan con las audiencias.</p>
     </div>
-    
-    <!-- Contenedor principal con efecto glassmorphism -->
-    <main class="profile-card">
-      <header class="profile-header">
-        <!-- Logo en formato SVG -->
-        <h1 class="logo">
-          <img src="logo-alicari-04-04.svg" alt="ALICARI" class="logo-img">
-        </h1>
-        <p class="subtitle">Diseño Multimedia · UX/UI · Branding</p>
-      </header>
 
-      <!-- Enlaces principales y de redes -->
-      <div class="profile-links">
-        <a href="./next/index.html" class="btn btn-portfolio">
-          <span>Ver Portfolio</span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </a>
-        
-        <div class="social-grid">
-          <a href="https://behance.net/alicari" target="_blank" rel="noopener" class="social-item" title="Behance">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 10H7v-3h2a1.5 1.5 0 0 1 0 3zM9 15H7v-3.5h2a1.75 1.75 0 0 1 0 3.5zM4 5h5a3.5 3.5 0 0 1 0 7 3.75 3.75 0 0 1 0 7.5H4V5z"/>
-              <path d="M19 14h-4a1.75 1.75 0 0 0 3.5 0M15 11.5a2.5 2.5 0 0 1 5 0V14h-5z"/>
-              <line x1="15" y1="8" x2="20" y2="8" stroke-width="2"/>
-            </svg>
-            <span>Behance</span>
-          </a>
+  </header>
 
 
+  <!-- ═══════════════════════════════════════════════════════════════
+       FILTER BAR  (optional — delete this section if not needed)
+       ═══════════════════════════════════════════════════════════════ -->
+  <div class="gallery-filter-wrap">
+    <div class="gallery-filter" role="toolbar" aria-label="Filter gallery">
 
-          <a href="https://linkedin.com/in/alicari/" target="_blank" rel="noopener" class="social-item" title="LinkedIn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-              <rect x="2" y="9" width="4" height="12"></rect>
-              <circle cx="4" cy="4" r="2"></circle>
-            </svg>
-            <span>LinkedIn</span>
-          </a>
+      <button class="filter__btn is-active" data-filter="all">Todos</button>
+      <button class="filter__btn" data-filter="uxui">UX/UI</button>
+      <button class="filter__btn" data-filter="webdesign">Web Design</button>
+      <button class="filter__btn" data-filter="branding">Branding</button>
+      <button class="filter__btn" data-filter="multimedia">Multimedia</button>
+      <button class="filter__btn" data-filter="fotografia">Fotografía</button>
+      <button class="filter__btn" data-filter="marketing">Marketing</button>
 
-          <a href="#" id="email-btn" class="social-item" title="Contacto">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-              <polyline points="22,6 12,13 2,6"></polyline>
-            </svg>
-            <span>Email</span>
-          </a>
+    </div>
+  </div>
+
+
+  <main class="gallery" id="js-gallery" aria-label="Photo gallery">
+
+    <!-- --- PROYECTO 1 (Multimedia) --- -->
+    <div class="gallery__item" data-category="multimedia" data-full="https://mir-s3-cdn-cf.behance.net/projects/max_808/12f9fb232481039.Y3JvcCw5MjAsNzIwLDE4MCww.png"
+      data-title="Videoclip: Iruya" data-meta="Diseño Multimedia · Behance">
+      <a href="https://www.behance.net/gallery/232481039/Videoclip-Iruya" target="_blank">
+
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/12f9fb232481039.Y3JvcCw5MjAsNzIwLDE4MCww.png" alt="Videoclip: Iruya" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">Videoclip: Iruya</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
         </div>
-      </div>
-    </main>
 
-    <!-- Modal de Contacto -->
-    <div id="contact-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
-      <div class="modal-card">
-        <button id="close-modal" class="modal-close-btn" aria-label="Cerrar modal">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
           </svg>
-        </button>
-        
-        <h2 id="modal-title" class="modal-title">Enviar Mensaje</h2>
-        <p class="modal-subtitle">Escríbeme y me pondré en contacto contigo a la brevedad.</p>
-        
-        <form action="https://formsubmit.co/licari.multimedios@gmail.com" method="POST" class="contact-form">
-          <!-- Configuración de FormSubmit -->
-          <input type="text" name="_honey" style="display:none"> <!-- Filtro de Spam -->
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_captcha" value="false">
-          
-          <div class="form-group">
-            <label for="form-name">Nombre</label>
-            <input type="text" id="form-name" name="name" required placeholder="Tu nombre">
-          </div>
-          
-          <div class="form-group">
-            <label for="form-email">Email</label>
-            <input type="email" id="form-email" name="email" required placeholder="tu@email.com">
-          </div>
-          
-          <div class="form-group">
-            <label for="form-message">Mensaje</label>
-            <textarea id="form-message" name="message" rows="4" required placeholder="¿En qué puedo ayudarte?"></textarea>
-          </div>
-          
-          <button type="submit" class="btn btn-submit">Enviar Correo</button>
-        </form>
-      </div>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 1 -->
+
+    <!-- --- PROYECTO 2 (UX/UI) --- -->
+    <div class="gallery__item" data-category="uxui" data-full="https://mir-s3-cdn-cf.behance.net/projects/max_808/29afee157960549.Y3JvcCwxMDA2LDc4NywyNzgsMA.jpg"
+      data-title="SIMpath proyecto (UX/UI design)" data-meta="Diseño UX/UI · Behance">
+      <a href="https://www.behance.net/gallery/157960549/SIMpath-proyecto-(UXUI-design)" target="_blank">
+
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/29afee157960549.Y3JvcCwxMDA2LDc4NywyNzgsMA.jpg" alt="SIMpath proyecto (UX/UI design)" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">SIMpath proyecto (UX/UI design)</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 2 -->
+
+    <!-- --- PROYECTO 3 (Branding) --- -->
+    <div class="gallery__item" data-category="branding" data-full="https://mir-s3-cdn-cf.behance.net/projects/max_808/d44edf141701733.Y3JvcCwxOTE3LDE1MDAsMzc1LDA.jpg"
+      data-title="Brand Guideline | FFO Parts | Manual de marca" data-meta="Branding · Behance">
+      <a href="https://www.behance.net/gallery/141701733/Brand-Guideline-FFO-Parts-Manual-de-marca" target="_blank">
+
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/d44edf141701733.Y3JvcCwxOTE3LDE1MDAsMzc1LDA.jpg" alt="Brand Guideline | FFO Parts | Manual de marca" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">Brand Guideline | FFO Parts | Manual de marca</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 3 -->
+
+    <!-- --- PROYECTO 4 (Branding) --- -->
+    <div class="gallery__item" data-category="branding" data-full="https://mir-s3-cdn-cf.behance.net/projects/max_808/d93f65109330367.Y3JvcCwxMDIyLDgwMCwxMjksMA.png"
+      data-title="VEGANOTECA | Manual de Marca" data-meta="Branding · Behance">
+      <a href="https://www.behance.net/gallery/109330367/VEGANOTECA-Manual-de-Marca" target="_blank">
+
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/d93f65109330367.Y3JvcCwxMDIyLDgwMCwxMjksMA.png" alt="VEGANOTECA | Manual de Marca" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">VEGANOTECA | Manual de Marca</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 4 -->
+
+    <!-- --- PROYECTO 5 (Branding) --- -->
+    <div class="gallery__item" data-category="branding" data-full="https://mir-s3-cdn-cf.behance.net/projects/max_808/bb0c4f103448945.Y3JvcCw5OTksNzgyLDAsMTA4.jpg"
+      data-title="HotEnd | Diseño de logotipo" data-meta="Branding · Behance">
+      <a href="https://www.behance.net/gallery/103448945/HotEnd-Diseno-de-logotipo" target="_blank">
+
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/bb0c4f103448945.Y3JvcCw5OTksNzgyLDAsMTA4.jpg" alt="HotEnd | Diseño de logotipo" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">HotEnd | Diseño de logotipo</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 5 -->
+
+    <!-- --- PROYECTO 6 (Branding) --- -->
+    <div class="gallery__item" data-category="branding" data-full="https://mir-s3-cdn-cf.behance.net/projects/max_808/21e0c9103448859.Y3JvcCw5OTksNzgyLDAsMTA4.jpg"
+      data-title="WES BELL| Diseño de logotipo" data-meta="Branding · Behance">
+      <a href="https://www.behance.net/gallery/103448859/WES-BELL-Diseno-de-logotipo" target="_blank">
+
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/21e0c9103448859.Y3JvcCw5OTksNzgyLDAsMTA4.jpg" alt="WES BELL| Diseño de logotipo" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">WES BELL| Diseño de logotipo</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 6 -->
+
+    <!-- --- PROYECTO 7 (Branding) --- -->
+    <div class="gallery__item" data-category="branding" data-full="https://mir-s3-cdn-cf.behance.net/projects/max_808/7be27f101629005.Y3JvcCwxNTg2LDEyNDEsODIsMA.jpg"
+      data-title="SETUP | Manual de Marca - Usos y aplicaciones" data-meta="Branding · Behance">
+      <a href="https://www.behance.net/gallery/101629005/SETUP-Manual-de-Marca-Usos-y-aplicaciones" target="_blank">
+
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/7be27f101629005.Y3JvcCwxNTg2LDEyNDEsODIsMA.jpg" alt="SETUP | Manual de Marca - Usos y aplicaciones" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">SETUP | Manual de Marca - Usos y aplicaciones</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 7 -->
+
+    <!-- --- PROYECTO 8 (Branding) --- -->
+    <div class="gallery__item" data-category="branding" data-full="https://mir-s3-cdn-cf.behance.net/projects/max_808/9650b867833389.Y3JvcCw5OTAsNzc0LDAsMTEy.jpg"
+      data-title="Branding Garz6n Aplicaciones y Publicidad" data-meta="Branding · Behance">
+      <a href="https://www.behance.net/gallery/67833389/Branding-Garz6n-Aplicaciones-y-Publicidad" target="_blank">
+
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/9650b867833389.Y3JvcCw5OTAsNzc0LDAsMTEy.jpg" alt="Branding Garz6n Aplicaciones y Publicidad" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">Branding Garz6n Aplicaciones y Publicidad</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 8 -->
+
+    <!-- --- PROYECTO 9 (Branding) --- -->
+    <div class="gallery__item" data-category="branding" data-full="https://mir-s3-cdn-cf.behance.net/projects/max_808/a007ed67329539.Y3JvcCw1NzksNDUzLDE3MCw5Nw.jpg"
+      data-title="Keeper: Manual de Uso de Marca" data-meta="Branding · Behance">
+      <a href="https://www.behance.net/gallery/67329539/Keeper-Manual-de-Uso-de-Marca" target="_blank">
+
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/a007ed67329539.Y3JvcCw1NzksNDUzLDE3MCw5Nw.jpg" alt="Keeper: Manual de Uso de Marca" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">Keeper: Manual de Uso de Marca</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 9 -->
+
+    <!-- --- PROYECTO 10 (Marketing) --- -->
+    <div class="gallery__item" data-category="marketing" data-full="https://mir-s3-cdn-cf.behance.net/projects/max_808/ab50d763823491.Y3JvcCw3MjAsNTYzLDI0MCwzMTg.jpg"
+      data-title="El Extratonauta Flyer Design" data-meta="Marketing · Behance">
+      <a href="https://www.behance.net/gallery/63823491/El-Extratonauta-Flyer-Design" target="_blank">
+
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/ab50d763823491.Y3JvcCw3MjAsNTYzLDI0MCwzMTg.jpg" alt="El Extratonauta Flyer Design" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">El Extratonauta Flyer Design</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 10 -->
+
+    <!-- --- PROYECTO 11 (Marketing) --- -->
+    <div class="gallery__item" data-category="marketing" data-full="https://mir-s3-cdn-cf.behance.net/projects/max_808/ad0dd161440311.Y3JvcCwxMDAyLDc4NCwwLDEwOA.jpg"
+      data-title="Spot Mamá Isa HD" data-meta="Marketing · Behance">
+      <a href="https://www.behance.net/gallery/61440311/Spot-Mama-Isa-HD" target="_blank">
+
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/ad0dd161440311.Y3JvcCwxMDAyLDc4NCwwLDEwOA.jpg" alt="Spot Mamá Isa HD" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">Spot Mamá Isa HD</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 11 -->
+
+    <!-- --- PROYECTO 12 (Fotografía) --- -->
+    <div class="gallery__item" data-category="fotografia" data-full="https://mir-s3-cdn-cf.behance.net/projects/max_808/bdf77359883205.Y3JvcCwxNDI0LDExMTQsMTY1LDExMg.jpg"
+      data-title="Ph. Portfolios Personales" data-meta="Fotografía · Behance">
+      <a href="https://www.behance.net/gallery/59883205/Ph-Portfolios-Personales" target="_blank">
+
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/bdf77359883205.Y3JvcCwxNDI0LDExMTQsMTY1LDExMg.jpg" alt="Ph. Portfolios Personales" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">Ph. Portfolios Personales</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 12 -->
+
+    <!-- --- PROYECTO 13 (Fotografía) --- -->
+    <div class="gallery__item" data-category="fotografia" data-full="https://mir-s3-cdn-cf.behance.net/projects/max_808/ce6e7859882877.Y3JvcCwxODk2LDE0ODQsMzM3LDE2Mw.jpg"
+      data-title="Ph. Onda Vaga @ Teatro Petrobras Rio de Janeiro" data-meta="Fotografía · Behance">
+      <a href="https://www.behance.net/gallery/59882877/Ph-Onda-Vaga-Teatro-Petrobras-Rio-de-Janeiro" target="_blank">
+
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/ce6e7859882877.Y3JvcCwxODk2LDE0ODQsMzM3LDE2Mw.jpg" alt="Ph. Onda Vaga @ Teatro Petrobras Rio de Janeiro" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">Ph. Onda Vaga @ Teatro Petrobras Rio de Janeiro</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 13 -->
+
+    <!-- --- PROYECTO 14 (Fotografía) --- -->
+    <div class="gallery__item" data-category="fotografia" data-full="https://mir-s3-cdn-cf.behance.net/projects/max_808/8a105b59882719.Y3JvcCwyNjI0LDIwNTQsMTQ5LDA.jpg"
+      data-title="Ph. L.O.D.H.O. @ Teatro de Quito" data-meta="Fotografía · Behance">
+      <a href="https://www.behance.net/gallery/59882719/Ph-LODHO-Teatro-de-Quito" target="_blank">
+
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/8a105b59882719.Y3JvcCwyNjI0LDIwNTQsMTQ5LDA.jpg" alt="Ph. L.O.D.H.O. @ Teatro de Quito" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">Ph. L.O.D.H.O. @ Teatro de Quito</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 14 -->
+
+    <!-- --- PROYECTO 15 (Fotografía) --- -->
+    <div class="gallery__item" data-category="fotografia" data-full="https://mir-s3-cdn-cf.behance.net/projects/max_808/e4e21559882423.Y3JvcCwxOTc1LDE1NDYsMCww.jpg"
+      data-title="Ph. Ballet de Montreal @ Teatro de Quito" data-meta="Fotografía · Behance">
+      <a href="https://www.behance.net/gallery/59882423/Ph-Ballet-de-Montreal-Teatro-de-Quito" target="_blank">
+
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/e4e21559882423.Y3JvcCwxOTc1LDE1NDYsMCww.jpg" alt="Ph. Ballet de Montreal @ Teatro de Quito" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">Ph. Ballet de Montreal @ Teatro de Quito</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 15 -->
+
+    <!-- --- PROYECTO 16 (Fotografía) --- -->
+    <div class="gallery__item" data-category="fotografia" data-full="https://mir-s3-cdn-cf.behance.net/project_modules/hd/0dedae59882193.5a32904f9d62f.jpg"
+      data-title="Ph. Charles Lee Ray @ No Me Olvides" data-meta="Fotografía · Behance">
+      <a href="https://www.behance.net/gallery/59882193/Ph-Charles-Lee-Ray-No-Me-Olvides" target="_blank">
+
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632/0dedae59882193.5a32904f9d62f.jpg" alt="Ph. Charles Lee Ray @ No Me Olvides" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">Ph. Charles Lee Ray @ No Me Olvides</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 16 -->
+
+    <!-- --- PROYECTO 17 (Fotografía) --- -->
+    <div class="gallery__item" data-category="fotografia" data-full="https://mir-s3-cdn-cf.behance.net/project_modules/1400/84c86e59856053.5a319ab6d3e7d.jpg"
+      data-title="Fotografía Producto Gastronómico" data-meta="Fotografía · Behance">
+      <a href="https://www.behance.net/gallery/59856053/Fotografia-Producto-Gastronomico" target="_blank">
+
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632/84c86e59856053.5a319ab6d3e7d.jpg" alt="Fotografía Producto Gastronómico" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">Fotografía Producto Gastronómico</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 17 -->
+
+    <!-- --- PROYECTO 18 (Multimedia) --- -->
+    <div class="gallery__item" data-category="multimedia" data-full="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5e8da759855921.5a3278dbe8ace.png"
+      data-title="Invitación Casamiento" data-meta="Multimedia · Behance">
+      <a href="https://www.behance.net/gallery/59855921/Invitacion-Casamiento" target="_blank">
+
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632/5e8da759855921.5a3278dbe8ace.png" alt="Invitación Casamiento" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">Invitación Casamiento</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 18 -->
+
+    <!-- --- PROYECTO 19 (Marketing) --- -->
+    <div class="gallery__item" data-category="marketing" data-full="https://mir-s3-cdn-cf.behance.net/project_modules/hd/bc6f9b59855651.5a319725e97ad.png"
+      data-title="Flyers Grupos Musicales" data-meta="Marketing · Behance">
+      <a href="https://www.behance.net/gallery/59855651/Flyers-Grupos-Musicales" target="_blank">
+
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632/bc6f9b59855651.5a319725e97ad.png" alt="Flyers Grupos Musicales" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">Flyers Grupos Musicales</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 19 -->
+
+    <!-- --- PROYECTO 20 (Multimedia) --- -->
+    <div class="gallery__item" data-category="multimedia" data-full="https://mir-s3-cdn-cf.behance.net/projects/max_808/ae9c1e59855149.Y3JvcCwxMDAyLDc4NCwwLDEwOA.jpg"
+      data-title="Publicidad Led Vía Pública 2017" data-meta="Multimedia · Behance">
+      <a href="https://www.behance.net/gallery/59855149/Publicidad-Led-Via-Publica-2017" target="_blank">
+
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/ae9c1e59855149.Y3JvcCwxMDAyLDc4NCwwLDEwOA.jpg" alt="Publicidad Led Vía Pública 2017" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">Publicidad Led Vía Pública 2017</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 20 -->
+
+    <!-- --- PROYECTO 21 (Multimedia) --- -->
+    <div class="gallery__item" data-category="multimedia" data-full="https://mir-s3-cdn-cf.behance.net/projects/max_808/ee12e159852565.Y3JvcCw2ODQsNTM1LDYxMCwzNDg.jpg"
+      data-title="Punta Roja WebVideo" data-meta="Multimedia · Behance">
+      <a href="https://www.behance.net/gallery/59852565/Punta-Roja-WebVideo" target="_blank">
+
+        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/ee12e159852565.Y3JvcCw2ODQsNTM1LDYxMCwzNDg.jpg" alt="Punta Roja WebVideo" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">Punta Roja WebVideo</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 21 -->
+
+    <!-- --- PROYECTO 22 (Marketing) --- -->
+    <div class="gallery__item" data-category="marketing" data-full="https://mir-s3-cdn-cf.behance.net/project_modules/hd/d75fb859855431.5a31958fcc4c5.jpg"
+      data-title="Diseño piezas institucionales" data-meta="Marketing · Behance">
+      <a href="https://www.behance.net/gallery/59855431/Diseno-piezas-institucionales" target="_blank">
+
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632/d75fb859855431.5a31958fcc4c5.jpg" alt="Diseño piezas institucionales" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">Diseño piezas institucionales</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 22 -->
+
+    <!-- --- PROYECTO 23 (Branding) --- -->
+    <div class="gallery__item" data-category="branding" data-full="https://mir-s3-cdn-cf.behance.net/project_modules/hd/553fac59851603.5a317e6f40e70.jpg"
+      data-title="MBF Aberturas" data-meta="Branding · Behance">
+      <a href="https://www.behance.net/gallery/59851603/MBF-Aberturas" target="_blank">
+
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632/553fac59851603.5a317e6f40e70.jpg" alt="MBF Aberturas" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">MBF Aberturas</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 23 -->
+
+    <!-- --- PROYECTO 24 (Marketing) --- -->
+    <div class="gallery__item" data-category="marketing" data-full="https://mir-s3-cdn-cf.behance.net/project_modules/hd/54e46059851171.5a317b4691e37.jpg"
+      data-title="Club Margot Mailing" data-meta="Marketing · Behance">
+      <a href="https://www.behance.net/gallery/59851171/Club-Margot-Mailing" target="_blank">
+
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632/54e46059851171.5a317b4691e37.jpg" alt="Club Margot Mailing" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">Club Margot Mailing</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 24 -->
+
+    <!-- --- PROYECTO 25 (Web Design) --- -->
+    <div class="gallery__item" data-category="webdesign" data-full="images/web-zonamadrid.jpg"
+      data-title="Web ZonaMadrid" data-meta="Web Design · Behance">
+      <a href="https://www.behance.net/gallery/251227295/Web-ZonaMadrid" target="_blank">
+
+        <img src="images/web-zonamadrid.jpg" alt="Web ZonaMadrid" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">Web ZonaMadrid</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 25 -->
+
+    <!-- --- PROYECTO 26 (Web Design) --- -->
+    <div class="gallery__item" data-category="webdesign" data-full="images/web-deset.jpg"
+      data-title="Branding & Web Design | Deset Group" data-meta="Web Design · Behance">
+      <a href="https://www.behance.net/gallery/251228853/Branding-Web-Design-Deset-Group" target="_blank">
+
+        <img src="images/web-deset.jpg" alt="Branding & Web Design | Deset Group" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">Branding & Web Design | Deset Group</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 26 -->
+
+    <!-- --- PROYECTO 27 (Web Design) --- -->
+    <div class="gallery__item" data-category="webdesign" data-full="images/web-isg.jpg"
+      data-title="Web Design | ISG Seguros" data-meta="Web Design · Behance">
+      <a href="https://www.behance.net/gallery/251297457/Web-design-ISG-Seguros" target="_blank">
+
+        <img src="images/web-isg.jpg" alt="Web Design | ISG Seguros" class="gallery__image" loading="lazy" />
+
+        <div class="gallery__caption">
+          <span class="gallery__caption-title">Web Design | ISG Seguros</span>
+          <span class="gallery__caption-meta">Ver en Behance</span>
+        </div>
+
+        <div class="gallery__expand-icon" aria-hidden="true">
+          <svg viewBox="0 0 12 12" stroke-width="1.5">
+            <path d="M1 4V1h3M8 1h3v3M11 8v3H8M4 11H1V8" />
+          </svg>
+        </div>
+      </a>
+    </div><!-- /PROYECTO 27 -->
+
+    </main><!-- /GALLERY -->
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       LIGHTBOX  —  "Lightroom Mode"
+       This element is controlled by JavaScript below.
+       You do not need to edit this HTML.
+       ═══════════════════════════════════════════════════════════════ -->
+  <div class="lightbox" id="js-lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+
+    <div class="lightbox__bar">
+      <span class="lightbox__counter" id="js-lb-counter" aria-live="polite"></span>
+      <button class="lightbox__close" id="js-lb-close" aria-label="Close photo viewer">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 6 6 18M6 6l12 12" />
+        </svg>
+      </button>
     </div>
 
-    <!-- Script para controlar el modal -->
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const emailBtn = document.getElementById('email-btn');
-        const modal = document.getElementById('contact-modal');
-        const closeBtn = document.getElementById('close-modal');
+    <div class="lightbox__stage">
 
-        if (emailBtn && modal && closeBtn) {
-          // Abrir modal
-          emailBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            modal.classList.add('is-active');
-            modal.setAttribute('aria-hidden', 'false');
-            document.body.style.overflow = 'hidden';
-          });
+      <button class="lightbox__nav lightbox__nav--prev" id="js-lb-prev" aria-label="Previous photo">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 18l-6-6 6-6" />
+        </svg>
+      </button>
 
-          // Cerrar modal
-          const closeModal = () => {
-            modal.classList.remove('is-active');
-            modal.setAttribute('aria-hidden', 'true');
-            document.body.style.overflow = '';
-          };
+      <!-- ↓ The <img> src is swapped by JS — do not edit src here -->
+      <img src="" alt="" class="lightbox__image" id="js-lb-image" />
 
-          closeBtn.addEventListener('click', closeModal);
+      <button class="lightbox__nav lightbox__nav--next" id="js-lb-next" aria-label="Next photo">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 18l6-6-6-6" />
+        </svg>
+      </button>
 
-          // Cerrar haciendo click en el overlay
-          modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-              closeModal();
-            }
-          });
+    </div>
 
-          // Cerrar con tecla ESC
-          document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modal.classList.contains('is-active')) {
-              closeModal();
-            }
-          });
-        }
-      });
-    </script>
-  </body>
+    <div class="lightbox__caption">
+      <p class="lightbox__caption-title" id="js-lb-title"></p>
+      <p class="lightbox__caption-meta" id="js-lb-meta"></p>
+    </div>
+
+  </div><!-- /LIGHTBOX -->
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════════════════════════ -->
+  <footer class="site-footer">
+
+    <div>
+      <!-- ↓ EDIT: Replace with your name / studio -->
+      <a href="index.html" class="footer__logo">
+        <img src="images/logo-alicari-04-04.svg" alt="ALICARI" class="footer__logo-img">
+      </a>
+      <!-- <p class="footer__credit">
+        Free CSS template by <a href="https://www.tooplate.com/view/2160-exhibit-studio" target="_blank" rel="nofollow">Tooplate</a>.<br>
+        Photos via <a href="https://picsum.photos" target="_blank" rel="noopener">Lorem Picsum</a>. Free for personal &amp; commercial use.
+      </p> -->
+    </div>
+
+    <!-- ↓ EDIT: Update links to match your site pages -->
+    <ul class="footer__nav">
+      <li><a href="index.html">Portfolio</a></li>
+      <li><a href="about.html">Conoceme</a></li>
+      <li><a href="contact.html">Contacto</a></li>
+    </ul>
+
+  </footer>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       JAVASCRIPT  —  Lightroom Mode + Filter
+       You do not need to edit this block.
+       ═══════════════════════════════════════════════════════════════ -->
+  <script src="tooplate-exhibit-script.js"></script>
+
+</body>
+
 </html>
