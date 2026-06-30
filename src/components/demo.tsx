@@ -26,18 +26,6 @@ export default function DemoOne() {
           <PenTool className="w-6 h-6" />
         </div>
 
-        {/* Featured Project */}
-        <div className="pointer-events-auto bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl flex items-center gap-4 max-w-md w-full transition-transform hover:scale-105 cursor-pointer" onClick={() => window.open('https://www.behance.net/gallery/157960549/SIMpath-proyecto-(UXUI-design)', '_blank')}>
-          <img src="https://mir-s3-cdn-cf.behance.net/projects/404/29afee157960549.Y3JvcCwxMDA2LDc4NywyNzgsMA.jpg" alt="SIMpath" className="w-20 h-20 object-cover rounded-lg" />
-          <div className="text-left flex-1">
-            <span className="text-xs font-bold uppercase tracking-wider text-primary/60 block mb-1">Proyecto Destacado</span>
-            <h3 className="text-lg font-semibold leading-tight">SIMpath <br/><span className="font-normal text-sm opacity-80">UX/UI design</span></h3>
-          </div>
-          <div className="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center shrink-0">
-            <ArrowRight className="w-5 h-5" />
-          </div>
-        </div>
-
       </div>
     </div>
   );
