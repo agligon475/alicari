@@ -23,10 +23,10 @@ export default function DemoOne() {
         <div className="flex justify-center mt-12">
           <button 
             onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
-            className="pointer-events-auto flex items-center justify-center w-14 h-14 rounded-full border border-white/20 bg-white/5 hover:bg-white/20 opacity-70 hover:opacity-100 transition-all animate-bounce"
+            className="pointer-events-auto flex items-center justify-center w-14 h-14 rounded-full border border-white/20 bg-white/5 hover:bg-white/25 transition-all animate-bounce"
             aria-label="Ver portfolio"
           >
-            <ChevronDown className="w-8 h-8" />
+            <ChevronDown className="w-8 h-8 text-white" />
           </button>
         </div>
 
