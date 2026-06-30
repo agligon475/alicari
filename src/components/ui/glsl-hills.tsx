@@ -137,13 +137,13 @@ const GLSLHills = ({ width = '100vw', height = '100vh', cameraZ = 125, planeSize
               void main(void) {
                 float opacity = (96.0 - length(vPosition)) / 256.0 * 0.8;
                 
-                // Dot pattern based on position
-                vec2 grid = fract(vPosition.xz * 0.25); // Scale of the grid
+                // Dot pattern based on position - multiplied by 2.0 for more density
+                vec2 grid = fract(vPosition.xz * 2.0); // Scale of the grid
                 float dist = length(grid - vec2(0.5));
-                float dotShape = smoothstep(0.15, 0.1, dist); // Size of dots
+                float dotShape = smoothstep(0.12, 0.05, dist); // Size of dots (smaller)
                 
                 // Checkerboard pattern for alternating colors
-                float checker = step(0.5, fract((floor(vPosition.x * 0.25) + floor(vPosition.z * 0.25)) * 0.5));
+                float checker = step(0.5, fract((floor(vPosition.x * 2.0) + floor(vPosition.z * 2.0)) * 0.5));
                 
                 vec3 colorRed = vec3(0.98, 0.13, 0.13); // Rojo alicari (#fc2222 approx)
                 vec3 colorWhite = vec3(1.0, 1.0, 1.0);
