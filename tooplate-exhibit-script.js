@@ -199,6 +199,16 @@ Free HTML CSS Template
           });
         });
 
+        /* Shuffle gallery items on load */
+        const allItems = Array.from(gallery.querySelectorAll('.gallery__item'));
+        for (let i = allItems.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          const temp = allItems[i];
+          allItems[i] = allItems[j];
+          allItems[j] = temp;
+        }
+        allItems.forEach(item => gallery.appendChild(item));
+
         /* Initialize gallery list */
         buildVisibleList('all');
       }
