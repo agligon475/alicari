@@ -12,7 +12,7 @@ export default function DemoOne() {
         </p>
         
         <h1 className="font-semibold text-5xl md:text-7xl whitespace-pre-wrap leading-tight">
-          Creatividad &<br />
+          Creatividad &amp; <br />
           <span className="italic font-thin">estrategia</span>
         </h1>
         
