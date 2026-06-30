@@ -1,5 +1,5 @@
 import { GLSLHills } from "@/components/ui/glsl-hills";
-import { MonitorPlay, PenTool, LayoutTemplate, ArrowRight } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 export default function DemoOne() {
   return (
@@ -20,10 +20,14 @@ export default function DemoOne() {
           Diseño y desarrollo multimedia: experiencias interactivas y marcas memorables que conectan con las audiencias.
         </p>
         
-        <div className="flex justify-center gap-6 mt-8 opacity-70 mb-12">
-          <MonitorPlay className="w-6 h-6" />
-          <LayoutTemplate className="w-6 h-6" />
-          <PenTool className="w-6 h-6" />
+        <div className="flex justify-center mt-12">
+          <button 
+            onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
+            className="pointer-events-auto opacity-70 hover:opacity-100 transition-opacity animate-bounce"
+            aria-label="Ver portfolio"
+          >
+            <ChevronDown className="w-10 h-10" />
+          </button>
         </div>
 
       </div>
