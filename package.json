@@ -1,0 +1,20 @@
+{
+  "name": "site2026",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tooplate-exhibit-script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "lucide-react": "^1.22.0",
+    "three": "^0.185.0"
+  },
+  "devDependencies": {
+    "@types/three": "^0.185.0"
+  }
+}
