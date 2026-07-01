@@ -639,6 +639,9 @@ Free HTML CSS Template
       padding:         clamp(3rem, 5vw, 4rem) var(--space-page-x);
       background-color: #000000;
       border-top:      1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer__inner {
       display:         flex;
       align-items:     center;
       justify-content: space-between;
@@ -1585,5 +1588,56 @@ Free HTML CSS Template
       }
       .modal__header {
         padding: 1.25rem 1.5rem 0.75rem;
+      }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       RESPONSIVE MAX-WIDTH CONTAINER RULES
+       ═══════════════════════════════════════════════════════════════ */
+    .nav__bar,
+    .gallery-filter,
+    .gallery,
+    .about-body,
+    .page-hero,
+    .contact-body,
+    .footer__inner {
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (min-width: 961px) {
+      .nav__bar,
+      .gallery-filter,
+      .gallery,
+      .about-body,
+      .page-hero,
+      .contact-body,
+      .footer__inner {
+        max-width: 1100px;
+      }
+    }
+
+    @media (max-width: 960px) and (min-width: 491px) {
+      .nav__bar,
+      .gallery-filter,
+      .gallery,
+      .about-body,
+      .page-hero,
+      .contact-body,
+      .footer__inner {
+        max-width: 960px;
+      }
+    }
+
+    @media (max-width: 490px) {
+      .nav__bar,
+      .gallery-filter,
+      .gallery,
+      .about-body,
+      .page-hero,
+      .contact-body,
+      .footer__inner {
+        max-width: 490px;
       }
     }
