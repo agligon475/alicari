@@ -502,12 +502,28 @@ Free HTML CSS Template
           });
         } else {
           // Fallback click listener if canvas is missing
-          splashBtn.addEventListener('click', function () {
-            splashScreen.classList.add('is-hidden');
-            sessionStorage.setItem('splashDismissed', 'true');
-          });
-        }
+        splashBtn.addEventListener('click', function () {
+          splashScreen.classList.add('is-hidden');
+          sessionStorage.setItem('splashDismissed', 'true');
+        });
       }
+    }
+  }
+
+    /* ─────────────────────────────────────────────────────────────
+       NAVBAR TRANSPARENT TO SOLID SCROLL EFFECT
+       ───────────────────────────────────────────────────────────── */
+    var siteNav = document.querySelector('.site-nav');
+    if (siteNav) {
+      var handleScroll = function () {
+        if (window.scrollY > 50) {
+          siteNav.classList.add('site-nav--scrolled');
+        } else {
+          siteNav.classList.remove('site-nav--scrolled');
+        }
+      };
+      window.addEventListener('scroll', handleScroll);
+      handleScroll();
     }
 
   })();
