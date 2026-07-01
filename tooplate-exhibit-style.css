@@ -750,7 +750,7 @@ Free HTML CSS Template
     /* ── Two-column: portrait + bio ─────────────────────────────── */
     .about-intro {
       display:               grid;
-      grid-template-columns: 1fr 1.6fr;
+      grid-template-columns: 0.8fr 2.2fr;
       gap:                   clamp(2rem, 5vw, 5rem);
       align-items:           start;
       margin-bottom:         clamp(3rem, 6vw, 6rem);
@@ -767,6 +767,7 @@ Free HTML CSS Template
     /* ── Portrait image ─────────────────────────────────────────── */
     .about-portrait {
       position:      relative;
+      max-width:     340px;
     }
 
     .about-portrait__img {
