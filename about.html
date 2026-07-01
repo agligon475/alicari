@@ -34,7 +34,7 @@ Free HTML CSS Template
       <ul class="nav__links">
         <li><a href="index.html">Portfolio</a></li>
         <li><a href="about.html" class="nav__link--active">Conóceme</a></li>
-        <li><a href="contact.html">Contacto</a></li>
+        <li><a href="#contacto" class="nav__contact-btn js-contact-trigger">Contacto</a></li>
       </ul>
 
       <button
@@ -53,7 +53,7 @@ Free HTML CSS Template
     <ul class="nav__mobile-menu" id="js-mobile-menu" aria-hidden="true">
       <li><a href="index.html">Portfolio</a></li>
       <li><a href="about.html" class="nav__link--active">Conóceme</a></li>
-      <li><a href="contact.html">Contacto</a></li>
+      <li><a href="#contacto" class="js-contact-trigger">Contacto</a></li>
     </ul>
 
   </nav>
@@ -174,7 +174,7 @@ Free HTML CSS Template
     <!-- ── CTA ──────────────────────────────────────────────────── -->
     <div class="about-cta">
       <!-- ↓ EDIT: Link to your gallery and contact page -->
-      <a href="contact.html" class="btn btn--primary">Escríbeme</a>
+      <a href="#contacto" class="btn btn--primary js-contact-trigger">Escríbeme</a>
       <a href="index.html"   class="btn btn--ghost">Ver portafolio</a>
     </div>
 
@@ -202,9 +202,123 @@ Free HTML CSS Template
     <ul class="footer__nav">
       <li><a href="index.html">Portfolio</a></li>
       <li><a href="about.html">Conóceme</a></li>
-      <li><a href="contact.html">Contacto</a></li>
+      <li><a href="#contacto" class="js-contact-trigger">Contacto</a></li>
     </ul>
   </footer>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       CONTACT MODAL
+       ═══════════════════════════════════════════════════════════════ -->
+  <div class="modal" id="js-contact-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal__backdrop" id="js-modal-backdrop"></div>
+    <div class="modal__container">
+      <div class="modal__header">
+        <span class="modal__title" id="modal-title">Contacto</span>
+        <button class="modal__close" id="js-modal-close" aria-label="Cerrar modal">
+          <svg viewBox="0 0 24 24">
+            <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+      </div>
+      <div class="modal__body">
+        <div class="modal__grid">
+          
+          <!-- Form -->
+          <div class="contact-form-wrap">
+            <h2 class="contact-form__heading">Enviar un mensaje</h2>
+            <p class="contact-form__subheading">
+              Suelo responder en menos de dos días hábiles. Si es un proyecto urgente, por favor indícalo en el mensaje.
+            </p>
+            <form id="js-contact-form" novalidate>
+              <div class="form-row">
+                <div class="form-field">
+                  <label class="form-label" for="field-name">
+                    Nombre <span class="required" aria-hidden="true">*</span>
+                  </label>
+                  <input type="text" id="field-name" name="name" class="form-input" placeholder="Tu nombre" autocomplete="name" required />
+                  <span class="field-error" id="err-name">Por favor ingresa tu nombre.</span>
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="field-email">
+                    Email <span class="required" aria-hidden="true">*</span>
+                  </label>
+                  <input type="email" id="field-email" name="email" class="form-input" placeholder="tu@email.com" autocomplete="email" required />
+                  <span class="field-error" id="err-email">Por favor ingresa un correo válido.</span>
+                </div>
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="field-subject">Tipo de consulta</label>
+                <div class="form-select-wrap">
+                  <select id="field-subject" name="subject" class="form-select">
+                    <option value="">Selecciona un asunto…</option>
+                    <option value="uxui">Diseño UX/UI</option>
+                    <option value="branding">Branding & Identidad</option>
+                    <option value="multimedia">Diseño Multimedia</option>
+                    <option value="web">Desarrollo Web</option>
+                    <option value="other">Otro</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="field-message">
+                  Mensaje <span class="required" aria-hidden="true">*</span>
+                </label>
+                <textarea id="field-message" name="message" class="form-textarea" placeholder="Cuéntame sobre tu proyecto..." required></textarea>
+                <span class="field-error" id="err-message">Por favor escribe tu mensaje.</span>
+              </div>
+              <div class="form-submit">
+                <button type="submit" class="btn-submit" id="js-submit-btn">
+                  Enviar mensaje
+                </button>
+                <p class="form-note">
+                  * Campos requeridos.
+                </p>
+              </div>
+              <div class="form-message is-success" id="js-success" role="alert" style="display: none;">
+                ✓ &nbsp;Tu mensaje ha sido enviado. Me pondré en contacto muy pronto.
+              </div>
+              <div class="form-message is-error" id="js-error" role="alert" style="display: none;">
+                Algo salió mal. Por favor escríbeme directamente al correo de abajo.
+              </div>
+            </form>
+          </div>
+
+          <!-- Sidebar -->
+          <aside class="contact-info" aria-label="Contact information">
+            <div class="contact-info__section">
+              <p class="contact-info__label">Disponibilidad</p>
+              <div class="availability">
+                <span class="availability__dot"></span>
+                Disponible para nuevos proyectos
+              </div>
+            </div>
+            <div class="contact-info__section">
+              <p class="contact-info__label">Email</p>
+              <a href="mailto:licari.multimedios@gmail.com" class="contact-info__link">
+                licari.multimedios@gmail.com
+              </a>
+            </div>
+            <div class="contact-info__section">
+              <p class="contact-info__label">Ubicación</p>
+              <p class="contact-info__value">Buenos Aires, Argentina</p>
+            </div>
+            <div class="contact-info__section">
+              <p class="contact-info__label">Redes</p>
+              <div class="social-links" style="display: flex; flex-direction: row; gap: 12px; margin-top: 8px;">
+                <a href="https://behance.net/alicari" target="_blank" rel="noopener" class="social-link" style="display: inline-flex;" aria-label="Behance">
+                  <img src="images/behance.png" alt="Behance" style="width: 28px; height: 28px; display: block;" />
+                </a>
+                <a href="https://linkedin.com/in/alicari/" target="_blank" rel="noopener" class="social-link" style="display: inline-flex;" aria-label="LinkedIn">
+                  <img src="images/linkedin.png" alt="LinkedIn" style="width: 28px; height: 28px; display: block;" />
+                </a>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- ═══════════════════════════════════════════════════════════════
        JAVASCRIPT — Hamburger menu only

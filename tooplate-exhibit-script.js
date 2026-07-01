@@ -217,6 +217,45 @@ Free HTML CSS Template
 
 
       /* ─────────────────────────────────────────────────────────────
+         CONTACT MODAL LOGIC
+         ───────────────────────────────────────────────────────────── */
+      const contactModal = document.getElementById('js-contact-modal');
+      const modalBackdrop = document.getElementById('js-modal-backdrop');
+      const modalClose = document.getElementById('js-modal-close');
+      const contactTriggers = document.querySelectorAll('.js-contact-trigger');
+
+      if (contactModal) {
+        function openContactModal(e) {
+          if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+          }
+          contactModal.classList.add('is-open');
+          document.body.style.overflow = 'hidden';
+          if (modalClose) modalClose.focus();
+        }
+
+        function closeContactModal() {
+          contactModal.classList.remove('is-open');
+          document.body.style.overflow = '';
+        }
+
+        contactTriggers.forEach(function (trigger) {
+          trigger.addEventListener('click', openContactModal);
+        });
+
+        if (modalClose) modalClose.addEventListener('click', closeContactModal);
+        if (modalBackdrop) modalBackdrop.addEventListener('click', closeContactModal);
+
+        /* Close modal on Escape key */
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && contactModal.classList.contains('is-open')) {
+            closeContactModal();
+          }
+        });
+      }
+
+      /* ─────────────────────────────────────────────────────────────
          CONTACT FORM — client-side validation
          ─────────────────────────────────────────────────────────────
          This form validates on the client side only. To actually send
