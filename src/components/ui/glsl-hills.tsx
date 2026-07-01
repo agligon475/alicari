@@ -11,6 +11,8 @@ const GLSLHills = ({ width = '100vw', height = '100vh', cameraZ = 125, planeSize
       constructor() {
         this.uniforms = {
           time: { type: 'f', value: 0 },
+          uMouse: { value: new THREE.Vector3(9999, 9999, 9999) },
+          uHover: { value: 0.0 }
         };
         this.mesh = this.createMesh();
         this.time = speed;
@@ -27,7 +29,10 @@ const GLSLHills = ({ width = '100vw', height = '100vh', cameraZ = 125, planeSize
               uniform mat4 projectionMatrix;
               uniform mat4 modelViewMatrix;
               uniform float time;
+              uniform vec3 uMouse;
+              uniform float uHover;
               varying vec3 vPosition;
+              varying float vMouseInfluence;
 
               mat4 rotateMatrixX(float radian) {
                 return mat4(
@@ -125,6 +130,18 @@ const GLSLHills = ({ width = '100vw', height = '100vh', cameraZ = 125, planeSize
                   + noise3 * (abs(sin1) * 2.0 + 0.5)
                   + pow(sin1, 2.0) * 40.0, 0.0);
 
+                // Mouse interaction displacement
+                float distToMouse = distance(lastPosition, uMouse);
+                float influence = 0.0;
+                if (uHover > 0.5 && distToMouse < 45.0) {
+                  influence = 1.0 - (distToMouse / 45.0);
+                  // Push up slightly
+                  lastPosition.y += influence * 8.0;
+                  // Distort XZ coords outwards from the pointer
+                  lastPosition.xz += normalize(lastPosition.xz - uMouse.xz) * influence * 6.0;
+                }
+                vMouseInfluence = influence;
+
                 vPosition = lastPosition;
                 gl_Position = projectionMatrix * modelViewMatrix * vec4(lastPosition, 1.0);
               }
@@ -133,6 +150,7 @@ const GLSLHills = ({ width = '100vw', height = '100vh', cameraZ = 125, planeSize
               precision highp float;
               #define GLSLIFY 1
               varying vec3 vPosition;
+              varying float vMouseInfluence;
 
               void main(void) {
                 float opacity = (96.0 - length(vPosition)) / 256.0 * 0.8;
@@ -140,7 +158,10 @@ const GLSLHills = ({ width = '100vw', height = '100vh', cameraZ = 125, planeSize
                 // Dot pattern based on position - multiplied by 2.0 for more density
                 vec2 grid = fract(vPosition.xz * 2.0); // Scale of the grid
                 float dist = length(grid - vec2(0.5));
-                float dotShape = smoothstep(0.12, 0.05, dist); // Size of dots (smaller)
+                
+                // Increase dot size based on mouse influence
+                float sizeThreshold = 0.12 + (vMouseInfluence * 0.12);
+                float dotShape = smoothstep(sizeThreshold, sizeThreshold - 0.07, dist); // Size of dots
                 
                 // Checkerboard pattern for alternating colors
                 float checker = step(0.5, fract((floor(vPosition.x * 2.0) + floor(vPosition.z * 2.0)) * 0.5));
@@ -171,6 +192,22 @@ const GLSLHills = ({ width = '100vw', height = '100vh', cameraZ = 125, planeSize
     let lastTime = performance.now();
     const plane = new Plane();
 
+    const raycaster = new THREE.Raycaster();
+    const mouse = new THREE.Vector2();
+    let isHovering = false;
+
+    const onPointerMove = (e) => {
+      mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+      isHovering = true;
+    };
+
+    const onPointerLeave = () => {
+      isHovering = false;
+      plane.uniforms.uHover.value = 0.0;
+      plane.uniforms.uMouse.value.set(9999, 9999, 9999);
+    };
+
     const resize = () => {
       const canvas = canvasRef.current;
       canvas.width = window.innerWidth;
@@ -184,6 +221,19 @@ const GLSLHills = ({ width = '100vw', height = '100vh', cameraZ = 125, planeSize
       const currentTime = performance.now();
       const delta = (currentTime - lastTime) / 1000;
       lastTime = currentTime;
+
+      if (isHovering) {
+        raycaster.setFromCamera(mouse, camera);
+        const intersects = raycaster.intersectObject(plane.mesh);
+        if (intersects.length > 0) {
+          plane.uniforms.uMouse.value.copy(intersects[0].point);
+          plane.uniforms.uHover.value = 1.0;
+        } else {
+          plane.uniforms.uHover.value = 0.0;
+          plane.uniforms.uMouse.value.set(9999, 9999, 9999);
+        }
+      }
+
       plane.render(delta);
       renderer.render(scene, camera);
     };
@@ -200,6 +250,8 @@ const GLSLHills = ({ width = '100vw', height = '100vh', cameraZ = 125, planeSize
       camera.lookAt(new THREE.Vector3(0, 28, 0));
       scene.add(plane.mesh);
       window.addEventListener('resize', resize);
+      window.addEventListener('pointermove', onPointerMove);
+      window.addEventListener('pointerleave', onPointerLeave);
       resize();
       renderLoop();
     };
@@ -208,6 +260,8 @@ const GLSLHills = ({ width = '100vw', height = '100vh', cameraZ = 125, planeSize
 
     return () => {
       window.removeEventListener('resize', resize);
+      window.removeEventListener('pointermove', onPointerMove);
+      window.removeEventListener('pointerleave', onPointerLeave);
     };
   }, [cameraZ, planeSize, speed]);
 
