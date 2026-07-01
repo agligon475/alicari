@@ -1971,23 +1971,23 @@ Free HTML CSS Template
     }
 
     .site-nav--home.site-nav--scrolled .nav__links a {
-      color:            var(--color-text-secondary);
+      color:            var(--color-text-secondary) !important;
     }
 
     .site-nav--home.site-nav--scrolled .nav__links a:hover,
     .site-nav--home.site-nav--scrolled .nav__links .nav__link--active {
-      color:            var(--color-text-primary);
+      color:            var(--color-text-primary) !important;
     }
 
     .site-nav--home.site-nav--scrolled .nav__links .nav__contact-btn {
-      border-color:     var(--color-text-primary);
-      color:            var(--color-text-primary);
+      border-color:     var(--color-text-primary) !important;
+      color:            var(--color-text-primary) !important;
     }
 
     .site-nav--home.site-nav--scrolled .nav__links .nav__contact-btn:hover {
-      background-color: var(--color-text-primary);
-      color:            var(--color-surface);
-      border-color:     var(--color-text-primary);
+      background-color: var(--color-text-primary) !important;
+      color:            var(--color-surface) !important;
+      border-color:     var(--color-text-primary) !important;
     }
 
     .site-nav--home.site-nav--scrolled .nav__hamburger-line {
