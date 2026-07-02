@@ -2028,9 +2028,16 @@ Free HTML CSS Template
       height: 18px;
     }
 
-    /* Hide arrow controls on mobile since touch-dragging is native */
+    /* Style adjustment for mobile so navigation buttons remain visible and fit the screen */
     @media (max-width: 768px) {
       .timeline-nav-btn {
-        display: none;
+        width:            2.25rem;
+        height:           2.25rem;
+      }
+      .timeline-nav-btn.prev {
+        left: 0.25rem;
+      }
+      .timeline-nav-btn.next {
+        right: 0.25rem;
       }
     }
