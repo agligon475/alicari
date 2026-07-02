@@ -1979,3 +1979,58 @@ Free HTML CSS Template
       opacity:          1;
       pointer-events:   all;
     }
+
+    /* ═══════════════════════════════════════════════════════════════
+       TIMELINE HORIZONTAL NAVIGATION OVERLAYS
+       ═══════════════════════════════════════════════════════════════ */
+    .timeline-scroll-container {
+      position: relative;
+      width: 100%;
+    }
+
+    .timeline-nav-btn {
+      position:         absolute;
+      top:              calc(50% + 0.5rem); /* Center align relative to timeline cards */
+      transform:        translateY(-50%);
+      width:            2.5rem;
+      height:           2.5rem;
+      border-radius:    50%;
+      background:       var(--color-surface);
+      border:           1px solid var(--color-border-subtle);
+      color:            var(--color-text-primary);
+      display:          flex;
+      align-items:      center;
+      justify-content:  center;
+      cursor:           pointer;
+      z-index:          10;
+      transition:       all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow:       0 4px 12px rgba(0,0,0,0.05);
+      padding:          0;
+    }
+
+    .timeline-nav-btn:hover {
+      background:       var(--color-text-primary);
+      color:            var(--color-surface);
+      border-color:     var(--color-text-primary);
+      box-shadow:       0 8px 16px rgba(0,0,0,0.1);
+    }
+
+    .timeline-nav-btn.prev {
+      left: -1.25rem;
+    }
+
+    .timeline-nav-btn.next {
+      right: -1.25rem;
+    }
+
+    .timeline-nav-btn svg {
+      width:  18px;
+      height: 18px;
+    }
+
+    /* Hide arrow controls on mobile since touch-dragging is native */
+    @media (max-width: 768px) {
+      .timeline-nav-btn {
+        display: none;
+      }
+    }

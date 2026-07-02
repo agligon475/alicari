@@ -526,4 +526,44 @@ Free HTML CSS Template
       handleScroll();
     }
 
+    /* ─────────────────────────────────────────────────────────────
+       TIMELINE SCROLL NAVIGATION
+       ───────────────────────────────────────────────────────────── */
+    var timelineWrapper = document.getElementById('js-timeline-wrapper');
+    var timelinePrev = document.getElementById('js-timeline-prev');
+    var timelineNext = document.getElementById('js-timeline-next');
+
+    if (timelineWrapper && timelinePrev && timelineNext) {
+      timelinePrev.addEventListener('click', function () {
+        timelineWrapper.scrollBy({ left: -340, behavior: 'smooth' });
+      });
+      timelineNext.addEventListener('click', function () {
+        timelineWrapper.scrollBy({ left: 340, behavior: 'smooth' });
+      });
+
+      var updateNavButtons = function () {
+        var scrollLeft = timelineWrapper.scrollLeft;
+        var maxScrollLeft = timelineWrapper.scrollWidth - timelineWrapper.clientWidth;
+        
+        timelinePrev.style.opacity = scrollLeft <= 10 ? '0.3' : '1';
+        timelinePrev.style.pointerEvents = scrollLeft <= 10 ? 'none' : 'all';
+
+        timelineNext.style.opacity = scrollLeft >= maxScrollLeft - 10 ? '0.3' : '1';
+        timelineNext.style.pointerEvents = scrollLeft >= maxScrollLeft - 10 ? 'none' : 'all';
+      };
+
+      timelineWrapper.addEventListener('scroll', updateNavButtons);
+      
+      var detailsElement = timelineWrapper.closest('details');
+      if (detailsElement) {
+        detailsElement.addEventListener('toggle', function() {
+          if (detailsElement.open) {
+            setTimeout(updateNavButtons, 50);
+          }
+        });
+      }
+      // Initialize state
+      setTimeout(updateNavButtons, 100);
+    }
+
   })();
