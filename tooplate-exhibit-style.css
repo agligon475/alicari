@@ -1798,7 +1798,7 @@ Free HTML CSS Template
     .timeline-item {
       position: relative;
       flex-shrink: 0;
-      width: 320px;
+      width: 350px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -2030,6 +2030,14 @@ Free HTML CSS Template
 
     /* Style adjustment for mobile so navigation buttons remain visible and fit the screen */
     @media (max-width: 768px) {
+      .timeline-section {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+      }
+      .timeline-item {
+        width: 88vw !important;
+        max-width: 350px !important;
+      }
       .timeline-nav-btn {
         width:            2.25rem;
         height:           2.25rem;
