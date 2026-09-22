@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ALICARI 2027 — Diseño Multimedia, UX/UI & Branding</title>
+  <meta name="description" content="Portfolio oficial de Agustín Licari (ALICARI). Diseñador y desarrollador multimedia especializado en experiencias interactivas, interfaces UX/UI y branding de alto impacto." />
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="ALICARI — Diseño Multimedia & UX/UI" />
+  <meta property="og:description" content="Diseño y desarrollo multimedia: experiencias interactivas, dirección de arte y branding." />
+  <meta property="og:image" content="../images/screenshot-home.jpg" />
+  <link rel="icon" type="image/jpeg" href="../favicon.jpg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "ALICARI - Agustín Licari",
+    "url": "https://alicari.com.ar",
+    "logo": "https://alicari.com.ar/images/logo-alicari-05.svg",
+    "image": "https://alicari.com.ar/images/about-me.png",
+    "description": "Estudio de Diseño Multimedia, UX/UI y Branding corporativo liderado por Agustín Licari.",
+    "founder": {
+      "@type": "Person",
+      "name": "Agustín Licari",
+      "jobTitle": "Multimedia & UX/UI Designer"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Buenos Aires",
+      "addressCountry": "AR"
+    }
+  }
+  </script>
+</head>
+
+<body>
+
+  <!-- Ambient Backdrop Glows -->
+  <div class="ambient-glow" style="top: 10%; left: 50%; width: 500px; height: 500px; background: var(--brand-red); transform: translateX(-50%);"></div>
+  <div class="ambient-glow" style="top: 45%; right: 5%; width: 450px; height: 450px; background: rgba(255,255,255,0.06);"></div>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       HEADER & NAVIGATION
+       ═══════════════════════════════════════════════════════════════ -->
+  <header>
+    <nav class="site-nav" id="site-nav" role="navigation" aria-label="Navegación principal">
+      <div class="container nav__inner">
+        
+        <!-- Brand Logo -->
+        <a href="#inicio" class="nav__logo" aria-label="ALICARI - Inicio">
+          <svg class="nav__logo-img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 467.74 127.95" height="28">
+            <defs>
+              <style>
+                .nav-st-white { fill: #ffffff; }
+                .nav-st-red { fill: #fc2222; }
+              </style>
+            </defs>
+            <!-- Isotipo 'a' -->
+            <path class="nav-st-red" d="M67.75,121.6c-6.6,0-12.55-1.67-17.85-5.02-5.3-3.35-9.48-7.85-12.53-13.5-3.05-5.65-4.57-12.12-4.57-19.43s1.52-13.82,4.57-19.57c3.05-5.75,7.2-10.25,12.45-13.5,5.25-3.25,11.22-4.88,17.92-4.88,4.9,0,9.32.95,13.28,2.85,3.95,1.9,7.17,4.53,9.67,7.88,2.5,3.35,3.9,7.18,4.2,11.47v31.5c-.3,4.3-1.68,8.13-4.12,11.48-2.45,3.35-5.65,5.98-9.6,7.88-3.95,1.9-8.43,2.85-13.43,2.85ZM72.55,100.75c4.9,0,8.82-1.6,11.77-4.8,2.95-3.2,4.42-7.35,4.42-12.45,0-3.3-.65-6.23-1.95-8.78-1.3-2.55-3.2-4.55-5.7-6-2.5-1.45-5.35-2.17-8.55-2.17s-5.88.73-8.33,2.17c-2.45,1.45-4.4,3.48-5.85,6.08-1.45,2.6-2.17,5.55-2.17,8.85s.72,6.25,2.17,8.85c1.45,2.6,3.4,4.63,5.85,6.08,2.45,1.45,5.22,2.17,8.33,2.17ZM87.85,120.1v-19.65l3.45-17.85-3.45-17.55v-17.85h22.65v72.9h-22.65Z"/>
+            <!-- Letras 'LICARI' -->
+            <path class="nav-st-white" d="M128.5,120.1V13h13.5v107.1h-13.5Z"/>
+            <path class="nav-st-white" d="M168.7,34.6c-2.5,0-4.55-.83-6.15-2.47-1.6-1.65-2.4-3.72-2.4-6.23s.8-4.42,2.4-6.07c1.6-1.65,3.65-2.48,6.15-2.48s4.55.83,6.15,2.48c1.6,1.65,2.4,3.67,2.4,6.07s-.8,4.58-2.4,6.23c-1.6,1.65-3.65,2.47-6.15,2.47ZM161.8,120.1V48.85h13.65v71.25h-13.65Z"/>
+            <path class="nav-st-white" d="M227.95,121.6c-7,0-13.33-1.65-18.98-4.95-5.65-3.3-10.1-7.77-13.35-13.42-3.25-5.65-4.88-11.92-4.88-18.83s1.62-13.3,4.88-18.9c3.25-5.6,7.7-10.02,13.35-13.28,5.65-3.3,11.97-4.88,18.98-4.88,5.5,0,10.6,1.03,15.3,3.08,4.7,2.05,8.75,5.03,12.15,8.92l-9,9c-2.2-2.6-4.9-4.58-8.1-5.92-3.2-1.35-6.65-2.03-10.35-2.03-4.5,0-8.5,1.03-12,3.08-3.5,2.05-6.25,4.88-8.25,8.48-2,3.6-3,7.75-3,12.45s1,8.85,3,12.45c2,3.6,4.75,6.45,8.25,8.55,3.5,2.1,7.5,3.15,12,3.15,3.8,0,7.27-.67,10.42-2.03,3.15-1.35,5.87-3.32,8.17-5.92l8.85,9c-3.3,3.8-7.33,6.75-12.07,8.85-4.75,2.1-9.88,3.15-15.38,3.15Z"/>
+            <path class="nav-st-white" d="M297.55,121.6c-6.6,0-12.53-1.62-17.78-4.88-5.25-3.25-9.4-7.67-12.45-13.27-3.05-5.6-4.58-11.9-4.58-18.9s1.52-13.3,4.58-18.9c3.05-5.6,7.2-10.05,12.45-13.35s11.17-4.95,17.78-4.95c5.4,0,10.22,1.12,14.47,3.38,4.25,2.25,7.67,5.35,10.28,9.3,2.6,3.95,4.05,8.53,4.35,13.73v21.45c-.3,5.1-1.72,9.65-4.28,13.65-2.55,4-5.98,7.12-10.27,9.38-4.3,2.25-9.15,3.38-14.55,3.38ZM299.8,108.85c6.7,0,12.1-2.27,16.2-6.83,4.1-4.55,6.15-10.37,6.15-17.47,0-4.8-.95-9.05-2.85-12.75-1.9-3.7-4.53-6.57-7.88-8.62-3.35-2.05-7.28-3.08-11.78-3.08s-8.47,1.05-11.92,3.15c-3.45,2.1-6.15,4.98-8.1,8.62-1.95,3.65-2.92,7.83-2.92,12.52s.98,9.03,2.92,12.68c1.95,3.65,4.67,6.52,8.18,8.62,3.5,2.1,7.5,3.15,12,3.15,3.8,0,7.27-.67,10.42-2.03,3.15-1.35,5.87-3.32,8.17-5.92l8.85,9c-3.3,3.8-7.33,6.75-12.07,8.85-4.75,2.1-9.88,3.15-15.38,3.15Z"/>
+            <path class="nav-st-white" d="M321.25,120.1v-19.2l2.55-17.4-2.55-17.25v-17.4h13.65v71.25h-13.65Z"/>
+            <path class="nav-st-white" d="M354.54,120.1V48.85h13.5v71.25h-13.5ZM368.04,79.6l-5.1-2.4c0-9.1,2.1-16.35,6.3-21.75,4.2-5.4,10.25-8.1,18.15-8.1,3.6,0,6.85.63,9.75,1.88,2.9,1.25,5.6,3.33,8.1,6.23l-8.85,9.15c-1.5-1.6-3.15-2.75-4.95-3.45-1.8-.7-3.9-1.05-6.3-1.05-5,0-9.1,1.6-12.3,4.8s-4.8,8.1-4.8,14.7Z"/>
+            <path class="nav-st-white" d="M421.59,34.6c-2.5,0-4.55-.83-6.15-2.47-1.6-1.65-2.4-3.72-2.4-6.23s.8-4.42,2.4-6.07c1.6-1.65,3.65-2.48,6.15-2.48s4.55.83,6.15,2.48c1.6,1.65,2.4,3.67,2.4,6.07s-.8,4.58-2.4,6.23c-1.6,1.65-3.65,2.47-6.15,2.47ZM414.69,120.1V48.85h13.65v71.25h-13.65Z"/>
+          </svg>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <ul class="nav__links">
+          <li><a href="#inicio" class="nav__link active">Inicio</a></li>
+          <li><a href="#portfolio" class="nav__link">Portfolio</a></li>
+          <li><a href="#sobre-mi" class="nav__link">Conóceme</a></li>
+          <li><a href="#trayectoria" class="nav__link">Trayectoria</a></li>
+        </ul>
+
+        <!-- Right CTA Button -->
+        <button class="nav__cta-btn js-contact-trigger" aria-label="Iniciar contacto">
+          <span>Hablemos</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+
+        <!-- Mobile Hamburger Button -->
+        <button class="nav__hamburger" id="hamburger-btn" aria-label="Abrir menú de navegación">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+      </div>
+    </nav>
+
+    <!-- Mobile Drawer Navigation -->
+    <div class="nav__mobile-drawer" id="mobile-drawer">
+      <ul class="nav__mobile-links">
+        <li><a href="#inicio" class="nav__mobile-link">Inicio</a></li>
+        <li><a href="#portfolio" class="nav__mobile-link">Portfolio</a></li>
+        <li><a href="#sobre-mi" class="nav__mobile-link">Conóceme</a></li>
+        <li><a href="#trayectoria" class="nav__mobile-link">Trayectoria</a></li>
+        <li style="margin-top: 20px;">
+          <button class="btn-primary js-contact-trigger" style="width: 100%; justify-content: center;">
+            Contactar
+          </button>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <!-- ═══════════════════════════════════════════════════════════════
+         HERO SECTION
+         ═══════════════════════════════════════════════════════════════ -->
+    <header class="hero-section" id="inicio">
+      <canvas class="hero__canvas" id="hero-canvas"></canvas>
+
+      <div class="container hero__content">
+        
+        <div class="hero__badge">
+          <span class="hero__badge-dot"></span>
+          <span>Multimedia · UX/UI · Branding</span>
+        </div>
+
+        <h1 class="hero__title">
+          Creatividad &amp;<br />
+          <span class="italic-sub">estrategia digital</span>
+        </h1>
+
+        <p class="hero__description">
+          Diseño y desarrollo multimedia: experiencias interactivas y marcas memorables construidas en la intersección de la tecnología, el arte y el diseño centrado en el usuario.
+        </p>
+
+        <div class="hero__actions">
+          <a href="#portfolio" class="btn-primary">
+            <span>Explorar Portfolio</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <polyline points="19 12 12 19 5 12"></polyline>
+            </svg>
+          </a>
+          <button class="btn-secondary js-contact-trigger">
+            <span>Iniciar Proyecto</span>
+          </button>
+        </div>
+
+        <div class="hero__scroll-indicator">
+          <div class="hero__scroll-mouse"></div>
+          <span>Scroll para explorar</span>
+        </div>
+
+      </div>
+    </header>
+
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         PORTFOLIO SECTION (27 PROYECTOS)
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="portfolio-section" id="portfolio">
+      <div class="container">
+        
+        <div class="portfolio-header">
+          <div>
+            <span class="section-tag">Galería de Proyectos</span>
+            <h2 class="section-title">Trabajos <span class="accent">Destacados</span></h2>
+            <p class="section-subtitle">
+              Explora una selección exhaustiva de 27 casos reales en diseño de interacción, identidad visual, maquetación web y dirección multimedia.
+            </p>
+          </div>
+        </div>
+
+        <!-- Sticky Filter Bar -->
+        <div class="filter-container">
+          <nav class="filter-bar" role="tablist" aria-label="Filtrar proyectos por categoría">
+            <button class="filter-btn is-active" data-filter="all">
+              <span>Todos</span>
+              <span class="filter-btn__count">27</span>
+            </button>
+            <button class="filter-btn" data-filter="uxui">
+              <span>UX/UI</span>
+              <span class="filter-btn__count">1</span>
+            </button>
+            <button class="filter-btn" data-filter="webdesign">
+              <span>Web Design</span>
+              <span class="filter-btn__count">3</span>
+            </button>
+            <button class="filter-btn" data-filter="branding">
+              <span>Branding</span>
+              <span class="filter-btn__count">8</span>
+            </button>
+            <button class="filter-btn" data-filter="multimedia">
+              <span>Multimedia</span>
+              <span class="filter-btn__count">5</span>
+            </button>
+            <button class="filter-btn" data-filter="fotografia">
+              <span>Fotografía</span>
+              <span class="filter-btn__count">6</span>
+            </button>
+            <button class="filter-btn" data-filter="marketing">
+              <span>Marketing</span>
+              <span class="filter-btn__count">4</span>
+            </button>
+          </nav>
+        </div>
+
+        <!-- Dynamic Gallery Grid -->
+        <div class="gallery-grid" id="gallery-grid">
+          <!-- Rendered dynamically by js/gallery.js -->
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         ABOUT & APPROACH SECTION
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="about-section" id="sobre-mi">
+      <div class="container">
+        
+        <div class="about-grid">
+          
+          <!-- Designer Portrait -->
+          <div class="about-portrait-frame reveal-on-scroll">
+            <img src="../images/about-me.png?v=2" alt="Agustín Licari — Diseñador Multimedia" class="about-portrait-img" loading="lazy" />
+          </div>
+
+          <!-- Bio Content -->
+          <div class="about-bio-content reveal-on-scroll delay-100">
+            <span class="section-tag">Diseño &amp; Estrategia</span>
+            <h2 class="section-title">Sobre <span class="accent">Agustín Licari</span></h2>
+            
+            <p class="about-bio-text">
+              Soy un diseñador y desarrollador multimedia enfocado en crear experiencias interactivas y marcas memorables, trabajando en la intersección de la creatividad, la tecnología y el diseño centrado en el usuario.
+            </p>
+            <p class="about-bio-text">
+              Creo que cada proyecto es una oportunidad para conectar con las audiencias de forma honesta y efectiva. Acompaño a mis clientes en todo el proceso estratégico y creativo, desde la conceptualización hasta la implementación técnica final.
+            </p>
+            <p class="about-bio-text">
+              Actualmente trabajo de forma independiente con clientes de todo el mundo en proyectos de Branding, Diseño de Interfaces (UX/UI) y Desarrollo Frontend de alta fidelidad.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- 3 Pillars Approach -->
+        <div class="approach-grid">
+          
+          <div class="approach-card reveal-on-scroll">
+            <div class="approach-card__number">01</div>
+            <h3 class="approach-card__title">Investigación profunda</h3>
+            <p class="approach-card__text">
+              Dedico tiempo a entender la esencia de cada marca y usuario antes de diseñar. Un buen diseño nace de preguntas correctas y un análisis riguroso.
+            </p>
+          </div>
+
+          <div class="approach-card reveal-on-scroll delay-100">
+            <div class="approach-card__number">02</div>
+            <h3 class="approach-card__title">Estética interactiva</h3>
+            <p class="approach-card__text">
+              Creo interfaces responsivas, optimizadas y accesibles. La estética premium y el código limpio van de la mano para lograr la mejor experiencia posible.
+            </p>
+          </div>
+
+          <div class="approach-card reveal-on-scroll delay-200">
+            <div class="approach-card__number">03</div>
+            <h3 class="approach-card__title">Diseño con propósito</h3>
+            <p class="approach-card__text">
+              Evito los elementos decorativos innecesarios. Cada color, tipografía o micro-animación tiene un rol específico para comunicar y guiar al usuario.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         TIMELINE SECTION ("Mi Camino")
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="timeline-section" id="trayectoria">
+      <div class="container">
+        
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
+          <div>
+            <span class="section-tag">Trayectoria &amp; Evolución</span>
+            <h2 class="section-title">Mi Camino: <span class="accent">Un Recorrido de Vida</span></h2>
+            <p class="section-subtitle">
+              Dos décadas de exploración constante, desafíos técnicos y soluciones multimedia desde Buenos Aires hacia el mundo.
+            </p>
+          </div>
+
+          <div style="display: flex; gap: 12px;">
+            <button class="card-action-btn" id="timeline-prev-btn" aria-label="Hito anterior">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <button class="card-action-btn" id="timeline-next-btn" aria-label="Hito siguiente">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Interactive Timeline Track -->
+        <div class="timeline-track-wrap">
+          <div class="timeline-container" id="timeline-container">
+            
+            <!-- Hito 1 -->
+            <div class="timeline-card">
+              <span class="timeline-card__year">1985 - 1992</span>
+              <h3 class="timeline-card__title">Primeros Pasos e Informática</h3>
+              <p class="timeline-card__desc">
+                Nacimiento en Buenos Aires. A los 7 años llega mi primera computadora, despertando una profunda curiosidad por desarmar lógica en archivos de texto ejecutables.
+              </p>
+              <span class="timeline-card__tag">Curiosidad Nativa</span>
+            </div>
+
+            <!-- Hito 2 -->
+            <div class="timeline-card">
+              <span class="timeline-card__year">1997 - 2003</span>
+              <h3 class="timeline-card__title">Bocetado de Vocación</h3>
+              <p class="timeline-card__desc">
+                Presentaciones animadas en secundaria y el salto a Photoshop, Flash 4 y Dreamweaver de forma autodidacta. Egreso y lanzamiento de mi primer sitio web y arte de discos freelance.
+              </p>
+              <span class="timeline-card__tag">Diseño Independiente</span>
+            </div>
+
+            <!-- Hito 3 -->
+            <div class="timeline-card">
+              <span class="timeline-card__year">2004 - 2010</span>
+              <h3 class="timeline-card__title">Procesos Industriales y Academia</h3>
+              <p class="timeline-card__desc">
+                Estudios de Diseño Multimedial en la Escuela Da Vinci. Experiencia valiosa en control de calidad textil (KL Hurley), automatización ofimática masiva (Génesis) y gestión web, administración y radio comercial (Colegio Grilli).
+              </p>
+              <span class="timeline-card__tag">Escuela Da Vinci</span>
+            </div>
+
+            <!-- Hito 4 -->
+            <div class="timeline-card">
+              <span class="timeline-card__year">2011 - 2012</span>
+              <h3 class="timeline-card__title">Aventuras Latinoamericanas</h3>
+              <p class="timeline-card__desc">
+                Diseño web internacional en Río de Janeiro migrando animaciones Flash a entornos nativos CSS/SVG. Recepción bilingüe y servicios freelance de fotografía gastronómica y diseño editorial en Perú y Ecuador.
+              </p>
+              <span class="timeline-card__tag">Experiencia Global</span>
+            </div>
+
+            <!-- Hito 5 -->
+            <div class="timeline-card">
+              <span class="timeline-card__year">2013 - 2017</span>
+              <h3 class="timeline-card__title">Lanzamiento de Marca Propia</h3>
+              <p class="timeline-card__desc">
+                Consolidación de la firma autónoma Alicari, cubriendo nichos de diseño web responsivo, identidad corporativa y producciones en video multimedia para pantallas LED urbanas.
+              </p>
+              <span class="timeline-card__tag">Alicari Autónomo</span>
+            </div>
+
+            <!-- Hito 6 -->
+            <div class="timeline-card">
+              <span class="timeline-card__year">2018 - Presente</span>
+              <h3 class="timeline-card__title">Ecosistema Remoto Avanzado</h3>
+              <p class="timeline-card__desc">
+                Desarrollador remoto internacional para Conligo (Hong Kong). Maquetado de interfaces de alta fidelidad, comportamientos lógicos y animaciones complejas programando en React y TypeScript.
+              </p>
+              <span class="timeline-card__tag">React &amp; TypeScript</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         STATS SECTION
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="stats-section" id="metricas">
+      <div class="container">
+        <div class="stats-grid">
+          
+          <div class="stat-item">
+            <div class="stat-item__number" data-target="20" data-prefix="" data-suffix="">20</div>
+            <div class="stat-item__label">Años Activo</div>
+          </div>
+
+          <div class="stat-item">
+            <div class="stat-item__number" data-target="100" data-prefix="+" data-suffix="">+100</div>
+            <div class="stat-item__label">Proyectos Realizados</div>
+          </div>
+
+          <div class="stat-item">
+            <div class="stat-item__number" data-target="40" data-prefix="+" data-suffix="">+40</div>
+            <div class="stat-item__label">Consultorías</div>
+          </div>
+
+          <div class="stat-item">
+            <div class="stat-item__number" data-target="95" data-prefix="+" data-suffix="%">+95%</div>
+            <div class="stat-item__label">Satisfacción Cliente</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         CTA BANNER
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="cta-banner">
+      <div class="container cta-banner__inner">
+        <span class="section-tag">Disponible para Proyectos</span>
+        <h2 class="section-title">¿Tienes una idea en mente?</h2>
+        <p class="section-subtitle" style="margin-bottom: 32px;">
+          Conversemos sobre cómo podemos potenciar la presencia de tu marca, mejorar la experiencia de tus usuarios o construir un producto digital extraordinario.
+        </p>
+        <button class="btn-primary js-contact-trigger">
+          <span>Iniciar Conversación</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+      </div>
+    </section>
+  </main>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="container">
+      
+      <div class="footer__top">
+        <a href="#inicio" class="nav__logo" aria-label="ALICARI - Inicio">
+          <img src="../images/logo-alicari-04-04.svg" alt="ALICARI" height="32" />
+        </a>
+
+        <div class="footer__socials">
+          <a href="https://behance.net/alicari" target="_blank" rel="noopener noreferrer" class="footer__social-link" aria-label="Behance de Agustín Licari">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-4.045 0-5.836-3.036-5.836-5.836 0-3.327 2.193-5.836 5.836-5.836 3.633 0 5.485 2.502 5.485 5.836 0 .426-.039.851-.084 1.272h-8.832c.112 1.543 1.258 2.659 3.125 2.659 1.488 0 2.455-.747 2.946-1.595h2.461zm-7.943-3.414h6.059c-.114-1.325-1.026-2.28-2.859-2.28-1.748 0-2.88 1.01-3.2 2.28zm-8.783-5.586h-7v12h7.32c3.084 0 4.68-1.527 4.68-3.447 0-1.425-.86-2.501-2.203-2.909 1.111-.476 1.777-1.439 1.777-2.673 0-1.785-1.434-2.971-4.574-2.971zm-4.395 4.545h3.699c1.328 0 2.051.521 2.051 1.455 0 .979-.791 1.455-2.051 1.455h-3.699v-2.91zm0 4.909h4.098c1.365 0 2.219.553 2.219 1.574 0 1.055-.908 1.621-2.219 1.621h-4.098v-3.195z"/>
+            </svg>
+          </a>
+          <a href="https://linkedin.com/in/alicari/" target="_blank" rel="noopener noreferrer" class="footer__social-link" aria-label="LinkedIn de Agustín Licari">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+          </a>
+          <a href="mailto:licari.multimedios@gmail.com" class="footer__social-link" aria-label="Enviar correo a Agustín Licari">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p>&copy; 2027 ALICARI. Todos los derechos reservados. Buenos Aires, Argentina.</p>
+        <p>Diseño Multimedia · UX/UI · Branding Corporativo</p>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       LIGHTBOX VIEWER
+       ═══════════════════════════════════════════════════════════════ -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visor de proyecto">
+    
+    <div class="lightbox__top-bar">
+      <span class="lightbox__counter" id="lightbox-counter">1 / 27</span>
+      <button class="modal__close-btn" id="lightbox-close" aria-label="Cerrar visor">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="lightbox__stage">
+      <button class="lightbox__nav-btn prev" id="lightbox-prev" aria-label="Proyecto anterior">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <img src="" alt="" class="lightbox__img" id="lightbox-img" />
+
+      <button class="lightbox__nav-btn next" id="lightbox-next" aria-label="Proyecto siguiente">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </div>
+
+    <div class="lightbox__bottom-bar">
+      <h3 class="lightbox__title" id="lightbox-title">Título del Proyecto</h3>
+      <p class="lightbox__meta" id="lightbox-meta">Categoría · Behance</p>
+    </div>
+
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       CONTACT MODAL
+       ═══════════════════════════════════════════════════════════════ -->
+  <div class="modal" id="contact-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal__backdrop"></div>
+    
+    <div class="modal__dialog">
+      <div class="modal__header">
+        <h3 class="modal__title" id="modal-title">Contactar a Agustín Licari</h3>
+        <button class="modal__close-btn" id="contact-modal-close" aria-label="Cerrar modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal__body">
+        
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 24px; padding: 10px 16px; background: rgba(34, 197, 94, 0.08); border: 1px solid rgba(34, 197, 94, 0.2); border-radius: var(--radius-sm);">
+          <span style="width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 8px #22c55e;"></span>
+          <span style="font-size: 0.8125rem; font-weight: 500; color: #86efac;">Disponible para nuevos proyectos freelance y consultorías</span>
+        </div>
+
+        <form id="contact-form">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div class="form-group">
+              <label class="form-label" for="form-name">Nombre <span class="required">*</span></label>
+              <input type="text" id="form-name" class="form-input" placeholder="Tu nombre" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="form-email">Email <span class="required">*</span></label>
+              <input type="email" id="form-email" class="form-input" placeholder="tu@email.com" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="form-subject">Tipo de proyecto</label>
+            <select id="form-subject" class="form-select">
+              <option value="UX/UI Design">Diseño UX/UI &amp; Prototipado</option>
+              <option value="Desarrollo Web Frontend">Desarrollo Web Frontend (React / HTML5)</option>
+              <option value="Branding & Identidad">Branding &amp; Identidad Visual</option>
+              <option value="Producción Multimedia">Producción Multimedia &amp; Motion</option>
+              <option value="Consultoría Creativa">Consultoría Creativa</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="form-message">Mensaje <span class="required">*</span></label>
+            <textarea id="form-message" class="form-textarea" placeholder="Cuéntame sobre los objetivos de tu proyecto..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary" id="contact-submit-btn" style="width: 100%; justify-content: center; margin-top: 8px;">
+            <span>Enviar mensaje</span>
+          </button>
+        </form>
+
+        <div id="contact-success-msg" style="display: none; text-align: center; padding: 24px 0;">
+          <div style="width: 48px; height: 48px; border-radius: 50%; background: rgba(34, 197, 94, 0.15); color: #22c55e; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <h4 style="font-size: 1.125rem; font-weight: 600; color: #ffffff; margin-bottom: 8px;">¡Mensaje preparado!</h4>
+          <p style="font-size: 0.875rem; color: var(--text-medium);">Redirigiendo a tu cliente de correo para enviar directamente a <strong>licari.multimedios@gmail.com</strong>.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Main JavaScript Module -->
+  <script type="module" src="js/app.js"></script>
+</body>
+
+</html>
