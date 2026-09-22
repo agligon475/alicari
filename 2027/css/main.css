@@ -5,7 +5,7 @@
 
 :root {
   /* Color Palette */
-  --bg-void: #050608;
+  --bg-void: #010101;
   --bg-surface-0: #0a0c10;
   --bg-surface-1: #101318;
   --bg-surface-2: #171b22;
@@ -20,16 +20,16 @@
   --border-medium: rgba(255, 255, 255, 0.18);
   --border-bright: rgba(255, 255, 255, 0.35);
 
-  --text-pure: #ffffff;
-  --text-high: #f2f4f8;
-  --text-medium: #a6adb9;
-  --text-muted: #6b7385;
+  --text-pure: #f6f6f6;
+  --text-high: #f6f6f6;
+  --text-medium: #8a8a8a;
+  --text-muted: #8a8a8a;
 
   /* Brand Signature Accent */
-  --brand-red: #fc2222;
-  --brand-red-glow: rgba(252, 34, 34, 0.5);
-  --brand-red-subtle: rgba(252, 34, 34, 0.12);
-  --brand-red-hover: #ff3a3a;
+  --brand-red: #cc0000;
+  --brand-red-glow: rgba(204, 0, 0, 0.5);
+  --brand-red-subtle: rgba(204, 0, 0, 0.12);
+  --brand-red-hover: #e60000;
 
   /* Typography */
   --font-primary: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -153,7 +153,7 @@ button {
   background: var(--brand-red-subtle);
   padding: 6px 14px;
   border-radius: var(--radius-full);
-  border: 1px solid rgba(252, 34, 34, 0.25);
+  border: 1px solid rgba(204, 0, 0, 0.25);
   margin-bottom: 20px;
 }
 
@@ -238,7 +238,7 @@ button {
   width: 58px;
   height: 58px;
   border-color: var(--brand-red);
-  background: rgba(252, 34, 34, 0.1);
+  background: rgba(204, 0, 0, 0.1);
 }
 
 .cursor-ring.is-view,

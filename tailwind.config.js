@@ -11,6 +11,14 @@ module.exports = {
   },
   theme: {
     extend: {
+      colors: {
+        brand: {
+          red: "#cc0000",
+          black: "#010101",
+          white: "#f6f6f6",
+          gray: "#8a8a8a",
+        },
+      },
       animation: {
         first: "moveVertical 30s ease infinite",
         second: "moveInCircle 20s reverse infinite",

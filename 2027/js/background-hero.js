@@ -63,9 +63,9 @@ export function initHeroBackground() {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
       if (this.isRed) {
-        ctx.fillStyle = `rgba(252, 34, 34, ${this.baseAlpha + 0.3})`;
+        ctx.fillStyle = `rgba(204, 0, 0, ${this.baseAlpha + 0.3})`;
         ctx.shadowBlur = 10;
-        ctx.shadowColor = '#fc2222';
+        ctx.shadowColor = '#cc0000';
       } else {
         ctx.fillStyle = `rgba(255, 255, 255, ${this.baseAlpha})`;
         ctx.shadowBlur = 0;
@@ -95,7 +95,7 @@ export function initHeroBackground() {
           ctx.lineTo(particles[j].x, particles[j].y);
           
           if (particles[i].isRed || particles[j].isRed) {
-            ctx.strokeStyle = `rgba(252, 34, 34, ${alpha * 1.5})`;
+            ctx.strokeStyle = `rgba(204, 0, 0, ${alpha * 1.5})`;
           } else {
             ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
           }

@@ -435,9 +435,9 @@ Free HTML CSS Template
             particles = [];
 
             for (let i = 0; i < particleCount; i++) {
-              const isRed = Math.random() < 0.08; // 8% brand-red (#fc2222) particles
-              const redColor = '252, 34, 34';
-              const whiteColor = '255, 255, 255';
+              const isRed = Math.random() < 0.08; // 8% brand-red (#cc0000) particles
+              const redColor = '204, 0, 0';
+              const whiteColor = '246, 246, 246';
               
               particles.push({
                 x: Math.random() * width,

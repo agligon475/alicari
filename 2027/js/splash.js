@@ -46,7 +46,7 @@ export function initSplash() {
 
         ctx.beginPath();
         ctx.arc(x, y, d.size, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(252, 34, 34, 0.4)';
+        ctx.fillStyle = 'rgba(204, 0, 0, 0.4)';
         ctx.fill();
       });
 

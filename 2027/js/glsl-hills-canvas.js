@@ -168,7 +168,7 @@ export function initGLSLHills(canvasId = 'glsl-hills-canvas') {
               // Checkerboard pattern for alternating colors
               float checker = step(0.5, fract((floor(vPosition.x * 2.0) + floor(vPosition.z * 2.0)) * 0.5));
               
-              vec3 colorRed = vec3(0.988, 0.133, 0.133); // #fc2222
+              vec3 colorRed = vec3(0.8, 0.0, 0.0); // #cc0000
               vec3 colorWhite = vec3(1.0, 1.0, 1.0);
               
               vec3 finalColor = mix(colorWhite, colorRed, checker);

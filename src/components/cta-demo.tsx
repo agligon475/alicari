@@ -6,12 +6,12 @@ export function BackgroundGradientAnimationDemo() {
     <BackgroundGradientAnimation
       gradientBackgroundStart="rgb(160, 10, 10)"
       gradientBackgroundEnd="rgb(90, 0, 0)"
-      firstColor="252, 34, 34"      // Rojo Alicari
+      firstColor="204, 0, 0"      // Rojo Alicari
       secondColor="220, 20, 60"     // Crimson
       thirdColor="255, 99, 71"      // Tomato
       fourthColor="139, 0, 0"       // Dark Red
       fifthColor="200, 30, 30"
-      pointerColor="252, 34, 34"
+      pointerColor="204, 0, 0"
       containerClassName="!h-[500px] !w-full"
       className="absolute inset-0 z-50 flex items-center justify-center text-white px-4 text-center"
     >

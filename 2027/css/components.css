@@ -56,7 +56,7 @@
 .splash-logo-svg {
   width: 90px;
   height: auto;
-  filter: drop-shadow(0 0 25px rgba(252, 34, 34, 0.4));
+  filter: drop-shadow(0 0 25px rgba(204, 0, 0, 0.4));
 }
 
 .splash-prompt {
@@ -196,7 +196,7 @@
 .sound-toggle-btn:hover {
   color: var(--text-pure);
   border-color: var(--brand-red);
-  background: rgba(252, 34, 34, 0.1);
+  background: rgba(204, 0, 0, 0.1);
 }
 
 .nav__cta-btn {
@@ -222,7 +222,7 @@
 
 .nav__cta-btn:hover {
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 6px 28px rgba(252, 34, 34, 0.65);
+  box-shadow: 0 6px 28px rgba(204, 0, 0, 0.65);
 }
 
 .nav__hamburger {
@@ -412,7 +412,7 @@
 
 .btn-primary:hover {
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 8px 34px rgba(252, 34, 34, 0.7);
+  box-shadow: 0 8px 34px rgba(204, 0, 0, 0.7);
 }
 
 .btn-secondary {
@@ -970,7 +970,7 @@
 .cta-banner {
   position: relative;
   padding: 120px 0;
-  background: radial-gradient(circle at 50% 50%, rgba(252, 34, 34, 0.15) 0%, var(--bg-void) 70%);
+  background: radial-gradient(circle at 50% 50%, rgba(204, 0, 0, 0.15) 0%, var(--bg-void) 70%);
   text-align: center;
   overflow: hidden;
 }
@@ -1100,7 +1100,7 @@
 .form-select:focus,
 .form-textarea:focus {
   border-color: var(--brand-red);
-  box-shadow: 0 0 0 3px rgba(252, 34, 34, 0.25);
+  box-shadow: 0 0 0 3px rgba(204, 0, 0, 0.25);
   outline: none;
 }
 
