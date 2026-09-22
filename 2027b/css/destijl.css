@@ -1,0 +1,262 @@
+/* ==========================================================================
+   ALICARI 2027b - DE STIJL DESIGN SYSTEM
+   Core Architecture: Neoplasticism · Orthogonal Grids · Subtle Minimalism
+   Palette: Red #cc0000 · Black #010101 · White #f6f6f6 · Gray #8a8a8a
+   ========================================================================== */
+
+:root {
+  /* ── 1. Color System ── */
+  --destijl-red:           #cc0000;
+  --destijl-red-hover:     #b30000;
+  --destijl-red-light:     rgba(204, 0, 0, 0.06);
+  --destijl-red-glow:      rgba(204, 0, 0, 0.35);
+
+  --destijl-black:         #010101;
+  --destijl-black-pure:    #000000;
+  --destijl-black-soft:    #161616;
+
+  --destijl-white:         #f6f6f6;
+  --destijl-white-surface: #ffffff;
+
+  --destijl-gray:          #8a8a8a;
+  --destijl-gray-dark:     #4d4d4d;
+  --destijl-gray-light:    #dedede;
+  --destijl-gray-faint:    #f0f0f0;
+
+  /* ── 2. Structural Lines (De Stijl Rigor) ── */
+  --border-heavy:          3px solid var(--destijl-black);
+  --border-main:           2px solid var(--destijl-black);
+  --border-fine:           1px solid var(--destijl-black);
+  --border-neutral:        1px solid var(--destijl-gray-light);
+  --border-red:            2px solid var(--destijl-red);
+
+  /* ── 3. Typography ── */
+  --font-sans:             'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:             'SF Mono', 'Space Mono', Monaco, Consolas, monospace;
+
+  /* ── 4. Spatial Measurements ── */
+  --grid-max-width:        1540px;
+  --header-height:         74px;
+  --gutter:                clamp(1.25rem, 3.5vw, 3rem);
+
+  /* ── 5. Motion (Crisp, Exact, Architectural) ── */
+  --ease-destijl:          cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-snap:             cubic-bezier(0.25, 1, 0.5, 1);
+  --speed-fast:            180ms;
+  --speed-normal:          320ms;
+  --speed-slow:            550ms;
+}
+
+/* ── Reset & Baseline ───────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  background-color: var(--destijl-white);
+  color: var(--destijl-black);
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--destijl-white);
+  color: var(--destijl-black);
+  line-height: 1.55;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: var(--destijl-white);
+  border-left: 1px solid var(--destijl-gray-light);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--destijl-black);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--destijl-red);
+}
+
+/* Selection */
+::selection {
+  background: var(--destijl-red);
+  color: var(--destijl-white-surface);
+}
+
+/* ── Typography Scale ───────────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--destijl-black);
+}
+
+p {
+  color: var(--destijl-black-soft);
+  font-size: 1rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--speed-fast) ease;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ── Utility De Stijl Tokens ────────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: var(--grid-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+.mono-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--destijl-gray);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mono-tag.red {
+  color: var(--destijl-red);
+}
+
+.de-block-red {
+  background-color: var(--destijl-red);
+  color: var(--destijl-white-surface);
+}
+
+.de-block-black {
+  background-color: var(--destijl-black);
+  color: var(--destijl-white-surface);
+}
+
+.de-block-white {
+  background-color: var(--destijl-white-surface);
+  color: var(--destijl-black);
+}
+
+.de-block-faint {
+  background-color: var(--destijl-gray-faint);
+  color: var(--destijl-black);
+}
+
+/* ── Structural Orthogonal Borders ───────────────────────────────────────── */
+.de-grid-border-bottom {
+  border-bottom: var(--border-main);
+}
+
+.de-grid-border-top {
+  border-top: var(--border-main);
+}
+
+.de-grid-border-right {
+  border-right: var(--border-main);
+}
+
+.de-grid-border-left {
+  border-left: var(--border-main);
+}
+
+.de-grid-box {
+  border: var(--border-main);
+  background: var(--destijl-white-surface);
+}
+
+/* Section Framing */
+.destijl-section {
+  position: relative;
+  border-bottom: var(--border-heavy);
+  background-color: var(--destijl-white);
+}
+
+.destijl-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  border-bottom: var(--border-main);
+  background: var(--destijl-white-surface);
+}
+
+.destijl-section-title-wrap {
+  padding: 1.75rem var(--gutter);
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
+  border-right: var(--border-main);
+  flex-grow: 1;
+}
+
+.destijl-section-num {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--destijl-red);
+  letter-spacing: 0.05em;
+}
+
+.destijl-section-title {
+  font-size: clamp(1.6rem, 3.2vw, 2.75rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+}
+
+.destijl-section-meta {
+  padding: 1.75rem 2rem;
+  display: flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--destijl-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: var(--destijl-white);
+}
+
+@media (max-width: 768px) {
+  .destijl-section-header {
+    flex-direction: column;
+  }
+  .destijl-section-title-wrap {
+    border-right: none;
+    border-bottom: var(--border-fine);
+    padding: 1.25rem 1.25rem;
+  }
+  .destijl-section-meta {
+    padding: 0.75rem 1.25rem;
+  }
+}

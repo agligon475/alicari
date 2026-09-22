@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ALICARI 2027b — De Stijl Design System | Diseño Multimedia & UX/UI</title>
+  <meta name="description" content="Portfolio experimental De Stijl de Agustín Licari (ALICARI). Composición neoplásica, minimalismo sutil y desarrollo multimedia de vanguardia." />
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="ALICARI 2027b — De Stijl Design System" />
+  <meta property="og:description" content="Composición neoplásica, minimalismo sutil y desarrollo multimedia de vanguardia." />
+  <meta property="og:image" content="../images/screenshot-home.jpg" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../fav.png" />
+  <link rel="apple-touch-icon" href="../fav.png" />
+
+  <!-- Typography: Outfit + Space Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/destijl.css" />
+  <link rel="stylesheet" href="css/components.css" />
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "ALICARI 2027b - De Stijl Edition",
+    "url": "https://alicari.com.ar/2027b/",
+    "logo": "https://alicari.com.ar/logo.png",
+    "image": "https://alicari.com.ar/images/about-me.png",
+    "description": "Estudio de Diseño Multimedia, UX/UI y Branding bajo el sistema de diseño De Stijl.",
+    "founder": {
+      "@type": "Person",
+      "name": "Agustín Licari",
+      "jobTitle": "Multimedia & UX/UI Designer"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Buenos Aires",
+      "addressCountry": "AR"
+    }
+  }
+  </script>
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       1. TOP NAVIGATION BAR (ORTHOGONAL GRID)
+       ═══════════════════════════════════════════════════════════════ -->
+  <header>
+    <nav class="destijl-nav" role="navigation" aria-label="Navegación principal">
+      <div class="nav-grid">
+        
+        <!-- Brand Identification -->
+        <a href="#inicio" class="nav-brand" aria-label="ALICARI Inicio">
+          <img src="../logo-black-13.svg" alt="ALICARI" class="nav-brand-img" />
+          <span class="nav-brand-badge">2027b</span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <ul class="nav-links">
+          <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+          <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+          <li><a href="#sobre-mi" class="nav-link">Manifiesto</a></li>
+          <li><a href="#trayectoria" class="nav-link">Trayectoria</a></li>
+          <li><a href="../index.html" class="nav-link" style="color: var(--destijl-gray);">← Sitio Clásico</a></li>
+        </ul>
+
+        <!-- Right Action Controls -->
+        <div class="nav-actions">
+          <button class="sound-toggle-btn" id="sound-toggle" aria-label="Activar/Silenciar sonido de interfaz">
+            <span class="sound-dot"></span>
+            <span>AUDIO <span id="sound-status">OFF</span></span>
+          </button>
+
+          <a href="#contacto" class="nav-contact-btn">
+            <span>Contacto</span>
+            <span>→</span>
+          </a>
+
+          <!-- Mobile Hamburger Trigger -->
+          <button class="nav-hamburger" id="hamburger-btn" aria-label="Menú de opciones">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
+      </div>
+    </nav>
+
+    <!-- Mobile Slide Drawer -->
+    <div class="destijl-mobile-drawer" id="mobile-drawer">
+      <ul class="mobile-nav-links">
+        <li><a href="#inicio" class="mobile-nav-link">Inicio</a></li>
+        <li><a href="#portfolio" class="mobile-nav-link">Portfolio</a></li>
+        <li><a href="#sobre-mi" class="mobile-nav-link">Manifiesto</a></li>
+        <li><a href="#trayectoria" class="mobile-nav-link">Trayectoria</a></li>
+        <li><a href="#contacto" class="mobile-nav-link" style="color: var(--destijl-red);">Contacto →</a></li>
+        <li><a href="../index.html" class="mobile-nav-link" style="font-size: 1rem; color: var(--destijl-gray);">← Volver a versión clásica</a></li>
+      </ul>
+    </div>
+  </header>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       2. HERO: DE STIJL ASYMMETRIC SPATIAL COMPOSITION
+       ═══════════════════════════════════════════════════════════════ -->
+  <main>
+    <header class="destijl-hero" id="inicio">
+      <div class="hero-grid">
+        
+        <!-- Main Column: Typography & Lead -->
+        <div class="hero-main-col">
+          <div>
+            <div class="hero-header-meta">
+              <span class="mono-tag red">● DE STIJL DESIGN SYSTEM</span>
+              <span class="mono-tag">EXP. 2027b // LAT. -34.6037</span>
+            </div>
+
+            <div class="hero-title-group">
+              <h1 class="hero-title">
+                Creatividad<br />
+                <span class="title-accent">&amp; Estrategia</span>
+              </h1>
+            </div>
+
+            <p class="hero-desc">
+              Diseño y desarrollo multimedia: experiencias interactivas, dirección visual y marcas memorables construidas sobre rigor geométrico y minimalismo sutil.
+            </p>
+          </div>
+
+          <div class="hero-cta-row">
+            <a href="#portfolio" class="btn-destijl-solid">
+              <span>Explorar Proyectos</span>
+              <span>↓</span>
+            </a>
+            <a href="#contacto" class="btn-destijl-outline">
+              <span>Iniciar Proyecto</span>
+              <span>↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column: De Stijl Mosaic Blocks -->
+        <div class="hero-mosaic-col">
+          
+          <!-- Upper Red Accent Block -->
+          <div class="hero-block-red">
+            <div class="hero-block-red-top">
+              <span class="mono-tag" style="color: rgba(255,255,255,0.8);">SISTEMA NEOPLÁSTICO</span>
+              <span class="mono-tag" style="color: rgba(255,255,255,0.8);">[ CC0000 ]</span>
+            </div>
+            <div class="hero-block-red-title">
+              Estructura · Forma · Síntesis
+            </div>
+          </div>
+
+          <!-- Central Interactive Matrix -->
+          <div class="hero-interactive-canvas-wrap">
+            <div class="destijl-matrix-grid" id="matrix-grid" title="Haz clic en las celdas para interactuar">
+              <div class="matrix-cell js-matrix-cell"></div>
+              <div class="matrix-cell js-matrix-cell"></div>
+              <div class="matrix-cell js-matrix-cell"></div>
+              <div class="matrix-cell js-matrix-cell"></div>
+              <div class="matrix-cell js-matrix-cell"></div>
+              <div class="matrix-cell js-matrix-cell"></div>
+              <div class="matrix-cell js-matrix-cell"></div>
+              <div class="matrix-cell js-matrix-cell"></div>
+              <div class="matrix-cell js-matrix-cell"></div>
+            </div>
+            <p class="matrix-caption">Matriz ortogonal interactiva (haz clic)</p>
+          </div>
+
+          <!-- Lower Status Block -->
+          <div class="hero-block-black">
+            <div class="live-badge">
+              <span class="live-dot"></span>
+              <span>Buenos Aires · Disponible</span>
+            </div>
+            <span class="mono-tag" style="color: var(--destijl-gray);">Q4 2026/2027</span>
+          </div>
+
+        </div>
+
+      </div>
+    </header>
+
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         3. KINETIC ARCHITECTURAL MARQUEE
+         ═══════════════════════════════════════════════════════════════ -->
+    <div class="destijl-marquee" aria-hidden="true">
+      <div class="destijl-marquee-track">
+        <div class="destijl-marquee-item"><span class="highlight">DISEÑO UX/UI</span> <span class="symbol">+</span></div>
+        <div class="destijl-marquee-item">DESARROLLO FRONT-END <span class="symbol">+</span></div>
+        <div class="destijl-marquee-item"><span class="highlight">BRANDING CORPORATIVO</span> <span class="symbol">+</span></div>
+        <div class="destijl-marquee-item">PRODUCCIÓN MULTIMEDIA <span class="symbol">+</span></div>
+        <div class="destijl-marquee-item"><span class="highlight">DIRECCIÓN DE ARTE</span> <span class="symbol">+</span></div>
+        <div class="destijl-marquee-item">ESTRATEGIA DIGITAL <span class="symbol">+</span></div>
+        <!-- Duplicado continuo -->
+        <div class="destijl-marquee-item"><span class="highlight">DISEÑO UX/UI</span> <span class="symbol">+</span></div>
+        <div class="destijl-marquee-item">DESARROLLO FRONT-END <span class="symbol">+</span></div>
+        <div class="destijl-marquee-item"><span class="highlight">BRANDING CORPORATIVO</span> <span class="symbol">+</span></div>
+        <div class="destijl-marquee-item">PRODUCCIÓN MULTIMEDIA <span class="symbol">+</span></div>
+        <div class="destijl-marquee-item"><span class="highlight">DIRECCIÓN DE ARTE</span> <span class="symbol">+</span></div>
+        <div class="destijl-marquee-item">ESTRATEGIA DIGITAL <span class="symbol">+</span></div>
+      </div>
+    </div>
+
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         4. PORTFOLIO DE PROYECTOS (DE STIJL GRID)
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="destijl-section" id="portfolio">
+      
+      <!-- Section Header -->
+      <div class="destijl-section-header">
+        <div class="destijl-section-title-wrap">
+          <span class="destijl-section-num">[ 01 ]</span>
+          <h2 class="destijl-section-title">Portfolio Seleccionado</h2>
+        </div>
+        <div class="destijl-section-meta">
+          <span>Behance Archive · Proyectos Verificados</span>
+        </div>
+      </div>
+
+      <!-- Filter Category Tabs -->
+      <div class="portfolio-filter-bar">
+        <button class="filter-btn js-filter-btn active" data-filter="all">
+          <span>Todos</span>
+          <span class="filter-count">27</span>
+        </button>
+        <button class="filter-btn js-filter-btn" data-filter="uxui">
+          <span>UX / UI</span>
+          <span class="filter-count">0</span>
+        </button>
+        <button class="filter-btn js-filter-btn" data-filter="branding">
+          <span>Branding</span>
+          <span class="filter-count">0</span>
+        </button>
+        <button class="filter-btn js-filter-btn" data-filter="multimedia">
+          <span>Multimedia</span>
+          <span class="filter-count">0</span>
+        </button>
+        <button class="filter-btn js-filter-btn" data-filter="editorial">
+          <span>Editorial</span>
+          <span class="filter-count">0</span>
+        </button>
+      </div>
+
+      <!-- Dynamic Portfolio Cards Grid -->
+      <div class="destijl-portfolio-grid" id="portfolio-grid">
+        <!-- Injected dynamically by destijl-app.js -->
+      </div>
+
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         5. SOBRE MÍ & MANIFIESTO (SPATIAL BIO GRID)
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="destijl-section" id="sobre-mi">
+      
+      <div class="destijl-section-header">
+        <div class="destijl-section-title-wrap">
+          <span class="destijl-section-num">[ 02 ]</span>
+          <h2 class="destijl-section-title">Manifiesto &amp; Visión</h2>
+        </div>
+        <div class="destijl-section-meta">
+          <span>Agustín Licari · Perfil Profesional</span>
+        </div>
+      </div>
+
+      <div class="bio-grid">
+        
+        <!-- Portrait Frame Column -->
+        <div class="bio-portrait-pane">
+          <div class="portrait-frame">
+            <img src="../images/about-me.png" alt="Agustín Licari" />
+          </div>
+          <div class="portrait-label">
+            <div class="portrait-name">Agustín Licari</div>
+            <div class="portrait-role">Multimedia &amp; UX/UI Designer</div>
+          </div>
+        </div>
+
+        <!-- Bio Content Column -->
+        <div class="bio-content-pane">
+          <div>
+            <div class="bio-lead">
+              El diseño no es ornamento: es <span class="highlight">estructura, síntesis y emoción intencional</span>.
+            </div>
+
+            <div class="bio-paragraphs">
+              <p>
+                Soy un diseñador y desarrollador multimedia con más de una década de experiencia en la creación de identidades visuales memorables, interfaces de usuario de alto rendimiento y experiencias web interactivas.
+              </p>
+              <p>
+                Inspirado en la claridad de los sistemas ortogonales y la fuerza del neoplasticismo, busco despojar a los productos digitales de todo lo superfluo para dejar únicamente aquello que comunica con honestidad, potencia y precisión técnica.
+              </p>
+              <p>
+                Acompaño a empresas, startups y creadores en todo el ciclo: desde la conceptualización de marca hasta la maquetación y desarrollo front-end final.
+              </p>
+            </div>
+          </div>
+
+          <!-- Statistics Matrix -->
+          <div class="bio-stats-grid">
+            <div class="bio-stat-box">
+              <div class="bio-stat-number">+10</div>
+              <div class="bio-stat-label">Años de Trayectoria</div>
+            </div>
+            <div class="bio-stat-box">
+              <div class="bio-stat-number">+100</div>
+              <div class="bio-stat-label">Proyectos Diseñados</div>
+            </div>
+            <div class="bio-stat-box">
+              <div class="bio-stat-number">100%</div>
+              <div class="bio-stat-label">Enfoque en Calidad</div>
+            </div>
+            <div class="bio-stat-box">
+              <div class="bio-stat-number">Global</div>
+              <div class="bio-stat-label">Clientes &amp; Alcance</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         6. TRAYECTORIA & TIMELINE ORTOGONAL
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="destijl-section" id="trayectoria">
+      
+      <div class="destijl-section-header">
+        <div class="destijl-section-title-wrap">
+          <span class="destijl-section-num">[ 03 ]</span>
+          <h2 class="destijl-section-title">Trayectoria &amp; Hitos</h2>
+        </div>
+        <div class="destijl-section-meta">
+          <span>Evolución Profesional</span>
+        </div>
+      </div>
+
+      <div class="destijl-timeline-grid">
+        
+        <div class="timeline-cell">
+          <span class="timeline-year-tag">2026 — 2027</span>
+          <div>
+            <h3 class="timeline-cell-title">ALICARI Studio</h3>
+            <div class="timeline-cell-role">Director Creativo &amp; Lead Frontend</div>
+            <p class="timeline-cell-desc">
+              Desarrollo de sistemas de diseño avanzados, consultoría integral de UX/UI y producción multimedia para marcas en Argentina, Latinoamérica y Europa.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-cell">
+          <span class="timeline-year-tag">2023 — 2025</span>
+          <div>
+            <h3 class="timeline-cell-title">Branding &amp; Web Systems</h3>
+            <div class="timeline-cell-role">Diseñador Senior Multimedia</div>
+            <p class="timeline-cell-desc">
+              Liderazgo en identidades corporativas completas, catálogos técnicos, interfaces de usuario y plataformas web interactivas para clientes de manufactura, gastronomía y tecnología.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-cell">
+          <span class="timeline-year-tag">2020 — 2022</span>
+          <div>
+            <h3 class="timeline-cell-title">Diseño de Interacción</h3>
+            <div class="timeline-cell-role">Especialista UX/UI</div>
+            <p class="timeline-cell-desc">
+              Creación de manuales de marca normativos, prototipos de alta fidelidad, tests de usabilidad y piezas audiovisuales cinematográficas.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-cell">
+          <span class="timeline-year-tag">2016 — 2019</span>
+          <div>
+            <h3 class="timeline-cell-title">Producción Digital</h3>
+            <div class="timeline-cell-role">Diseñador Gráfico &amp; Multimedia</div>
+            <p class="timeline-cell-desc">
+              Consolidación de portafolio en Behance, proyectos editoriales, branding y dirección de fotografía publicitaria.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         7. CONTACTO & FORMULARIO ASIMÉTRICO
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="destijl-section" id="contacto">
+      
+      <div class="destijl-section-header">
+        <div class="destijl-section-title-wrap">
+          <span class="destijl-section-num">[ 04 ]</span>
+          <h2 class="destijl-section-title">Contacto Directo</h2>
+        </div>
+        <div class="destijl-section-meta">
+          <span>Iniciemos una conversación</span>
+        </div>
+      </div>
+
+      <div class="contact-grid">
+        
+        <!-- Info Column -->
+        <div class="contact-info-pane">
+          <div>
+            <div class="contact-info-header">
+              <h3>Conversemos sobre tu <span>próximo proyecto</span></h3>
+              <p>
+                ¿Tienes una idea en mente o buscas elevar la identidad visual y experiencia digital de tu producto? Escríbeme y diseñemos una solución a medida.
+              </p>
+            </div>
+
+            <div class="contact-direct-items">
+              <div class="contact-item-row">
+                <div>
+                  <div class="contact-item-label">Correo Electrónico</div>
+                  <div class="contact-item-val"><a href="mailto:contacto@alicari.com.ar">contacto@alicari.com.ar</a></div>
+                </div>
+              </div>
+
+              <div class="contact-item-row">
+                <div>
+                  <div class="contact-item-label">Ubicación</div>
+                  <div class="contact-item-val">Buenos Aires, Argentina (GMT-3)</div>
+                </div>
+              </div>
+
+              <div class="contact-item-row">
+                <div>
+                  <div class="contact-item-label">Redes &amp; Portafolios</div>
+                  <div class="contact-item-val" style="display: flex; gap: 1.5rem;">
+                    <a href="https://www.behance.net/agustinlicari" target="_blank" rel="noopener noreferrer">Behance ↗</a>
+                    <a href="https://www.linkedin.com/in/agustinlicari" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mono-tag" style="color: var(--destijl-gray);">
+            Respuesta habitual en menos de 24 horas hábiles.
+          </div>
+        </div>
+
+        <!-- Form Column -->
+        <div class="contact-form-pane">
+          <form class="destijl-form" id="contact-form">
+            
+            <div id="form-status" class="form-status"></div>
+
+            <div class="form-group">
+              <label for="contact-name" class="form-label">Nombre Completo *</label>
+              <input type="text" id="contact-name" class="form-input" placeholder="Tu nombre o empresa" required />
+            </div>
+
+            <div class="form-group">
+              <label for="contact-email" class="form-label">Correo Electrónico *</label>
+              <input type="email" id="contact-email" class="form-input" placeholder="correo@ejemplo.com" required />
+            </div>
+
+            <div class="form-group">
+              <label for="contact-service" class="form-label">Tipo de Servicio</label>
+              <select id="contact-service" class="form-input">
+                <option value="completo">Diseño Integral (UX/UI + Branding)</option>
+                <option value="uxui">Diseño de Interfaces (UX/UI)</option>
+                <option value="branding">Identidad Visual &amp; Branding</option>
+                <option value="frontend">Desarrollo Front-End</option>
+                <option value="multimedia">Producción Multimedia</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-message" class="form-label">Mensaje o Detalle del Proyecto *</label>
+              <textarea id="contact-message" class="form-textarea" placeholder="Cuéntame sobre los objetivos, plazos y requerimientos de tu proyecto..." required></textarea>
+            </div>
+
+            <button type="submit" class="form-submit-btn">
+              <span>Enviar Mensaje</span>
+              <span>→</span>
+            </button>
+
+          </form>
+        </div>
+
+      </div>
+
+    </section>
+  </main>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       8. FOOTER (DE STIJL ENCLOSURE)
+       ═══════════════════════════════════════════════════════════════ -->
+  <footer class="destijl-footer">
+    <div class="container">
+      
+      <div class="footer-grid">
+        
+        <div class="footer-brand-pane">
+          <img src="../logo-black-13.svg" alt="ALICARI" class="footer-logo-img" />
+          <p class="footer-tagline">
+            ALICARI — Agustín Licari. Estudio de Diseño Multimedia, Dirección de Arte y Experiencias Digitales.
+          </p>
+        </div>
+
+        <div class="footer-nav-pane">
+          <div>
+            <div class="footer-col-title">Navegación</div>
+            <ul class="footer-links">
+              <li><a href="#inicio">Inicio</a></li>
+              <li><a href="#portfolio">Portfolio</a></li>
+              <li><a href="#sobre-mi">Manifiesto</a></li>
+              <li><a href="#trayectoria">Trayectoria</a></li>
+              <li><a href="#contacto">Contacto</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="footer-col-title">Versiones</div>
+            <ul class="footer-links">
+              <li><a href="../index.html">Sitio Clásico</a></li>
+              <li><a href="../2027/index.html">Versión 2027 Dark Spatial</a></li>
+              <li><a href="index.html" style="color: var(--destijl-red);">2027b De Stijl ★</a></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom-row">
+        <span>© 2027 ALICARI. Todos los derechos reservados.</span>
+        <span>De Stijl Design System · Neoplastic Minimal</span>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       9. LIGHTBOX / PROJECT MODAL
+       ═══════════════════════════════════════════════════════════════ -->
+  <div class="destijl-modal" id="project-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-dialog">
+      
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span class="card-category-badge" id="modal-category" style="position: static;">CATEGORÍA</span>
+          <h3 class="modal-title" id="modal-title">Título del Proyecto</h3>
+        </div>
+        <button class="modal-close-btn" id="modal-close" aria-label="Cerrar modal">CERRAR [ ESC ]</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-media-frame">
+          <img src="" alt="" id="modal-img" class="modal-img" />
+        </div>
+        <p id="modal-desc" class="card-desc" style="font-size: 1.0625rem; color: var(--destijl-black);"></p>
+        
+        <div class="modal-info-footer">
+          <span class="mono-tag red">● BEHANCE FULL SHOWCASE</span>
+          <a href="#" target="_blank" rel="noopener noreferrer" id="modal-behance" class="btn-destijl-solid" style="padding: 0.8rem 1.5rem;">
+            <span>Ver Proyecto Completo en Behance</span>
+            <span>↗</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       10. APPLICATION SCRIPT (ES MODULE)
+       ═══════════════════════════════════════════════════════════════ -->
+  <script type="module" src="js/destijl-app.js"></script>
+
+</body>
+
+</html>
