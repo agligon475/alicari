@@ -24,6 +24,7 @@ export default defineConfig({
       input: {
         main: path.resolve(__dirname, 'index.html'),
         about: path.resolve(__dirname, 'about.html'),
+        portfolio2027: path.resolve(__dirname, '2027/index.html'),
       },
     },
   },
