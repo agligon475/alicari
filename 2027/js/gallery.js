@@ -1,10 +1,11 @@
 /**
  * ALICARI 2027 - Dynamic Gallery & Category Filter
- * Renders portfolio cards, handles smooth filter transitions, 3D tilt effects, and preview triggers.
+ * Renders portfolio cards, handles smooth filter transitions, 3D tilt effects, sound triggers and preview triggers.
  */
 
 import { PROJECTS_DATA } from './projects-data.js';
 import { openLightbox } from './lightbox.js';
+import { sound } from './sound-fx.js';
 
 export function initGallery() {
   const grid = document.getElementById('gallery-grid');
@@ -47,7 +48,7 @@ export function initGallery() {
       : PROJECTS_DATA.filter(p => p.category === filter);
 
     grid.innerHTML = filtered.map((project, idx) => `
-      <article class="project-card reveal-on-scroll is-revealed" data-id="${project.id}" data-category="${project.category}">
+      <article class="project-card reveal-on-scroll is-revealed" data-id="${project.id}" data-category="${project.category}" data-cursor="view">
         <div class="project-card__media-wrap">
           <span class="project-card__badge">${project.categoryName}</span>
           <img 
@@ -94,8 +95,8 @@ export function initGallery() {
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
 
-        const rotateX = ((y - centerY) / centerY) * -7;
-        const rotateY = ((x - centerX) / centerX) * 7;
+        const rotateX = ((y - centerY) / centerY) * -6;
+        const rotateY = ((x - centerX) / centerX) * 6;
 
         card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
       });
@@ -104,15 +105,13 @@ export function initGallery() {
         card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
       });
 
-      // Quick preview click
-      const previewBtn = card.querySelector('.js-preview-trigger');
-      if (previewBtn) {
-        previewBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          const id = parseInt(previewBtn.dataset.id, 10);
-          openLightbox(id);
-        });
-      }
+      // Quick preview click on whole card or button
+      card.addEventListener('click', (e) => {
+        if (e.target.closest('a')) return; // let Behance link work
+        const id = parseInt(card.dataset.id, 10);
+        sound.playChime(660, 0.2);
+        openLightbox(id);
+      });
     });
   }
 
@@ -122,6 +121,7 @@ export function initGallery() {
       const filter = btn.dataset.filter;
       if (filter === currentCategory) return;
 
+      sound.playTick(900, 0.04);
       filterBtns.forEach(b => b.classList.remove('is-active'));
       btn.classList.add('is-active');
 

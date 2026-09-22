@@ -1,71 +1,58 @@
 /* ==========================================================================
-   ALICARI 2027 - SYSTEM TOKENS & RESET
-   Impeccable Design Standard & Dark Luxury Creative Direction
+   ALICARI 2027 - MASTER SYSTEM TOKENS & ELEVATION
+   Creative Direction: Concept over Structure · Dark Luxury · Spatial Journey
    ========================================================================== */
 
 :root {
-  /* Color System */
-  --bg-black: #08080a;
-  --bg-surface-1: #0f1013;
-  --bg-surface-2: #16181d;
-  --bg-surface-3: #1f222a;
-  --bg-glass: rgba(18, 20, 26, 0.72);
-  --bg-glass-strong: rgba(14, 16, 20, 0.88);
+  /* Color Palette */
+  --bg-void: #050608;
+  --bg-surface-0: #0a0c10;
+  --bg-surface-1: #101318;
+  --bg-surface-2: #171b22;
+  --bg-surface-3: #202530;
   
-  --border-subtle: rgba(255, 255, 255, 0.07);
-  --border-medium: rgba(255, 255, 255, 0.14);
-  --border-bright: rgba(255, 255, 255, 0.28);
-  
+  --bg-glass: rgba(12, 15, 20, 0.78);
+  --bg-glass-card: rgba(18, 22, 30, 0.65);
+  --bg-glass-active: rgba(26, 32, 44, 0.85);
+
+  --border-ghost: rgba(255, 255, 255, 0.05);
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --border-medium: rgba(255, 255, 255, 0.18);
+  --border-bright: rgba(255, 255, 255, 0.35);
+
   --text-pure: #ffffff;
-  --text-high: #f0f2f5;
-  --text-medium: #a2a8b4;
-  --text-muted: #646a78;
-  
-  /* Brand Accent */
+  --text-high: #f2f4f8;
+  --text-medium: #a6adb9;
+  --text-muted: #6b7385;
+
+  /* Brand Signature Accent */
   --brand-red: #fc2222;
-  --brand-red-glow: rgba(252, 34, 34, 0.45);
+  --brand-red-glow: rgba(252, 34, 34, 0.5);
   --brand-red-subtle: rgba(252, 34, 34, 0.12);
-  
-  /* Gradients */
-  --grad-surface: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%);
-  --grad-glow: radial-gradient(circle at 50% 0%, rgba(252, 34, 34, 0.15), transparent 70%);
-  --grad-card-glow: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(252, 34, 34, 0.08), transparent 40%);
+  --brand-red-hover: #ff3a3a;
 
   /* Typography */
-  --font-primary: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-display: 'Outfit', sans-serif;
-  
-  /* Shadows & Elevations */
-  --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.6);
-  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.8);
-  --shadow-glow: 0 0 35px var(--brand-red-glow);
+  --font-primary: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'SF Mono', Consolas, Monaco, monospace;
 
-  /* Layout Spacing */
-  --container-max: 1360px;
-  --header-height: 80px;
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 22px;
+  /* Layout & Elevations */
+  --container-width: 1400px;
+  --header-height: 84px;
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
   --radius-full: 9999px;
 
-  /* Transitions */
+  /* Fluid Motion Springs */
   --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
   --duration-fast: 160ms;
-  --duration-normal: 300ms;
+  --duration-normal: 280ms;
   --duration-slow: 600ms;
 }
 
-/* Light / High-Contrast override if requested by OS */
-@media (prefers-contrast: more) {
-  :root {
-    --border-subtle: rgba(255, 255, 255, 0.25);
-    --text-muted: #8e95a5;
-  }
-}
-
-/* Base Reset */
+/* Reset & Base */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -78,12 +65,12 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   color-scheme: dark;
-  background-color: var(--bg-black);
+  background-color: var(--bg-void);
 }
 
 body {
   font-family: var(--font-primary);
-  background-color: var(--bg-black);
+  background-color: var(--bg-void);
   color: var(--text-high);
   line-height: 1.6;
   overflow-x: hidden;
@@ -91,18 +78,21 @@ body {
   min-height: 100vh;
 }
 
+body.portal-locked {
+  overflow: hidden;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-black);
+  background: var(--bg-void);
 }
 ::-webkit-scrollbar-thumb {
   background: var(--bg-surface-3);
   border-radius: var(--radius-full);
-  border: 2px solid var(--bg-black);
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--brand-red);
@@ -114,13 +104,7 @@ body {
   color: #ffffff;
 }
 
-/* Accessibility Focus Ring */
-:focus-visible {
-  outline: 2px solid var(--brand-red);
-  outline-offset: 3px;
-}
-
-img, svg, video {
+img, svg, video, canvas {
   display: block;
   max-width: 100%;
 }
@@ -128,7 +112,7 @@ img, svg, video {
 a {
   color: inherit;
   text-decoration: none;
-  transition: color var(--duration-fast) var(--ease-out);
+  transition: color var(--duration-fast) var(--ease-smooth);
 }
 
 button {
@@ -139,10 +123,10 @@ button {
   color: inherit;
 }
 
-/* Structural Container */
+/* Spatial Container */
 .container {
   width: 100%;
-  max-width: var(--container-max);
+  max-width: var(--container-width);
   margin-left: auto;
   margin-right: auto;
   padding-left: 24px;
@@ -151,26 +135,26 @@ button {
 
 @media (min-width: 768px) {
   .container {
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 48px;
+    padding-right: 48px;
   }
 }
 
-/* Section Header Typography */
+/* Typography Presets */
 .section-tag {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.8125rem;
-  font-weight: 600;
+  font-size: 0.75rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.2em;
   color: var(--brand-red);
   background: var(--brand-red-subtle);
   padding: 6px 14px;
   border-radius: var(--radius-full);
-  border: 1px solid rgba(252, 34, 34, 0.2);
-  margin-bottom: 16px;
+  border: 1px solid rgba(252, 34, 34, 0.25);
+  margin-bottom: 20px;
 }
 
 .section-tag::before {
@@ -179,16 +163,15 @@ button {
   height: 6px;
   border-radius: 50%;
   background: var(--brand-red);
-  box-shadow: 0 0 8px var(--brand-red);
+  box-shadow: 0 0 10px var(--brand-red);
 }
 
 .section-title {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3.25rem);
-  font-weight: 600;
+  font-size: clamp(2.25rem, 5vw, 4rem);
+  font-weight: 700;
   color: var(--text-pure);
-  line-height: 1.15;
-  letter-spacing: -0.03em;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
   margin-bottom: 16px;
 }
 
@@ -199,18 +182,83 @@ button {
 }
 
 .section-subtitle {
-  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  font-size: clamp(1rem, 1.6vw, 1.1875rem);
   color: var(--text-medium);
-  max-width: 640px;
-  line-height: 1.6;
+  max-width: 680px;
+  line-height: 1.65;
+  font-weight: 300;
 }
 
-/* Global Ambient Glow Elements */
-.ambient-glow {
-  position: absolute;
-  pointer-events: none;
+/* Custom Interactive Cursor Elements */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background: var(--brand-red);
   border-radius: 50%;
-  filter: blur(120px);
-  z-index: 0;
-  opacity: 0.15;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.05s linear;
+  box-shadow: 0 0 12px var(--brand-red);
+}
+
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 44px;
+  height: 44px;
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.3s var(--ease-spring),
+              height 0.3s var(--ease-spring),
+              background 0.3s var(--ease-smooth),
+              border-color 0.3s var(--ease-smooth);
+}
+
+.cursor-ring .cursor-text {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #ffffff;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.cursor-ring.is-hover {
+  width: 58px;
+  height: 58px;
+  border-color: var(--brand-red);
+  background: rgba(252, 34, 34, 0.1);
+}
+
+.cursor-ring.is-view,
+.cursor-ring.is-drag,
+.cursor-ring.is-explore {
+  width: 76px;
+  height: 76px;
+  background: rgba(14, 16, 22, 0.9);
+  border-color: var(--brand-red);
+  backdrop-filter: blur(8px);
+}
+
+.cursor-ring.is-view .cursor-text,
+.cursor-ring.is-drag .cursor-text,
+.cursor-ring.is-explore .cursor-text {
+  opacity: 1;
+}
+
+@media (pointer: coarse) {
+  .cursor-dot, .cursor-ring {
+    display: none !important;
+  }
 }
