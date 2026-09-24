@@ -77,8 +77,8 @@
    1. FILA SUPERIOR (20% DE ALTO DE PANTALLA)
    ═══════════════════════════════════════════════════════════ */
 .row-top-20 {
-  height: 20vh;
-  min-height: 155px;
+  height: calc(20vh - 14px);
+  min-height: 150px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
@@ -358,10 +358,10 @@
 }
 
 /* ═══════════════════════════════════════════════════════════
-   2. FILA MEDIA (38% DE ALTO DE PANTALLA: DIVISAS Y CRIPTOS)
+   2. FILA MEDIA (40% DE ALTO DE PANTALLA: DIVISAS Y CRIPTOS)
    ═══════════════════════════════════════════════════════════ */
-.row-mid-38 {
-  height: 37vh;
+.row-mid-40 {
+  height: calc(40vh - 16px);
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
@@ -370,10 +370,10 @@
 }
 
 /* ═══════════════════════════════════════════════════════════
-   3. FILA INFERIOR (38% DE ALTO DE PANTALLA: CEDEARS E INVERSIONES)
+   3. FILA INFERIOR (40% DE ALTO DE PANTALLA: CEDEARS E INVERSIONES)
    ═══════════════════════════════════════════════════════════ */
-.row-bot-38 {
-  height: 37vh;
+.row-bot-40 {
+  height: calc(40vh - 16px);
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
