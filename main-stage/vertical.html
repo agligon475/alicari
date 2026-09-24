@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ALICARI — Vertical Dashboard (Monitor 2)</title>
-  <meta name="description" content="Dashboard vertical modular para Wallpaper Engine y Lively Wallpaper — Reloj Polar, SMN Clima, Cotizaciones y Sugerencias de Inversión." />
+  <meta name="description" content="Dashboard vertical modular para Wallpaper Engine y Lively Wallpaper — Reloj Polar, SMN Clima y 4 Módulos de Mercado sin Scroll." />
   <link rel="icon" type="image/svg+xml" href="assets/images/logo-icon.svg" />
 
   <!-- Google Fonts: Outfit & JetBrains Mono -->
@@ -34,23 +34,23 @@
         <h1 class="brand-title"><span>a</span>licari <span style="font-weight: 300; font-size: 0.8em; color: var(--text-muted);">// PORTRAIT</span></h1>
       </div>
       
-      <div class="status-pill">
+      <div class="status-pill timer-pill" title="Actualización automática cada 20 segundos">
         <span class="status-dot green"></span>
-        <span>LIVE SYSTEM</span>
+        <span>SYNC</span>
+        <span class="timer-countdown font-mono" id="finance-timer">20s</span>
       </div>
     </header>
 
     <!-- ═══════════════════════════════════════════════════════
-         FILA DUAL SUPERIOR (2 COLUMNAS): RELOJ POLAR + CLIMA
+         FILA DUAL SUPERIOR (TOP ~36%): RELOJ POLAR + CLIMA
          ═══════════════════════════════════════════════════════ -->
     <div class="top-twin-row">
 
       <!-- COLUMNA 1: RELOJ POLAR CONCÉNTRICO CON NÚMEROS EXTERIORES -->
       <section class="glass-panel polar-clock-widget" aria-label="Reloj Polar">
-        
         <div class="polar-container">
           <svg class="polar-svg-outer" viewBox="0 0 240 240">
-            <!-- Números de marcación por fuera del reloj polar -->
+            <!-- Números radiales de marcación por fuera de los aros -->
             <g class="polar-dial-numbers font-mono">
               <text x="120" y="16" text-anchor="middle" class="dial-num">00</text>
               <text x="226" y="124" text-anchor="middle" class="dial-num">06</text>
@@ -72,17 +72,12 @@
 
             <!-- Arcos concéntricos dinámicos (Rotados -90deg para empezar a las 12) -->
             <g transform="rotate(-90 120 120)">
-              <!-- Pistas de fondo -->
               <circle class="polar-track" cx="120" cy="120" r="84" />
               <circle class="polar-track" cx="120" cy="120" r="66" />
               <circle class="polar-track" cx="120" cy="120" r="48" />
 
-              <!-- Arcos de progreso -->
-              <!-- Horas (r=84, perim=527.78) -->
               <circle class="polar-ring polar-ring-hours" id="polar-ring-hours" cx="120" cy="120" r="84" />
-              <!-- Minutos (r=66, perim=414.69) -->
               <circle class="polar-ring polar-ring-minutes" id="polar-ring-minutes" cx="120" cy="120" r="66" />
-              <!-- Segundos (r=48, perim=301.59) -->
               <circle class="polar-ring polar-ring-seconds" id="polar-ring-seconds" cx="120" cy="120" r="48" />
             </g>
 
@@ -152,129 +147,79 @@
             <span class="metric-value" id="weather-visibility">10.0 km</span>
           </div>
         </div>
+      </section>
 
-        <!-- Pronóstico extendido compacto -->
-        <div class="forecast-strip" id="weather-forecast">
-          <!-- Generado dinámicamente -->
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         MÓDULO INFERIOR (OCUPA EL 60% DEL VIEWPORT - 4 CAJAS 2x2)
+         ═══════════════════════════════════════════════════════ -->
+    <div class="market-quad-module">
+
+      <!-- CAJA 1: DIVISAS -->
+      <section class="glass-panel quad-box" aria-label="Divisas en ARS">
+        <div class="quad-box-header">
+          <span class="quad-box-title"><span class="dot-cat"></span>DIVISAS</span>
+          <div class="sort-btn-group">
+            <button class="sort-btn active" data-box="fiat" data-sort="desc" title="Ordenar por mayores subas">▲ Subieron</button>
+            <button class="sort-btn" data-box="fiat" data-sort="asc" title="Ordenar por mayores bajas">▼ Bajaron</button>
+          </div>
+        </div>
+        <div class="quad-list-container" id="list-fiat">
+          <!-- Inyectado dinámicamente -->
+        </div>
+      </section>
+
+      <!-- CAJA 2: CRIPTOMONEDAS -->
+      <section class="glass-panel quad-box" aria-label="Criptomonedas en ARS">
+        <div class="quad-box-header">
+          <span class="quad-box-title"><span class="dot-cat"></span>CRIPTOS</span>
+          <div class="sort-btn-group">
+            <button class="sort-btn active" data-box="crypto" data-sort="desc" title="Ordenar por mayores subas">▲ Subieron</button>
+            <button class="sort-btn" data-box="crypto" data-sort="asc" title="Ordenar por mayores bajas">▼ Bajaron</button>
+          </div>
+        </div>
+        <div class="quad-list-container" id="list-crypto">
+          <!-- Inyectado dinámicamente -->
+        </div>
+      </section>
+
+      <!-- CAJA 3: CEDEARS -->
+      <section class="glass-panel quad-box" aria-label="CEDEARs en ARS">
+        <div class="quad-box-header">
+          <span class="quad-box-title"><span class="dot-cat"></span>CEDEARS</span>
+          <div class="sort-btn-group">
+            <button class="sort-btn active" data-box="cedear" data-sort="desc" title="Ordenar por mayores subas">▲ Subieron</button>
+            <button class="sort-btn" data-box="cedear" data-sort="asc" title="Ordenar por mayores bajas">▼ Bajaron</button>
+          </div>
+        </div>
+        <div class="quad-list-container" id="list-cedear">
+          <!-- Inyectado dinámicamente -->
+        </div>
+      </section>
+
+      <!-- CAJA 4: SUGERENCIAS DE INVERSIÓN -->
+      <section class="glass-panel quad-box" aria-label="Sugerencias de Inversión">
+        <div class="quad-box-header">
+          <span class="quad-box-title"><span class="dot-cat"></span>INVERSIONES</span>
+          <div class="sort-btn-group">
+            <button class="sort-btn active" data-box="insights" data-sort="desc" title="Ordenar por mayor potencial">▲ Subieron</button>
+            <button class="sort-btn" data-box="insights" data-sort="asc" title="Ordenar por menor riesgo">▼ Bajaron</button>
+          </div>
+        </div>
+        <div class="quad-list-container" id="list-insights">
+          <!-- Inyectado dinámicamente -->
         </div>
       </section>
 
     </div>
 
     <!-- ═══════════════════════════════════════════════════════
-         BLOQUE 2: COTIZACIONES DIVISAS, CRIPTOS Y CEDEARS
-         ═══════════════════════════════════════════════════════ -->
-    <section class="glass-panel finance-widget" aria-label="Cotizaciones de Mercado">
-      <div class="widget-header-bar">
-        <div class="widget-title-group">
-          <span class="widget-title">MERCADOS, CRIPTO & CEDEARS</span>
-          <span class="widget-subtitle">COTIZACIONES EN ARS • ALERTAS [-6% / +10%]</span>
-        </div>
-        <div class="status-pill timer-pill" title="Actualización automática cada 20 segundos">
-          <span class="status-dot green"></span>
-          <span id="finance-updated">ACTIVO</span>
-          <span class="timer-countdown font-mono" id="finance-timer">20s</span>
-        </div>
-      </div>
-
-      <!-- Pestañas de filtrado -->
-      <div class="finance-tabs" role="tablist">
-        <button class="finance-tab-btn active" data-tab="all" role="tab">TODOS</button>
-        <button class="finance-tab-btn" data-tab="crypto" role="tab">CRIPTOS</button>
-        <button class="finance-tab-btn" data-tab="cedear" role="tab">CEDEARS</button>
-        <button class="finance-tab-btn" data-tab="fiat" role="tab">DIVISAS</button>
-      </div>
-
-      <!-- Lista de Activos Financieros -->
-      <div class="finance-list-container" id="finance-list">
-        <!-- Filas generadas dinámicamente con Sparklines SVG -->
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════
-         BLOQUE 3: SUGERENCIAS DE INVERSIÓN (INSIGHTS & AI)
-         ═══════════════════════════════════════════════════════ -->
-    <section class="glass-panel insights-widget" aria-label="Sugerencias de Inversión">
-      <div class="widget-header-bar">
-        <div class="widget-title-group">
-          <span class="widget-title">SUGERENCIAS DE INVERSIÓN</span>
-          <span class="widget-subtitle">ESTRATEGIAS & DRIVERS DE MERCADO</span>
-        </div>
-        <div class="status-pill">
-          <span class="status-dot"></span>
-          <span>ESTRATEGIA</span>
-        </div>
-      </div>
-
-      <div class="insights-list">
-        <!-- Sugerencia 1: NVDA CEDEAR -->
-        <article class="insight-card">
-          <div class="insight-header-row">
-            <span class="insight-target">NVDA (NVIDIA) <span style="font-weight:400; color:var(--text-muted);">CEDEAR</span></span>
-            <span class="insight-badge buy">COMPRA FUERTE</span>
-          </div>
-          <p class="insight-desc">
-            Expansión en demanda de GPUs Blackwell e infraestructura IA para centros de datos. Cobertura de tipo de cambio implícito CCL.
-          </p>
-          <div class="insight-meta-row">
-            <span class="insight-meta-item">Horizonte: <strong>6-12 meses</strong></span>
-            <span class="insight-meta-item">Riesgo: <strong>Moderado</strong></span>
-          </div>
-        </article>
-
-        <!-- Sugerencia 2: BTC / ETH -->
-        <article class="insight-card">
-          <div class="insight-header-row">
-            <span class="insight-target">BTC & ETH <span style="font-weight:400; color:var(--text-muted);">CRIPTO</span></span>
-            <span class="insight-badge accumulate">ACUMULACIÓN (DCA)</span>
-          </div>
-          <p class="insight-desc">
-            Flujos institucionales continuos vía ETFs al contado y fase de expansión en liquidez global post-halving.
-          </p>
-          <div class="insight-meta-row">
-            <span class="insight-meta-item">Horizonte: <strong>Largo Plazo</strong></span>
-            <span class="insight-meta-item">Riesgo: <strong>Alto / Volátil</strong></span>
-          </div>
-        </article>
-
-        <!-- Sugerencia 3: LECAPS / TASA PESOS -->
-        <article class="insight-card">
-          <div class="insight-header-row">
-            <span class="insight-target">LECAPS / TASA PESOS <span style="font-weight:400; color:var(--text-muted);">RENTA FIJA</span></span>
-            <span class="insight-badge hedge">CARRY TRADE / TASA</span>
-          </div>
-          <p class="insight-desc">
-            Estrategia de devengamiento de tasa efectiva mensual fija ante estabilidad cambiaria y ancla fiscal del programa económico.
-          </p>
-          <div class="insight-meta-row">
-            <span class="insight-meta-item">Horizonte: <strong>30-90 días</strong></span>
-            <span class="insight-meta-item">Riesgo: <strong>Conservador</strong></span>
-          </div>
-        </article>
-
-        <!-- Sugerencia 4: ALI TOKEN -->
-        <article class="insight-card">
-          <div class="insight-header-row">
-            <span class="insight-target">ALI PROTOCOL <span style="font-weight:400; color:var(--accent-red);">OFICIAL</span></span>
-            <span class="insight-badge buy">STAKING APY 14.2%</span>
-          </div>
-          <p class="insight-desc">
-            Participación y gobernanza en el ecosistema multimedia de Alicari con recompensas directas y liquidez en DEXs.
-          </p>
-          <div class="insight-meta-row">
-            <span class="insight-meta-item">Horizonte: <strong>Flexible</strong></span>
-            <span class="insight-meta-item">Riesgo: <strong>Moderado</strong></span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════
          FOOTER DE TELEMETRÍA
          ═══════════════════════════════════════════════════════ -->
     <footer class="dash-footer">
-      <div>ALICARI OS // SYSTEM v2.8</div>
-      <div>MONITOR 02 • LIVE FEED</div>
+      <div>ALICARI OS // QUAD-STAGE v3.0</div>
+      <div>MONITOR 02 • ZERO SCROLL</div>
     </footer>
 
   </main>
@@ -288,13 +233,13 @@
     document.addEventListener('DOMContentLoaded', () => {
       // 1. Partículas sutiles verticales
       new ParticleEngine('particles-canvas', {
-        particleCount: 50,
-        mouseRadius: 140,
-        baseSpeed: 0.3,
+        particleCount: 40,
+        mouseRadius: 130,
+        baseSpeed: 0.25,
         redRatio: 0.25
       });
 
-      // 2. Reloj Polar en tiempo real
+      // 2. Reloj Polar en tiempo real (con números exteriores)
       new ClockEngine({
         timeId: 'clock-time',
         secondsId: 'clock-seconds',
@@ -306,10 +251,8 @@
         containerId: 'weather-widget'
       });
 
-      // 4. Finance & Crypto Engine con 20s auto-refresh y Sparklines
-      new FinanceEngine({
-        containerId: 'finance-list'
-      });
+      // 4. Finance & Investment Engine (4 cajas con ordenamiento independiente)
+      new FinanceEngine();
     });
   </script>
 </body>
