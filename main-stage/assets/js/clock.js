@@ -1,6 +1,6 @@
 /**
  * ALICARI WALLPAPER - POLAR CLOCK ENGINE
- * Concentric Polar coordinate clock with smooth real-time arcs & digital center display
+ * Concentric Polar coordinate clock with outer dial numerals & external digital readout
  */
 
 class ClockEngine {
@@ -10,18 +10,18 @@ class ClockEngine {
     this.dateEl = document.getElementById(options.dateId || 'clock-date');
     this.greetingEl = document.getElementById(options.greetingId || 'clock-greeting');
     
-    // Polar Rings SVG Arcs
+    // Polar Rings SVG Arcs (viewBox 0 0 240 240, Center 120,120)
     this.ringHours = document.getElementById('polar-ring-hours');
     this.ringMinutes = document.getElementById('polar-ring-minutes');
     this.ringSeconds = document.getElementById('polar-ring-seconds');
 
     // Circumferences
-    // r=80 -> 2*PI*80 = 502.65
-    // r=62 -> 2*PI*62 = 389.56
-    // r=44 -> 2*PI*44 = 276.46
-    this.cHours = 502.65;
-    this.cMinutes = 389.56;
-    this.cSeconds = 276.46;
+    // r=84 -> 2*PI*84 = 527.78
+    // r=66 -> 2*PI*66 = 414.69
+    // r=48 -> 2*PI*48 = 301.59
+    this.cHours = 527.78;
+    this.cMinutes = 414.69;
+    this.cSeconds = 301.59;
 
     this.dias = ['DOMINGO', 'LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'VIERNES', 'SÁBADO'];
     this.meses = [
@@ -47,12 +47,12 @@ class ClockEngine {
     const min = now.getMinutes();
     const hr = now.getHours();
 
-    // 1. Digital Display
+    // 1. Digital Display (Ubicado por fuera del reloj polar)
     if (this.timeEl) {
       this.timeEl.innerHTML = `${this.pad(hr)}<span class="clock-colon">:</span>${this.pad(min)}`;
     }
     if (this.secondsEl) {
-      this.secondsEl.textContent = this.pad(sec);
+      this.secondsEl.textContent = `:${this.pad(sec)}`;
     }
 
     if (this.dateEl) {
@@ -69,7 +69,7 @@ class ClockEngine {
       this.greetingEl.textContent = greeting;
     }
 
-    // 2. Polar Arcs Calculation (Valores fluidos continuos)
+    // 2. Polar Arcs Calculation (Movimiento continuo y suave)
     const secProgress = (sec + ms / 1000) / 60;
     const minProgress = (min + sec / 60) / 60;
     const hrProgress = ((hr % 24) + min / 60) / 24;

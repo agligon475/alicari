@@ -45,30 +45,61 @@
          ═══════════════════════════════════════════════════════ -->
     <div class="top-twin-row">
 
-      <!-- COLUMNA 1: RELOJ POLAR CONCÉNTRICO -->
+      <!-- COLUMNA 1: RELOJ POLAR CONCÉNTRICO CON NÚMEROS EXTERIORES -->
       <section class="glass-panel polar-clock-widget" aria-label="Reloj Polar">
+        
         <div class="polar-container">
-          <svg class="polar-svg" viewBox="0 0 200 200">
-            <!-- Pistas concéntricas de fondo -->
-            <circle class="polar-track" cx="100" cy="100" r="80" />
-            <circle class="polar-track" cx="100" cy="100" r="62" />
-            <circle class="polar-track" cx="100" cy="100" r="44" />
+          <svg class="polar-svg-outer" viewBox="0 0 240 240">
+            <!-- Números de marcación por fuera del reloj polar -->
+            <g class="polar-dial-numbers font-mono">
+              <text x="120" y="16" text-anchor="middle" class="dial-num">00</text>
+              <text x="226" y="124" text-anchor="middle" class="dial-num">06</text>
+              <text x="120" y="234" text-anchor="middle" class="dial-num">12</text>
+              <text x="14" y="124" text-anchor="middle" class="dial-num">18</text>
+            </g>
 
-            <!-- Arcos concéntricos dinámicos -->
-            <!-- Horas (r=80, perim=502.65) -->
-            <circle class="polar-ring polar-ring-hours" id="polar-ring-hours" cx="100" cy="100" r="80" />
-            <!-- Minutos (r=62, perim=389.56) -->
-            <circle class="polar-ring polar-ring-minutes" id="polar-ring-minutes" cx="100" cy="100" r="62" />
-            <!-- Segundos (r=44, perim=276.46) -->
-            <circle class="polar-ring polar-ring-seconds" id="polar-ring-seconds" cx="100" cy="100" r="44" />
+            <!-- Marcas intermedias radiales exteriores -->
+            <g class="polar-dial-ticks">
+              <line x1="172" y1="30" x2="168" y2="37" class="dial-tick" />
+              <line x1="210" y1="68" x2="203" y2="72" class="dial-tick" />
+              <line x1="210" y1="172" x2="203" y2="168" class="dial-tick" />
+              <line x1="172" y1="210" x2="168" y2="203" class="dial-tick" />
+              <line x1="68" y1="210" x2="72" y2="203" class="dial-tick" />
+              <line x1="30" y1="172" x2="37" y2="168" class="dial-tick" />
+              <line x1="30" y1="68" x2="37" y2="72" class="dial-tick" />
+              <line x1="68" y1="30" x2="72" y2="37" class="dial-tick" />
+            </g>
+
+            <!-- Arcos concéntricos dinámicos (Rotados -90deg para empezar a las 12) -->
+            <g transform="rotate(-90 120 120)">
+              <!-- Pistas de fondo -->
+              <circle class="polar-track" cx="120" cy="120" r="84" />
+              <circle class="polar-track" cx="120" cy="120" r="66" />
+              <circle class="polar-track" cx="120" cy="120" r="48" />
+
+              <!-- Arcos de progreso -->
+              <!-- Horas (r=84, perim=527.78) -->
+              <circle class="polar-ring polar-ring-hours" id="polar-ring-hours" cx="120" cy="120" r="84" />
+              <!-- Minutos (r=66, perim=414.69) -->
+              <circle class="polar-ring polar-ring-minutes" id="polar-ring-minutes" cx="120" cy="120" r="66" />
+              <!-- Segundos (r=48, perim=301.59) -->
+              <circle class="polar-ring polar-ring-seconds" id="polar-ring-seconds" cx="120" cy="120" r="48" />
+            </g>
+
+            <!-- Centro del reloj polar con Isotipo Alicari 'a' -->
+            <g transform="translate(108, 108) scale(0.03)" class="polar-center-logo">
+              <path fill="#f60000" filter="drop-shadow(0 0 10px #f60000)" d="M560,180h0c-21.68,0-40.68,11.5-51.22,28.74-32.08-18.29-69.21-28.74-108.78-28.74-121.5,0-220,98.5-220,220s98.5,220,220,220c39.57,0,76.7-10.45,108.78-28.74,10.54,17.24,29.54,28.74,51.22,28.74h0c33.14,0,60-26.86,60-60V240c0-33.14-26.86-60-60-60ZM394.78,491.13c-47.25,0-85.56-38.31-85.56-85.56s38.31-85.56,85.56-85.56,85.56,38.31,85.56,85.56-38.3,85.56-85.56,85.56Z"/>
+            </g>
           </svg>
+        </div>
 
-          <!-- Centro Digital -->
-          <div class="polar-center-content">
-            <div class="polar-time-digits" id="clock-time">18<span class="clock-colon">:</span>00</div>
-            <div class="polar-seconds-badge" id="clock-seconds">00</div>
-            <div class="polar-date-text" id="clock-date">24 SEP 2026</div>
+        <!-- Números y lectura digital por fuera del reloj polar -->
+        <div class="polar-external-digital">
+          <div class="polar-digital-row">
+            <span class="polar-ext-time font-mono" id="clock-time">18<span class="clock-colon">:</span>00</span>
+            <span class="polar-ext-sec font-mono" id="clock-seconds">:00</span>
           </div>
+          <div class="polar-ext-date font-mono" id="clock-date">24 SEP 2026</div>
         </div>
 
         <div class="polar-legend">
