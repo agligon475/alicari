@@ -66,28 +66,30 @@
 .top-twin-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 14px;
+  gap: 16px;
   align-items: stretch;
+  min-height: 290px;
 }
 
 /* ───────────────────────────────────────────────────────────
    COLUMNA 1: RELOJ POLAR (CONCENTRIC RINGS)
    ─────────────────────────────────────────────────────────── */
 .polar-clock-widget {
-  padding: 16px 14px;
+  padding: 22px 18px;
+  min-height: 290px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   position: relative;
-  background: linear-gradient(180deg, rgba(20, 20, 26, 0.8) 0%, rgba(10, 10, 14, 0.6) 100%);
+  background: linear-gradient(180deg, rgba(20, 20, 26, 0.85) 0%, rgba(10, 10, 14, 0.65) 100%);
 }
 
 .polar-container {
   position: relative;
-  width: 170px;
-  height: 170px;
+  width: 195px;
+  height: 195px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -149,7 +151,7 @@
 
 .polar-time-digits {
   font-family: var(--font-mono);
-  font-size: 1.65rem;
+  font-size: 1.95rem;
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--text-white);
@@ -168,56 +170,58 @@
 
 .polar-seconds-badge {
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: 0.9rem;
   font-weight: 700;
   color: var(--accent-red);
-  margin-top: 3px;
+  margin-top: 4px;
   text-shadow: 0 0 8px var(--accent-red-glow);
 }
 
 .polar-date-text {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   color: var(--text-muted);
   text-transform: uppercase;
-  margin-top: 4px;
+  margin-top: 6px;
 }
 
 .polar-legend {
   display: flex;
-  gap: 8px;
-  margin-top: 8px;
+  gap: 12px;
+  margin-top: 14px;
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: 0.68rem;
   color: var(--text-muted);
 }
 
 .polar-legend-item {
   display: flex;
   align-items: center;
-  gap: 3px;
+  gap: 4px;
 }
 
 .legend-dot {
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
 }
-.legend-dot.sec { background: #f60000; box-shadow: 0 0 5px #f60000; }
+.legend-dot.sec { background: #f60000; box-shadow: 0 0 6px #f60000; }
 .legend-dot.min { background: #f6f6f6; }
 .legend-dot.hr  { background: #8e8e93; }
 
 /* ───────────────────────────────────────────────────────────
-   COLUMNA 2: CLIMA SMN (COMPACTO Y ELEGANTE)
+   COLUMNA 2: CLIMA SMN (AMPLIO Y DETALLADO)
    ─────────────────────────────────────────────────────────── */
 .weather-widget {
-  padding: 16px 14px;
+  padding: 22px 18px;
+  min-height: 290px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: linear-gradient(180deg, rgba(16, 16, 22, 0.75) 0%, rgba(10, 10, 14, 0.65) 100%);
+  gap: 8px;
+  background: linear-gradient(180deg, rgba(16, 16, 22, 0.85) 0%, rgba(10, 10, 14, 0.7) 100%);
 }
 
 .widget-header-bar {
@@ -233,7 +237,7 @@
 }
 
 .widget-title {
-  font-size: 0.78rem;
+  font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   color: var(--text-white);
@@ -242,7 +246,7 @@
 
 .widget-subtitle {
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.65rem;
   color: var(--accent-red);
   letter-spacing: 0.04em;
 }
@@ -251,40 +255,40 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 4px 0;
+  padding: 2px 0;
 }
 
 .weather-temp-val {
   font-family: var(--font-mono);
-  font-size: 2.3rem;
-  font-weight: 700;
+  font-size: 2.8rem;
+  font-weight: 800;
   color: var(--text-white);
   line-height: 1;
 }
 
 .weather-temp-val .unit {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: 400;
   color: var(--accent-red);
 }
 
 .weather-st-val {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   color: var(--text-muted);
-  margin-top: 3px;
+  margin-top: 4px;
 }
 
 .weather-visual-block {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 2px;
+  gap: 3px;
 }
 
 .weather-icon-holder {
-  width: 44px;
-  height: 44px;
+  width: 52px;
+  height: 52px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -293,11 +297,11 @@
 .weather-svg {
   width: 100%;
   height: 100%;
-  filter: drop-shadow(0 0 8px rgba(246, 0, 0, 0.3));
+  filter: drop-shadow(0 0 10px rgba(246, 0, 0, 0.35));
 }
 
 .weather-condition-text {
-  font-size: 0.74rem;
+  font-size: 0.82rem;
   font-weight: 600;
   color: var(--text-white);
   text-align: right;
@@ -311,28 +315,69 @@
 }
 
 .metric-card {
-  padding: 6px 8px;
+  padding: 7px 10px;
   background: rgba(255, 255, 255, 0.025);
   border: 1px solid rgba(255, 255, 255, 0.04);
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 2px;
 }
 
 .metric-label {
-  font-size: 0.58rem;
+  font-size: 0.6rem;
   font-family: var(--font-mono);
   color: var(--text-muted);
   text-transform: uppercase;
 }
 
 .metric-value {
-  font-size: 0.8rem;
+  font-size: 0.88rem;
   font-weight: 600;
   color: var(--text-white);
   font-family: var(--font-mono);
 }
+
+.forecast-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.forecast-day-card {
+  padding: 4px 6px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.forecast-name {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.forecast-mini-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.forecast-temps {
+  display: flex;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+}
+
+.forecast-temps .max-temp { color: var(--text-white); font-weight: 600; }
+.forecast-temps .min-temp { color: var(--text-dim); }
 
 /* ═══════════════════════════════════════════════════════════
    BLOQUE 2: COTIZACIONES DIVISAS, CRIPTOS Y CEDEARS
