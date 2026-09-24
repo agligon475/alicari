@@ -1,29 +1,181 @@
 /**
  * ALICARI WALLPAPER - FINANCE & CRYPTO ENGINE
- * Live currency exchange rates (USD, EUR, BRL) & Crypto assets (BTC, ETH, USDT, ALI Token)
- * Built-in dynamic SVG Sparklines and offline fallback
+ * Activos en Pesos Argentinos (ARS):
+ * - Criptos: UNI, FET, NEAR, ARB, BTC, ETH (+ ALI Token)
+ * - CEDEARs: NVDA, TECO2, TEM
+ * - Divisas: USD Blue, USD Oficial, EUR, BRL
+ * 
+ * SISTEMA DE ALERTAS VISUALES:
+ * - Variación < -6%: Alerta ROJA (Fila completa en rojo pulsante con badge CRASH)
+ * - Variación > +10%: Alerta VERDE (Fila completa en verde brillante con badge BOOM)
  */
 
 class FinanceEngine {
   constructor(options = {}) {
     this.tableContainer = document.getElementById(options.containerId || 'finance-list');
-    this.refreshInterval = options.refreshInterval || 45 * 1000; // 45s
+    this.refreshInterval = options.refreshInterval || 40 * 1000; // 40 segundos
     this.lastUpdateEl = document.getElementById('finance-updated');
-    this.activeTab = 'all'; // 'all', 'fiat', 'crypto'
+    this.activeTab = 'all'; // 'all', 'crypto', 'cedear', 'fiat'
 
-    // Estado de datos
+    // Dólar Blue de referencia para conversiones dinámicas a ARS
+    this.usdPriceARS = 1400;
+
+    // Estado inicial de datos estructurados en ARS
     this.data = {
-      fiat: [
-        { id: 'usd-blue', name: 'Dólar Blue', symbol: 'USD BLUE', buy: 1380, sell: 1400, change: 1.08, currency: 'ARS', trend: [1360, 1370, 1365, 1380, 1395, 1390, 1400] },
-        { id: 'usd-oficial', name: 'Dólar Oficial', symbol: 'USD OFICIAL', buy: 1010, sell: 1050, change: 0.24, currency: 'ARS', trend: [1030, 1035, 1040, 1042, 1045, 1048, 1050] },
-        { id: 'eur', name: 'Euro', symbol: 'EUR / ARS', buy: 1120, sell: 1165, change: -0.45, currency: 'ARS', trend: [1175, 1170, 1168, 1162, 1165, 1160, 1165] },
-        { id: 'brl', name: 'Real Brasileño', symbol: 'BRL / ARS', buy: 195, sell: 208, change: 0.85, currency: 'ARS', trend: [202, 203, 204, 205, 206, 207, 208] }
-      ],
+      // ══════════════════════════════════════════════
+      // 1. CRIPTOMONEDAS (EN PESOS ARGENTINOS)
+      // ══════════════════════════════════════════════
       crypto: [
-        { id: 'ali-token', name: 'Alicari Protocol', symbol: 'ALI / USD', price: 14.85, change: 5.82, isCustom: true, currency: 'USD', trend: [13.2, 13.6, 13.9, 14.1, 14.4, 14.2, 14.85] },
-        { id: 'bitcoin', name: 'Bitcoin', symbol: 'BTC / USD', price: 63850, change: 2.15, currency: 'USD', trend: [62100, 62500, 63000, 62800, 63400, 63100, 63850] },
-        { id: 'ethereum', name: 'Ethereum', symbol: 'ETH / USD', price: 2640, change: -1.12, currency: 'USD', trend: [2710, 2690, 2670, 2680, 2650, 2630, 2640] },
-        { id: 'tether', name: 'Tether USDT', symbol: 'USDT / USD', price: 1.00, change: 0.02, currency: 'USD', trend: [1.00, 1.001, 0.999, 1.00, 1.001, 1.00, 1.00] }
+        { 
+          id: 'bitcoin', 
+          cgId: 'bitcoin',
+          name: 'Bitcoin', 
+          symbol: 'BTC', 
+          price: 89600000, 
+          change: 2.45, 
+          currency: 'ARS',
+          trend: [86500000, 87200000, 88100000, 87900000, 88900000, 89600000]
+        },
+        { 
+          id: 'ethereum', 
+          cgId: 'ethereum',
+          name: 'Ethereum', 
+          symbol: 'ETH', 
+          price: 3710000, 
+          change: -1.35, 
+          currency: 'ARS',
+          trend: [3820000, 3790000, 3750000, 3760000, 3730000, 3710000]
+        },
+        { 
+          id: 'uniswap', 
+          cgId: 'uniswap',
+          name: 'Uniswap', 
+          symbol: 'UNI', 
+          price: 11480, 
+          change: 11.85, // Dispara alerta verde > 10%
+          currency: 'ARS',
+          trend: [10100, 10350, 10600, 10900, 11200, 11480]
+        },
+        { 
+          id: 'fetch-ai', 
+          cgId: 'fetch-ai',
+          name: 'Artificial Superintelligence', 
+          symbol: 'FET', 
+          price: 2030, 
+          change: -7.42, // Dispara alerta roja < -6%
+          currency: 'ARS',
+          trend: [2240, 2200, 2150, 2110, 2070, 2030]
+        },
+        { 
+          id: 'near', 
+          cgId: 'near',
+          name: 'NEAR Protocol', 
+          symbol: 'NEAR', 
+          price: 7280, 
+          change: 4.15, 
+          currency: 'ARS',
+          trend: [6900, 7000, 7120, 7080, 7210, 7280]
+        },
+        { 
+          id: 'arbitrum', 
+          cgId: 'arbitrum',
+          name: 'Arbitrum', 
+          symbol: 'ARB', 
+          price: 868, 
+          change: -2.10, 
+          currency: 'ARS',
+          trend: [890, 885, 878, 882, 870, 868]
+        },
+        { 
+          id: 'ali-token', 
+          cgId: null,
+          name: 'Alicari Protocol', 
+          symbol: 'ALI', 
+          price: 20790, 
+          change: 14.20, // Dispara alerta verde > 10%
+          isCustom: true,
+          currency: 'ARS',
+          trend: [17800, 18400, 19100, 19800, 20200, 20790]
+        }
+      ],
+
+      // ══════════════════════════════════════════════
+      // 2. CEDEARS & ACCIONES (EN PESOS ARGENTINOS)
+      // ══════════════════════════════════════════════
+      cedear: [
+        { 
+          id: 'nvda', 
+          name: 'NVIDIA Corp', 
+          symbol: 'NVDA', 
+          price: 17450, 
+          change: 12.80, // Dispara alerta verde > 10%
+          currency: 'ARS',
+          trend: [15200, 15800, 16200, 16700, 17100, 17450]
+        },
+        { 
+          id: 'teco2', 
+          name: 'Telecom Argentina', 
+          symbol: 'TECO2', 
+          price: 1980, 
+          change: -6.85, // Dispara alerta roja < -6%
+          currency: 'ARS',
+          trend: [2140, 2100, 2070, 2030, 2000, 1980]
+        },
+        { 
+          id: 'tem', 
+          name: 'Tenaris / TEM CEDEAR', 
+          symbol: 'TEM', 
+          price: 32800, 
+          change: 3.25, 
+          currency: 'ARS',
+          trend: [31500, 31800, 32100, 32400, 32600, 32800]
+        }
+      ],
+
+      // ══════════════════════════════════════════════
+      // 3. DIVISAS (EN PESOS ARGENTINOS)
+      // ══════════════════════════════════════════════
+      fiat: [
+        { 
+          id: 'usd-blue', 
+          name: 'Dólar Blue', 
+          symbol: 'USD BLUE', 
+          buy: 1380, 
+          sell: 1400, 
+          change: 1.08, 
+          currency: 'ARS', 
+          trend: [1360, 1370, 1365, 1380, 1395, 1400] 
+        },
+        { 
+          id: 'usd-oficial', 
+          name: 'Dólar Oficial', 
+          symbol: 'USD OFIC.', 
+          buy: 1010, 
+          sell: 1050, 
+          change: 0.24, 
+          currency: 'ARS', 
+          trend: [1030, 1035, 1040, 1045, 1048, 1050] 
+        },
+        { 
+          id: 'eur', 
+          name: 'Euro', 
+          symbol: 'EUR', 
+          buy: 1120, 
+          sell: 1165, 
+          change: -0.45, 
+          currency: 'ARS', 
+          trend: [1175, 1170, 1168, 1162, 1165, 1165] 
+        },
+        { 
+          id: 'brl', 
+          name: 'Real Brasileño', 
+          symbol: 'BRL', 
+          buy: 195, 
+          sell: 208, 
+          change: 0.85, 
+          currency: 'ARS', 
+          trend: [202, 203, 204, 205, 206, 208] 
+        }
       ]
     };
 
@@ -49,48 +201,48 @@ class FinanceEngine {
   }
 
   async fetchAll() {
-    // Simular pequeña variación orgánica en ALI Token
-    const ali = this.data.crypto.find(c => c.id === 'ali-token');
-    if (ali) {
-      const delta = (Math.random() - 0.48) * 0.15;
-      ali.price = +(ali.price + delta).toFixed(2);
-      ali.trend.push(ali.price);
-      if (ali.trend.length > 8) ali.trend.shift();
-    }
+    // 1. Simulación viva de microfluctuaciones de mercado para que nunca se congele
+    this.simulateOrganicMovements();
 
     try {
-      // 1. Fetch Dólares y Divisas
+      // 2. Fetch Dólar y Divisas reales (DolarAPI)
       const fiatPromise = fetch('https://dolarapi.com/v1/dolares')
         .then(r => r.json())
         .then(dolares => {
           const blue = dolares.find(d => d.casa === 'blue');
           const oficial = dolares.find(d => d.casa === 'oficial');
           if (blue) {
+            this.usdPriceARS = blue.venta || 1400;
             this.updateFiatItem('usd-blue', blue.compra, blue.venta);
           }
           if (oficial) {
             this.updateFiatItem('usd-oficial', oficial.compra, oficial.venta);
           }
-        }).catch(err => console.warn('[Finance] DolarAPI no disponible:', err.message));
+        }).catch(err => console.warn('[Finance] DolarAPI offline/rate-limited:', err.message));
 
-      // 2. Fetch Criptomonedas (CoinGecko Simple Price)
-      const cryptoPromise = fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,tether&vs_currencies=usd&include_24hr_change=true')
+      // 3. Fetch Criptomonedas (CoinGecko en ARS)
+      // UNI, FET, NEAR, ARB, BTC, ETH
+      const cgIds = 'bitcoin,ethereum,uniswap,fetch-ai,near,arbitrum';
+      const cryptoPromise = fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${cgIds}&vs_currencies=ars&include_24hr_change=true`)
         .then(r => r.json())
-        .then(cryptos => {
-          if (cryptos.bitcoin) {
-            this.updateCryptoItem('bitcoin', cryptos.bitcoin.usd, cryptos.bitcoin.usd_24h_change);
-          }
-          if (cryptos.ethereum) {
-            this.updateCryptoItem('ethereum', cryptos.ethereum.usd, cryptos.ethereum.usd_24h_change);
-          }
-          if (cryptos.tether) {
-            this.updateCryptoItem('tether', cryptos.tether.usd, cryptos.tether.usd_24h_change);
-          }
-        }).catch(err => console.warn('[Finance] CoinGecko no disponible:', err.message));
+        .then(prices => {
+          this.data.crypto.forEach(item => {
+            if (item.cgId && prices[item.cgId]) {
+              const arsPrice = Math.round(prices[item.cgId].ars);
+              const change24h = prices[item.cgId].ars_24h_change;
+              if (arsPrice) item.price = arsPrice;
+              if (change24h !== undefined && change24h !== null) {
+                item.change = +change24h.toFixed(2);
+              }
+              item.trend.push(item.price);
+              if (item.trend.length > 8) item.trend.shift();
+            }
+          });
+        }).catch(err => console.warn('[Finance] CoinGecko offline/rate-limited:', err.message));
 
       await Promise.allSettled([fiatPromise, cryptoPromise]);
     } catch (e) {
-      console.warn('[Finance] Fallback activado.');
+      console.warn('[Finance] Fallback activo.');
     } finally {
       this.render();
       if (this.lastUpdateEl) {
@@ -98,6 +250,25 @@ class FinanceEngine {
         this.lastUpdateEl.textContent = `${d.getHours().toString().padStart(2,'0')}:${d.getMinutes().toString().padStart(2,'0')}:${d.getSeconds().toString().padStart(2,'0')}`;
       }
     }
+  }
+
+  simulateOrganicMovements() {
+    // ALI Token
+    const ali = this.data.crypto.find(c => c.id === 'ali-token');
+    if (ali) {
+      const delta = (Math.random() - 0.45) * 120;
+      ali.price = Math.max(15000, Math.round(ali.price + delta));
+      ali.trend.push(ali.price);
+      if (ali.trend.length > 8) ali.trend.shift();
+    }
+
+    // Micro fluctuación en CEDEARs para realismo
+    this.data.cedear.forEach(ced => {
+      const delta = (Math.random() - 0.5) * (ced.price * 0.003);
+      ced.price = Math.round(ced.price + delta);
+      ced.trend.push(ced.price);
+      if (ced.trend.length > 8) ced.trend.shift();
+    });
   }
 
   updateFiatItem(id, buy, sell) {
@@ -110,23 +281,11 @@ class FinanceEngine {
     }
   }
 
-  updateCryptoItem(id, price, change) {
-    const item = this.data.crypto.find(c => c.id === id);
-    if (item && price) {
-      item.price = price;
-      if (change !== undefined && change !== null) {
-        item.change = +change.toFixed(2);
-      }
-      item.trend.push(price);
-      if (item.trend.length > 8) item.trend.shift();
-    }
-  }
-
-  // Genera un gráfico SVG Sparkline minimalista y suave
-  generateSparkline(values, isPositive) {
+  // Genera un gráfico SVG Sparkline minimalista con el color de alerta o tendencia
+  generateSparkline(values, strokeColor) {
     if (!values || values.length < 2) return '';
-    const width = 64;
-    const height = 22;
+    const width = 56;
+    const height = 20;
     const min = Math.min(...values);
     const max = Math.max(...values);
     const range = (max - min) || 1;
@@ -136,8 +295,6 @@ class FinanceEngine {
       const y = height - ((val - min) / range) * (height - 6) - 3;
       return `${x.toFixed(1)},${y.toFixed(1)}`;
     }).join(' ');
-
-    const strokeColor = isPositive ? '#00e676' : '#f60000';
 
     return `
       <svg class="sparkline-svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
@@ -153,8 +310,11 @@ class FinanceEngine {
     `;
   }
 
-  formatNumber(num, isCurrency = false, currency = 'USD') {
-    if (num >= 1000) {
+  formatARS(num) {
+    if (num >= 1000000) {
+      return num.toLocaleString('es-AR', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+    }
+    if (num >= 100) {
       return num.toLocaleString('es-AR', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
     }
     return num.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -165,32 +325,55 @@ class FinanceEngine {
 
     let itemsToRender = [];
     if (this.activeTab === 'all') {
-      itemsToRender = [...this.data.crypto, ...this.data.fiat];
-    } else if (this.activeTab === 'fiat') {
-      itemsToRender = this.data.fiat;
+      itemsToRender = [...this.data.crypto, ...this.data.cedear, ...this.data.fiat];
     } else if (this.activeTab === 'crypto') {
       itemsToRender = this.data.crypto;
+    } else if (this.activeTab === 'cedear') {
+      itemsToRender = this.data.cedear;
+    } else if (this.activeTab === 'fiat') {
+      itemsToRender = this.data.fiat;
     }
 
     let html = '';
 
     itemsToRender.forEach(item => {
-      const isPositive = item.change >= 0;
-      const changeClass = isPositive ? 'val-positive' : 'val-negative';
+      const change = item.change || 0;
+      const isPositive = change >= 0;
       const sign = isPositive ? '+' : '';
-      const spark = this.generateSparkline(item.trend, isPositive);
 
+      // ══════════════════════════════════════════════════════════════
+      // SISTEMA DE ALERTAS:
+      // - Baja > 6%  (<= -6.00%) -> ALERTA ROJA (Fila completa en rojo)
+      // - Suba > 10% (>= +10.00%) -> ALERTA VERDE (Fila completa en verde)
+      // ══════════════════════════════════════════════════════════════
+      let alertClass = '';
+      let alertBadge = '';
+      let strokeColor = isPositive ? '#00e676' : '#f60000';
+
+      if (change <= -6.0) {
+        alertClass = 'row-alert-crash';
+        alertBadge = '<span class="alert-tag alert-tag-crash">▼ CAÍDA -6%</span>';
+        strokeColor = '#f60000';
+      } else if (change >= 10.0) {
+        alertClass = 'row-alert-moon';
+        alertBadge = '<span class="alert-tag alert-tag-moon">▲ SUBA +10%</span>';
+        strokeColor = '#00e676';
+      }
+
+      const spark = this.generateSparkline(item.trend, strokeColor);
       const isCustomBadge = item.isCustom ? '<span class="custom-badge">OFICIAL</span>' : '';
+
       const priceFormatted = item.sell 
-        ? `$${this.formatNumber(item.sell)} <span class="sub-price">/ $${this.formatNumber(item.buy)}</span>`
-        : `$${this.formatNumber(item.price)} <span class="sub-cur">${item.currency}</span>`;
+        ? `$${this.formatARS(item.sell)} <span class="sub-price">/ $${this.formatARS(item.buy)}</span>`
+        : `$${this.formatARS(item.price)} <span class="sub-cur">ARS</span>`;
 
       html += `
-        <div class="finance-row ${item.isCustom ? 'is-featured' : ''}">
+        <div class="finance-row ${alertClass} ${item.isCustom ? 'is-featured' : ''}">
           <div class="fin-col fin-asset">
             <div class="fin-symbol-box">
               <span class="fin-symbol">${item.symbol}</span>
               ${isCustomBadge}
+              ${alertBadge}
             </div>
             <span class="fin-name">${item.name}</span>
           </div>
@@ -201,8 +384,8 @@ class FinanceEngine {
 
           <div class="fin-col fin-price">
             <div class="fin-val font-mono">${priceFormatted}</div>
-            <div class="fin-change ${changeClass} font-mono">
-              <span class="arrow">${isPositive ? '▲' : '▼'}</span> ${sign}${item.change.toFixed(2)}%
+            <div class="fin-change ${isPositive ? 'val-positive' : 'val-negative'} font-mono">
+              <span class="arrow">${isPositive ? '▲' : '▼'}</span> ${sign}${change.toFixed(2)}%
             </div>
           </div>
         </div>

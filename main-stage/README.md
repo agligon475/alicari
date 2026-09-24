@@ -52,10 +52,14 @@ main-stage/
 ### 2. Monitor 2 (Vertical — `vertical.html`):
 - **Bloque Superior (Reloj & Fecha):** Reloj 24h con segundero neón, fecha en español (`JUEVES, 24 DE SEPTIEMBRE 2026`) y barra de progreso porcentual del día.
 - **Bloque Central (Clima SMN):** Inspirado en el Servicio Meteorológico Nacional (SMN de Argentina). Muestra temperatura, sensación térmica, estado, viento, humedad, presión, visibilidad y pronóstico a 3 días con iconos vectoriales animados.
-- **Bloque Inferior (Mercados & Criptomonedas):**
-  - **Divisas:** Dólar Blue, Dólar Oficial, Euro, Real Brasileño (compra/venta).
-  - **Criptos:** BTC, ETH, USDT y el token corporativo **ALI Token**.
-  - Gráficos **Sparkline SVG** en tiempo real y variaciones porcentuales.
+- **Bloque Inferior (Mercados, Criptomonedas y CEDEARs en ARS):**
+  - **Criptos (en ARS):** UNI, FET, NEAR, ARB, BTC, ETH y ALI Token.
+  - **CEDEARs (en ARS):** NVDA, TECO2, TEM.
+  - **Divisas (en ARS):** Dólar Blue, Dólar Oficial, Euro, Real Brasileño.
+  - **🚨 Sistema de Alertas Visuales:**
+    - **Caídas > -6%:** Filas completas iluminadas en **Rojo pulsante** con badge `▼ CAÍDA -6%`.
+    - **Subas > +10%:** Filas completas iluminadas en **Verde brillante** con badge `▲ SUBA +10%`.
+  - Gráficos **Sparkline SVG** en tiempo real y selector de pestañas (`TODOS`, `CRIPTOS`, `CEDEARS`, `DIVISAS`).
 
 ---
 

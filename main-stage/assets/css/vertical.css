@@ -427,6 +427,71 @@
   border-color: rgba(246, 0, 0, 0.4);
 }
 
+/* ═══════════════════════════════════════════════════════════
+   SISTEMA DE ALERTAS VISUALES EN TIEMPO REAL
+   ═══════════════════════════════════════════════════════════ */
+
+/* ALERTA ROJA: Caída mayor al -6% */
+.finance-row.row-alert-crash {
+  background: linear-gradient(90deg, rgba(246, 0, 0, 0.28) 0%, rgba(20, 10, 12, 0.85) 100%) !important;
+  border: 1px solid rgba(246, 0, 0, 0.85) !important;
+  box-shadow: 0 0 16px rgba(246, 0, 0, 0.45), inset 0 0 12px rgba(246, 0, 0, 0.18) !important;
+  animation: alertCrashPulse 2.2s infinite ease-in-out;
+}
+
+@keyframes alertCrashPulse {
+  0%, 100% {
+    border-color: rgba(246, 0, 0, 0.7);
+    box-shadow: 0 0 12px rgba(246, 0, 0, 0.35), inset 0 0 8px rgba(246, 0, 0, 0.15);
+  }
+  50% {
+    border-color: rgba(255, 30, 30, 1);
+    box-shadow: 0 0 22px rgba(246, 0, 0, 0.75), inset 0 0 16px rgba(246, 0, 0, 0.35);
+  }
+}
+
+/* ALERTA VERDE: Subida mayor al +10% */
+.finance-row.row-alert-moon {
+  background: linear-gradient(90deg, rgba(0, 230, 118, 0.22) 0%, rgba(10, 24, 16, 0.85) 100%) !important;
+  border: 1px solid rgba(0, 230, 118, 0.85) !important;
+  box-shadow: 0 0 16px rgba(0, 230, 118, 0.45), inset 0 0 12px rgba(0, 230, 118, 0.18) !important;
+  animation: alertMoonPulse 2.2s infinite ease-in-out;
+}
+
+@keyframes alertMoonPulse {
+  0%, 100% {
+    border-color: rgba(0, 230, 118, 0.7);
+    box-shadow: 0 0 12px rgba(0, 230, 118, 0.35), inset 0 0 8px rgba(0, 230, 118, 0.15);
+  }
+  50% {
+    border-color: rgba(0, 255, 132, 1);
+    box-shadow: 0 0 22px rgba(0, 230, 118, 0.75), inset 0 0 16px rgba(0, 230, 118, 0.35);
+  }
+}
+
+/* Badges de alerta rápida */
+.alert-tag {
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.alert-tag-crash {
+  background: #f60000;
+  color: #ffffff;
+  box-shadow: 0 0 8px rgba(246, 0, 0, 0.6);
+}
+
+.alert-tag-moon {
+  background: #00e676;
+  color: #010101;
+  box-shadow: 0 0 8px rgba(0, 230, 118, 0.6);
+}
+
 .fin-asset {
   display: flex;
   flex-direction: column;
