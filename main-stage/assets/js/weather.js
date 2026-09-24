@@ -6,10 +6,10 @@
 
 class WeatherEngine {
   constructor(options = {}) {
-    this.latitude = options.latitude || -34.6037; // Buenos Aires
-    this.longitude = options.longitude || -58.3816;
-    this.cityName = options.cityName || 'BUENOS AIRES (CABA)';
-    this.stationName = options.stationName || 'ESTACIÓN METEOROLÓGICA SMN // OBS. CENTRAL';
+    this.latitude = options.latitude || -34.8167; // Monte Grande, Buenos Aires
+    this.longitude = options.longitude || -58.4667;
+    this.cityName = options.cityName || 'MONTE GRANDE, BUENOS AIRES';
+    this.stationName = options.stationName || 'ESTACIÓN SMN // EZEIZA / MONTE GRANDE';
     this.refreshInterval = options.refreshInterval || 10 * 60 * 1000; // 10 mins
 
     // Referencias DOM

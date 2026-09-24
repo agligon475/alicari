@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ALICARI — Vertical Dashboard (Monitor 2)</title>
-  <meta name="description" content="Dashboard vertical modular para Wallpaper Engine y Lively Wallpaper — Reloj Polar, SMN Clima y 4 Módulos de Mercado sin Scroll." />
+  <meta name="description" content="Dashboard vertical modular para Wallpaper Engine y Lively Wallpaper — 20% Top / 40% Mid / 40% Bot — Monte Grande Clima." />
   <link rel="icon" type="image/svg+xml" href="assets/images/logo-icon.svg" />
 
   <!-- Google Fonts: Outfit & JetBrains Mono -->
@@ -42,11 +42,11 @@
     </header>
 
     <!-- ═══════════════════════════════════════════════════════
-         FILA DUAL SUPERIOR (TOP ~36%): RELOJ POLAR + CLIMA
+         1. CAJAS SUPERIORES: 20% DE ALTO DE PANTALLA
          ═══════════════════════════════════════════════════════ -->
-    <div class="top-twin-row">
+    <div class="row-top-20">
 
-      <!-- COLUMNA 1: RELOJ POLAR CONCÉNTRICO CON NÚMEROS EXTERIORES -->
+      <!-- COLUMNA 1: RELOJ POLAR CON NÚMEROS EXTERIORES -->
       <section class="glass-panel polar-clock-widget" aria-label="Reloj Polar">
         <div class="polar-container">
           <svg class="polar-svg-outer" viewBox="0 0 240 240">
@@ -88,51 +88,50 @@
           </svg>
         </div>
 
-        <!-- Números y lectura digital por fuera del reloj polar -->
-        <div class="polar-external-digital">
+        <!-- Lectura digital integrada en 20% -->
+        <div class="polar-clock-meta-side">
           <div class="polar-digital-row">
             <span class="polar-ext-time font-mono" id="clock-time">18<span class="clock-colon">:</span>00</span>
             <span class="polar-ext-sec font-mono" id="clock-seconds">:00</span>
           </div>
           <div class="polar-ext-date font-mono" id="clock-date">24 SEP 2026</div>
-        </div>
-
-        <div class="polar-legend">
-          <div class="polar-legend-item"><span class="legend-dot sec"></span><span>S</span></div>
-          <div class="polar-legend-item"><span class="legend-dot min"></span><span>M</span></div>
-          <div class="polar-legend-item"><span class="legend-dot hr"></span><span>H</span></div>
+          <div class="polar-legend">
+            <div class="polar-legend-item"><span class="legend-dot sec"></span><span>S</span></div>
+            <div class="polar-legend-item"><span class="legend-dot min"></span><span>M</span></div>
+            <div class="polar-legend-item"><span class="legend-dot hr"></span><span>H</span></div>
+          </div>
         </div>
       </section>
 
-      <!-- COLUMNA 2: CLIMA (SERVICIO METEOROLÓGICO NACIONAL) -->
+      <!-- COLUMNA 2: CLIMA (MONTE GRANDE, BUENOS AIRES, ARGENTINA) -->
       <section class="glass-panel weather-widget" id="weather-widget" aria-label="Información Meteorológica">
         <div class="widget-header-bar">
           <div class="widget-title-group">
-            <span class="widget-title">CABA // SMN</span>
-            <span class="widget-subtitle">OBS. CENTRAL</span>
+            <span class="widget-title">MONTE GRANDE // SMN</span>
+            <span class="widget-subtitle">BUENOS AIRES, ARGENTINA</span>
           </div>
           <span class="status-dot"></span>
         </div>
 
         <div class="weather-hero-row">
           <div class="weather-temp-block">
-            <div class="weather-temp-val" id="weather-temp">22<span class="unit">°</span></div>
-            <div class="weather-st-val" id="weather-st">ST 21°</div>
+            <div class="weather-temp-val" id="weather-temp">19<span class="unit">°C</span></div>
+            <div class="weather-st-val" id="weather-st">ST 18°</div>
           </div>
 
           <div class="weather-visual-block">
             <div class="weather-icon-holder" id="weather-icon">
               <!-- SVG dinámico -->
             </div>
-            <div class="weather-condition-text" id="weather-condition">Despejado</div>
+            <div class="weather-condition-text" id="weather-condition">Mayormente Despejado</div>
           </div>
         </div>
 
-        <!-- Métricas meteorológicas compactas -->
+        <!-- Métricas meteorológicas horizontales -->
         <div class="weather-metrics-grid">
           <div class="metric-card">
             <span class="metric-label">HUM</span>
-            <span class="metric-value" id="weather-humidity">64%</span>
+            <span class="metric-value" id="weather-humidity">68%</span>
           </div>
           <div class="metric-card">
             <span class="metric-label">VIENTO</span>
@@ -140,7 +139,7 @@
           </div>
           <div class="metric-card">
             <span class="metric-label">PRES</span>
-            <span class="metric-value" id="weather-pressure">1013 hPa</span>
+            <span class="metric-value" id="weather-pressure">1004 hPa</span>
           </div>
           <div class="metric-card">
             <span class="metric-label">VIS</span>
@@ -152,9 +151,9 @@
     </div>
 
     <!-- ═══════════════════════════════════════════════════════
-         MÓDULO INFERIOR (OCUPA EL 60% DEL VIEWPORT - 4 CAJAS 2x2)
+         2. CAJAS MEDIAS: 40% DE ALTO DE PANTALLA (DIVISAS Y CRIPTOS)
          ═══════════════════════════════════════════════════════ -->
-    <div class="market-quad-module">
+    <div class="row-mid-38">
 
       <!-- CAJA 1: DIVISAS -->
       <section class="glass-panel quad-box" aria-label="Divisas en ARS">
@@ -183,6 +182,13 @@
           <!-- Inyectado dinámicamente -->
         </div>
       </section>
+
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         3. CAJAS INFERIORES: 40% DE ALTO DE PANTALLA (CEDEARS E INVERSIONES)
+         ═══════════════════════════════════════════════════════ -->
+    <div class="row-bot-38">
 
       <!-- CAJA 3: CEDEARS -->
       <section class="glass-panel quad-box" aria-label="CEDEARs en ARS">
@@ -218,8 +224,8 @@
          FOOTER DE TELEMETRÍA
          ═══════════════════════════════════════════════════════ -->
     <footer class="dash-footer">
-      <div>ALICARI OS // QUAD-STAGE v3.0</div>
-      <div>MONITOR 02 • ZERO SCROLL</div>
+      <div>ALICARI OS // 20-40-40 RATIO</div>
+      <div>MONTE GRANDE, BS AS • LIVE</div>
     </footer>
 
   </main>
@@ -233,8 +239,8 @@
     document.addEventListener('DOMContentLoaded', () => {
       // 1. Partículas sutiles verticales
       new ParticleEngine('particles-canvas', {
-        particleCount: 40,
-        mouseRadius: 130,
+        particleCount: 35,
+        mouseRadius: 120,
         baseSpeed: 0.25,
         redRatio: 0.25
       });
@@ -246,9 +252,13 @@
         dateId: 'clock-date'
       });
 
-      // 3. SMN Weather Engine
+      // 3. SMN Weather Engine para Monte Grande, Buenos Aires
       new WeatherEngine({
-        containerId: 'weather-widget'
+        containerId: 'weather-widget',
+        latitude: -34.8167,
+        longitude: -58.4667,
+        cityName: 'MONTE GRANDE, BUENOS AIRES',
+        stationName: 'ESTACIÓN SMN // EZEIZA / MONTE GRANDE'
       });
 
       // 4. Finance & Investment Engine (4 cajas con ordenamiento independiente)

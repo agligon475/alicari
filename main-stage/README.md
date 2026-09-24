@@ -50,12 +50,13 @@ main-stage/
 - **HUD Periférico Minimalista:** Reloj sutil, ecualizador visual rítmico y selector de pantalla completa.
 
 ### 2. Monitor 2 (Vertical — `vertical.html`):
-- **Fila Superior (~38% Viewport):**
-  - **Reloj Polar Concéntrico:** Arcos radiales dinámicos para Horas, Minutos y Segundos (en rojo neón `#f60000`) con números exteriores `00, 06, 12, 18` e isotipo central Alicari.
-  - **Clima SMN:** Temperatura, ST, estado, icono animado, humedad, viento, presión y visibilidad.
-- **Módulo Cuadrante Inferior (60% Viewport — 4 Cajas sin Scroll):**
-  - **Caja 1 (Divisas):** USD Blue, USD Oficial, EUR, BRL. Botones: `▲ Subieron` / `▼ Bajaron`.
+- **Cajas Superiores (20% Viewport):**
+  - **Reloj Polar Concéntrico:** Arcos radiales dinámicos para Horas, Minutos y Segundos (en rojo neón `#f60000`) con números exteriores `00, 06, 12, 18` y lectura digital integrada.
+  - **Clima SMN (Monte Grande, Buenos Aires, Argentina):** Temperatura real, ST, estado, icono animado, humedad, viento, presión y visibilidad.
+- **Cajas Medias (40% Viewport):**
+  - **Caja 1 (Divisas):** USD Blue, USD Oficial, EUR, BRL en ARS. Botones: `▲ Subieron` / `▼ Bajaron`.
   - **Caja 2 (Criptomonedas):** UNI, FET, NEAR, ARB, BTC, ETH, ALI Token en ARS. Botones: `▲ Subieron` / `▼ Bajaron`.
+- **Cajas Inferiores (40% Viewport):**
   - **Caja 3 (CEDEARs):** NVDA, TECO2, TEM en ARS. Botones: `▲ Subieron` / `▼ Bajaron`.
   - **Caja 4 (Sugerencias de Inversión):** Señales de mercado (`COMPRA FUERTE`, `ACUMULAR`, `CARRY TRADE`). Botones: `▲ Subieron` / `▼ Bajaron`.
   - **Timer en Vivo:** Auto-refresh cada 20 segundos con cuenta regresiva visible.
