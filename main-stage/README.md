@@ -50,16 +50,17 @@ main-stage/
 - **HUD Periférico Minimalista:** Reloj sutil, ecualizador visual rítmico y selector de pantalla completa.
 
 ### 2. Monitor 2 (Vertical — `vertical.html`):
-- **Bloque Superior (Reloj & Fecha):** Reloj 24h con segundero neón, fecha en español (`JUEVES, 24 DE SEPTIEMBRE 2026`) y barra de progreso porcentual del día.
-- **Bloque Central (Clima SMN):** Inspirado en el Servicio Meteorológico Nacional (SMN de Argentina). Muestra temperatura, sensación térmica, estado, viento, humedad, presión, visibilidad y pronóstico a 3 días con iconos vectoriales animados.
-- **Bloque Inferior (Mercados, Criptomonedas y CEDEARs en ARS):**
+- **Fila Superior (2 Columnas Integradas):**
+  - **Reloj Polar Concéntrico:** Arcos radiales dinámicos para Horas, Minutos y Segundos (en rojo neón `#f60000`) con centro digital 24h y fecha.
+  - **Clima SMN:** Temperatura, ST, estado, icono animado, humedad, viento, presión y visibilidad.
+- **Bloque Central (Mercados, Criptomonedas y CEDEARs en ARS):**
   - **Criptos (en ARS):** UNI, FET, NEAR, ARB, BTC, ETH y ALI Token.
   - **CEDEARs (en ARS):** NVDA, TECO2, TEM.
   - **Divisas (en ARS):** Dólar Blue, Dólar Oficial, Euro, Real Brasileño.
-  - **🚨 Sistema de Alertas Visuales:**
-    - **Caídas > -6%:** Filas completas iluminadas en **Rojo pulsante** con badge `▼ CAÍDA -6%`.
-    - **Subas > +10%:** Filas completas iluminadas en **Verde brillante** con badge `▲ SUBA +10%`.
-  - Gráficos **Sparkline SVG** en tiempo real y selector de pestañas (`TODOS`, `CRIPTOS`, `CEDEARS`, `DIVISAS`).
+  - **Timer en Vivo:** Auto-refresh cada 20 segundos con cuenta regresiva visible.
+  - **🚨 Alertas Visuales:** Filas rojas en caídas $> -6\%$ y verdes en subas $> +10\%$.
+- **Bloque Inferior (Sugerencias de Inversión & Estrategias):**
+  - Tarjetas de recomendación con señales (`COMPRA FUERTE`, `ACUMULAR (DCA)`, `CARRY TRADE`), horizonte temporal y nivel de riesgo para NVDA, BTC/ETH, Renta fija y ALI Protocol.
 
 ---
 
