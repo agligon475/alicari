@@ -13,9 +13,12 @@
 class FinanceEngine {
   constructor(options = {}) {
     this.tableContainer = document.getElementById(options.containerId || 'finance-list');
-    this.refreshInterval = options.refreshInterval || 40 * 1000; // 40 segundos
+    this.refreshInterval = 20 * 1000; // Exactamente 20 segundos
     this.lastUpdateEl = document.getElementById('finance-updated');
+    this.timerEl = document.getElementById('finance-timer');
     this.activeTab = 'all'; // 'all', 'crypto', 'cedear', 'fiat'
+    this.countdown = 20;
+    this.timerInterval = null;
 
     // Dólar Blue de referencia para conversiones dinámicas a ARS
     this.usdPriceARS = 1400;
@@ -185,7 +188,30 @@ class FinanceEngine {
   init() {
     this.bindTabs();
     this.fetchAll();
-    setInterval(() => this.fetchAll(), this.refreshInterval);
+    this.startCountdown();
+  }
+
+  startCountdown() {
+    this.countdown = 20;
+    this.updateTimerDisplay();
+
+    if (this.timerInterval) clearInterval(this.timerInterval);
+
+    this.timerInterval = setInterval(() => {
+      this.countdown--;
+      this.updateTimerDisplay();
+
+      if (this.countdown <= 0) {
+        this.countdown = 20;
+        this.fetchAll();
+      }
+    }, 1000);
+  }
+
+  updateTimerDisplay() {
+    if (this.timerEl) {
+      this.timerEl.textContent = `${this.countdown}s`;
+    }
   }
 
   bindTabs() {
