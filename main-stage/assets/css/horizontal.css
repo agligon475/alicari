@@ -1,0 +1,237 @@
+/**
+ * MONITOR 1 (HORIZONTAL - 16:9 / ULTRA-WIDE)
+ * Minimalist, immersive, corporate interactive wallpaper
+ */
+
+.stage-horizontal {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 48px;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   HERO CENTRADO CON LOGO Y EFECTOS
+   ═══════════════════════════════════════════════════════════ */
+.hero-stage-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  pointer-events: auto;
+  cursor: default;
+}
+
+.logo-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  transition: transform 0.2s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+.logo-svg-main {
+  width: 580px;
+  max-width: 80vw;
+  height: auto;
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.8));
+  transition: filter 0.4s ease;
+}
+
+.logo-svg-main:hover {
+  filter: drop-shadow(0 25px 45px rgba(246, 0, 0, 0.25));
+}
+
+/* Resplandor pulsante detrás del logo */
+.logo-ambient-glow {
+  position: absolute;
+  width: 320px;
+  height: 120px;
+  left: 20%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(246, 0, 0, 0.22) 0%, rgba(246, 0, 0, 0.04) 55%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: -1;
+  animation: breatheGlow 4s infinite ease-in-out;
+}
+
+@keyframes breatheGlow {
+  0%, 100% {
+    opacity: 0.55;
+    transform: translate(-50%, -50%) scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+}
+
+.hero-tagline {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  opacity: 0.85;
+}
+
+.tagline-sep {
+  color: var(--accent-red);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   HUD PERIFÉRICO ELEGANTE
+   ═══════════════════════════════════════════════════════════ */
+.hud-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 20;
+  pointer-events: auto;
+}
+
+.hud-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  z-index: 20;
+  pointer-events: auto;
+}
+
+/* Panel de Esquina */
+.corner-card {
+  padding: 12px 18px;
+  background: rgba(12, 12, 16, 0.6);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.hud-sys-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--text-white);
+  font-weight: 500;
+}
+
+.hud-clock-time {
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--text-white);
+}
+
+.hud-clock-time .sec {
+  color: var(--accent-red);
+  font-size: 0.85em;
+  margin-left: 2px;
+}
+
+.hud-clock-date {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Audio & Settings Pill */
+.controls-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ctrl-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+}
+
+.ctrl-btn:hover {
+  background: rgba(246, 0, 0, 0.15);
+  border-color: var(--border-red);
+  color: var(--text-white);
+  box-shadow: 0 0 12px var(--accent-red-glow);
+  transform: translateY(-2px);
+}
+
+.ctrl-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+/* Visualizador de Onda Sutil */
+.audio-visualizer-bar {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 16px;
+}
+
+.wave-bar {
+  width: 3px;
+  height: 100%;
+  background: var(--text-muted);
+  border-radius: 2px;
+  animation: waveAnim 1.4s infinite ease-in-out alternate;
+}
+
+.wave-bar:nth-child(1) { height: 40%; animation-delay: 0.1s; }
+.wave-bar:nth-child(2) { height: 80%; animation-delay: 0.3s; background: var(--accent-red); }
+.wave-bar:nth-child(3) { height: 60%; animation-delay: 0.2s; }
+.wave-bar:nth-child(4) { height: 100%; animation-delay: 0.4s; background: var(--accent-red); }
+.wave-bar:nth-child(5) { height: 50%; animation-delay: 0.15s; }
+
+@keyframes waveAnim {
+  0% { transform: scaleY(0.3); }
+  100% { transform: scaleY(1); }
+}
+
+@media (max-width: 768px) {
+  .stage-horizontal {
+    padding: 24px;
+  }
+  .logo-svg-main {
+    width: 320px;
+  }
+  .hud-header, .hud-footer {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+}

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ALICARI — Vertical Dashboard (Monitor 2)</title>
+  <meta name="description" content="Dashboard vertical modular para Wallpaper Engine y Lively Wallpaper — Reloj, SMN Clima y Cotizaciones." />
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo-icon.svg" />
+
+  <!-- Google Fonts: Outfit & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/vertical.css" />
+</head>
+<body>
+
+  <!-- Fondo interactivo y partículas -->
+  <div class="wallpaper-bg" aria-hidden="true"></div>
+  <canvas id="particles-canvas" aria-hidden="true"></canvas>
+
+  <!-- Escenario Vertical -->
+  <main class="stage-vertical">
+
+    <!-- ═══════════════════════════════════════════════════════
+         HEADER DE MARCA Y ESTADO
+         ═══════════════════════════════════════════════════════ -->
+    <header class="dash-header">
+      <div class="brand-badge">
+        <img src="assets/images/logo-icon.svg" alt="Alicari" class="brand-icon-svg" />
+        <h1 class="brand-title"><span>a</span>licari <span style="font-weight: 300; font-size: 0.8em; color: var(--text-muted);">// PORTRAIT</span></h1>
+      </div>
+      
+      <div class="status-pill">
+        <span class="status-dot green"></span>
+        <span>LIVE FEED</span>
+      </div>
+    </header>
+
+    <!-- ═══════════════════════════════════════════════════════
+         BLOQUE 1: RELOJ DIGITAL Y FECHA
+         ═══════════════════════════════════════════════════════ -->
+    <section class="glass-panel clock-widget" aria-label="Reloj y Calendario">
+      <div class="status-pill clock-greeting-pill" id="clock-greeting">
+        BUENAS TARDES
+      </div>
+
+      <div class="clock-main-display">
+        <div class="clock-digits" id="clock-time">18<span class="clock-colon">:</span>00</div>
+        <div class="clock-seconds-box">
+          <span class="clock-seconds" id="clock-seconds">00</span>
+        </div>
+      </div>
+
+      <div class="clock-date-text" id="clock-date">
+        JUEVES, 24 DE SEPTIEMBRE 2026
+      </div>
+
+      <div class="day-progress-wrapper">
+        <div class="day-progress-meta">
+          <span>PROGRESO DEL DÍA</span>
+          <span id="day-progress-percent">75.0%</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="day-progress-bar"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         BLOQUE 2: CLIMA (SERVICIO METEOROLÓGICO NACIONAL)
+         ═══════════════════════════════════════════════════════ -->
+    <section class="glass-panel weather-widget" id="weather-widget" aria-label="Información Meteorológica">
+      <div class="widget-header-bar">
+        <div class="widget-title-group">
+          <span class="widget-title">BUENOS AIRES // CABA</span>
+          <span class="widget-subtitle">ESTACIÓN SMN OBS. CENTRAL</span>
+        </div>
+        <div class="status-pill">
+          <span class="status-dot"></span>
+          <span id="weather-updated">ACTUALIZANDO...</span>
+        </div>
+      </div>
+
+      <div class="weather-hero-row">
+        <div class="weather-temp-block">
+          <div class="weather-temp-val" id="weather-temp">--<span class="unit">°C</span></div>
+          <div class="weather-st-val" id="weather-st">ST --°</div>
+        </div>
+
+        <div class="weather-visual-block">
+          <div class="weather-icon-holder" id="weather-icon">
+            <!-- Icono SVG inyectado por JS -->
+          </div>
+          <div class="weather-condition-text" id="weather-condition">Cargando reporte...</div>
+        </div>
+      </div>
+
+      <!-- Grilla de métricas meteorológicas -->
+      <div class="weather-metrics-grid">
+        <div class="metric-card">
+          <span class="metric-label">HUMEDAD</span>
+          <span class="metric-value" id="weather-humidity">--%</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-label">VIENTO</span>
+          <span class="metric-value" id="weather-wind">-- km/h</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-label">PRESIÓN</span>
+          <span class="metric-value" id="weather-pressure">-- hPa</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-label">VISIBILIDAD</span>
+          <span class="metric-value" id="weather-visibility">10.0 km</span>
+        </div>
+      </div>
+
+      <!-- Tira de pronóstico extendido -->
+      <div class="forecast-strip" id="weather-forecast">
+        <!-- Generado dinámicamente -->
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         BLOQUE 3: COTIZACIONES DIVISAS Y CRIPTOMONEDAS
+         ═══════════════════════════════════════════════════════ -->
+    <section class="glass-panel finance-widget" aria-label="Cotizaciones de Mercado">
+      <div class="widget-header-bar">
+        <div class="widget-title-group">
+          <span class="widget-title">MERCADOS & CRIPTO</span>
+          <span class="widget-subtitle">TICKER EN TIEMPO REAL</span>
+        </div>
+        <div class="status-pill">
+          <span class="status-dot green"></span>
+          <span id="finance-updated">SINCRONIZANDO</span>
+        </div>
+      </div>
+
+      <!-- Pestañas de filtrado -->
+      <div class="finance-tabs" role="tablist">
+        <button class="finance-tab-btn active" data-tab="all" role="tab">TODOS</button>
+        <button class="finance-tab-btn" data-tab="crypto" role="tab">CRIPTOS</button>
+        <button class="finance-tab-btn" data-tab="fiat" role="tab">DIVISAS</button>
+      </div>
+
+      <!-- Lista de Activos Financieros -->
+      <div class="finance-list-container" id="finance-list">
+        <!-- Filas generadas dinámicamente con Sparklines SVG -->
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         FOOTER DE NAVEGACIÓN Y TELEMETRÍA
+         ═══════════════════════════════════════════════════════ -->
+    <footer class="dash-footer">
+      <div>ALICARI OS // SYSTEM v2.8</div>
+      <div><a href="index.html">← MONITOR 1 (HORIZONTAL)</a></div>
+    </footer>
+
+  </main>
+
+  <!-- Scripts Modulares -->
+  <script src="assets/js/particles.js"></script>
+  <script src="assets/js/clock.js"></script>
+  <script src="assets/js/weather.js"></script>
+  <script src="assets/js/finance.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Partículas sutiles verticales
+      new ParticleEngine('particles-canvas', {
+        particleCount: 50,
+        mouseRadius: 140,
+        baseSpeed: 0.3,
+        redRatio: 0.25
+      });
+
+      // 2. Reloj y Calendario en tiempo real
+      new ClockEngine({
+        timeId: 'clock-time',
+        secondsId: 'clock-seconds',
+        dateId: 'clock-date',
+        greetingId: 'clock-greeting',
+        dayProgressId: 'day-progress-bar',
+        dayPercentId: 'day-progress-percent'
+      });
+
+      // 3. SMN Weather Engine
+      new WeatherEngine({
+        containerId: 'weather-widget'
+      });
+
+      // 4. Finance & Crypto Engine con Sparklines
+      new FinanceEngine({
+        containerId: 'finance-list'
+      });
+    });
+  </script>
+</body>
+</html>

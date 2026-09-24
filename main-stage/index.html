@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ALICARI — Interactive Stage (Monitor 1)</title>
+  <meta name="description" content="Fondo de pantalla interactivo modular para Wallpaper Engine y Lively Wallpaper — ALICARI Studio." />
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo-icon.svg" />
+
+  <!-- Google Fonts: Outfit & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/horizontal.css" />
+</head>
+<body>
+
+  <!-- Fondo interactivo con textura y partículas -->
+  <div class="wallpaper-bg" aria-hidden="true"></div>
+  <canvas id="particles-canvas" aria-hidden="true"></canvas>
+
+  <!-- Escenario Horizontal Principal -->
+  <main class="stage-horizontal">
+    
+    <!-- ═══════════════════════════════════════════════════════
+         HUD SUPERIOR PERIFÉRICO
+         ═══════════════════════════════════════════════════════ -->
+    <header class="hud-header">
+      <div class="corner-card">
+        <span class="status-dot"></span>
+        <div style="display: flex; flex-direction: column;">
+          <span class="hud-sys-label">ALICARI // DISPLAY 01</span>
+          <span style="font-size: 0.65rem; color: var(--text-muted); font-family: var(--font-mono);">MONITOR PRINCIPAL • 60 FPS</span>
+        </div>
+      </div>
+
+      <div class="corner-card">
+        <div style="text-align: right;">
+          <div class="hud-clock-time" id="hud-time">18:00<span class="sec">00</span></div>
+          <div class="hud-clock-date" id="hud-date">JUEVES, 24 DE SEPTIEMBRE 2026</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ═══════════════════════════════════════════════════════
+         HERO CENTRAL: LOGO ALICARI CON PARALLAX 3D
+         ═══════════════════════════════════════════════════════ -->
+    <section class="hero-stage-center" aria-label="Alicari Identity">
+      <div class="logo-wrapper parallax-layer" data-depth="24" data-rotate="9">
+        <div class="logo-ambient-glow" aria-hidden="true"></div>
+        <img src="assets/images/logo-alicari.svg" alt="ALICARI Logo" class="logo-svg-main" />
+      </div>
+
+      <div class="hero-tagline parallax-layer" data-depth="12" data-rotate="4">
+        <span>MULTIMEDIA</span>
+        <span class="tagline-sep">•</span>
+        <span>EXPERIENCIAS DIGITALES</span>
+        <span class="tagline-sep">•</span>
+        <span>BRANDING</span>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         HUD INFERIOR PERIFÉRICO
+         ═══════════════════════════════════════════════════════ -->
+    <footer class="hud-footer">
+      <div class="corner-card">
+        <div class="audio-visualizer-bar" title="Audio / System Ambient Rhythm">
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+        </div>
+        <span class="hud-sys-label" style="font-size: 0.68rem; color: var(--text-muted);">SYS.ACTIVE // WALLPAPER ENGINE</span>
+      </div>
+
+      <div class="controls-group">
+        <a href="vertical.html" class="ctrl-btn" title="Ver Monitor 2 (Vertical)" aria-label="Abrir vista vertical">
+          <svg viewBox="0 0 24 24"><path d="M16 1H8C6.9 1 6 1.9 6 3V21C6 22.1 6.9 23 8 23H16C17.1 23 18 22.1 18 21V3C18 1.9 17.1 1 16 1ZM16 19H8V5H16V19Z"/></svg>
+        </a>
+        <button class="ctrl-btn" id="btn-fullscreen" title="Pantalla Completa (F11)" aria-label="Alternar pantalla completa">
+          <svg viewBox="0 0 24 24"><path d="M7 14H5V19H10V17H7V14ZM5 10H7V7H10V5H5V10ZM17 17H14V19H19V14H17V17ZM14 5V7H17V10H19V5H14Z"/></svg>
+        </button>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Scripts Modulares -->
+  <script src="assets/js/particles.js"></script>
+  <script src="assets/js/parallax.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Inicializar Partículas Ambientales
+      const particles = new ParticleEngine('particles-canvas', {
+        particleCount: 75,
+        mouseRadius: 180,
+        baseSpeed: 0.35,
+        redRatio: 0.3
+      });
+
+      // 2. Inicializar Parallax 3D reactivo al cursor
+      const parallax = new ParallaxEngine('.parallax-layer');
+
+      // 3. Reloj minimalista HUD
+      const dias = ['DOMINGO', 'LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'VIERNES', 'SÁBADO'];
+      const meses = ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'];
+      const hudTime = document.getElementById('hud-time');
+      const hudDate = document.getElementById('hud-date');
+
+      function updateHudClock() {
+        const now = new Date();
+        const h = now.getHours().toString().padStart(2, '0');
+        const m = now.getMinutes().toString().padStart(2, '0');
+        const s = now.getSeconds().toString().padStart(2, '0');
+        if (hudTime) hudTime.innerHTML = `${h}:${m}<span class="sec">${s}</span>`;
+        if (hudDate) {
+          hudDate.textContent = `${dias[now.getDay()]}, ${now.getDate()} DE ${meses[now.getMonth()]} ${now.getFullYear()}`;
+        }
+      }
+      updateHudClock();
+      setInterval(updateHudClock, 1000);
+
+      // 4. Botón Fullscreen
+      const fsBtn = document.getElementById('btn-fullscreen');
+      if (fsBtn) {
+        fsBtn.addEventListener('click', () => {
+          if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch(err => console.log(err));
+          } else {
+            document.exitFullscreen();
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

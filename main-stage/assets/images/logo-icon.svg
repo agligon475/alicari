@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="100%" height="100%" aria-label="alicari icon">
+  <defs>
+    <filter id="icon-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="15" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <path fill="#f60000" filter="url(#icon-glow)" d="M560,180h0c-21.68,0-40.68,11.5-51.22,28.74-32.08-18.29-69.21-28.74-108.78-28.74-121.5,0-220,98.5-220,220s98.5,220,220,220c39.57,0,76.7-10.45,108.78-28.74,10.54,17.24,29.54,28.74,51.22,28.74h0c33.14,0,60-26.86,60-60V240c0-33.14-26.86-60-60-60ZM394.78,491.13c-47.25,0-85.56-38.31-85.56-85.56s38.31-85.56,85.56-85.56,85.56,38.31,85.56,85.56-38.3,85.56-85.56,85.56Z"/>
+</svg>
