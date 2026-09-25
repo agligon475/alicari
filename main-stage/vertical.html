@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ALICARI — Vertical Dashboard (Monitor 2)</title>
-  <meta name="description" content="Dashboard vertical modular para Wallpaper Engine y Lively Wallpaper — 20% Top / 40% Mid / 40% Bot — Monte Grande Clima." />
+  <meta name="description" content="Dashboard vertical modular navegable tipo carrusel para Wallpaper Engine y Lively Wallpaper — Pantalla 1: Reloj & Clima / Pantalla 2: Mercados & Finanzas." />
   <link rel="icon" type="image/svg+xml" href="assets/images/logo-icon.svg" />
 
   <!-- Google Fonts: Outfit & JetBrains Mono -->
@@ -18,15 +18,15 @@
 </head>
 <body>
 
-  <!-- Fondo interactivo y partículas -->
+  <!-- Fondo interactivo y partículas de bajo consumo -->
   <div class="wallpaper-bg" aria-hidden="true"></div>
   <canvas id="particles-canvas" aria-hidden="true"></canvas>
 
-  <!-- Escenario Vertical -->
+  <!-- Escenario Vertical con Carrusel -->
   <main class="stage-vertical">
 
     <!-- ═══════════════════════════════════════════════════════
-         HEADER DE MARCA Y ESTADO
+         HEADER DE MARCA Y CONTROLES DE NAVEGACIÓN
          ═══════════════════════════════════════════════════════ -->
     <header class="dash-header">
       <div class="brand-badge">
@@ -34,225 +34,282 @@
         <h1 class="brand-title"><span>a</span>licari <span style="font-weight: 300; font-size: 0.8em; color: var(--text-muted);">// PORTRAIT</span></h1>
       </div>
       
-      <div class="status-pill timer-pill" title="Actualización automática cada 20 segundos">
-        <span class="status-dot green"></span>
-        <span>SYNC</span>
-        <span class="timer-countdown font-mono" id="finance-timer">20s</span>
+      <!-- Selector de Pantallas Tipo Carrusel -->
+      <nav class="carousel-nav-container" aria-label="Navegación de Pantallas">
+        <div class="carousel-tabs-bar" role="tablist">
+          <button class="carousel-tab-btn active" role="tab" aria-selected="true" data-slide="0" title="Ver Pantalla de Hora y Clima (Tecla 1)">
+            <span class="tab-num">01</span>
+            <span>TIEMPO & CLIMA</span>
+          </button>
+          <button class="carousel-tab-btn" role="tab" aria-selected="false" data-slide="1" title="Ver Pantalla de Mercados y Activos (Tecla 2)">
+            <span class="tab-num">02</span>
+            <span>MERCADOS</span>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Acciones de Cabecera: Flechas, Auto-Rotar y Timer -->
+      <div class="header-actions">
+        <button class="carousel-arrow-btn" id="btn-carousel-prev" title="Pantalla Anterior (Flecha Izq / Arriba)" aria-label="Pantalla anterior">‹</button>
+        <button class="carousel-arrow-btn" id="btn-carousel-next" title="Pantalla Siguiente (Flecha Der / Abajo)" aria-label="Pantalla siguiente">›</button>
+        <button class="carousel-auto-btn" id="btn-carousel-auto" title="Activar rotación automática cada 25 segundos">
+          <span>AUTO</span>
+          <span style="font-size: 0.75em;">⟳</span>
+        </button>
+        <div class="status-pill timer-pill" title="Actualización automática de cotizaciones">
+          <span class="status-dot green"></span>
+          <span>SYNC</span>
+          <span class="timer-countdown font-mono" id="finance-timer">20s</span>
+        </div>
       </div>
     </header>
 
     <!-- ═══════════════════════════════════════════════════════
-         1. CAJAS SUPERIORES: 20% DE ALTO DE PANTALLA
+         CARRUSEL DE PANTALLAS (VIEWPORT & SLIDES)
          ═══════════════════════════════════════════════════════ -->
-    <div class="row-top-20">
+    <div class="carousel-viewport">
+      <div class="carousel-track">
 
-      <!-- COLUMNA 1: RELOJ POLAR CON NÚMEROS EXTERIORES -->
-      <section class="glass-panel polar-clock-widget" aria-label="Reloj Polar">
-        <div class="polar-container">
-          <svg class="polar-svg-outer" viewBox="0 0 240 240">
-            <!-- Números radiales de marcación por fuera de los aros -->
-            <g class="polar-dial-numbers font-mono">
-              <text x="120" y="16" text-anchor="middle" class="dial-num">00</text>
-              <text x="226" y="124" text-anchor="middle" class="dial-num">06</text>
-              <text x="120" y="234" text-anchor="middle" class="dial-num">12</text>
-              <text x="14" y="124" text-anchor="middle" class="dial-num">18</text>
-            </g>
+        <!-- ───────────────────────────────────────────────────
+             PANTALLA 1 / CARD 1: HORA Y CLIMA EXCLUSIVOS
+             ─────────────────────────────────────────────────── -->
+        <section class="carousel-slide is-active" id="slide-weather-clock" aria-label="Pantalla 1: Hora y Clima">
+          <div class="slide-clock-weather">
 
-            <!-- Marcas intermedias radiales exteriores -->
-            <g class="polar-dial-ticks">
-              <line x1="172" y1="30" x2="168" y2="37" class="dial-tick" />
-              <line x1="210" y1="68" x2="203" y2="72" class="dial-tick" />
-              <line x1="210" y1="172" x2="203" y2="168" class="dial-tick" />
-              <line x1="172" y1="210" x2="168" y2="203" class="dial-tick" />
-              <line x1="68" y1="210" x2="72" y2="203" class="dial-tick" />
-              <line x1="30" y1="172" x2="37" y2="168" class="dial-tick" />
-              <line x1="30" y1="68" x2="37" y2="72" class="dial-tick" />
-              <line x1="68" y1="30" x2="72" y2="37" class="dial-tick" />
-            </g>
+            <!-- 1. RELOJ POLAR HERO CON NÚMEROS RADIALES EXTERIORES -->
+            <div class="glass-panel polar-clock-card-full" aria-label="Reloj Polar de Precisión">
+              <div class="clock-card-header">
+                <span class="clock-greeting-badge" id="clock-greeting">BUENAS NOCHES</span>
+                <span class="clock-timezone-badge font-mono">UTC-3 • BUENOS AIRES</span>
+              </div>
 
-            <!-- Arcos concéntricos dinámicos (Rotados -90deg para empezar a las 12) -->
-            <g transform="rotate(-90 120 120)">
-              <circle class="polar-track" cx="120" cy="120" r="84" />
-              <circle class="polar-track" cx="120" cy="120" r="66" />
-              <circle class="polar-track" cx="120" cy="120" r="48" />
+              <div class="polar-clock-main-content">
+                <div class="polar-container">
+                  <svg class="polar-svg-outer" viewBox="0 0 240 240">
+                    <!-- Números radiales de marcación por fuera de los aros -->
+                    <g class="polar-dial-numbers font-mono">
+                      <text x="120" y="16" text-anchor="middle" class="dial-num">00</text>
+                      <text x="226" y="124" text-anchor="middle" class="dial-num">06</text>
+                      <text x="120" y="234" text-anchor="middle" class="dial-num">12</text>
+                      <text x="14" y="124" text-anchor="middle" class="dial-num">18</text>
+                    </g>
 
-              <circle class="polar-ring polar-ring-hours" id="polar-ring-hours" cx="120" cy="120" r="84" />
-              <circle class="polar-ring polar-ring-minutes" id="polar-ring-minutes" cx="120" cy="120" r="66" />
-              <circle class="polar-ring polar-ring-seconds" id="polar-ring-seconds" cx="120" cy="120" r="48" />
-            </g>
+                    <!-- Marcas intermedias radiales exteriores -->
+                    <g class="polar-dial-ticks">
+                      <line x1="172" y1="30" x2="168" y2="37" class="dial-tick" />
+                      <line x1="210" y1="68" x2="203" y2="72" class="dial-tick" />
+                      <line x1="210" y1="172" x2="203" y2="168" class="dial-tick" />
+                      <line x1="172" y1="210" x2="168" y2="203" class="dial-tick" />
+                      <line x1="68" y1="210" x2="72" y2="203" class="dial-tick" />
+                      <line x1="30" y1="172" x2="37" y2="168" class="dial-tick" />
+                      <line x1="30" y1="68" x2="37" y2="72" class="dial-tick" />
+                      <line x1="68" y1="30" x2="72" y2="37" class="dial-tick" />
+                    </g>
 
-            <!-- Centro del reloj polar con Isotipo Alicari 'a' -->
-            <g transform="translate(108, 108) scale(0.03)" class="polar-center-logo">
-              <path fill="#f60000" filter="drop-shadow(0 0 10px #f60000)" d="M560,180h0c-21.68,0-40.68,11.5-51.22,28.74-32.08-18.29-69.21-28.74-108.78-28.74-121.5,0-220,98.5-220,220s98.5,220,220,220c39.57,0,76.7-10.45,108.78-28.74,10.54,17.24,29.54,28.74,51.22,28.74h0c33.14,0,60-26.86,60-60V240c0-33.14-26.86-60-60-60ZM394.78,491.13c-47.25,0-85.56-38.31-85.56-85.56s38.31-85.56,85.56-85.56,85.56,38.31,85.56,85.56-38.3,85.56-85.56,85.56Z"/>
-            </g>
-          </svg>
-        </div>
+                    <!-- Arcos concéntricos dinámicos (Rotados -90deg para empezar a las 12) -->
+                    <g transform="rotate(-90 120 120)">
+                      <circle class="polar-track" cx="120" cy="120" r="84" />
+                      <circle class="polar-track" cx="120" cy="120" r="66" />
+                      <circle class="polar-track" cx="120" cy="120" r="48" />
 
-        <!-- Lectura digital integrada en 20% -->
-        <div class="polar-clock-meta-side">
-          <div class="polar-digital-row">
-            <span class="polar-ext-time font-mono" id="clock-time">18<span class="clock-colon">:</span>00</span>
-            <span class="polar-ext-sec font-mono" id="clock-seconds">:00</span>
-          </div>
-          <div class="polar-ext-date font-mono" id="clock-date">24 SEP 2026</div>
-          <div class="polar-legend">
-            <div class="polar-legend-item"><span class="legend-dot sec"></span><span>S</span></div>
-            <div class="polar-legend-item"><span class="legend-dot min"></span><span>M</span></div>
-            <div class="polar-legend-item"><span class="legend-dot hr"></span><span>H</span></div>
-          </div>
-        </div>
-      </section>
+                      <circle class="polar-ring polar-ring-hours" id="polar-ring-hours" cx="120" cy="120" r="84" />
+                      <circle class="polar-ring polar-ring-minutes" id="polar-ring-minutes" cx="120" cy="120" r="66" />
+                      <circle class="polar-ring polar-ring-seconds" id="polar-ring-seconds" cx="120" cy="120" r="48" />
+                    </g>
 
-      <!-- COLUMNA 2: CLIMA (MONTE GRANDE, BUENOS AIRES, ARGENTINA) -->
-      <section class="glass-panel weather-widget" id="weather-widget" aria-label="Información Meteorológica">
-        <div class="widget-header-bar">
-          <div class="widget-title-group">
-            <span class="widget-title">MONTE GRANDE // SMN</span>
-            <span class="widget-subtitle">BUENOS AIRES, ARGENTINA</span>
-          </div>
-          <span class="status-dot"></span>
-        </div>
+                    <!-- Centro del reloj polar con Isotipo Alicari 'a' -->
+                    <g transform="translate(108, 108) scale(0.03)" class="polar-center-logo">
+                      <path fill="#f60000" filter="drop-shadow(0 0 10px #f60000)" d="M560,180h0c-21.68,0-40.68,11.5-51.22,28.74-32.08-18.29-69.21-28.74-108.78-28.74-121.5,0-220,98.5-220,220s98.5,220,220,220c39.57,0,76.7-10.45,108.78-28.74,10.54,17.24,29.54,28.74,51.22,28.74h0c33.14,0,60-26.86,60-60V240c0-33.14-26.86-60-60-60ZM394.78,491.13c-47.25,0-85.56-38.31-85.56-85.56s38.31-85.56,85.56-85.56,85.56,38.31,85.56,85.56-38.3,85.56-85.56,85.56Z"/>
+                    </g>
+                  </svg>
+                </div>
 
-        <div class="weather-hero-row">
-          <div class="weather-temp-block">
-            <div class="weather-temp-val" id="weather-temp">19<span class="unit">°C</span></div>
-            <div class="weather-st-val" id="weather-st">ST 18°</div>
-          </div>
-
-          <div class="weather-visual-block">
-            <div class="weather-icon-holder" id="weather-icon">
-              <!-- SVG dinámico -->
+                <!-- Lectura digital integrada -->
+                <div class="polar-clock-meta-side">
+                  <div class="polar-digital-row">
+                    <span class="polar-ext-time font-mono" id="clock-time">18<span class="clock-colon">:</span>00</span>
+                    <span class="polar-ext-sec font-mono" id="clock-seconds">:00</span>
+                  </div>
+                  <div class="polar-ext-date font-mono" id="clock-date">JUE 24 SEP 2026</div>
+                  <div class="polar-legend">
+                    <div class="polar-legend-item"><span class="legend-dot sec"></span><span>SEG</span></div>
+                    <div class="polar-legend-item"><span class="legend-dot min"></span><span>MIN</span></div>
+                    <div class="polar-legend-item"><span class="legend-dot hr"></span><span>HOR</span></div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="weather-condition-text" id="weather-condition">Mayormente Despejado</div>
-          </div>
-        </div>
 
-        <!-- Métricas meteorológicas horizontales -->
-        <div class="weather-metrics-grid">
-          <div class="metric-card">
-            <span class="metric-label">HUM</span>
-            <span class="metric-value" id="weather-humidity">68%</span>
-          </div>
-          <div class="metric-card">
-            <span class="metric-label">VIENTO</span>
-            <span class="metric-value" id="weather-wind">14 km/h</span>
-          </div>
-          <div class="metric-card">
-            <span class="metric-label">PRES</span>
-            <span class="metric-value" id="weather-pressure">1004 hPa</span>
-          </div>
-          <div class="metric-card">
-            <span class="metric-label">VIS</span>
-            <span class="metric-value" id="weather-visibility">10.0 km</span>
-          </div>
-        </div>
-      </section>
+            <!-- 2. ESTACIÓN METEOROLÓGICA SMN MONTE GRANDE -->
+            <div class="glass-panel weather-card-full" id="weather-widget" aria-label="Información Meteorológica">
+              <div class="widget-header-bar">
+                <div class="widget-title-group">
+                  <span class="widget-title">MONTE GRANDE // SMN</span>
+                  <span class="widget-subtitle">BUENOS AIRES, ARGENTINA</span>
+                </div>
+                <div class="status-pill font-mono" style="font-size: 0.6rem;">
+                  <span class="status-dot green"></span>
+                  <span id="weather-updated">LIVE</span>
+                </div>
+              </div>
 
+              <div class="weather-hero-row">
+                <div class="weather-temp-block">
+                  <div class="weather-temp-val" id="weather-temp">19<span class="unit">°C</span></div>
+                  <div class="weather-st-val" id="weather-st">ST 18°</div>
+                </div>
+
+                <div class="weather-visual-block">
+                  <div class="weather-icon-holder" id="weather-icon">
+                    <!-- SVG meteorológico dinámico inyectado por JS -->
+                  </div>
+                  <div class="weather-condition-text" id="weather-condition">Mayormente Despejado</div>
+                </div>
+              </div>
+
+              <!-- 4 Métricas Clave -->
+              <div class="weather-metrics-grid">
+                <div class="metric-card">
+                  <span class="metric-label">HUMEDAD</span>
+                  <span class="metric-value" id="weather-humidity">68%</span>
+                </div>
+                <div class="metric-card">
+                  <span class="metric-label">VIENTO</span>
+                  <span class="metric-value" id="weather-wind">14 km/h NE</span>
+                </div>
+                <div class="metric-card">
+                  <span class="metric-label">PRESIÓN</span>
+                  <span class="metric-value" id="weather-pressure">1004 hPa</span>
+                </div>
+                <div class="metric-card">
+                  <span class="metric-label">VISIBILIDAD</span>
+                  <span class="metric-value" id="weather-visibility">10.0 km</span>
+                </div>
+              </div>
+
+              <!-- Pronóstico Extendido de 3 Días -->
+              <div class="weather-forecast-section">
+                <div class="forecast-section-title">Pronóstico Próximos Días</div>
+                <div class="weather-forecast-grid" id="weather-forecast">
+                  <!-- Inyectado dinámicamente -->
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ───────────────────────────────────────────────────
+             PANTALLA 2 / CARD 2: OTROS ELEMENTOS (MERCADOS & FINANZAS)
+             ─────────────────────────────────────────────────── -->
+        <section class="carousel-slide" id="slide-markets" aria-label="Pantalla 2: Mercados y Activos">
+          <div class="slide-markets">
+            <div class="markets-grid-2x2">
+
+              <!-- CAJA 1: DIVISAS -->
+              <section class="glass-panel quad-box" aria-label="Divisas en ARS">
+                <div class="quad-box-header">
+                  <span class="quad-box-title"><span class="dot-cat"></span>DIVISAS</span>
+                  <div class="sort-btn-group">
+                    <button class="sort-btn active" data-box="fiat" data-sort="desc" title="Ordenar por mayores subas">▲ Subieron</button>
+                    <button class="sort-btn" data-box="fiat" data-sort="asc" title="Ordenar por mayores bajas">▼ Bajaron</button>
+                  </div>
+                </div>
+                <div class="quad-list-container" id="list-fiat">
+                  <!-- Inyectado dinámicamente -->
+                </div>
+              </section>
+
+              <!-- CAJA 2: CRIPTOMONEDAS -->
+              <section class="glass-panel quad-box" aria-label="Criptomonedas en ARS">
+                <div class="quad-box-header">
+                  <span class="quad-box-title"><span class="dot-cat"></span>CRIPTOS</span>
+                  <div class="sort-btn-group">
+                    <button class="sort-btn active" data-box="crypto" data-sort="desc" title="Ordenar por mayores subas">▲ Subieron</button>
+                    <button class="sort-btn" data-box="crypto" data-sort="asc" title="Ordenar por mayores bajas">▼ Bajaron</button>
+                  </div>
+                </div>
+                <div class="quad-list-container" id="list-crypto">
+                  <!-- Inyectado dinámicamente -->
+                </div>
+              </section>
+
+              <!-- CAJA 3: CEDEARS -->
+              <section class="glass-panel quad-box" aria-label="CEDEARs en ARS">
+                <div class="quad-box-header">
+                  <span class="quad-box-title"><span class="dot-cat"></span>CEDEARS</span>
+                  <div class="sort-btn-group">
+                    <button class="sort-btn active" data-box="cedear" data-sort="desc" title="Ordenar por mayores subas">▲ Subieron</button>
+                    <button class="sort-btn" data-box="cedear" data-sort="asc" title="Ordenar por mayores bajas">▼ Bajaron</button>
+                  </div>
+                </div>
+                <div class="quad-list-container" id="list-cedear">
+                  <!-- Inyectado dinámicamente -->
+                </div>
+              </section>
+
+              <!-- CAJA 4: SUGERENCIAS DE INVERSIÓN -->
+              <section class="glass-panel quad-box" aria-label="Sugerencias de Inversión">
+                <div class="quad-box-header">
+                  <span class="quad-box-title"><span class="dot-cat"></span>INVERSIONES</span>
+                  <div class="sort-btn-group">
+                    <button class="sort-btn active" data-box="insights" data-sort="desc" title="Ordenar por mayor potencial">▲ Subieron</button>
+                    <button class="sort-btn" data-box="insights" data-sort="asc" title="Ordenar por menor riesgo">▼ Bajaron</button>
+                  </div>
+                </div>
+                <div class="quad-list-container" id="list-insights">
+                  <!-- Inyectado dinámicamente -->
+                </div>
+              </section>
+
+            </div>
+          </div>
+        </section>
+
+      </div>
     </div>
 
     <!-- ═══════════════════════════════════════════════════════
-         2. CAJAS MEDIAS: 40% DE ALTO DE PANTALLA (DIVISAS Y CRIPTOS)
-         ═══════════════════════════════════════════════════════ -->
-    <div class="row-mid-40">
-
-      <!-- CAJA 1: DIVISAS -->
-      <section class="glass-panel quad-box" aria-label="Divisas en ARS">
-        <div class="quad-box-header">
-          <span class="quad-box-title"><span class="dot-cat"></span>DIVISAS</span>
-          <div class="sort-btn-group">
-            <button class="sort-btn active" data-box="fiat" data-sort="desc" title="Ordenar por mayores subas">▲ Subieron</button>
-            <button class="sort-btn" data-box="fiat" data-sort="asc" title="Ordenar por mayores bajas">▼ Bajaron</button>
-          </div>
-        </div>
-        <div class="quad-list-container" id="list-fiat">
-          <!-- Inyectado dinámicamente -->
-        </div>
-      </section>
-
-      <!-- CAJA 2: CRIPTOMONEDAS -->
-      <section class="glass-panel quad-box" aria-label="Criptomonedas en ARS">
-        <div class="quad-box-header">
-          <span class="quad-box-title"><span class="dot-cat"></span>CRIPTOS</span>
-          <div class="sort-btn-group">
-            <button class="sort-btn active" data-box="crypto" data-sort="desc" title="Ordenar por mayores subas">▲ Subieron</button>
-            <button class="sort-btn" data-box="crypto" data-sort="asc" title="Ordenar por mayores bajas">▼ Bajaron</button>
-          </div>
-        </div>
-        <div class="quad-list-container" id="list-crypto">
-          <!-- Inyectado dinámicamente -->
-        </div>
-      </section>
-
-    </div>
-
-    <!-- ═══════════════════════════════════════════════════════
-         3. CAJAS INFERIORES: 40% DE ALTO DE PANTALLA (CEDEARS E INVERSIONES)
-         ═══════════════════════════════════════════════════════ -->
-    <div class="row-bot-40">
-
-      <!-- CAJA 3: CEDEARS -->
-      <section class="glass-panel quad-box" aria-label="CEDEARs en ARS">
-        <div class="quad-box-header">
-          <span class="quad-box-title"><span class="dot-cat"></span>CEDEARS</span>
-          <div class="sort-btn-group">
-            <button class="sort-btn active" data-box="cedear" data-sort="desc" title="Ordenar por mayores subas">▲ Subieron</button>
-            <button class="sort-btn" data-box="cedear" data-sort="asc" title="Ordenar por mayores bajas">▼ Bajaron</button>
-          </div>
-        </div>
-        <div class="quad-list-container" id="list-cedear">
-          <!-- Inyectado dinámicamente -->
-        </div>
-      </section>
-
-      <!-- CAJA 4: SUGERENCIAS DE INVERSIÓN -->
-      <section class="glass-panel quad-box" aria-label="Sugerencias de Inversión">
-        <div class="quad-box-header">
-          <span class="quad-box-title"><span class="dot-cat"></span>INVERSIONES</span>
-          <div class="sort-btn-group">
-            <button class="sort-btn active" data-box="insights" data-sort="desc" title="Ordenar por mayor potencial">▲ Subieron</button>
-            <button class="sort-btn" data-box="insights" data-sort="asc" title="Ordenar por menor riesgo">▼ Bajaron</button>
-          </div>
-        </div>
-        <div class="quad-list-container" id="list-insights">
-          <!-- Inyectado dinámicamente -->
-        </div>
-      </section>
-
-    </div>
-
-    <!-- ═══════════════════════════════════════════════════════
-         FOOTER DE TELEMETRÍA
+         FOOTER DE TELEMETRÍA E INDICADORES DE CARRUSEL
          ═══════════════════════════════════════════════════════ -->
     <footer class="dash-footer">
-      <div>ALICARI OS // 20-40-40 RATIO</div>
+      <div class="footer-dots-container">
+        <button class="carousel-dot active" data-slide="0" aria-label="Ir a Pantalla 1: Tiempo y Clima"></button>
+        <button class="carousel-dot" data-slide="1" aria-label="Ir a Pantalla 2: Mercados y Activos"></button>
+      </div>
+
+      <div id="carousel-status-label">PANTALLA 1/2 • TIEMPO Y CLIMA</div>
       <div>MONTE GRANDE, BS AS • LIVE</div>
     </footer>
 
   </main>
 
-  <!-- Scripts Modulares -->
+  <!-- Scripts Modulares Optimizados -->
   <script src="assets/js/particles.js"></script>
   <script src="assets/js/clock.js"></script>
   <script src="assets/js/weather.js"></script>
   <script src="assets/js/finance.js"></script>
+  <script src="assets/js/carousel.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // 1. Partículas sutiles verticales
+      // 1. Partículas sutiles verticales de bajo consumo
       new ParticleEngine('particles-canvas', {
-        particleCount: 35,
-        mouseRadius: 120,
-        baseSpeed: 0.25,
-        redRatio: 0.25
+        particleCount: 28,
+        mouseRadius: 100,
+        baseSpeed: 0.22,
+        redRatio: 0.25,
+        targetFPS: 60
       });
 
-      // 2. Reloj Polar en tiempo real (con números exteriores)
+      // 2. Reloj Polar en tiempo real optimizado
       new ClockEngine({
         timeId: 'clock-time',
         secondsId: 'clock-seconds',
-        dateId: 'clock-date'
+        dateId: 'clock-date',
+        greetingId: 'clock-greeting'
       });
 
-      // 3. SMN Weather Engine para Monte Grande, Buenos Aires
+      // 3. SMN Weather Engine para Monte Grande, Buenos Aires con pronóstico
       new WeatherEngine({
         containerId: 'weather-widget',
         latitude: -34.8167,
@@ -263,6 +320,21 @@
 
       // 4. Finance & Investment Engine (4 cajas con ordenamiento independiente)
       new FinanceEngine();
+
+      // 5. Motor de Carrusel y Navegación entre Pantallas
+      new CarouselEngine({
+        viewportSelector: '.carousel-viewport',
+        trackSelector: '.carousel-track',
+        slideSelector: '.carousel-slide',
+        tabSelector: '.carousel-tab-btn',
+        dotSelector: '.carousel-dot',
+        prevBtnId: 'btn-carousel-prev',
+        nextBtnId: 'btn-carousel-next',
+        autoToggleId: 'btn-carousel-auto',
+        statusLabelId: 'carousel-status-label',
+        autoSlideInterval: 25000,
+        autoEnabled: false
+      });
     });
   </script>
 </body>

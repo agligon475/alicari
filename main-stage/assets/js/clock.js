@@ -1,5 +1,5 @@
 /**
- * ALICARI WALLPAPER - POLAR CLOCK ENGINE
+ * ALICARI WALLPAPER - POLAR CLOCK ENGINE (OPTIMIZED)
  * Concentric Polar coordinate clock with outer dial numerals & external digital readout
  */
 
@@ -16,9 +16,6 @@ class ClockEngine {
     this.ringSeconds = document.getElementById('polar-ring-seconds');
 
     // Circumferences
-    // r=84 -> 2*PI*84 = 527.78
-    // r=66 -> 2*PI*66 = 414.69
-    // r=48 -> 2*PI*48 = 301.59
     this.cHours = 527.78;
     this.cMinutes = 414.69;
     this.cSeconds = 301.59;
@@ -29,66 +26,100 @@ class ClockEngine {
       'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'
     ];
 
+    this.lastSec = -1;
+    this.lastMin = -1;
+    this.isRunning = true;
+    this.rafId = null;
+
     this.init();
   }
 
   init() {
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        this.isRunning = false;
+        if (this.rafId) {
+          cancelAnimationFrame(this.rafId);
+          this.rafId = null;
+        }
+      } else {
+        if (!this.isRunning) {
+          this.isRunning = true;
+          this.render();
+        }
+      }
+    });
+
     this.render();
   }
 
   pad(num) {
-    return num.toString().padStart(2, '0');
+    return num < 10 ? '0' + num : '' + num;
   }
 
   render() {
+    if (!this.isRunning) return;
+
     const now = new Date();
     const ms = now.getMilliseconds();
     const sec = now.getSeconds();
     const min = now.getMinutes();
     const hr = now.getHours();
 
-    // 1. Digital Display (Ubicado por fuera del reloj polar)
-    if (this.timeEl) {
-      this.timeEl.innerHTML = `${this.pad(hr)}<span class="clock-colon">:</span>${this.pad(min)}`;
-    }
-    if (this.secondsEl) {
-      this.secondsEl.textContent = `:${this.pad(sec)}`;
-    }
+    // Actualizar texto sólo cuando cambia el segundo para evitar recalcular DOM innecesariamente
+    if (sec !== this.lastSec) {
+      this.lastSec = sec;
+      
+      if (this.secondsEl) {
+        this.secondsEl.textContent = `:${this.pad(sec)}`;
+      }
 
-    if (this.dateEl) {
-      const dayName = this.dias[now.getDay()];
-      const dayNum = this.pad(now.getDate());
-      const monthName = this.meses[now.getMonth()].slice(0, 3);
-      this.dateEl.textContent = `${dayName.slice(0, 3)} ${dayNum} ${monthName} ${now.getFullYear()}`;
-    }
-
-    if (this.greetingEl) {
-      let greeting = 'BUENAS NOCHES';
-      if (hr >= 6 && hr < 12) greeting = 'BUENOS DÍAS';
-      else if (hr >= 12 && hr < 20) greeting = 'BUENAS TARDES';
-      this.greetingEl.textContent = greeting;
-    }
-
-    // 2. Polar Arcs Calculation (Movimiento continuo y suave)
-    const secProgress = (sec + ms / 1000) / 60;
-    const minProgress = (min + sec / 60) / 60;
-    const hrProgress = ((hr % 24) + min / 60) / 24;
-
-    if (this.ringSeconds) {
-      const offsetSec = this.cSeconds * (1 - secProgress);
-      this.ringSeconds.style.strokeDashoffset = offsetSec;
+      if (min !== this.lastMin) {
+        this.lastMin = min;
+        if (this.timeEl) {
+          this.timeEl.innerHTML = `${this.pad(hr)}<span class="clock-colon">:</span>${this.pad(min)}`;
+        }
+        if (this.dateEl) {
+          const dayName = this.dias[now.getDay()];
+          const dayNum = this.pad(now.getDate());
+          const monthName = this.meses[now.getMonth()].slice(0, 3);
+          this.dateEl.textContent = `${dayName.slice(0, 3)} ${dayNum} ${monthName} ${now.getFullYear()}`;
+        }
+        if (this.greetingEl) {
+          let greeting = 'BUENAS NOCHES';
+          if (hr >= 6 && hr < 12) greeting = 'BUENOS DÍAS';
+          else if (hr >= 12 && hr < 20) greeting = 'BUENAS TARDES';
+          this.greetingEl.textContent = greeting;
+        }
+      }
     }
 
-    if (this.ringMinutes) {
-      const offsetMin = this.cMinutes * (1 - minProgress);
-      this.ringMinutes.style.strokeDashoffset = offsetMin;
+    // Polar Arcs Calculation (Suave con ms)
+    if (this.ringSeconds || this.ringMinutes || this.ringHours) {
+      const secProgress = (sec + ms / 1000) / 60;
+      const minProgress = (min + sec / 60) / 60;
+      const hrProgress = ((hr % 24) + min / 60) / 24;
+
+      if (this.ringSeconds) {
+        this.ringSeconds.style.strokeDashoffset = (this.cSeconds * (1 - secProgress)).toFixed(1);
+      }
+      if (this.ringMinutes) {
+        this.ringMinutes.style.strokeDashoffset = (this.cMinutes * (1 - minProgress)).toFixed(1);
+      }
+      if (this.ringHours) {
+        this.ringHours.style.strokeDashoffset = (this.cHours * (1 - hrProgress)).toFixed(1);
+      }
     }
 
-    if (this.ringHours) {
-      const offsetHr = this.cHours * (1 - hrProgress);
-      this.ringHours.style.strokeDashoffset = offsetHr;
-    }
+    this.rafId = requestAnimationFrame(() => this.render());
+  }
 
-    requestAnimationFrame(() => this.render());
+  destroy() {
+    this.isRunning = false;
+    if (this.rafId) {
+      cancelAnimationFrame(this.rafId);
+      this.rafId = null;
+    }
   }
 }
+

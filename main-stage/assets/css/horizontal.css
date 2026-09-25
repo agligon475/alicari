@@ -80,29 +80,30 @@
   filter: drop-shadow(0 20px 45px rgba(246, 0, 0, 0.3));
 }
 
-/* Resplandor pulsante detrás de la 'a' roja */
+/* Resplandor pulsante detrás de la 'a' roja (Optimizado GPU) */
 .logo-ambient-glow {
   position: absolute;
   width: 240px;
   height: 100px;
   left: 22%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) translateZ(0);
   background: radial-gradient(circle, rgba(246, 0, 0, 0.28) 0%, rgba(246, 0, 0, 0.04) 55%, transparent 70%);
-  filter: blur(35px);
+  filter: blur(28px);
   pointer-events: none;
   z-index: -1;
+  will-change: transform, opacity;
   animation: breatheGlow 4s infinite ease-in-out;
 }
 
 @keyframes breatheGlow {
   0%, 100% {
     opacity: 0.6;
-    transform: translate(-50%, -50%) scale(0.95);
+    transform: translate(-50%, -50%) scale(0.96) translateZ(0);
   }
   50% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1.15);
+    opacity: 0.95;
+    transform: translate(-50%, -50%) scale(1.12) translateZ(0);
   }
 }
 
@@ -233,6 +234,8 @@
   height: 100%;
   background: var(--text-muted);
   border-radius: 2px;
+  transform-origin: bottom center;
+  will-change: transform;
   animation: waveAnim 1.4s infinite ease-in-out alternate;
 }
 
@@ -243,8 +246,8 @@
 .wave-bar:nth-child(5) { height: 50%; animation-delay: 0.15s; }
 
 @keyframes waveAnim {
-  0% { transform: scaleY(0.3); }
-  100% { transform: scaleY(1); }
+  0% { transform: scaleY(0.3) translateZ(0); }
+  100% { transform: scaleY(1) translateZ(0); }
 }
 
 @media (max-width: 768px) {

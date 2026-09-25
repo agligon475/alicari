@@ -1,18 +1,18 @@
 /**
  * MONITOR 2 (VERTICAL - 9:16 PORTRAIT / 1080x1920)
- * Proporciones Exactas de Pantalla:
- * - Cajas Superiores: 20% Alto de Pantalla (Reloj Polar + Clima Monte Grande)
- * - Cajas Medias: 40% Alto de Pantalla (Divisas + Criptos)
- * - Cajas Inferiores: 40% Alto de Pantalla (CEDEARs + Inversiones)
+ * ALICARI CAROUSEL DASHBOARD
+ * 
+ * Pantalla 1 (Card 1): HORA Y CLIMA (Reloj Polar + Estación Meteorológica SMN Completa)
+ * Pantalla 2 (Card 2): MERCADOS Y ACTIVOS (Divisas, Criptos, CEDEARs, Inversiones)
  */
 
 .stage-vertical {
   width: 100vw;
   height: 100vh;
-  padding: 14px 16px;
+  padding: 12px 14px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   position: relative;
   z-index: 10;
   box-sizing: border-box;
@@ -20,34 +20,36 @@
 }
 
 /* ═══════════════════════════════════════════════════════════
-   HEADER SUPERIOR
+   HEADER SUPERIOR CON NAVEGACIÓN DE CARRUSEL
    ═══════════════════════════════════════════════════════════ */
 .dash-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 3px;
+  padding-bottom: 6px;
   border-bottom: 1px solid var(--border-subtle);
   flex-shrink: 0;
-  height: 2.5vh;
+  min-height: 42px;
+  gap: 8px;
 }
 
 .brand-badge {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-shrink: 0;
 }
 
 .brand-icon-svg {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   filter: drop-shadow(0 0 8px var(--accent-red-glow));
 }
 
 .brand-title {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   color: var(--text-white);
   text-transform: uppercase;
 }
@@ -56,11 +58,130 @@
   color: var(--accent-red);
 }
 
+/* Selector de Pantallas / Tabs de Carrusel */
+.carousel-nav-container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.carousel-tabs-bar {
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  padding: 2px;
+  gap: 2px;
+}
+
+.carousel-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.carousel-tab-btn:hover {
+  color: var(--text-white);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.carousel-tab-btn.active {
+  background: rgba(246, 0, 0, 0.22);
+  color: #ffffff;
+  border-color: rgba(246, 0, 0, 0.6);
+  box-shadow: 0 0 12px var(--accent-red-dim);
+}
+
+.carousel-tab-btn .tab-num {
+  font-size: 0.58rem;
+  opacity: 0.7;
+  padding: 1px 3px;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.carousel-tab-btn.active .tab-num {
+  color: var(--accent-red);
+  background: rgba(255, 255, 255, 0.12);
+  opacity: 1;
+}
+
+/* Controles auxiliares en Header */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.carousel-arrow-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.carousel-arrow-btn:hover {
+  background: rgba(246, 0, 0, 0.2);
+  border-color: rgba(246, 0, 0, 0.5);
+  color: #fff;
+  box-shadow: 0 0 8px var(--accent-red-glow);
+}
+
+.carousel-auto-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 7px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.carousel-auto-btn:hover {
+  color: var(--text-white);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.carousel-auto-btn.active {
+  background: rgba(0, 230, 118, 0.15);
+  border-color: rgba(0, 230, 118, 0.5);
+  color: var(--green-positive);
+  box-shadow: 0 0 8px var(--green-glow);
+}
+
 .timer-pill {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 2px 7px;
+  gap: 5px;
+  padding: 3px 8px;
 }
 
 .timer-countdown {
@@ -74,34 +195,96 @@
 }
 
 /* ═══════════════════════════════════════════════════════════
-   1. FILA SUPERIOR (20% DE ALTO DE PANTALLA)
+   CARRUSEL VIEWPORT Y TRACK
    ═══════════════════════════════════════════════════════════ */
-.row-top-20 {
-  height: calc(20vh - 14px);
-  min-height: 165px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.carousel-viewport {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+  border-radius: var(--card-radius);
+}
+
+.carousel-track {
+  display: flex;
+  width: 200%;
+  height: 100%;
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.carousel-slide {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  min-height: 0;
+  padding: 2px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PANTALLA 1: HORA Y CLIMA (CARD 1)
+   ═══════════════════════════════════════════════════════════ */
+.slide-clock-weather {
+  display: flex;
+  flex-direction: column;
   gap: 12px;
+  height: 100%;
+}
+
+/* Card 1.A: Reloj Polar Principal */
+.polar-clock-card-full {
+  flex: 0.95;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(180deg, rgba(20, 20, 26, 0.92) 0%, rgba(10, 10, 14, 0.82) 100%);
+  min-height: 0;
+  position: relative;
+}
+
+.clock-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   flex-shrink: 0;
 }
 
-/* Reloj Polar en 20% (Alta visibilidad y jerarquía máxima a simple vista) */
-.polar-clock-widget {
-  padding: 12px 18px;
+.clock-greeting-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--accent-red);
+  text-transform: uppercase;
+}
+
+.clock-timezone-badge {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--text-muted);
+}
+
+.polar-clock-main-content {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  gap: 14px;
-  position: relative;
-  background: linear-gradient(180deg, rgba(20, 20, 26, 0.92) 0%, rgba(10, 10, 14, 0.8) 100%);
-  overflow: hidden;
+  gap: 20px;
+  flex: 1;
+  min-height: 0;
 }
 
 .polar-container {
   position: relative;
-  width: 136px;
-  height: 136px;
+  width: 170px;
+  height: 170px;
+  max-width: 38vw;
+  max-height: 38vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -168,7 +351,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  gap: 2px;
+  gap: 6px;
   flex: 1;
   min-width: 0;
 }
@@ -176,15 +359,15 @@
 .polar-digital-row {
   display: flex;
   align-items: baseline;
-  line-height: 0.92;
+  line-height: 0.9;
 }
 
 .polar-ext-time {
-  font-size: 3.3rem;
+  font-size: 4rem;
   font-weight: 800;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
   color: #ffffff;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.35), 0 2px 10px rgba(0, 0, 0, 0.9);
+  text-shadow: 0 0 24px rgba(255, 255, 255, 0.35), 0 2px 10px rgba(0, 0, 0, 0.9);
   line-height: 1;
 }
 
@@ -199,54 +382,56 @@
 }
 
 .polar-ext-sec {
-  font-size: 1.75rem;
+  font-size: 2.1rem;
   font-weight: 800;
   color: var(--accent-red);
-  text-shadow: 0 0 14px var(--accent-red-glow);
-  margin-left: 2px;
+  text-shadow: 0 0 16px var(--accent-red-glow);
+  margin-left: 3px;
 }
 
 .polar-ext-date {
-  font-size: 0.85rem;
+  font-size: 0.92rem;
   font-weight: 700;
   letter-spacing: 0.12em;
-  color: var(--text-muted);
+  color: var(--text-white);
   text-transform: uppercase;
   margin-top: 4px;
 }
 
 .polar-legend {
   display: flex;
-  gap: 12px;
-  margin-top: 8px;
+  gap: 14px;
+  margin-top: 6px;
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.68rem;
   color: var(--text-muted);
 }
 
 .polar-legend-item {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
 }
 
 .legend-dot {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
 }
 .legend-dot.sec { background: #f60000; box-shadow: 0 0 8px #f60000; }
 .legend-dot.min { background: #f6f6f6; box-shadow: 0 0 5px rgba(255, 255, 255, 0.7); }
 .legend-dot.hr  { background: #8e8e93; }
 
-/* Clima Monte Grande en 20% (Temperatura Gigante e Impacto Inmediato) */
-.weather-widget {
-  padding: 12px 18px;
+/* Card 1.B: Estación Meteorológica SMN Completa */
+.weather-card-full {
+  flex: 1.05;
+  padding: 16px 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 6px;
-  background: linear-gradient(180deg, rgba(16, 16, 22, 0.92) 0%, rgba(10, 10, 14, 0.8) 100%);
+  gap: 10px;
+  background: linear-gradient(180deg, rgba(16, 16, 22, 0.94) 0%, rgba(10, 10, 14, 0.85) 100%);
+  min-height: 0;
   overflow: hidden;
 }
 
@@ -254,6 +439,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .widget-title-group {
@@ -262,7 +448,7 @@
 }
 
 .widget-title {
-  font-size: 0.86rem;
+  font-size: 0.92rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   color: var(--text-white);
@@ -271,7 +457,7 @@
 
 .widget-subtitle {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.68rem;
   font-weight: 600;
   color: var(--accent-red);
   letter-spacing: 0.06em;
@@ -281,7 +467,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2px 0;
+  padding: 6px 0;
+  flex-shrink: 0;
 }
 
 .weather-temp-block {
@@ -292,39 +479,39 @@
 
 .weather-temp-val {
   font-family: var(--font-mono);
-  font-size: 3.6rem;
+  font-size: 4.2rem;
   font-weight: 800;
   color: #ffffff;
-  line-height: 0.92;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 2px 10px rgba(0, 0, 0, 0.9);
+  line-height: 0.9;
+  text-shadow: 0 0 24px rgba(255, 255, 255, 0.3), 0 2px 10px rgba(0, 0, 0, 0.9);
 }
 
 .weather-temp-val .unit {
-  font-size: 1.85rem;
+  font-size: 2.1rem;
   font-weight: 700;
   color: var(--accent-red);
-  text-shadow: 0 0 12px var(--accent-red-glow);
+  text-shadow: 0 0 14px var(--accent-red-glow);
   margin-left: 2px;
 }
 
 .weather-st-val {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 0.92rem;
   font-weight: 700;
   color: var(--text-muted);
-  margin-top: 3px;
+  margin-top: 4px;
 }
 
 .weather-visual-block {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 3px;
+  gap: 4px;
 }
 
 .weather-icon-holder {
-  width: 52px;
-  height: 52px;
+  width: 64px;
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -333,35 +520,38 @@
 .weather-svg {
   width: 100%;
   height: 100%;
-  filter: drop-shadow(0 0 12px rgba(246, 0, 0, 0.5));
+  filter: drop-shadow(0 0 14px rgba(246, 0, 0, 0.5));
 }
 
 .weather-condition-text {
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: #ffffff;
   text-align: right;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
+/* Métricas meteorológicas 4-Grid */
 .weather-metrics-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 6px;
+  gap: 8px;
+  flex-shrink: 0;
 }
 
 .metric-card {
-  padding: 5px 7px;
+  padding: 7px 8px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 6px;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
   text-align: center;
+  gap: 2px;
 }
 
 .metric-label {
-  font-size: 0.55rem;
+  font-size: 0.58rem;
   font-family: var(--font-mono);
   color: var(--text-muted);
   text-transform: uppercase;
@@ -369,44 +559,125 @@
 }
 
 .metric-value {
-  font-size: 0.8rem;
+  font-size: 0.88rem;
   font-weight: 700;
   color: var(--text-white);
   font-family: var(--font-mono);
 }
 
+/* Pronóstico de 3 Días */
+.weather-forecast-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.forecast-section-title {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.forecast-section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.weather-forecast-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.forecast-day-card {
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s ease;
+}
+
+.forecast-day-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(246, 0, 0, 0.3);
+}
+
+.forecast-name {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--text-white);
+}
+
+.forecast-mini-icon {
+  width: 28px;
+  height: 28px;
+}
+
+.forecast-mini-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.forecast-temps {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+.forecast-temps .max-temp {
+  color: var(--text-white);
+  font-weight: 700;
+}
+
+.forecast-temps .min-temp {
+  color: var(--text-dim);
+  font-weight: 500;
+  font-size: 0.68rem;
+}
+
 /* ═══════════════════════════════════════════════════════════
-   2. FILA MEDIA (40% DE ALTO DE PANTALLA: DIVISAS Y CRIPTOS)
+   PANTALLA 2: MERCADOS Y ACTIVOS (CARD 2)
    ═══════════════════════════════════════════════════════════ */
-.row-mid-40 {
-  height: calc(40vh - 16px);
+.slide-markets {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  min-height: 0;
+}
+
+.markets-grid-2x2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   gap: 10px;
   flex: 1;
   min-height: 0;
 }
 
-/* ═══════════════════════════════════════════════════════════
-   3. FILA INFERIOR (40% DE ALTO DE PANTALLA: CEDEARS E INVERSIONES)
-   ═══════════════════════════════════════════════════════════ */
-.row-bot-40 {
-  height: calc(40vh - 16px);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  flex: 1;
-  min-height: 0;
-}
-
-/* Estilos de Cajas del Cuadrante */
+/* Estilos de Cajas de Mercados */
 .quad-box {
   padding: 12px 14px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   gap: 8px;
-  background: linear-gradient(180deg, rgba(16, 16, 22, 0.85) 0%, rgba(10, 10, 14, 0.75) 100%);
+  background: linear-gradient(180deg, rgba(16, 16, 22, 0.88) 0%, rgba(10, 10, 14, 0.78) 100%);
   min-height: 0;
   overflow: hidden;
 }
@@ -701,16 +972,55 @@
   color: var(--text-muted);
 }
 
-/* Footer */
+/* ═══════════════════════════════════════════════════════════
+   FOOTER DE TELEMETRÍA E INDICADORES DE CARRUSEL
+   ═══════════════════════════════════════════════════════════ */
 .dash-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 3px;
+  padding-top: 5px;
   border-top: 1px solid var(--border-subtle);
   font-family: var(--font-mono);
-  font-size: 0.58rem;
+  font-size: 0.62rem;
   color: var(--text-dim);
   flex-shrink: 0;
-  height: 2vh;
+  min-height: 24px;
+}
+
+.footer-dots-container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.carousel-dot.active {
+  width: 22px;
+  border-radius: 999px;
+  background: var(--accent-red);
+  box-shadow: 0 0 8px var(--accent-red-glow);
+}
+
+@media (max-width: 600px) {
+  .markets-grid-2x2 {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+  }
+  .polar-clock-main-content {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .polar-ext-time {
+    font-size: 2.8rem;
+  }
 }
