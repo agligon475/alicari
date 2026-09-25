@@ -1325,13 +1325,254 @@
       }
     }
 
-    /* Responsive Adjustments for Smaller Displays */
+    /* Responsive Adjustments for Tablets and Mobile Displays */
     @media (max-width: 1024px) {
-      .hero-title { font-size: 2rem; }
-      .slide { padding: 1.5rem 1.8rem; }
-      .slide-3-grid, .slide-5-grid, .steps-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: 2.1rem; }
+      .slide { padding: 1.5rem 2rem; }
+      .slide-3-grid, .slide-5-grid, .steps-grid { grid-template-columns: 1fr 1fr; }
       .slide-2-grid, .slide-4-grid { grid-template-columns: 1fr; }
-      .grid-thumbnails { grid-template-columns: repeat(2, 1fr); }
+      .grid-thumbnails { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    /* Dedicated Mobile Viewport (Phones ≤ 768px) */
+    @media (max-width: 768px) {
+      body {
+        overflow: hidden;
+        height: 100dvh;
+        width: 100vw;
+      }
+
+      .deck-viewport {
+        padding: 0;
+        width: 100vw;
+        height: 100dvh;
+        align-items: stretch;
+        justify-content: stretch;
+      }
+
+      .deck-stage {
+        max-width: 100%;
+        width: 100%;
+        height: 100dvh;
+        max-height: 100dvh;
+        aspect-ratio: auto;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+      }
+
+      .deck-topbar {
+        height: 46px;
+        padding: 0 1rem;
+      }
+
+      .topbar-brand {
+        font-size: 0.72rem;
+        gap: 0.5rem;
+      }
+
+      .topbar-badge {
+        display: none; /* Hide long ribbon on small phone headers to prevent overlap */
+      }
+
+      .deck-slide-indicator {
+        font-size: 0.72rem;
+        padding: 0.2rem 0.5rem;
+      }
+
+      .deck-content {
+        height: calc(100dvh - 46px - 60px);
+      }
+
+      .slide {
+        padding: 1.1rem 1rem 1.4rem;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        justify-content: flex-start;
+        gap: 1rem;
+      }
+
+      /* Slide Titles & Typography */
+      .slide-header {
+        margin-bottom: 0.8rem;
+      }
+
+      .slide-tag {
+        font-size: 0.68rem;
+      }
+
+      .slide-title {
+        font-size: 1.35rem;
+        line-height: 1.25;
+      }
+
+      .slide-subtitle {
+        font-size: 0.82rem;
+        line-height: 1.45;
+      }
+
+      /* Slide 1 Mobile */
+      .slide-1-layout {
+        justify-content: flex-start;
+        padding: 0.5rem 0 1.5rem;
+        gap: 1rem;
+      }
+
+      .hero-badge-container {
+        font-size: 0.72rem;
+        padding: 0.35rem 0.75rem;
+        margin-bottom: 0.4rem;
+      }
+
+      .hero-badge-text {
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+      }
+
+      .hero-title {
+        font-size: 1.55rem;
+        line-height: 1.2;
+        margin-bottom: 0.4rem;
+      }
+
+      .hero-subtitle {
+        font-size: 0.88rem;
+        line-height: 1.5;
+        margin-bottom: 0.8rem;
+        padding-left: 0.8rem;
+      }
+
+      .hero-highlights {
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .highlight-pill {
+        font-size: 0.75rem;
+        padding: 0.35rem 0.7rem;
+        width: 100%;
+      }
+
+      .hero-presenter-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+        padding: 1rem;
+      }
+
+      .presenter-link {
+        width: 100%;
+        justify-content: space-between;
+        padding-top: 0.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      /* Grid Layouts Stacked on Mobile */
+      .slide-2-grid,
+      .slide-3-grid,
+      .slide-4-grid,
+      .slide-5-grid,
+      .steps-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .diagnosis-card,
+      .metric-card,
+      .digital-block,
+      .automation-module,
+      .step-card {
+        padding: 1.1rem;
+      }
+
+      .metric-hero {
+        font-size: 2.1rem;
+      }
+
+      .metric-hero.crest-font {
+        font-size: 1.6rem;
+      }
+
+      /* Slide 6 Mobile Table */
+      .timeline-table-card {
+        padding: 0.8rem;
+        overflow-x: auto;
+      }
+
+      .gantt-table {
+        min-width: 540px;
+        font-size: 0.78rem;
+      }
+
+      .gantt-table th,
+      .gantt-table td {
+        padding: 0.55rem 0.65rem;
+      }
+
+      /* Slide 7 Mobile Budget */
+      .budget-table {
+        min-width: 500px;
+        font-size: 0.8rem;
+      }
+
+      .budget-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .budget-table th,
+      .budget-table td {
+        padding: 0.65rem 0.85rem;
+      }
+
+      .budget-note-card {
+        padding: 0.65rem 0.9rem;
+        font-size: 0.74rem;
+      }
+
+      /* Slide 8 Mobile */
+      .kickoff-callout {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+        padding: 1.1rem;
+      }
+
+      .kickoff-callout .nav-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      /* Bottom Bar Mobile */
+      .deck-bottombar {
+        height: 60px;
+        padding: 0 0.8rem;
+        padding-bottom: max(0.4rem, env(safe-area-inset-bottom));
+      }
+
+      .progress-track {
+        margin: 0 0.6rem;
+      }
+
+      .nav-btn {
+        padding: 0.45rem 0.7rem;
+        font-size: 0.75rem;
+      }
+
+      .nav-btn .key-hint {
+        display: none; /* Hide keyboard hints on mobile devices */
+      }
+
+      /* Modal Overview on Mobile */
+      .modal-grid-container {
+        padding: 1.2rem;
+        max-height: 85vh;
+      }
+
+      .grid-thumbnails {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
     }
   </style>
 </head>
@@ -2009,6 +2250,7 @@
         slides.forEach((s, idx) => {
           if (idx + 1 === currentSlide) {
             s.classList.add('active');
+            s.scrollTop = 0;
           } else {
             s.classList.remove('active');
           }
@@ -2144,19 +2386,21 @@
         }
       });
 
-      // Touch / Swipe support
+      // Touch / Swipe support (optimized for mobile)
       let touchStartX = 0;
-      let touchEndX = 0;
+      let touchStartY = 0;
 
       window.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
       }, { passive: true });
 
       window.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        const diff = touchEndX - touchStartX;
-        if (Math.abs(diff) > 50) {
-          if (diff < 0) {
+        const diffX = e.changedTouches[0].screenX - touchStartX;
+        const diffY = e.changedTouches[0].screenY - touchStartY;
+        // Trigger slide navigation only on deliberate horizontal swipe
+        if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY) * 1.3) {
+          if (diffX < 0) {
             nextSlide();
           } else {
             prevSlide();
