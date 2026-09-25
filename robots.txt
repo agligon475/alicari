@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /ParishRobertson/
+Disallow: /ParishRobertson
+Disallow: /2027/
+Disallow: /2027
+Disallow: /2027b/
+Disallow: /2027b
+
+Allow: /
