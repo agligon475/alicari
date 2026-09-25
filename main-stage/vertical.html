@@ -200,14 +200,14 @@
         </section>
 
         <!-- ───────────────────────────────────────────────────
-             PANTALLA 2 / CARD 2: OTROS ELEMENTOS (MERCADOS & FINANZAS)
+             PANTALLA 2 / CARD 2: MERCADOS & ACTIVOS (5 CAJAS)
              ─────────────────────────────────────────────────── -->
         <section class="carousel-slide" id="slide-markets" aria-label="Pantalla 2: Mercados y Activos">
           <div class="slide-markets">
-            <div class="markets-grid-2x2">
+            <div class="markets-grid-5">
 
               <!-- CAJA 1: DIVISAS -->
-              <section class="glass-panel quad-box" aria-label="Divisas en ARS">
+              <section class="glass-panel quad-box box-fiat" aria-label="Divisas en ARS">
                 <div class="quad-box-header">
                   <span class="quad-box-title"><span class="dot-cat"></span>DIVISAS</span>
                   <div class="sort-btn-group">
@@ -220,22 +220,39 @@
                 </div>
               </section>
 
-              <!-- CAJA 2: CRIPTOMONEDAS -->
-              <section class="glass-panel quad-box" aria-label="Criptomonedas en ARS">
+              <!-- CAJA 2: CRIPTOS OWN -->
+              <section class="glass-panel quad-box box-crypto-own" aria-label="Criptos Own">
                 <div class="quad-box-header">
-                  <span class="quad-box-title"><span class="dot-cat"></span>CRIPTOS</span>
+                  <span class="quad-box-title"><span class="dot-cat"></span>CRIPTOS OWN</span>
                   <div class="sort-btn-group">
-                    <button class="sort-btn active" data-box="crypto" data-sort="desc" title="Ordenar por mayores subas">▲ Subieron</button>
-                    <button class="sort-btn" data-box="crypto" data-sort="asc" title="Ordenar por mayores bajas">▼ Bajaron</button>
+                    <button class="sort-btn active" data-box="cryptoOwn" data-sort="desc" title="Ordenar por mayores subas">▲ Subieron</button>
+                    <button class="sort-btn" data-box="cryptoOwn" data-sort="asc" title="Ordenar por mayores bajas">▼ Bajaron</button>
                   </div>
                 </div>
-                <div class="quad-list-container" id="list-crypto">
+                <div class="quad-list-container" id="list-crypto-own">
                   <!-- Inyectado dinámicamente -->
                 </div>
               </section>
 
-              <!-- CAJA 3: CEDEARS -->
-              <section class="glass-panel quad-box" aria-label="CEDEARs en ARS">
+              <!-- CAJA 3: CRIPTOS GLOBAL (TOP 10) -->
+              <section class="glass-panel quad-box box-crypto-global" aria-label="Criptos Global (Top 10)">
+                <div class="quad-box-header">
+                  <div class="title-with-badge">
+                    <span class="quad-box-title"><span class="dot-cat"></span>CRIPTOS GLOBAL</span>
+                    <span class="box-sub-badge font-mono">TOP 10 MOVERS 24H</span>
+                  </div>
+                  <div class="sort-btn-group">
+                    <button class="sort-btn active" data-box="cryptoGlobal" data-sort="desc" title="Las 10 que más subieron">▲ 10 Más Subieron</button>
+                    <button class="sort-btn" data-box="cryptoGlobal" data-sort="asc" title="Las 10 que más bajaron">▼ 10 Más Bajaron</button>
+                  </div>
+                </div>
+                <div class="quad-list-container" id="list-crypto-global">
+                  <!-- Inyectado dinámicamente -->
+                </div>
+              </section>
+
+              <!-- CAJA 4: CEDEARS -->
+              <section class="glass-panel quad-box box-cedear" aria-label="CEDEARs en ARS">
                 <div class="quad-box-header">
                   <span class="quad-box-title"><span class="dot-cat"></span>CEDEARS</span>
                   <div class="sort-btn-group">
@@ -248,13 +265,13 @@
                 </div>
               </section>
 
-              <!-- CAJA 4: SUGERENCIAS DE INVERSIÓN -->
-              <section class="glass-panel quad-box" aria-label="Sugerencias de Inversión">
+              <!-- CAJA 5: INVERSIONES -->
+              <section class="glass-panel quad-box box-insights" aria-label="Sugerencias de Inversión">
                 <div class="quad-box-header">
                   <span class="quad-box-title"><span class="dot-cat"></span>INVERSIONES</span>
                   <div class="sort-btn-group">
-                    <button class="sort-btn active" data-box="insights" data-sort="desc" title="Ordenar por mayor potencial">▲ Subieron</button>
-                    <button class="sort-btn" data-box="insights" data-sort="asc" title="Ordenar por menor riesgo">▼ Bajaron</button>
+                    <button class="sort-btn active" data-box="insights" data-sort="desc" title="Ordenar por mayor potencial">▲ Potencial</button>
+                    <button class="sort-btn" data-box="insights" data-sort="asc" title="Ordenar por menor riesgo">▼ Menor Riesgo</button>
                   </div>
                 </div>
                 <div class="quad-list-container" id="list-insights">

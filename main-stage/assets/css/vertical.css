@@ -661,13 +661,88 @@
   min-height: 0;
 }
 
-.markets-grid-2x2 {
+.markets-grid-5 {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: auto auto auto;
   gap: 10px;
   flex: 1;
   min-height: 0;
+  overflow-y: auto;
+  padding-right: 2px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(246, 0, 0, 0.3) transparent;
+}
+
+.markets-grid-5::-webkit-scrollbar {
+  width: 4px;
+}
+.markets-grid-5::-webkit-scrollbar-thumb {
+  background: rgba(246, 0, 0, 0.3);
+  border-radius: 2px;
+}
+
+/* 5 Cajas en Orden */
+.box-fiat {
+  min-height: 240px;
+}
+
+.box-crypto-own {
+  min-height: 240px;
+}
+
+/* Caja 3: Criptos Global (Ancho completo para 10 criptomonedas) */
+.box-crypto-global {
+  grid-column: 1 / -1;
+  min-height: 280px;
+  background: linear-gradient(180deg, rgba(20, 16, 26, 0.9) 0%, rgba(10, 10, 15, 0.82) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.box-cedear {
+  min-height: 250px;
+}
+
+.box-insights {
+  min-height: 250px;
+}
+
+.title-with-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.box-sub-badge {
+  font-size: 0.55rem;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: rgba(246, 0, 0, 0.18);
+  border: 1px solid rgba(246, 0, 0, 0.4);
+  color: #ff8a80;
+  letter-spacing: 0.05em;
+}
+
+.global-crypto-grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  width: 100%;
+}
+
+.global-row {
+  padding: 6px 8px;
+}
+
+.global-rank {
+  font-size: 0.6rem;
+  font-weight: 800;
+  color: var(--accent-red);
+  background: rgba(246, 0, 0, 0.15);
+  padding: 1px 4px;
+  border-radius: 3px;
+  border: 1px solid rgba(246, 0, 0, 0.3);
 }
 
 /* Estilos de Cajas de Mercados */
