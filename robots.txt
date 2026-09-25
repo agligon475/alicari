@@ -5,5 +5,9 @@ Disallow: /2027/
 Disallow: /2027
 Disallow: /2027b/
 Disallow: /2027b
+Disallow: /main-stage/
+Disallow: /main-stage
+Disallow: /vertical/
+Disallow: /vertical
 
 Allow: /

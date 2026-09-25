@@ -123,3 +123,6 @@ class ClockEngine {
   }
 }
 
+window.ClockEngine = ClockEngine;
+
+

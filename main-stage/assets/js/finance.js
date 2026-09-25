@@ -440,3 +440,6 @@ class FinanceEngine {
     container.innerHTML = html;
   }
 }
+
+window.FinanceEngine = FinanceEngine;
+

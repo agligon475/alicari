@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow, noarchive" />
   <title>ALICARI — Interactive Stage (Monitor 1)</title>
   <meta name="description" content="Fondo de pantalla interactivo modular para Wallpaper Engine y Lively Wallpaper — ALICARI Studio." />
   <link rel="icon" type="image/svg+xml" href="assets/images/logo-icon.svg" />
@@ -88,58 +89,6 @@
   </main>
 
   <!-- Scripts Modulares -->
-  <script src="assets/js/particles.js"></script>
-  <script src="assets/js/parallax.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // 1. Inicializar Partículas Ambientales Optimizadas
-      const particles = new ParticleEngine('particles-canvas', {
-        particleCount: 38,
-        mouseRadius: 140,
-        baseSpeed: 0.28,
-        redRatio: 0.25,
-        targetFPS: 60
-      });
-
-      // 2. Inicializar Parallax 3D reactivo al cursor (se duerme en inactividad)
-      const parallax = new ParallaxEngine('.parallax-layer');
-
-      // 3. Reloj minimalista HUD
-      const dias = ['DOMINGO', 'LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'VIERNES', 'SÁBADO'];
-      const meses = ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'];
-      const hudTime = document.getElementById('hud-time');
-      const hudDate = document.getElementById('hud-date');
-
-      let lastH = '', lastM = '', lastD = -1;
-
-      function updateHudClock() {
-        const now = new Date();
-        const h = now.getHours().toString().padStart(2, '0');
-        const m = now.getMinutes().toString().padStart(2, '0');
-        const s = now.getSeconds().toString().padStart(2, '0');
-        const d = now.getDate();
-
-        if (hudTime) hudTime.innerHTML = `${h}:${m}<span class="sec">${s}</span>`;
-        if (hudDate && d !== lastD) {
-          lastD = d;
-          hudDate.textContent = `${dias[now.getDay()]}, ${d} DE ${meses[now.getMonth()]} ${now.getFullYear()}`;
-        }
-      }
-      updateHudClock();
-      setInterval(updateHudClock, 1000);
-
-      // 4. Botón Fullscreen
-      const fsBtn = document.getElementById('btn-fullscreen');
-      if (fsBtn) {
-        fsBtn.addEventListener('click', () => {
-          if (!document.fullscreenElement) {
-            document.documentElement.requestFullscreen().catch(err => console.log(err));
-          } else {
-            document.exitFullscreen();
-          }
-        });
-      }
-    });
-  </script>
+  <script type="module" src="assets/js/stage-entry.js"></script>
 </body>
 </html>

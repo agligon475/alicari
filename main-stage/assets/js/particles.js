@@ -206,3 +206,6 @@ class ParticleEngine {
   }
 }
 
+window.ParticleEngine = ParticleEngine;
+
+

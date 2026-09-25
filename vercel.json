@@ -1,6 +1,16 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/vertical",
+      "destination": "/main-stage/vertical.html"
+    },
+    {
+      "source": "/vertical.html",
+      "destination": "/main-stage/vertical.html"
+    }
+  ],
   "headers": [
     {
       "source": "/ParishRobertson(.*)",
@@ -22,6 +32,24 @@
     },
     {
       "source": "/2027b(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow, noarchive"
+        }
+      ]
+    },
+    {
+      "source": "/main-stage(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow, noarchive"
+        }
+      ]
+    },
+    {
+      "source": "/vertical(.*)",
       "headers": [
         {
           "key": "X-Robots-Tag",

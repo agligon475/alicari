@@ -95,3 +95,6 @@ class ParallaxEngine {
   }
 }
 
+window.ParallaxEngine = ParallaxEngine;
+
+

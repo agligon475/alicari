@@ -231,3 +231,6 @@ class WeatherEngine {
     this.renderData(mockData);
   }
 }
+
+window.WeatherEngine = WeatherEngine;
+
