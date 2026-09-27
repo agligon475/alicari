@@ -73,6 +73,14 @@
          CARRUSEL DE PANTALLAS (VIEWPORT & SLIDES)
          ═══════════════════════════════════════════════════════ -->
     <div class="carousel-viewport">
+      <!-- Botones flotantes laterales para navegación directa en Wallpaper -->
+      <button class="carousel-side-nav prev" id="btn-side-prev" title="Pantalla Anterior (Click / Scroll / Tecla 1)" aria-label="Pantalla anterior">
+        <span class="side-nav-arrow">‹</span>
+      </button>
+      <button class="carousel-side-nav next" id="btn-side-next" title="Pantalla Siguiente (Click / Scroll / Tecla 2)" aria-label="Pantalla siguiente">
+        <span class="side-nav-arrow">›</span>
+      </button>
+
       <div class="carousel-track">
 
         <!-- ───────────────────────────────────────────────────
@@ -318,6 +326,21 @@
         </section>
 
       </div>
+
+      <!-- Dock Flotante Inferior de Navegación Rápida -->
+      <nav class="carousel-quick-dock" id="carousel-quick-dock" aria-label="Selector Rápido de Pantalla">
+        <button class="quick-dock-btn active" data-slide="0" title="Ver Pantalla 1: Hora, Clima y Agenda (Tecla 1)">
+          <span class="quick-dock-num">01</span>
+          <span>TIEMPO & AGENDA</span>
+        </button>
+        <button class="quick-dock-btn quick-dock-toggle-btn" id="btn-quick-dock-switch" title="Alternar entre pantallas (Click / Scroll / Doble Click)">
+          <span class="quick-dock-swap-icon">⇄</span>
+        </button>
+        <button class="quick-dock-btn" data-slide="1" title="Ver Pantalla 2: Mercados y Finanzas (Tecla 2)">
+          <span class="quick-dock-num">02</span>
+          <span>MERCADOS</span>
+        </button>
+      </nav>
     </div>
 
     <!-- ═══════════════════════════════════════════════════════

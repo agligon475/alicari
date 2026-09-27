@@ -50,17 +50,21 @@ main-stage/
 - **HUD Periférico Minimalista:** Reloj sutil, ecualizador visual rítmico y selector de pantalla completa.
 
 ### 2. Monitor 2 (Vertical — `vertical.html`):
+- **Navegabilidad Total como Wallpaper Interactivo:**
+  - **🖱️ Rueda del Mouse (Wheel):** Gira la rueda del mouse (o Shift+Rueda / Rueda Horizontal) sobre cualquier área libre para cambiar fluidamente de pantalla.
+  - **👆 Arrastre con Mouse (Drag / Swipe):** Haz clic sostenido y arrastra hacia la izquierda/derecha para deslizar entre pantallas con inercia.
+  - **⚡ Dock Rápido Flotante (Quick-Dock):** Barra HUD inferior con accesos directos `01 TIEMPO & AGENDA`, botón de swap `⇄` y `02 MERCADOS`.
+  - **‹ › Flechas Laterales Flotantes:** Botones laterales translúcidos al borde de la pantalla que se iluminan al pasar el cursor para cambio instantáneo.
+  - **🖱️ Doble Clic:** Haz doble clic en cualquier espacio libre del fondo para alternar pantallas.
+  - **🔄 Auto-Rotación Persistente:** Botón `AUTO` con guardado en `localStorage` y soporte para propiedades nativas de Wallpaper Engine (`autoRotate`, `autoSlideInterval`).
+  - **⌨️ Teclas Directas:** `1` (Tiempo/Clima/Agenda), `2` (Mercados), Flechas Izq/Der/Arriba/Abajo, Espacio (Auto-rotar).
 - **Cajas Superiores (20% Viewport):**
   - **Reloj Polar Concéntrico:** Arcos radiales dinámicos para Horas, Minutos y Segundos (en rojo neón `#f60000`) con números exteriores `00, 06, 12, 18` y lectura digital integrada.
   - **Clima SMN (Monte Grande, Buenos Aires, Argentina):** Temperatura real, ST, estado, icono animado, humedad, viento, presión y visibilidad.
-- **Cajas Medias (40% Viewport):**
-  - **Caja 1 (Divisas):** USD Blue, USD Oficial, EUR, BRL en ARS. Botones: `▲ Subieron` / `▼ Bajaron`.
-  - **Caja 2 (Criptomonedas):** UNI, FET, NEAR, ARB, BTC, ETH, ALI Token en ARS. Botones: `▲ Subieron` / `▼ Bajaron`.
-- **Cajas Inferiores (40% Viewport):**
-  - **Caja 3 (CEDEARs):** NVDA, TECO2, TEM en ARS. Botones: `▲ Subieron` / `▼ Bajaron`.
-  - **Caja 4 (Sugerencias de Inversión):** Señales de mercado (`COMPRA FUERTE`, `ACUMULAR`, `CARRY TRADE`). Botones: `▲ Subieron` / `▼ Bajaron`.
-  - **Timer en Vivo:** Auto-refresh cada 20 segundos con cuenta regresiva visible.
-  - **🚨 Alertas Visuales:** Filas rojas en caídas $> -6\%$ y verdes en subas $> +10\%$.
+- **Cajas Medias & Inferiores:**
+  - **Google Calendar / Agenda en vivo:** Próximos compromisos con sincronización iCal privada.
+  - **Criptos Own:** Con holdings, cantidades y valoración en tiempo real.
+  - **Divisas, Criptos Global, CEDEARs e Inversiones.**
 
 ---
 
@@ -75,9 +79,12 @@ Puedes abrir `index.html` o `vertical.html` directamente en cualquier navegador 
 3. Selecciona **Create Wallpaper** (Crear Fondo) y elige **Web Wallpaper** (Fondo Web).
 4. Para tu Monitor 1, selecciona el archivo `main-stage/index.html`.
 5. Para tu Monitor 2, selecciona el archivo `main-stage/vertical.html`.
-6. ¡Listo! Disfruta de un fondo interactivo fluido con mínimo impacto de CPU/GPU.
+6. En las opciones del fondo en Wallpaper Engine, asegúrate de activar **Mouse interaction** (Interacción con el ratón).
+7. ¡Listo! Disfruta de un fondo interactivo fluido con mínimo impacto de CPU/GPU.
 
 ### Configuración en Lively Wallpaper
 1. Abre **Lively Wallpaper**.
 2. Haz clic en el botón **+ (Add Wallpaper)**.
 3. Elige **Browse** y selecciona `main-stage/index.html` (para la pantalla 1) y `main-stage/vertical.html` (para la pantalla 2).
+4. Asegúrate de tener habilitada la interacción de mouse en la configuración de Lively.
+

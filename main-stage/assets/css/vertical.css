@@ -207,7 +207,7 @@
 }
 
 /* ═══════════════════════════════════════════════════════════
-   CARRUSEL VIEWPORT Y TRACK
+   CARRUSEL VIEWPORT Y TRACK CON DRAG Y CONTROLES WALLPAPER
    ═══════════════════════════════════════════════════════════ */
 .carousel-viewport {
   position: relative;
@@ -216,6 +216,13 @@
   overflow: hidden;
   min-height: 0;
   border-radius: var(--card-radius);
+  cursor: grab;
+  touch-action: pan-y pinch-zoom;
+}
+
+.carousel-viewport.is-dragging {
+  cursor: grabbing;
+  user-select: none;
 }
 
 .carousel-track {
@@ -236,6 +243,155 @@
   min-height: 0;
   padding: 2px;
 }
+
+/* Botones flotantes laterales (Side Navigation Chevrons) */
+.carousel-side-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 40;
+  width: 36px;
+  height: 72px;
+  background: rgba(12, 12, 16, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0.35;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.carousel-side-nav.prev {
+  left: 4px;
+  border-radius: 0 12px 12px 0;
+  border-left: none;
+}
+
+.carousel-side-nav.next {
+  right: 4px;
+  border-radius: 12px 0 0 12px;
+  border-right: none;
+}
+
+.carousel-side-nav:hover {
+  opacity: 1;
+  background: rgba(246, 0, 0, 0.25);
+  border-color: rgba(246, 0, 0, 0.6);
+  color: #ffffff;
+  box-shadow: 0 0 20px rgba(246, 0, 0, 0.4);
+}
+
+.side-nav-arrow {
+  font-size: 1.8rem;
+  font-weight: 300;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.carousel-side-nav.prev:hover .side-nav-arrow {
+  transform: translateX(-2px);
+}
+
+.carousel-side-nav.next:hover .side-nav-arrow {
+  transform: translateX(2px);
+}
+
+/* Dock Flotante Inferior de Navegación Rápida (HUD Quick-Switcher) */
+.carousel-quick-dock {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 6px;
+  background: rgba(10, 10, 14, 0.85);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(246, 0, 0, 0.35);
+  border-radius: 999px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(246, 0, 0, 0.2);
+  transition: all 0.25s ease;
+}
+
+.carousel-quick-dock:hover {
+  border-color: rgba(246, 0, 0, 0.65);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.9), 0 0 22px rgba(246, 0, 0, 0.35);
+}
+
+.quick-dock-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 11px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.quick-dock-btn:hover {
+  color: var(--text-white);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.quick-dock-btn.active {
+  background: rgba(246, 0, 0, 0.28);
+  color: #ffffff;
+  border-color: rgba(246, 0, 0, 0.65);
+  box-shadow: 0 0 12px var(--accent-red-dim);
+}
+
+.quick-dock-num {
+  font-size: 0.58rem;
+  padding: 1px 4px;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.quick-dock-btn.active .quick-dock-num {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--accent-red);
+}
+
+.quick-dock-toggle-btn {
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  color: var(--accent-red);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.quick-dock-toggle-btn:hover {
+  background: rgba(246, 0, 0, 0.3);
+  border-color: rgba(246, 0, 0, 0.7);
+  color: #fff;
+  transform: rotate(180deg);
+  box-shadow: 0 0 10px var(--accent-red-glow);
+}
+
 
 /* ═══════════════════════════════════════════════════════════
    PANTALLA 1: HORA, CLIMA & AGENDA

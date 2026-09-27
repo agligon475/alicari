@@ -66,14 +66,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 7. Motor de Carrusel y Navegación entre Pantallas
   if (typeof CarouselEngine !== 'undefined') {
-    new CarouselEngine({
+    window.CarouselEngineInstance = new CarouselEngine({
       viewportSelector: '.carousel-viewport',
       trackSelector: '.carousel-track',
       slideSelector: '.carousel-slide',
       tabSelector: '.carousel-tab-btn',
       dotSelector: '.carousel-dot',
+      quickDockBtnSelector: '.quick-dock-btn',
       prevBtnId: 'btn-carousel-prev',
       nextBtnId: 'btn-carousel-next',
+      sidePrevBtnId: 'btn-side-prev',
+      sideNextBtnId: 'btn-side-next',
+      quickDockToggleId: 'btn-quick-dock-switch',
       autoToggleId: 'btn-carousel-auto',
       statusLabelId: 'carousel-status-label',
       autoSlideInterval: 25000,
