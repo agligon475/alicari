@@ -1926,6 +1926,27 @@
   color: var(--text-white);
 }
 
+.settings-config-textarea {
+  width: 100%;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  line-height: 1.4;
+  background: rgba(0, 0, 0, 0.65);
+  color: #00e676;
+  border: 1px solid rgba(246, 0, 0, 0.25);
+  border-radius: 6px;
+  padding: 8px 10px;
+  resize: vertical;
+  outline: none;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(246, 0, 0, 0.3) transparent;
+}
+
+.settings-config-textarea:focus {
+  border-color: #00e676;
+  box-shadow: 0 0 10px rgba(0, 230, 118, 0.2);
+}
+
 @media (max-width: 600px) {
   .polar-clock-main-content {
     flex-direction: column;
@@ -1935,3 +1956,4 @@
     font-size: 2.8rem;
   }
 }
+

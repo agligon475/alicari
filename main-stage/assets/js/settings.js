@@ -78,6 +78,7 @@ class SettingsEngine {
 
     this.bindCryptoForm();
     this.bindCalendarForm();
+    this.bindSyncForm();
   }
 
   openModal(defaultTab = 'crypto') {
@@ -106,6 +107,8 @@ class SettingsEngine {
       this.renderCryptoSettingsList();
     } else if (tabKey === 'calendar') {
       this.renderCalendarSettings();
+    } else if (tabKey === 'sync') {
+      this.renderSyncSettings();
     }
   }
 
@@ -333,6 +336,155 @@ class SettingsEngine {
       }
     }
   }
+
+  /* ─────────────────────────────────────────────────────────────
+     SINCRONIZACIÓN CON WALLPAPER ENGINE & LIVELY (LOCAL SYNC)
+     ───────────────────────────────────────────────────────────── */
+  bindSyncForm() {
+    const saveFileBtn = document.getElementById('btn-save-user-config-file');
+    const copyCodeBtn = document.getElementById('btn-copy-user-config-code');
+    const exportJsonBtn = document.getElementById('btn-export-json');
+
+    if (saveFileBtn) {
+      saveFileBtn.addEventListener('click', () => this.saveUserConfigFile());
+    }
+
+    if (copyCodeBtn) {
+      copyCodeBtn.addEventListener('click', () => this.copyUserConfigCode());
+    }
+
+    if (exportJsonBtn) {
+      exportJsonBtn.addEventListener('click', () => this.exportJson());
+    }
+  }
+
+  generateConfigObject() {
+    const calUrl = this.agendaEngine ? this.agendaEngine.getCalendarUrl() : (window.ALICARI_USER_CONFIG?.calendarUrl || '');
+    
+    let cryptoList = [];
+    if (this.financeEngine && Array.isArray(this.financeEngine.data.cryptoOwn)) {
+      cryptoList = this.financeEngine.data.cryptoOwn.map(c => ({
+        id: c.id || c.cgId,
+        cgId: c.cgId || c.id,
+        name: c.name || c.symbol,
+        symbol: (c.symbol || c.id || '').toUpperCase(),
+        holdings: Number(c.holdings) || 0
+      }));
+    } else if (window.ALICARI_USER_CONFIG?.cryptoOwn) {
+      cryptoList = window.ALICARI_USER_CONFIG.cryptoOwn;
+    }
+
+    return {
+      calendarUrl: calUrl,
+      cryptoOwn: cryptoList,
+      carousel: {
+        autoRotate: localStorage.getItem('alicari_vertical_auto_enabled') === 'true',
+        autoSlideInterval: parseInt(localStorage.getItem('alicari_vertical_auto_interval'), 10) || 25000,
+        defaultSlide: parseInt(localStorage.getItem('alicari_vertical_slide_idx'), 10) || 0
+      }
+    };
+  }
+
+  generateUserConfigFileContent() {
+    const config = this.generateConfigObject();
+    return `/**
+ * ALICARI WALLPAPER - CONFIGURACIÓN DE USUARIO LOCAL
+ * Este archivo sincroniza tus configuraciones privadas (Criptos Own, Holdings, Google Calendar y Carrusel)
+ * de forma compartida entre el Navegador Web y Wallpaper Engine / Lively Wallpaper.
+ * 
+ * Generado el: ${new Date().toLocaleString()}
+ */
+
+window.ALICARI_USER_CONFIG = ${JSON.stringify(config, null, 2)};
+`;
+  }
+
+  renderSyncSettings() {
+    const previewEl = document.getElementById('setting-config-preview');
+    if (previewEl) {
+      previewEl.value = this.generateUserConfigFileContent();
+    }
+  }
+
+  async saveUserConfigFile() {
+    const content = this.generateUserConfigFileContent();
+
+    // 1. Intentar File System Access API si está soportada (Chrome/Edge moderno)
+    if ('showSaveFilePicker' in window) {
+      try {
+        const handle = await window.showSaveFilePicker({
+          suggestedName: 'user-config.js',
+          types: [{
+            description: 'JavaScript Configuration File',
+            accept: { 'text/javascript': ['.js'] }
+          }]
+        });
+        const writable = await handle.createWritable();
+        await writable.write(content);
+        await writable.close();
+        this.showSyncStatus('✅ ¡Archivo user-config.js guardado exitosamente! Wallpaper Engine ahora mostrará tus datos.', true);
+        this.renderSyncSettings();
+        return;
+      } catch (err) {
+        if (err.name === 'AbortError') return;
+        console.warn('File picker falló, recurriendo a descarga:', err);
+      }
+    }
+
+    // 2. Fallback descarga directa de blob
+    try {
+      const blob = new Blob([content], { type: 'text/javascript;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'user-config.js';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      this.showSyncStatus('📥 Descargando user-config.js. Reemplázalo en main-stage/assets/js/user-config.js para sincronizar Wallpaper Engine.', true);
+    } catch (e) {
+      this.showSyncStatus('Error al generar archivo. Usa el botón "Copiar Código JS" para pegarlo manualmente.', false);
+    }
+    this.renderSyncSettings();
+  }
+
+  copyUserConfigCode() {
+    const content = this.generateUserConfigFileContent();
+    navigator.clipboard.writeText(content).then(() => {
+      this.showSyncStatus('📋 ¡Código copiado! Pégalo en main-stage/assets/js/user-config.js y guarda los cambios.', true);
+    }).catch(() => {
+      this.showSyncStatus('No se pudo copiar automáticamente. Puedes seleccionarlo del cuadro de abajo.', false);
+    });
+    this.renderSyncSettings();
+  }
+
+  exportJson() {
+    const config = this.generateConfigObject();
+    const jsonStr = JSON.stringify(config, null, 2);
+    const blob = new Blob([jsonStr], { type: 'application/json;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'alicari-wallpaper-config.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    this.showSyncStatus('📥 Archivo JSON descargado como respaldo de tu configuración.', true);
+  }
+
+  showSyncStatus(message, isSuccess = true) {
+    const statusEl = document.getElementById('sync-file-status');
+    if (!statusEl) return;
+    statusEl.textContent = message;
+    statusEl.style.display = 'block';
+    statusEl.className = (isSuccess ? 'cal-status-ok' : 'cal-status-neutral') + ' font-mono';
+    setTimeout(() => {
+      if (statusEl) statusEl.style.display = 'none';
+    }, 6000);
+  }
 }
 
 window.SettingsEngine = SettingsEngine;
+

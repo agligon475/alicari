@@ -10,7 +10,10 @@ class AgendaEngine {
     this.container = document.getElementById(this.containerId);
     this.storageKey = 'alicari_calendar_url';
     this.refreshInterval = options.refreshInterval || 5 * 60 * 1000; // 5 mins
-    this.calendarUrl = localStorage.getItem(this.storageKey) || '';
+
+    // Priorizar URL en user-config.js si existe
+    const configUrl = (window.ALICARI_USER_CONFIG && window.ALICARI_USER_CONFIG.calendarUrl) ? window.ALICARI_USER_CONFIG.calendarUrl : '';
+    this.calendarUrl = configUrl || localStorage.getItem(this.storageKey) || '';
     this.events = [];
     this.timer = null;
 
@@ -39,9 +42,11 @@ class AgendaEngine {
     this.calendarUrl = (url || '').trim();
     if (this.calendarUrl) {
       localStorage.setItem(this.storageKey, this.calendarUrl);
+      if (window.ALICARI_USER_CONFIG) window.ALICARI_USER_CONFIG.calendarUrl = this.calendarUrl;
       this.fetchCalendar();
     } else {
       localStorage.removeItem(this.storageKey);
+      if (window.ALICARI_USER_CONFIG) window.ALICARI_USER_CONFIG.calendarUrl = '';
       this.loadDefaultEvents();
       this.render();
     }

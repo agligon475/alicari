@@ -138,8 +138,25 @@ class FinanceEngine {
     this.init();
   }
 
-  // Carga desde localStorage
+  // Carga desde window.ALICARI_USER_CONFIG o localStorage
   loadCustomCryptoOwn() {
+    // 1. Si existe configuración en user-config.js, priorizarla
+    if (window.ALICARI_USER_CONFIG && Array.isArray(window.ALICARI_USER_CONFIG.cryptoOwn) && window.ALICARI_USER_CONFIG.cryptoOwn.length > 0) {
+      return window.ALICARI_USER_CONFIG.cryptoOwn.map(c => ({
+        id: c.id || c.cgId,
+        cgId: c.cgId || c.id,
+        name: c.name || c.symbol,
+        symbol: (c.symbol || c.id || '').toUpperCase(),
+        price: c.price || 0,
+        priceUSD: c.priceUSD || 0,
+        change: c.change || 0,
+        currency: c.currency || 'ARS',
+        holdings: typeof c.holdings === 'number' ? c.holdings : (parseFloat(c.holdings) || 0),
+        trend: c.trend || []
+      }));
+    }
+
+    // 2. Cargar de localStorage
     const raw = localStorage.getItem(this.storageKeyCrypto);
     if (!raw) return JSON.parse(JSON.stringify(DEFAULT_CRYPTO_OWN));
     try {
@@ -170,6 +187,18 @@ class FinanceEngine {
       trend: c.trend || []
     }));
     localStorage.setItem(this.storageKeyCrypto, JSON.stringify(toSave));
+
+    // Actualizar objeto en memoria compartido
+    if (window.ALICARI_USER_CONFIG) {
+      window.ALICARI_USER_CONFIG.cryptoOwn = toSave.map(c => ({
+        id: c.id,
+        cgId: c.cgId,
+        name: c.name,
+        symbol: c.symbol,
+        holdings: c.holdings
+      }));
+    }
+
     this.renderBox('cryptoOwn');
     this.updatePortfolioHeader();
   }
