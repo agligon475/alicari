@@ -1,7 +1,7 @@
 import './particles.js';
 import './parallax.js';
 
-document.addEventListener('DOMContentLoaded', () => {
+function initHorizontalStage() {
   // 1. Inicializar Partículas Ambientales Optimizadas
   if (typeof ParticleEngine !== 'undefined') {
     new ParticleEngine('particles-canvas', {
@@ -53,4 +53,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initHorizontalStage);
+} else {
+  initHorizontalStage();
+}
+

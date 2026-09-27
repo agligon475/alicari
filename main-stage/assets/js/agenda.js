@@ -18,7 +18,6 @@ class AgendaEngine {
   }
 
   init() {
-    this.loadEvents();
     if (this.calendarUrl) {
       this.fetchCalendar();
     } else {
