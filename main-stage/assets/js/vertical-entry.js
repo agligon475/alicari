@@ -2,7 +2,9 @@ import './particles.js';
 import './clock.js';
 import './weather.js';
 import './finance.js';
+import './agenda.js';
 import './carousel.js';
+import './settings.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Partículas sutiles verticales de bajo consumo
@@ -37,12 +39,32 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 4. Finance & Investment Engine (5 cajas con ordenamiento independiente)
-  if (typeof FinanceEngine !== 'undefined') {
-    new FinanceEngine();
+  // 4. Google Calendar & Agenda Engine (Pantalla 1)
+  let agendaInstance = null;
+  if (typeof AgendaEngine !== 'undefined') {
+    agendaInstance = new AgendaEngine({
+      containerId: 'calendar-widget'
+    });
+    window.AgendaEngineInstance = agendaInstance;
   }
 
-  // 5. Motor de Carrusel y Navegación entre Pantallas
+  // 5. Finance & Investment Engine (5 cajas con Criptos Own y Holdings)
+  let financeInstance = null;
+  if (typeof FinanceEngine !== 'undefined') {
+    financeInstance = new FinanceEngine();
+    window.FinanceEngineInstance = financeInstance;
+  }
+
+  // 6. Settings Modal Engine (Gestión de Criptos Own y Google Calendar URL)
+  if (typeof SettingsEngine !== 'undefined') {
+    const settingsInstance = new SettingsEngine({
+      financeEngine: financeInstance,
+      agendaEngine: agendaInstance
+    });
+    window.SettingsEngineInstance = settingsInstance;
+  }
+
+  // 7. Motor de Carrusel y Navegación entre Pantallas
   if (typeof CarouselEngine !== 'undefined') {
     new CarouselEngine({
       viewportSelector: '.carousel-viewport',

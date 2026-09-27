@@ -1,11 +1,51 @@
 /**
  * ALICARI WALLPAPER - FINANCE & INVESTMENT ENGINE (5 CAJAS SEPARADAS)
  * 1. DIVISAS (USD Blue, Oficial, MEP, CCL, Tarjeta, EUR, BRL)
- * 2. CRIPTOS OWN (BTC, ETH, SOL, NEAR, UNI, ARB, FET, RENDER, BNB, AVAX)
- * 3. CRIPTOS GLOBAL (Las 10 criptos con mayor variación 24h - Top Subas o Bajas)
+ * 2. CRIPTOS OWN (Personalizable con cantidades 'Holdings', cálculo de cartera total y guardado local)
+ * 3. CRIPTOS GLOBAL (Top 10 Movers del mercado cripto - CoinGecko)
  * 4. CEDEARS (NVDA, AAPL, MSFT, GOOGL, TSLA, MELI, SPY, TECO2, TEM, VIST)
- * 5. INVERSIONES (Tesis reales de mercado: NVDA, LECAPS, BTC/ETH, SPY, ENERGÍA)
+ * 5. INVERSIONES (Tesis y estrategias reales de mercado)
  */
+
+// Catálogo maestro de criptomonedas populares para selección rápida
+const CRYPTO_CATALOG = [
+  { id: 'bitcoin', cgId: 'bitcoin', name: 'Bitcoin', symbol: 'BTC' },
+  { id: 'ethereum', cgId: 'ethereum', name: 'Ethereum', symbol: 'ETH' },
+  { id: 'solana', cgId: 'solana', name: 'Solana', symbol: 'SOL' },
+  { id: 'binancecoin', cgId: 'binancecoin', name: 'BNB', symbol: 'BNB' },
+  { id: 'ripple', cgId: 'ripple', name: 'XRP', symbol: 'XRP' },
+  { id: 'cardano', cgId: 'cardano', name: 'Cardano', symbol: 'ADA' },
+  { id: 'dogecoin', cgId: 'dogecoin', name: 'Dogecoin', symbol: 'DOGE' },
+  { id: 'avalanche-2', cgId: 'avalanche-2', name: 'Avalanche', symbol: 'AVAX' },
+  { id: 'chainlink', cgId: 'chainlink', name: 'Chainlink', symbol: 'LINK' },
+  { id: 'polkadot', cgId: 'polkadot', name: 'Polkadot', symbol: 'DOT' },
+  { id: 'polygon-ecosystem-token', cgId: 'polygon-ecosystem-token', name: 'Polygon (POL)', symbol: 'POL' },
+  { id: 'uniswap', cgId: 'uniswap', name: 'Uniswap', symbol: 'UNI' },
+  { id: 'near', cgId: 'near', name: 'NEAR Protocol', symbol: 'NEAR' },
+  { id: 'arbitrum', cgId: 'arbitrum', name: 'Arbitrum', symbol: 'ARB' },
+  { id: 'fetch-ai', cgId: 'fetch-ai', name: 'Artificial Superintel.', symbol: 'FET' },
+  { id: 'render-token', cgId: 'render-token', name: 'Render Token', symbol: 'RENDER' },
+  { id: 'bittensor', cgId: 'bittensor', name: 'Bittensor', symbol: 'TAO' },
+  { id: 'sui', cgId: 'sui', name: 'Sui Network', symbol: 'SUI' },
+  { id: 'kaspa', cgId: 'kaspa', name: 'Kaspa', symbol: 'KAS' },
+  { id: 'the-open-network', cgId: 'the-open-network', name: 'Toncoin', symbol: 'TON' },
+  { id: 'monero', cgId: 'monero', name: 'Monero', symbol: 'XMR' },
+  { id: 'pepe', cgId: 'pepe', name: 'Pepe', symbol: 'PEPE' },
+  { id: 'injective-protocol', cgId: 'injective-protocol', name: 'Injective', symbol: 'INJ' },
+  { id: 'celestia', cgId: 'celestia', name: 'Celestia', symbol: 'TIA' },
+  { id: 'optimism', cgId: 'optimism', name: 'Optimism', symbol: 'OP' }
+];
+
+const DEFAULT_CRYPTO_OWN = [
+  { id: 'bitcoin', cgId: 'bitcoin', name: 'Bitcoin', symbol: 'BTC', price: 92450000, priceUSD: 66000, change: 3.45, currency: 'ARS', holdings: 0.25, trend: [88500000, 89200000, 90100000, 91200000, 91900000, 92450000] },
+  { id: 'ethereum', cgId: 'ethereum', name: 'Ethereum', symbol: 'ETH', price: 3820000, priceUSD: 2720, change: -1.15, currency: 'ARS', holdings: 1.5, trend: [3890000, 3860000, 3840000, 3850000, 3830000, 3820000] },
+  { id: 'solana', cgId: 'solana', name: 'Solana', symbol: 'SOL', price: 195000, priceUSD: 142, change: 8.75, currency: 'ARS', holdings: 12.0, trend: [175000, 179000, 184000, 188000, 191000, 195000] },
+  { id: 'uniswap', cgId: 'uniswap', name: 'Uniswap', symbol: 'UNI', price: 11480, priceUSD: 8.4, change: 11.85, currency: 'ARS', holdings: 50.0, trend: [10100, 10350, 10600, 10900, 11200, 11480] },
+  { id: 'near', cgId: 'near', name: 'NEAR Protocol', symbol: 'NEAR', price: 7280, priceUSD: 5.3, change: 4.15, currency: 'ARS', holdings: 120.0, trend: [6900, 7000, 7120, 7080, 7210, 7280] },
+  { id: 'arbitrum', cgId: 'arbitrum', name: 'Arbitrum', symbol: 'ARB', price: 868, priceUSD: 0.63, change: -2.10, currency: 'ARS', holdings: 450.0, trend: [890, 885, 878, 882, 870, 868] },
+  { id: 'fetch-ai', cgId: 'fetch-ai', name: 'Artificial Superintel.', symbol: 'FET', price: 2030, priceUSD: 1.48, change: 6.42, currency: 'ARS', holdings: 200.0, trend: [1890, 1920, 1960, 1990, 2010, 2030] },
+  { id: 'render-token', cgId: 'render-token', name: 'Render Token', symbol: 'RENDER', price: 8950, priceUSD: 6.55, change: 14.80, currency: 'ARS', holdings: 60.0, trend: [7700, 7950, 8200, 8500, 8750, 8950] }
+];
 
 class FinanceEngine {
   constructor() {
@@ -13,6 +53,7 @@ class FinanceEngine {
     this.timerEl = document.getElementById('finance-timer');
     this.countdown = 20;
     this.timerInterval = null;
+    this.storageKeyCrypto = 'alicari_crypto_own';
 
     // Estado de ordenamiento por cada caja ('desc' = más subieron, 'asc' = más bajaron)
     this.sortState = {
@@ -32,6 +73,9 @@ class FinanceEngine {
       insights: document.getElementById('list-insights')
     };
 
+    // Cargar Criptos Own persistidas o predeterminadas
+    const loadedCryptoOwn = this.loadCustomCryptoOwn();
+
     // Estado de datos estructurados
     this.data = {
       // 1. DIVISAS
@@ -45,19 +89,10 @@ class FinanceEngine {
         { id: 'brl', name: 'Real Brasileño', symbol: 'BRL', buy: 195, sell: 208, change: 0.85, currency: 'ARS', trend: [202, 203, 204, 205, 206, 208] }
       ],
 
-      // 2. CRIPTOS OWN (Cartera / Activos seleccionados)
-      cryptoOwn: [
-        { id: 'bitcoin', cgId: 'bitcoin', name: 'Bitcoin', symbol: 'BTC', price: 92450000, change: 3.45, currency: 'ARS', trend: [88500000, 89200000, 90100000, 91200000, 91900000, 92450000] },
-        { id: 'ethereum', cgId: 'ethereum', name: 'Ethereum', symbol: 'ETH', price: 3820000, change: -1.15, currency: 'ARS', trend: [3890000, 3860000, 3840000, 3850000, 3830000, 3820000] },
-        { id: 'solana', cgId: 'solana', name: 'Solana', symbol: 'SOL', price: 195000, change: 8.75, currency: 'ARS', trend: [175000, 179000, 184000, 188000, 191000, 195000] },
-        { id: 'uniswap', cgId: 'uniswap', name: 'Uniswap', symbol: 'UNI', price: 11480, change: 11.85, currency: 'ARS', trend: [10100, 10350, 10600, 10900, 11200, 11480] },
-        { id: 'near', cgId: 'near', name: 'NEAR Protocol', symbol: 'NEAR', price: 7280, change: 4.15, currency: 'ARS', trend: [6900, 7000, 7120, 7080, 7210, 7280] },
-        { id: 'arbitrum', cgId: 'arbitrum', name: 'Arbitrum', symbol: 'ARB', price: 868, change: -2.10, currency: 'ARS', trend: [890, 885, 878, 882, 870, 868] },
-        { id: 'fetch-ai', cgId: 'fetch-ai', name: 'Artificial Superintel.', symbol: 'FET', price: 2030, change: 6.42, currency: 'ARS', trend: [1890, 1920, 1960, 1990, 2010, 2030] },
-        { id: 'render-token', cgId: 'render-token', name: 'Render Token', symbol: 'RENDER', price: 8950, change: 14.80, currency: 'ARS', trend: [7700, 7950, 8200, 8500, 8750, 8950] }
-      ],
+      // 2. CRIPTOS OWN (Personalizable)
+      cryptoOwn: loadedCryptoOwn,
 
-      // 3. CRIPTOS GLOBAL (Top 10 Movers del mercado cripto)
+      // 3. CRIPTOS GLOBAL (Top 10 Movers)
       cryptoGlobal: [
         { id: 'sui', name: 'Sui Network', symbol: 'SUI', priceUSD: 3.42, change: 28.40, rank: 1, trend: [2.65, 2.78, 2.95, 3.12, 3.30, 3.42] },
         { id: 'pepe', name: 'Pepe', symbol: 'PEPE', priceUSD: 0.0000185, change: 24.15, rank: 2, trend: [0.0000148, 0.0000155, 0.0000168, 0.0000174, 0.0000185] },
@@ -69,7 +104,6 @@ class FinanceEngine {
         { id: 'uniswap', name: 'Uniswap', symbol: 'UNI', priceUSD: 8.40, change: 11.85, rank: 8, trend: [7.48, 7.65, 7.88, 8.10, 8.25, 8.40] },
         { id: 'near', name: 'NEAR Protocol', symbol: 'NEAR', priceUSD: 5.32, change: 9.50, rank: 9, trend: [4.85, 4.95, 5.08, 5.15, 5.24, 5.32] },
         { id: 'solana', name: 'Solana', symbol: 'SOL', priceUSD: 142.50, change: 8.40, rank: 10, trend: [131, 134, 137, 139, 141, 142.5] },
-        // Pool de caídas para ordenamiento descendente/ascendente
         { id: 'starknet', name: 'Starknet', symbol: 'STRK', priceUSD: 0.44, change: -14.20, rank: 11, trend: [0.52, 0.50, 0.48, 0.46, 0.45, 0.44] },
         { id: 'worldcoin-wld', name: 'Worldcoin', symbol: 'WLD', priceUSD: 1.95, change: -11.50, rank: 12, trend: [2.22, 2.15, 2.08, 2.02, 1.98, 1.95] },
         { id: 'dydx', name: 'dYdX', symbol: 'DYDX', priceUSD: 1.12, change: -9.80, rank: 13, trend: [1.25, 1.22, 1.18, 1.15, 1.14, 1.12] },
@@ -91,7 +125,7 @@ class FinanceEngine {
         { id: 'teco2', name: 'Telecom Arg', symbol: 'TECO2', price: 1980, change: -6.85, currency: 'ARS', trend: [2140, 2100, 2070, 2030, 2000, 1980] }
       ],
 
-      // 5. SUGERENCIAS DE INVERSIÓN (Estrategias reales de mercado)
+      // 5. SUGERENCIAS DE INVERSIÓN
       insights: [
         { id: 'ins-nvda', title: 'NVDA CEDEAR', tag: 'IA / TECH', badge: 'COMPRA FUERTE', badgeClass: 'buy', score: 14.5, desc: 'Expansión en demanda de GPUs Blackwell & Data Centers. Cobertura CCL contra devaluación.', horizon: '6-12m', risk: 'Moderado' },
         { id: 'ins-lecap', title: 'LECAPS PESOS', tag: 'RENTA FIJA', badge: 'CARRY TRADE', badgeClass: 'hedge', score: 12.8, desc: 'Devengamiento de tasa efectiva mensual (TEM) ante superávit fiscal y estabilidad cambiaria.', horizon: '30-90d', risk: 'Bajo' },
@@ -102,6 +136,89 @@ class FinanceEngine {
     };
 
     this.init();
+  }
+
+  // Carga desde localStorage
+  loadCustomCryptoOwn() {
+    const raw = localStorage.getItem(this.storageKeyCrypto);
+    if (!raw) return JSON.parse(JSON.stringify(DEFAULT_CRYPTO_OWN));
+    try {
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        return parsed.map(c => ({
+          ...c,
+          trend: c.trend || [c.price * 0.98, c.price * 0.99, c.price]
+        }));
+      }
+    } catch (e) {
+      console.warn('[Finance] Fallo parsing cryptoOwn de localStorage, usando default.');
+    }
+    return JSON.parse(JSON.stringify(DEFAULT_CRYPTO_OWN));
+  }
+
+  saveCustomCryptoOwn() {
+    const toSave = this.data.cryptoOwn.map(c => ({
+      id: c.id,
+      cgId: c.cgId,
+      name: c.name,
+      symbol: c.symbol,
+      price: c.price || 0,
+      priceUSD: c.priceUSD || 0,
+      change: c.change || 0,
+      currency: c.currency || 'ARS',
+      holdings: Number(c.holdings) || 0,
+      trend: c.trend || []
+    }));
+    localStorage.setItem(this.storageKeyCrypto, JSON.stringify(toSave));
+    this.renderBox('cryptoOwn');
+    this.updatePortfolioHeader();
+  }
+
+  addCryptoOwnCoin(coinData) {
+    if (!coinData || !coinData.cgId) return;
+    const exists = this.data.cryptoOwn.find(c => c.cgId === coinData.cgId || c.id === coinData.id);
+    if (exists) {
+      if (coinData.holdings !== undefined) exists.holdings = Number(coinData.holdings);
+    } else {
+      const newCoin = {
+        id: coinData.id || coinData.cgId,
+        cgId: coinData.cgId,
+        name: coinData.name || coinData.symbol,
+        symbol: (coinData.symbol || coinData.id).toUpperCase(),
+        price: coinData.price || 1000,
+        priceUSD: coinData.priceUSD || 1,
+        change: 0,
+        currency: 'ARS',
+        holdings: Number(coinData.holdings) || 0,
+        trend: [1000, 1000, 1000]
+      };
+      this.data.cryptoOwn.push(newCoin);
+    }
+    this.saveCustomCryptoOwn();
+    this.fetchAll();
+  }
+
+  removeCryptoOwnCoin(coinId) {
+    this.data.cryptoOwn = this.data.cryptoOwn.filter(c => c.id !== coinId && c.cgId !== coinId);
+    this.saveCustomCryptoOwn();
+  }
+
+  updateHoldingAmount(coinId, newAmount) {
+    const coin = this.data.cryptoOwn.find(c => c.id === coinId || c.cgId === coinId);
+    if (coin) {
+      coin.holdings = Math.max(0, parseFloat(newAmount) || 0);
+      this.saveCustomCryptoOwn();
+    }
+  }
+
+  resetCryptoOwnToDefault() {
+    this.data.cryptoOwn = JSON.parse(JSON.stringify(DEFAULT_CRYPTO_OWN));
+    this.saveCustomCryptoOwn();
+    this.fetchAll();
+  }
+
+  getCryptoCatalog() {
+    return CRYPTO_CATALOG;
   }
 
   init() {
@@ -115,9 +232,8 @@ class FinanceEngine {
     buttons.forEach(btn => {
       btn.addEventListener('click', () => {
         const box = btn.getAttribute('data-box');
-        const sort = btn.getAttribute('data-sort'); // 'desc' o 'asc'
+        const sort = btn.getAttribute('data-sort');
         
-        // Actualizar clase activa en este grupo de botones
         const parent = btn.parentElement;
         parent.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
@@ -172,22 +288,29 @@ class FinanceEngine {
           if (tarjeta) this.updateFiatItem('usd-tarjeta', tarjeta.compra, tarjeta.venta);
         }).catch(err => console.warn('[Finance] DolarAPI:', err.message));
 
-      // 2. Fetch Criptos Own (CoinGecko en ARS)
-      const cgIds = 'bitcoin,ethereum,solana,near,uniswap,arbitrum,fetch-ai,render-token';
-      const cryptoPromise = fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${cgIds}&vs_currencies=ars,usd&include_24hr_change=true`)
-        .then(r => r.json())
-        .then(prices => {
-          this.data.cryptoOwn.forEach(item => {
-            if (item.cgId && prices[item.cgId]) {
-              const arsPrice = Math.round(prices[item.cgId].ars);
-              const change24h = prices[item.cgId].ars_24h_change;
-              if (arsPrice) item.price = arsPrice;
-              if (change24h !== undefined) item.change = +change24h.toFixed(2);
-              item.trend.push(item.price);
-              if (item.trend.length > 8) item.trend.shift();
-            }
-          });
-        }).catch(err => console.warn('[Finance] CoinGecko Own:', err.message));
+      // 2. Fetch Criptos Own dinámico según las monedas que el usuario tenga
+      const cgIdsList = this.data.cryptoOwn.map(c => c.cgId).filter(Boolean);
+      const uniqueIds = Array.from(new Set(cgIdsList)).join(',');
+
+      let cryptoPromise = Promise.resolve();
+      if (uniqueIds) {
+        cryptoPromise = fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${uniqueIds}&vs_currencies=ars,usd&include_24hr_change=true`)
+          .then(r => r.json())
+          .then(prices => {
+            this.data.cryptoOwn.forEach(item => {
+              if (item.cgId && prices[item.cgId]) {
+                const arsPrice = Math.round(prices[item.cgId].ars);
+                const usdPrice = prices[item.cgId].usd;
+                const change24h = prices[item.cgId].ars_24h_change;
+                if (arsPrice) item.price = arsPrice;
+                if (usdPrice) item.priceUSD = usdPrice;
+                if (change24h !== undefined) item.change = +change24h.toFixed(2);
+                item.trend.push(item.price);
+                if (item.trend.length > 8) item.trend.shift();
+              }
+            });
+          }).catch(err => console.warn('[Finance] CoinGecko Own:', err.message));
+      }
 
       // 3. Fetch Criptos Global Markets Top Movers
       const globalPromise = fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false&price_change_percentage=24h`)
@@ -221,7 +344,6 @@ class FinanceEngine {
   }
 
   simulateOrganicMovements() {
-    // Micro-movimientos para CEDEARs
     this.data.cedear.forEach(ced => {
       const delta = (Math.random() - 0.5) * (ced.price * 0.003);
       ced.price = Math.round(ced.price + delta);
@@ -262,7 +384,8 @@ class FinanceEngine {
   }
 
   formatARS(num) {
-    if (num >= 1000000) return num.toLocaleString('es-AR', { maximumFractionDigits: 0 });
+    if (num >= 1000000000) return (num / 1000000000).toFixed(2) + ' B';
+    if (num >= 1000000) return (num / 1000000).toFixed(2) + ' M';
     if (num >= 100) return num.toLocaleString('es-AR', { maximumFractionDigits: 0 });
     return num.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   }
@@ -271,8 +394,38 @@ class FinanceEngine {
     if (num < 0.0001) return num.toFixed(7);
     if (num < 0.01) return num.toFixed(5);
     if (num < 1) return num.toFixed(3);
-    if (num >= 1000) return num.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    if (num >= 1000000) return (num / 1000000).toFixed(2) + 'M';
+    if (num >= 1000) return num.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
     return num.toFixed(2);
+  }
+
+  calculateTotalPortfolio() {
+    let totalARS = 0;
+    let totalUSD = 0;
+
+    this.data.cryptoOwn.forEach(coin => {
+      const amount = Number(coin.holdings) || 0;
+      if (amount > 0) {
+        totalARS += amount * (coin.price || 0);
+        totalUSD += amount * (coin.priceUSD || (coin.price / 1400) || 0);
+      }
+    });
+
+    return { totalARS, totalUSD };
+  }
+
+  updatePortfolioHeader() {
+    const badgeEl = document.getElementById('crypto-portfolio-badge');
+    if (!badgeEl) return;
+
+    const { totalARS, totalUSD } = this.calculateTotalPortfolio();
+    if (totalARS > 0) {
+      badgeEl.innerHTML = `PORTAFOLIO: <strong style="color:#00e676;">$${this.formatARS(totalARS)} ARS</strong> <span style="opacity:0.65;">(~$${this.formatUSD(totalUSD)} USD)</span>`;
+      badgeEl.style.display = 'inline-flex';
+    } else {
+      badgeEl.innerHTML = `HOLDINGS: <strong style="color:var(--text-muted);">0 MONEDAS</strong>`;
+      badgeEl.style.display = 'inline-flex';
+    }
   }
 
   renderAllBoxes() {
@@ -281,6 +434,7 @@ class FinanceEngine {
     this.renderBox('cryptoGlobal');
     this.renderBox('cedear');
     this.renderBox('insights');
+    this.updatePortfolioHeader();
   }
 
   renderBox(boxKey) {
@@ -297,10 +451,14 @@ class FinanceEngine {
       return;
     }
 
+    if (boxKey === 'cryptoOwn') {
+      this.renderCryptoOwnBox(container);
+      return;
+    }
+
     let items = [...this.data[boxKey]];
     const sortOrder = this.sortState[boxKey];
 
-    // Ordenar por variación porcentual
     items.sort((a, b) => {
       const chA = a.change || 0;
       const chB = b.change || 0;
@@ -359,18 +517,86 @@ class FinanceEngine {
     container.innerHTML = html;
   }
 
-  renderCryptoGlobalBox(container) {
-    let items = [...this.data.cryptoGlobal];
-    const sortOrder = this.sortState.cryptoGlobal;
+  renderCryptoOwnBox(container) {
+    let items = [...this.data.cryptoOwn];
+    const sortOrder = this.sortState.cryptoOwn;
 
-    // Ordenar por variación porcentual (Top subas o Top bajas)
+    if (items.length === 0) {
+      container.innerHTML = `
+        <div class="crypto-empty-state">
+          <span>No tienes criptos agregadas en tu lista.</span>
+          <button class="crypto-quick-add-btn" id="btn-open-crypto-config">+ Agregar Criptomonedas ⚙️</button>
+        </div>
+      `;
+      const btn = container.querySelector('#btn-open-crypto-config');
+      if (btn && window.SettingsEngineInstance) {
+        btn.onclick = () => window.SettingsEngineInstance.openTab('crypto');
+      }
+      return;
+    }
+
     items.sort((a, b) => {
       const chA = a.change || 0;
       const chB = b.change || 0;
       return sortOrder === 'desc' ? (chB - chA) : (chA - chB);
     });
 
-    // Tomar estrictamente las 10 criptomonedas del ranking
+    let html = '';
+    items.forEach(item => {
+      const change = item.change || 0;
+      const isPositive = change >= 0;
+      const sign = isPositive ? '+' : '';
+      const holdings = Number(item.holdings) || 0;
+      const positionValueARS = holdings * (item.price || 0);
+
+      let strokeColor = isPositive ? '#00e676' : '#f60000';
+      const spark = this.generateSparkline(item.trend, strokeColor);
+
+      const holdingsDisplay = holdings > 0 
+        ? `<div class="holdings-tag font-mono" title="Cantidad que posees: ${holdings} ${item.symbol}">
+             <span class="holdings-amount">${holdings} ${item.symbol}</span>
+             <span class="holdings-value font-mono">≈ $${this.formatARS(positionValueARS)}</span>
+           </div>`
+        : `<div class="holdings-tag font-mono empty" title="Clic en ⚙️ para agregar tus balances">0 ${item.symbol}</div>`;
+
+      html += `
+        <div class="finance-row crypto-own-row" data-id="${item.id}">
+          <div class="fin-col fin-asset">
+            <div class="fin-symbol-box">
+              <span class="fin-symbol">${item.symbol}</span>
+              ${holdingsDisplay}
+            </div>
+            <span class="fin-name">${item.name}</span>
+          </div>
+
+          <div class="fin-col fin-chart">
+            ${spark}
+          </div>
+
+          <div class="fin-col fin-price">
+            <div class="fin-val font-mono">$${this.formatARS(item.price)} <span class="sub-cur">ARS</span></div>
+            <div class="fin-change ${isPositive ? 'val-positive' : 'val-negative'} font-mono">
+              <span>${isPositive ? '▲' : '▼'}</span> ${sign}${change.toFixed(2)}%
+            </div>
+          </div>
+        </div>
+      `;
+    });
+
+    container.innerHTML = html;
+    this.updatePortfolioHeader();
+  }
+
+  renderCryptoGlobalBox(container) {
+    let items = [...this.data.cryptoGlobal];
+    const sortOrder = this.sortState.cryptoGlobal;
+
+    items.sort((a, b) => {
+      const chA = a.change || 0;
+      const chB = b.change || 0;
+      return sortOrder === 'desc' ? (chB - chA) : (chA - chB);
+    });
+
     const top10 = items.slice(0, 10);
 
     let html = `
@@ -442,4 +668,3 @@ class FinanceEngine {
 }
 
 window.FinanceEngine = FinanceEngine;
-

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow, noarchive" />
   <title>ALICARI — Vertical Dashboard (Monitor 2)</title>
-  <meta name="description" content="Dashboard vertical modular navegable tipo carrusel para Wallpaper Engine y Lively Wallpaper — Pantalla 1: Reloj & Clima / Pantalla 2: Mercados & Finanzas." />
+  <meta name="description" content="Dashboard vertical modular navegable tipo carrusel para Wallpaper Engine y Lively Wallpaper — Pantalla 1: Reloj, Clima & Agenda / Pantalla 2: Mercados & Finanzas." />
   <link rel="icon" type="image/svg+xml" href="assets/images/logo-icon.svg" />
 
   <!-- Google Fonts: Outfit & JetBrains Mono -->
@@ -38,24 +38,28 @@
       <!-- Selector de Pantallas Tipo Carrusel -->
       <nav class="carousel-nav-container" aria-label="Navegación de Pantallas">
         <div class="carousel-tabs-bar" role="tablist">
-          <button class="carousel-tab-btn active" role="tab" aria-selected="true" data-slide="0" title="Ver Pantalla de Hora y Clima (Tecla 1)">
+          <button class="carousel-tab-btn active" role="tab" aria-selected="true" data-slide="0" title="Ver Pantalla de Hora, Clima y Agenda (Tecla 1)">
             <span class="tab-num">01</span>
-            <span>TIEMPO & CLIMA</span>
+            <span>TIEMPO & AGENDA</span>
           </button>
-          <button class="carousel-tab-btn" role="tab" aria-selected="false" data-slide="1" title="Ver Pantalla de Mercados y Activos (Tecla 2)">
+          <button class="carousel-tab-btn" role="tab" aria-selected="false" data-slide="1" title="Ver Pantalla de Mercados y Cartera (Tecla 2)">
             <span class="tab-num">02</span>
             <span>MERCADOS</span>
           </button>
         </div>
       </nav>
 
-      <!-- Acciones de Cabecera: Flechas, Auto-Rotar y Timer -->
+      <!-- Acciones de Cabecera: Flechas, Auto-Rotar, Config y Timer -->
       <div class="header-actions">
         <button class="carousel-arrow-btn" id="btn-carousel-prev" title="Pantalla Anterior (Flecha Izq / Arriba)" aria-label="Pantalla anterior">‹</button>
         <button class="carousel-arrow-btn" id="btn-carousel-next" title="Pantalla Siguiente (Flecha Der / Abajo)" aria-label="Pantalla siguiente">›</button>
         <button class="carousel-auto-btn" id="btn-carousel-auto" title="Activar rotación automática cada 25 segundos">
           <span>AUTO</span>
           <span style="font-size: 0.75em;">⟳</span>
+        </button>
+        <button class="carousel-auto-btn btn-settings-trigger" id="btn-open-settings" title="Configuración de Cartera y Google Calendar">
+          <span>⚙️</span>
+          <span>CONFIG</span>
         </button>
         <div class="status-pill timer-pill" title="Actualización automática de cotizaciones">
           <span class="status-dot green"></span>
@@ -72,15 +76,15 @@
       <div class="carousel-track">
 
         <!-- ───────────────────────────────────────────────────
-             PANTALLA 1 / CARD 1: HORA Y CLIMA EXCLUSIVOS
+             PANTALLA 1 / CARD 1: HORA, CLIMA & GOOGLE CALENDAR
              ─────────────────────────────────────────────────── -->
-        <section class="carousel-slide is-active" id="slide-weather-clock" aria-label="Pantalla 1: Hora y Clima">
+        <section class="carousel-slide is-active" id="slide-weather-clock" aria-label="Pantalla 1: Hora, Clima y Agenda">
           <div class="slide-clock-weather">
 
             <!-- 1. RELOJ POLAR HERO CON NÚMEROS RADIALES EXTERIORES -->
             <div class="glass-panel polar-clock-card-full" aria-label="Reloj Polar de Precisión">
               <div class="clock-card-header">
-                <span class="clock-greeting-badge" id="clock-greeting">BUENAS NOCHES</span>
+                <span class="clock-greeting-badge" id="clock-greeting">BUENAS TARDES</span>
                 <span class="clock-timezone-badge font-mono">UTC-3 • BUENOS AIRES</span>
               </div>
 
@@ -131,7 +135,7 @@
                     <span class="polar-ext-time font-mono" id="clock-time">18<span class="clock-colon">:</span>00</span>
                     <span class="polar-ext-sec font-mono" id="clock-seconds">:00</span>
                   </div>
-                  <div class="polar-ext-date font-mono" id="clock-date">JUE 24 SEP 2026</div>
+                  <div class="polar-ext-date font-mono" id="clock-date">DOM 27 SEP 2026</div>
                   <div class="polar-legend">
                     <div class="polar-legend-item"><span class="legend-dot sec"></span><span>SEG</span></div>
                     <div class="polar-legend-item"><span class="legend-dot min"></span><span>MIN</span></div>
@@ -197,6 +201,31 @@
               </div>
             </div>
 
+            <!-- 3. AGENDA & GOOGLE CALENDAR (PRÓXIMOS EVENTOS) -->
+            <div class="glass-panel calendar-card-full" id="calendar-widget" aria-label="Agenda de Google Calendar">
+              <div class="widget-header-bar">
+                <div class="widget-title-group">
+                  <div class="title-with-badge">
+                    <span class="widget-title"><span class="dot-cat"></span>AGENDA // CALENDARIO</span>
+                    <span class="box-sub-badge font-mono" id="calendar-mode-badge">GOOGLE CALENDAR</span>
+                  </div>
+                  <span class="widget-subtitle">PRÓXIMOS COMPROMISOS & REUNIONES</span>
+                </div>
+                <div class="header-actions">
+                  <button class="cal-mini-action-btn" id="btn-config-calendar" title="Configurar Enlace iCal de Google Calendar">⚙️</button>
+                  <div class="status-pill font-mono" style="font-size: 0.6rem;">
+                    <span class="status-dot green"></span>
+                    <span id="calendar-updated">LIVE</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Lista de Eventos Próximos -->
+              <div class="calendar-events-container" id="calendar-events-list">
+                <!-- Inyectado dinámicamente por agenda.js -->
+              </div>
+            </div>
+
           </div>
         </section>
 
@@ -221,13 +250,17 @@
                 </div>
               </section>
 
-              <!-- CAJA 2: CRIPTOS OWN -->
+              <!-- CAJA 2: CRIPTOS OWN (CON CARTERA Y CANTIDADES) -->
               <section class="glass-panel quad-box box-crypto-own" aria-label="Criptos Own">
                 <div class="quad-box-header">
-                  <span class="quad-box-title"><span class="dot-cat"></span>CRIPTOS OWN</span>
+                  <div class="title-with-badge">
+                    <span class="quad-box-title"><span class="dot-cat"></span>CRIPTOS OWN</span>
+                    <span class="box-sub-badge portfolio-badge font-mono" id="crypto-portfolio-badge">HOLDINGS</span>
+                  </div>
                   <div class="sort-btn-group">
-                    <button class="sort-btn active" data-box="cryptoOwn" data-sort="desc" title="Ordenar por mayores subas">▲ Subieron</button>
-                    <button class="sort-btn" data-box="cryptoOwn" data-sort="asc" title="Ordenar por mayores bajas">▼ Bajaron</button>
+                    <button class="sort-btn-action" id="btn-config-crypto-own" title="Personalizar Criptos y Cantidades">⚙️ Cartera</button>
+                    <button class="sort-btn active" data-box="cryptoOwn" data-sort="desc" title="Ordenar por mayores subas">▲</button>
+                    <button class="sort-btn" data-box="cryptoOwn" data-sort="asc" title="Ordenar por mayores bajas">▼</button>
                   </div>
                 </div>
                 <div class="quad-list-container" id="list-crypto-own">
@@ -296,11 +329,129 @@
         <button class="carousel-dot" data-slide="1" aria-label="Ir a Pantalla 2: Mercados y Activos"></button>
       </div>
 
-      <div id="carousel-status-label">PANTALLA 1/2 • TIEMPO Y CLIMA</div>
+      <div id="carousel-status-label">PANTALLA 1/2 • TIEMPO, CLIMA Y AGENDA</div>
       <div>MONTE GRANDE, BS AS • LIVE</div>
     </footer>
 
   </main>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       MODAL DE CONFIGURACIÓN Y PERSONALIZACIÓN (100% PRIVADO)
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="settings-modal-backdrop" id="settings-modal" aria-hidden="true" role="dialog" aria-label="Ajustes de Personalización">
+    <div class="settings-modal-card glass-panel">
+      
+      <!-- Cabecera Modal -->
+      <div class="settings-modal-header">
+        <div class="settings-header-title">
+          <span class="settings-icon">⚙️</span>
+          <div>
+            <h3>PANEL DE PERSONALIZACIÓN</h3>
+            <span class="settings-sub font-mono">100% PRIVADO & LOCAL EN TU NAVEGADOR</span>
+          </div>
+        </div>
+        <button class="settings-close-btn" id="btn-close-settings" title="Cerrar ajustes (ESC)">✕</button>
+      </div>
+
+      <!-- Selector de Pestañas del Modal -->
+      <div class="settings-tabs-bar font-mono">
+        <button class="settings-tab-btn active" data-tab="crypto">💰 CRIPTOS OWN & CARTERA</button>
+        <button class="settings-tab-btn" data-tab="calendar">📅 GOOGLE CALENDAR</button>
+        <button class="settings-tab-btn" data-tab="privacy">🔒 PRIVACIDAD</button>
+      </div>
+
+      <!-- Contenido de Pestañas -->
+      <div class="settings-content-area">
+
+        <!-- TAB 1: GESTIÓN DE CRIPTOS OWN -->
+        <div class="settings-tab-panel active" data-panel="crypto">
+          <div class="settings-section-box">
+            <h4 class="settings-section-title">AÑADIR CRIPTOMONEDA A TU LISTA</h4>
+            <div class="settings-add-row">
+              <div class="settings-input-group flex-2">
+                <label for="setting-select-coin">Criptomoneda:</label>
+                <select id="setting-select-coin" class="settings-select font-mono">
+                  <!-- Llenado dinámicamente -->
+                </select>
+                <input type="text" id="setting-custom-coin-id" class="settings-input font-mono" placeholder="ID de CoinGecko (ej: kaspa, monero)" style="display:none; margin-top:4px;" />
+              </div>
+
+              <div class="settings-input-group flex-1">
+                <label for="setting-add-holdings">Cantidad Poseída:</label>
+                <input type="number" id="setting-add-holdings" step="any" min="0" class="settings-input font-mono" placeholder="Ej: 0.5" />
+              </div>
+
+              <button class="settings-action-btn btn-primary" id="btn-add-crypto-setting">+ Agregar</button>
+            </div>
+          </div>
+
+          <div class="settings-section-box">
+            <div class="settings-subhead-row">
+              <h4 class="settings-section-title">TUS MONEDAS & CANTIDADES (HOLDINGS)</h4>
+              <button class="settings-text-btn" id="btn-reset-crypto-setting">Restaurar lista original ⟲</button>
+            </div>
+            <div class="settings-crypto-scroll-list" id="settings-crypto-list">
+              <!-- Renderizado dinámicamente -->
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: GOOGLE CALENDAR -->
+        <div class="settings-tab-panel" data-panel="calendar">
+          <div class="settings-section-box">
+            <h4 class="settings-section-title">VINCULAR AGENDA DE GOOGLE CALENDAR</h4>
+            <p class="settings-guide-text">
+              Pega la <strong>Dirección secreta en formato iCal (.ics)</strong> de tu calendario para ver tus eventos en vivo en la Pantalla 1.
+            </p>
+
+            <div class="settings-input-group" style="margin-top: 10px;">
+              <label for="setting-cal-url-input">URL Secreta iCal (.ics):</label>
+              <input type="url" id="setting-cal-url-input" class="settings-input font-mono" placeholder="https://calendar.google.com/calendar/ical/usuario%40gmail.com/private-xxxxxx/basic.ics" />
+            </div>
+
+            <div class="settings-btn-row" style="margin-top: 10px;">
+              <button class="settings-action-btn btn-primary" id="btn-save-cal-setting">Guardar y Sincronizar</button>
+              <button class="settings-action-btn btn-secondary" id="btn-clear-cal-setting">Desvincular (Modo Demo)</button>
+            </div>
+
+            <div id="setting-cal-status" class="cal-status-neutral font-mono" style="margin-top: 8px;">
+              ● Sin calendario vinculado. Mostrando eventos de ejemplo.
+            </div>
+          </div>
+
+          <div class="settings-section-box guide-box">
+            <h4 class="settings-section-title">¿CÓMO OBTENER TU ENLACE SECRETO EN 10 SEGUNDOS?</h4>
+            <ol class="settings-steps-list font-mono">
+              <li>Entra a <strong>Google Calendar</strong> en tu navegador (PC).</li>
+              <li>A la izquierda, haz clic en los 3 puntos de tu calendario y selecciona <strong>"Configuración y uso compartido"</strong>.</li>
+              <li>Baja hasta la sección <strong>"Integrar el calendario"</strong>.</li>
+              <li>Copia el campo llamado <strong>"Dirección secreta en formato iCal"</strong> y pégalo arriba.</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- TAB 3: PRIVACIDAD Y SEGURIDAD -->
+        <div class="settings-tab-panel" data-panel="privacy">
+          <div class="settings-section-box">
+            <h4 class="settings-section-title">GARANTÍA DE PRIVACIDAD & SEGURIDAD</h4>
+            <ul class="privacy-points-list">
+              <li>
+                <strong>Almacenamiento 100% Local:</strong> Tus cantidades de criptos, saldos y enlace de Google Calendar se guardan únicamente en el <code>localStorage</code> del navegador de esta máquina.
+              </li>
+              <li>
+                <strong>Cero datos en GitHub o Servidores:</strong> No se sube ninguna información personal al repositorio de código ni a servidores externos.
+              </li>
+              <li>
+                <strong>Invisibilidad para terceros:</strong> Si alguien entra a la página desde otra computadora o dispositivo, verá la plantilla vacía o por defecto, sin tener acceso a tus balances ni a tus reuniones.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
 
   <!-- Scripts Modulares Optimizados -->
   <script type="module" src="assets/js/vertical-entry.js"></script>
