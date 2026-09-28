@@ -966,83 +966,122 @@
       margin-bottom: 1.1rem;
     }
 
-    /* SLIDE 7 (GANTT 10 OCT) */
-    .timeline-table-card {
-      background: #ffffff;
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      padding: 1.1rem 1.2rem;
-      overflow: hidden;
-      margin-top: 0.3rem;
-      flex: 1;
+    /* SLIDE 7: CRONOGRAMA DUAL TRACK (PARALELO & SOLAPADO) */
+    .dual-timeline-container {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      box-shadow: var(--shadow-card);
+      gap: 0.85rem;
+      margin-top: 0.2rem;
+      flex: 1;
     }
 
-    .gantt-table {
+    .timeline-track-card {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1.1rem;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .track-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 0.4rem;
+    }
+
+    .track-title {
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: var(--green-deep);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .track-tag {
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 0.2rem 0.55rem;
+      border-radius: 100px;
+      letter-spacing: 0.05em;
+    }
+
+    .track-tag.primary {
+      background: var(--green-soft);
+      color: var(--green-deep);
+      border: 1px solid #a7f3d0;
+    }
+
+    .track-tag.secondary {
+      background: var(--navy-soft);
+      color: var(--navy-primary);
+      border: 1px solid #bfdbfe;
+    }
+
+    .dual-gantt-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.84rem;
+      font-size: 0.78rem;
     }
 
-    .gantt-table th {
-      text-align: left;
-      padding: 0.65rem 0.9rem;
-      font-size: 0.74rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text-muted);
-      border-bottom: 1px solid var(--border-subtle);
-      background: #f8fafc;
-      font-weight: 800;
-    }
-
-    .gantt-table td {
-      padding: 0.7rem 0.9rem;
-      border-bottom: 1px solid #f1f5f9;
+    .dual-gantt-table td {
+      padding: 0.45rem 0.6rem;
+      border-bottom: 1px solid #f8fafc;
       color: var(--text-main);
       vertical-align: middle;
     }
 
-    .phase-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.28rem 0.6rem;
-      border-radius: 6px;
-      font-weight: 800;
-      font-size: 0.73rem;
-      white-space: nowrap;
+    .dual-gantt-table tr:last-child td {
+      border-bottom: none;
     }
 
-    .phase-1 { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
-    .phase-2 { background: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe; }
-    .phase-3 { background: #f0f9ff; color: #0369a1; border: 1px solid #bae6fd; }
-    .phase-4 { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+    .gantt-period {
+      font-weight: 800;
+      white-space: nowrap;
+      width: 22%;
+      font-size: 0.74rem;
+    }
 
-    .gantt-bar-cell { width: 38%; }
+    .gantt-desc {
+      width: 48%;
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
 
-    .gantt-track {
-      height: 24px;
+    .gantt-desc strong {
+      color: var(--green-deep);
+    }
+
+    .dual-gantt-cell {
+      width: 30%;
+    }
+
+    .dual-gantt-bar {
+      height: 18px;
       background: #f1f5f9;
-      border-radius: 6px;
+      border-radius: 5px;
       display: flex;
       align-items: center;
-      padding: 0 4px;
+      padding: 0 3px;
       position: relative;
       border: 1px solid var(--border-subtle);
     }
 
-    .gantt-fill {
-      height: 16px;
-      border-radius: 4px;
-      font-size: 0.68rem;
+    .dual-gantt-fill {
+      height: 12px;
+      border-radius: 3px;
+      font-size: 0.62rem;
       font-weight: 800;
       display: flex;
       align-items: center;
-      padding: 0 0.5rem;
+      padding: 0 0.4rem;
       color: #fff;
     }
 
@@ -1404,8 +1443,8 @@
       .slide-subtitle { font-size: 0.82rem; line-height: 1.45; }
       .hero-title { font-size: 1.55rem; line-height: 1.2; }
       .slide-2-grid, .slide-3-grid, .slide-4-grid, .slide-5-grid, .slide-6-grid, .steps-grid, .milestones-grid { grid-template-columns: 1fr; gap: 1rem; }
-      .timeline-table-card { padding: 0.8rem; overflow-x: auto; }
-      .gantt-table { min-width: 540px; font-size: 0.78rem; }
+      .dual-timeline-container { overflow-x: auto; }
+      .dual-gantt-table { min-width: 520px; font-size: 0.74rem; }
       .budget-table { min-width: 480px; font-size: 0.78rem; }
       .budget-container { overflow-x: auto; }
       .kickoff-callout { flex-direction: column; align-items: stretch; gap: 1rem; }
@@ -1648,7 +1687,7 @@
                 <span class="block-tag" style="background: #fef2f2; color: #991b1b; border-color: #fecaca;">Túnel de Conversión Puro</span>
                 <h3>Cero Dispersión & Foco Absoluto</h3>
                 <p>
-                  Se eliminan botones flotantes de WhatsApp o enlaces externos que distraigan al usuario. Toda la arquitectura guía la atención hacia la acción principal de registro institucional.
+                  Se eliminan botones distractores y enlaces externos para concentrar toda la atención en el objetivo único de conversión institucional.
                 </p>
               </div>
 
@@ -1674,22 +1713,22 @@
                 <span class="block-tag" style="background: #ecfdf5; color: #065f46; border-color: #a7f3d0;">Captación Inmediata</span>
                 <h3>Formulario Ágil en 3 Campos</h3>
                 <p>
-                  Formulario ágil en 3 campos clave (Nombre del tutor, WhatsApp y Nivel de interés). Una vez enviado, se dispara una respuesta automatizada por WhatsApp/Email.
+                  Formulario ágil en 3 campos clave (Nombre del tutor, Teléfono/Contacto y Nivel de interés). La misma interfaz estandariza consultas presenciales y telefónicas en secretaría.
                 </p>
               </div>
 
               <div class="feature-points">
                 <div class="feature-point-item">
                   <span class="check-icon" style="color: #0284c7;">⚡</span>
-                  <span><strong>3 Campos Clave:</strong> Nombre del tutor, WhatsApp y Nivel de interés.</span>
+                  <span><strong>3 Campos Clave:</strong> Nombre del tutor, Teléfono/Contacto y Nivel de interés.</span>
                 </div>
                 <div class="feature-point-item">
-                  <span class="check-icon" style="color: #16a34a;">🤖</span>
-                  <span><strong>WhatsApp Post-Conversión:</strong> Mensaje automático disparado sólo tras completar el formulario.</span>
+                  <span class="check-icon" style="color: #16a34a;">✉️</span>
+                  <span><strong>Dossier por Email:</strong> Envío inmediato automatizado tras enviar el formulario.</span>
                 </div>
                 <div class="feature-point-item">
                   <span class="check-icon" style="color: #d97706;">🏛️</span>
-                  <span><strong>Uso en Recepción:</strong> La secretaría utiliza la misma interfaz para digitalizar llamadas y visitas.</span>
+                  <span><strong>Uso en Secretaría:</strong> Carga unificada de consultas presenciales y telefónicas.</span>
                 </div>
               </div>
             </div>
@@ -1697,12 +1736,12 @@
         </section>
 
         <!-- ============================================================
-             SLIDE 5: AUTOMATIZACIÓN, GOOGLE SHEETS & DASHBOARD
+             SLIDE 5: AUTOMATIZACIÓN, GOOGLE SHEETS & FLUJOS DE CONTACTO
              ============================================================ -->
         <section class="slide" data-slide="5" id="slide-5">
           <div class="slide-header">
             <span class="slide-tag">Gestión Centralizada y CRM Liviano</span>
-            <h2 class="slide-title">04. Base de Datos Centralizada y Panel de Gestión</h2>
+            <h2 class="slide-title">04. Base de Datos Centralizada y Automatizaciones</h2>
             <p class="slide-subtitle">Control total del pipeline de admisiones en el entorno Google de la institución, sin licencias extras.</p>
           </div>
 
@@ -1715,7 +1754,7 @@
                   <h3>Google Sheets en Drive Institucional</h3>
                 </div>
                 <p>
-                  Cada lead web o telefónico ingresa al instante a una hoja oficial en el Drive del colegio, sin licencias caras ni curvas de aprendizaje complejas.
+                  Cada lead web o relevamiento de recepción ingresa al instante a una hoja oficial en el Drive del colegio, sin licencias costosas ni curvas complejas de aprendizaje.
                 </p>
               </div>
               <div class="info-banner-green">
@@ -1751,14 +1790,14 @@
               <div>
                 <div class="module-header">
                   <div class="module-num">3</div>
-                  <h3>Email & WhatsApp Automatizado</h3>
+                  <h3>Email Automatizado & Canal Flexible</h3>
                 </div>
                 <p>
-                  Envío instantáneo de correo con el Dossier Informativo en PDF y confirmación automática vía webhook post-formulario.
+                  Disparo automático inmediato de correo con el Dossier Informativo en PDF al completar el formulario; integración con canal de WhatsApp disponible a criterio y decisión del colegio.
                 </p>
               </div>
               <div class="info-banner-blue">
-                ✉️ Dossier PDF inmediato + confirmación 24/7 sin demora operativa
+                ✉️ Dossier PDF inmediato + WhatsApp opcional a criterio institucional
               </div>
             </div>
           </div>
@@ -1784,7 +1823,7 @@
                 </div>
                 <h3>Sitio Actual: Invisible para Motores de IA</h3>
                 <p>
-                  Carencia de estructura mobile-first y arquitectura invisible para motores de respuesta de IA (Search Generative Experience de Google, Perplexity, ChatGPT). Tiempos lentos y falta de metadatos educativos.
+                  Carencia de estructura mobile-first y arquitectura invisible para motores de respuesta de IA (Search Generative Experience de Google, Perplexity, ChatGPT). Tiempos lentos y falta de metadatos educativos estructurados.
                 </p>
               </div>
 
@@ -1828,79 +1867,119 @@
         </section>
 
         <!-- ============================================================
-             SLIDE 7: CRONOGRAMA REAJUSTADO (KICKOFF 10 DE OCTUBRE)
+             SLIDE 7: CRONOGRAMA EN DOS VÍAS (OCTUBRE – ENERO)
              ============================================================ -->
         <section class="slide" data-slide="7" id="slide-7">
           <div class="slide-header">
-            <span class="slide-tag">Planificación Temporal</span>
-            <h2 class="slide-title">06. Plan de Trabajo Quincenal (Octubre – Enero)</h2>
-            <p class="slide-subtitle">Cronograma reajustado con solapamiento operativo y Kickoff el 10 de octubre para la campaña de matriculaciones.</p>
+            <span class="slide-tag">Planificación Temporal en Paralelo</span>
+            <h2 class="slide-title">06. Plan de Trabajo en Dos Vías (Octubre – Enero)</h2>
+            <p class="slide-subtitle">Dos líneas de tiempo simultáneas con Kickoff a partir del 10 de octubre: prioridad operativa de admisiones y desarrollo web continuo.</p>
           </div>
 
-          <div class="timeline-table-card">
-            <table class="gantt-table">
-              <thead>
-                <tr>
-                  <th style="width: 25%;">Fase / Período</th>
-                  <th style="width: 45%;">Acciones Clave y Entregables</th>
-                  <th>Visualización Temporal</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <span class="phase-badge phase-1">Fase 1 • 10 al 24 Oct</span>
-                  </td>
-                  <td>
-                    <strong>Identidad & Preprensa:</strong> Identidad visual, integración cromática, sello "Since 1963", diseño 1/2 A4, arquitectura Landing Page y auditoría AEO del sitio.
-                  </td>
-                  <td class="gantt-bar-cell">
-                    <div class="gantt-track">
-                      <div class="gantt-fill" style="width: 25%; background: #059669;">10 – 24 Oct</div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <span class="phase-badge phase-2">Fase 2 • 25 Oct al 10 Nov</span>
-                  </td>
-                  <td>
-                    <strong>Producción & Conexión:</strong> Impresión 1/2 A4, maquetación mobile-first de la landing y conexión directa con Google Sheets en Drive.
-                  </td>
-                  <td class="gantt-bar-cell">
-                    <div class="gantt-track">
-                      <div class="gantt-fill" style="width: 25%; margin-left: 25%; background: #2563eb;">25 Oct – 10 Nov</div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <span class="phase-badge phase-3">Fase 3 • 11 al 30 Nov</span>
-                  </td>
-                  <td>
-                    <strong>Lanzamiento & Despliegue:</strong> Salida en vivo de la landing, distribución del material físico y despliegue del Dashboard interno de admisiones.
-                  </td>
-                  <td class="gantt-bar-cell">
-                    <div class="gantt-track">
-                      <div class="gantt-fill" style="width: 25%; margin-left: 50%; background: #0284c7;">11 – 30 Nov</div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <span class="phase-badge phase-4">Fase 4 • Dic – Ene</span>
-                  </td>
-                  <td>
-                    <strong>Conversión & Guardia:</strong> Gestión intensiva del embudo de entrevistas, guardias de verano y desarrollo continuo del nuevo sitio institucional AEO.
-                  </td>
-                  <td class="gantt-bar-cell">
-                    <div class="gantt-track">
-                      <div class="gantt-fill" style="width: 25%; margin-left: 75%; background: #b91c1c;">Dic – Ene</div>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="dual-timeline-container">
+            
+            <!-- Track A: Campaña de Admisiones -->
+            <div class="timeline-track-card">
+              <div class="track-header">
+                <div class="track-title">
+                  <span style="color: #059669;">●</span> Track A — Campaña de Admisiones
+                </div>
+                <span class="track-tag primary">Prioridad Operativa Inmediata</span>
+              </div>
+
+              <table class="dual-gantt-table">
+                <tbody>
+                  <tr>
+                    <td class="gantt-period"><span class="phase-badge phase-1">10 al 24 Oct</span></td>
+                    <td class="gantt-desc"><strong>Identidad & Preprensa:</strong> Identidad visual, paleta unificada, sello "Since 1963", diseño 1/2 A4 y arquitectura Landing Page.</td>
+                    <td class="dual-gantt-cell">
+                      <div class="dual-gantt-bar">
+                        <div class="dual-gantt-fill" style="width: 25%; background: #059669;">10 – 24 Oct</div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="gantt-period"><span class="phase-badge phase-2">25 Oct – 10 Nov</span></td>
+                    <td class="gantt-desc"><strong>Producción & Conexión:</strong> Impresión de folletería 1/2 A4, maquetación mobile-first de la landing y conexión Google Sheets.</td>
+                    <td class="dual-gantt-cell">
+                      <div class="dual-gantt-bar">
+                        <div class="dual-gantt-fill" style="width: 25%; margin-left: 25%; background: #2563eb;">25 Oct – 10 Nov</div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="gantt-period"><span class="phase-badge phase-3">11 al 30 Nov</span></td>
+                    <td class="gantt-desc"><strong>Lanzamiento & Despliegue:</strong> Salida en vivo de la landing, distribución física de folletos y despliegue del Dashboard interno.</td>
+                    <td class="dual-gantt-cell">
+                      <div class="dual-gantt-bar">
+                        <div class="dual-gantt-fill" style="width: 25%; margin-left: 50%; background: #0284c7;">11 – 30 Nov</div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="gantt-period"><span class="phase-badge phase-4">Dic – Ene</span></td>
+                    <td class="gantt-desc"><strong>Conversión & Guardias:</strong> Gestión del embudo de entrevistas, conversión y guardias de admisión para vacantes remanentes.</td>
+                    <td class="dual-gantt-cell">
+                      <div class="dual-gantt-bar">
+                        <div class="dual-gantt-fill" style="width: 25%; margin-left: 75%; background: #b91c1c;">Dic – Ene</div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Track B: Rediseño Web & AEO -->
+            <div class="timeline-track-card">
+              <div class="track-header">
+                <div class="track-title">
+                  <span style="color: #1e3a8a;">●</span> Track B — Rediseño Web Institucional & AEO
+                </div>
+                <span class="track-tag secondary">Desarrollo Independiente a la Par</span>
+              </div>
+
+              <table class="dual-gantt-table">
+                <tbody>
+                  <tr>
+                    <td class="gantt-period"><span class="phase-badge phase-1">Octubre</span></td>
+                    <td class="gantt-desc"><strong>Auditoría & Arquitectura:</strong> Auditoría AEO/SEO, arquitectura de información y jerarquía de contenidos institucionales.</td>
+                    <td class="dual-gantt-cell">
+                      <div class="dual-gantt-bar">
+                        <div class="dual-gantt-fill" style="width: 25%; background: #059669;">Octubre</div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="gantt-period"><span class="phase-badge phase-2">Noviembre</span></td>
+                    <td class="gantt-desc"><strong>Maquetación & Schema:</strong> Maquetación frontend responsive y marcado estructurado Schema.org (EducationalOrganization).</td>
+                    <td class="dual-gantt-cell">
+                      <div class="dual-gantt-bar">
+                        <div class="dual-gantt-fill" style="width: 25%; margin-left: 25%; background: #2563eb;">Noviembre</div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="gantt-period"><span class="phase-badge phase-3">Diciembre</span></td>
+                    <td class="gantt-desc"><strong>Contenidos & Optimización:</strong> Carga de contenidos, optimización semántica para IA y pruebas Core Web Vitals.</td>
+                    <td class="dual-gantt-cell">
+                      <div class="dual-gantt-bar">
+                        <div class="dual-gantt-fill" style="width: 25%; margin-left: 50%; background: #0284c7;">Diciembre</div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="gantt-period"><span class="phase-badge phase-4">Enero</span></td>
+                    <td class="gantt-desc"><strong>Puesta Online & Dominios:</strong> Puesta online del nuevo sitio institucional y vinculación integral de dominios.</td>
+                    <td class="dual-gantt-cell">
+                      <div class="dual-gantt-bar">
+                        <div class="dual-gantt-fill" style="width: 25%; margin-left: 75%; background: #b91c1c;">Enero</div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
           </div>
         </section>
 
@@ -1926,8 +2005,8 @@
               <tbody>
                 <tr class="budget-row-highlight">
                   <td>
-                    <strong>1. Núcleo Admisiones (Identidad 1/2 A4, Landing pura, Sheets & Dashboard)</strong><br>
-                    <small style="color: #64748b;">Normalización gráfica, piezas 1/2 A4, landing mobile-first sin puntos de fuga, CRM Sheets y pipeline interno de secretaría.</small>
+                    <strong>1. Núcleo Admisiones (Identidad 1/2 A4, Landing pura, Sheets, Dashboard y Automatización de correos)</strong><br>
+                    <small style="color: #64748b;">Normalización gráfica, piezas 1/2 A4, landing mobile-first sin puntos de fuga, CRM Sheets, pipeline de secretaría y confirmación por email.</small>
                   </td>
                   <td>
                     <span class="price-ars">$1.380.000 – $1.920.000 ARS</span>
@@ -1938,7 +2017,7 @@
                 </tr>
                 <tr>
                   <td>
-                    <strong>2. Módulo Extra (Sitio Institucional Completo + Optimización AEO/SEO)</strong><br>
+                    <strong>2. Módulo Independiente (Sitio Institucional Completo + Optimización AEO/SEO)</strong><br>
                     <small style="color: #64748b;">Rediseño web general parishrobertson.com.ar, arquitectura por niveles, Schema.org y posicionamiento en motores de IA.</small>
                   </td>
                   <td>
@@ -1957,7 +2036,7 @@
                 <span class="milestones-title">
                   <span>💳</span> Esquema de Pagos Estructurado por Hitos de Avance
                 </span>
-                <span style="font-size: 0.72rem; color: #0284c7; font-weight: 700;">Kickoff: 10 de Octubre</span>
+                <span style="font-size: 0.72rem; color: #0284c7; font-weight: 700;">Kickoff: A partir del 10 de Octubre</span>
               </div>
 
               <div class="milestones-grid">
@@ -1989,7 +2068,7 @@
              SLIDE 9: PRÓXIMOS PASOS (KICKOFF INMEDIATO)
              ============================================================ -->
         <section class="slide" data-slide="9" id="slide-9">
-          <div class="slide-9-layout">
+          <div class="slide-8-layout">
             <div class="slide-header">
               <span class="slide-tag" style="color: #059669;">Kickoff Inmediato • 10 de Octubre</span>
               <h2 class="slide-title">08. Próximos Pasos para la Puesta en Marcha</h2>
@@ -2003,7 +2082,7 @@
                   <div class="step-badge-num">1</div>
                   <h3>Aprobación y Formalización</h3>
                   <p>
-                    Validación de partidas presupuestarias y firma de acuerdo para inicio el 10 de octubre.
+                    Validación de partidas presupuestarias y firma de acuerdo para inicio formal el 10 de octubre.
                   </p>
                 </div>
                 <div style="font-size: 0.75rem; color: #0284c7; font-weight: 700; margin-top: 0.8rem;">
@@ -2017,7 +2096,7 @@
                   <div class="step-badge-num">2</div>
                   <h3>Relevamiento Técnico</h3>
                   <p>
-                    Entrega de accesos a hosting/dominio del colegio y carpeta en Google Drive institucional.
+                    Entrega de accesos a hosting/dominio del colegio y asignación de carpeta en el Google Drive institucional.
                   </p>
                 </div>
                 <div style="font-size: 0.75rem; color: #059669; font-weight: 700; margin-top: 0.8rem;">
@@ -2127,9 +2206,9 @@
         "01. Diagnóstico del Material",
         "02. Reingeniería Gráfica (-50%)",
         "03. Landing Page Sin Puntos de Fuga",
-        "04. Sheets & Dashboard de Gestión",
+        "04. Sheets & Flujos de Contacto",
         "05. Rediseño Web & Optimización AEO",
-        "06. Cronograma (Kickoff 10 Oct)",
+        "06. Cronograma en Dos Vías",
         "07. Presupuesto & Hitos de Pago",
         "08. Próximos Pasos (Kickoff)"
       ];
