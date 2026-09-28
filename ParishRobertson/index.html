@@ -4,19 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow, noarchive" />
-  <title>Plan de Modernización de Admisiones — Colegio Parish Robertson</title>
+  <title>Plan de Modernización de Admisiones & Ecosistema Digital — Colegio Parish Robertson</title>
+  
+  <!-- Tipografías Corporativas Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet">
 
   <style>
     /* ==========================================================================
-       DESIGN TOKENS & SYSTEM — MODO LIGHT (INSTITUCIONAL ELEGANTE)
-       Institutional Palette:
-       - English Green: #004d2c, #0b291b, #064e3b
-       - Institutional Navy: #1e3a8a, #0f172a, #172554
-       - Sky Blue: #0284c7, #38bdf8, #e0f2fe
-       - Carmine Red (Uniform Accent): #b91c1c, #dc2626, #fef2f2
+       DESIGN TOKENS & PALETA INSTITUCIONAL COLEGIO PARISH ROBERTSON
+       - Verde Inglés Principal: #004d2c / #0b291b / #064e3b
+       - Azul Marino Institucional: #1e3a8a / #0f172a
+       - Celeste Cielo (Acentos): #38bdf8 / #0284c7 / #f0f9ff
+       - Rojo Carmín (Uniforme): #b91c1c / #fef2f2
        ========================================================================== */
     :root {
       --green-deep: #0b291b;
@@ -40,29 +41,21 @@
       --carmine-glow: rgba(185, 28, 28, 0.15);
       --carmine-soft: #fef2f2;
 
-      /* Light Surface & Canvas */
+      /* Superficies & Bordes */
       --bg-body: #f8fafc;
       --bg-stage: #ffffff;
       --bg-card: #ffffff;
-      --bg-card-alt: #f8fafc;
-      --bg-card-hover: #ffffff;
       --border-subtle: #e2e8f0;
       --border-accent: rgba(2, 132, 199, 0.35);
-      --border-green: rgba(0, 77, 44, 0.25);
 
-      /* Typography Tokens */
+      /* Tipografía */
       --text-main: #0f172a;
       --text-muted: #475569;
       --text-dim: #64748b;
-      --text-dark-bold: #0b291b;
 
-      /* Shadows & Elevations */
+      /* Sombras & Radios */
       --shadow-card: 0 4px 20px -4px rgba(15, 23, 42, 0.07), 0 1px 3px rgba(15, 23, 42, 0.04);
       --shadow-stage: 0 25px 60px -15px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(15, 23, 42, 0.06);
-      --shadow-glow-green: 0 10px 30px -5px rgba(0, 77, 44, 0.18);
-      --shadow-glow-sky: 0 10px 30px -5px rgba(2, 132, 199, 0.18);
-      --shadow-glow-red: 0 10px 30px -5px rgba(185, 28, 28, 0.18);
-
       --radius-sm: 8px;
       --radius-md: 14px;
       --radius-lg: 20px;
@@ -92,7 +85,7 @@
       user-select: none;
     }
 
-    /* Ambient Background Elements (Light Mode) */
+    /* Fondos Ambientales */
     .ambient-bg {
       position: fixed;
       inset: 0;
@@ -143,7 +136,7 @@
       opacity: 0.8;
     }
 
-    /* Deck Master Container (Responsive 16:9 Aspect Ratio) */
+    /* Escenario Deck 16:9 */
     .deck-viewport {
       position: relative;
       z-index: 10;
@@ -169,7 +162,7 @@
       overflow: hidden;
     }
 
-    /* Top Institutional Ribbon */
+    /* Barra Superior */
     .deck-topbar {
       height: 58px;
       padding: 0 2rem;
@@ -237,7 +230,7 @@
       font-variant-numeric: tabular-nums;
     }
 
-    /* Deck Content / Slide Carousel */
+    /* Contenedor de Diapositivas */
     .deck-content {
       position: relative;
       flex: 1;
@@ -246,7 +239,6 @@
       overflow: hidden;
     }
 
-    /* Individual Slide */
     .slide {
       position: absolute;
       inset: 0;
@@ -269,9 +261,8 @@
       pointer-events: auto;
     }
 
-    /* Slide Header standard */
     .slide-header {
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.1rem;
       flex-shrink: 0;
     }
 
@@ -284,7 +275,7 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--sky-primary);
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.35rem;
     }
 
     .slide-tag::before {
@@ -302,17 +293,16 @@
       letter-spacing: -0.025em;
       line-height: 1.18;
       color: var(--green-deep);
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.3rem;
     }
 
     .slide-subtitle {
-      font-size: 0.95rem;
+      font-size: 0.94rem;
       color: var(--text-muted);
       line-height: 1.45;
-      max-width: 900px;
+      max-width: 920px;
     }
 
-    /* Standard Card Component */
     .card {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
@@ -327,7 +317,7 @@
       transform: translateY(-2px);
     }
 
-    /* Bottom Control Bar */
+    /* Barra Inferior y Controles */
     .deck-bottombar {
       height: 64px;
       padding: 0 2rem;
@@ -355,7 +345,7 @@
       left: 0;
       top: 0;
       height: 100%;
-      width: 12.5%;
+      width: 11.11%;
       background: linear-gradient(90deg, var(--green-primary), var(--sky-primary));
       border-radius: 100px;
       transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
@@ -428,11 +418,11 @@
       font-weight: 600;
     }
 
-    /* ==========================================================================
-       SPECIFIC SLIDES STYLES
-       ========================================================================== */
-
-    /* SLIDE 1: PORTADA INSTITUCIONAL */
+    /* -------------------------------------------------------------
+       ESTILOS ESPECÍFICOS POR DIAPOSITIVA
+       ------------------------------------------------------------- */
+    
+    /* SLIDE 1 */
     .slide-1-layout {
       height: 100%;
       display: flex;
@@ -467,7 +457,6 @@
       font-family: var(--font-crest);
       font-size: 0.75rem;
       font-weight: 800;
-      letter-spacing: 0.05em;
     }
 
     .hero-badge-text {
@@ -483,11 +472,9 @@
       background: var(--carmine-primary);
       color: #fff;
       font-size: 0.65rem;
-      font-family: var(--font-body);
       font-weight: 800;
       padding: 0.15rem 0.5rem;
       border-radius: 100px;
-      letter-spacing: 0.05em;
     }
 
     .hero-title {
@@ -531,7 +518,6 @@
       background: #f8fafc;
       border: 1px solid var(--border-subtle);
       color: var(--text-main);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
     }
 
     .pill-icon {
@@ -552,7 +538,6 @@
       align-items: center;
       justify-content: space-between;
       max-width: 820px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     }
 
     .presenter-info {
@@ -573,7 +558,6 @@
       color: #fff;
       font-weight: 800;
       font-size: 0.9rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
     .presenter-meta h4 {
@@ -596,12 +580,12 @@
       gap: 0.35rem;
     }
 
-    /* SLIDE 2: DIAGNÓSTICO EN 2 COLUMNAS */
+    /* SLIDE 2 */
     .slide-2-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1.5rem;
-      margin-top: 0.5rem;
+      margin-top: 0.4rem;
       flex: 1;
     }
 
@@ -611,17 +595,11 @@
       flex-direction: column;
       justify-content: space-between;
       border-radius: var(--radius-lg);
-      position: relative;
       background: #ffffff;
     }
 
-    .diagnosis-card.warning-red {
-      border-top: 4px solid var(--carmine-primary);
-    }
-
-    .diagnosis-card.warning-amber {
-      border-top: 4px solid #d97706;
-    }
+    .diagnosis-card.warning-red { border-top: 4px solid var(--carmine-primary); }
+    .diagnosis-card.warning-amber { border-top: 4px solid #d97706; }
 
     .card-header-badge {
       display: flex;
@@ -639,17 +617,9 @@
       border-radius: 6px;
     }
 
-    .status-badge.red {
-      background: var(--carmine-soft);
-      color: var(--carmine-primary);
-      border: 1px solid rgba(185, 28, 28, 0.2);
-    }
-
-    .status-badge.amber {
-      background: #fef3c7;
-      color: #92400e;
-      border: 1px solid rgba(217, 119, 6, 0.2);
-    }
+    .status-badge.red { background: var(--carmine-soft); color: var(--carmine-primary); border: 1px solid rgba(185, 28, 28, 0.2); }
+    .status-badge.amber { background: #fef3c7; color: #92400e; border: 1px solid rgba(217, 119, 6, 0.2); }
+    .status-badge.blue { background: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe; }
 
     .card-icon-box {
       width: 32px;
@@ -695,13 +665,14 @@
 
     .evidence-item.red span:first-child { color: var(--carmine-primary); font-weight: 800; }
     .evidence-item.amber span:first-child { color: #d97706; font-weight: 800; }
+    .evidence-item.blue span:first-child { color: #0284c7; font-weight: 800; }
 
-    /* SLIDE 3: REINGENIERÍA GRÁFICA (3 TARJETAS) */
+    /* SLIDE 3 */
     .slide-3-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.3rem;
-      margin-top: 0.5rem;
+      margin-top: 0.4rem;
       flex: 1;
     }
 
@@ -775,12 +746,12 @@
       color: var(--text-dim);
     }
 
-    /* SLIDE 4: ECOSISTEMA DIGITAL (2 BLOQUES) */
+    /* SLIDE 4 */
     .slide-4-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1.5rem;
-      margin-top: 0.5rem;
+      margin-top: 0.4rem;
       flex: 1;
     }
 
@@ -846,12 +817,12 @@
       font-size: 0.9rem;
     }
 
-    /* SLIDE 5: AUTOMATIZACIÓN & CRM */
+    /* SLIDE 5 */
     .slide-5-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.3rem;
-      margin-top: 0.5rem;
+      margin-top: 0.4rem;
       flex: 1;
     }
 
@@ -954,14 +925,55 @@
       color: #1e40af;
     }
 
-    /* SLIDE 6: CRONOGRAMA REAJUSTADO (KICKOFF 10 DE OCTUBRE) */
+    /* SLIDE 6 (AEO & WEB INSTITUCIONAL) */
+    .slide-6-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 0.4rem;
+      flex: 1;
+    }
+
+    .aeo-card {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-radius: var(--radius-lg);
+      background: #ffffff;
+    }
+
+    .aeo-card.current {
+      border-top: 4px solid #d97706;
+    }
+
+    .aeo-card.future {
+      border-top: 4px solid var(--green-primary);
+      background: linear-gradient(180deg, #ffffff 0%, #f0fdf4 100%);
+    }
+
+    .aeo-card h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--green-deep);
+      margin-bottom: 0.6rem;
+    }
+
+    .aeo-card p {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: 1.1rem;
+    }
+
+    /* SLIDE 7 (GANTT 10 OCT) */
     .timeline-table-card {
       background: #ffffff;
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
-      padding: 1.2rem;
+      padding: 1.1rem 1.2rem;
       overflow: hidden;
-      margin-top: 0.4rem;
+      margin-top: 0.3rem;
       flex: 1;
       display: flex;
       flex-direction: column;
@@ -988,7 +1000,7 @@
     }
 
     .gantt-table td {
-      padding: 0.75rem 0.9rem;
+      padding: 0.7rem 0.9rem;
       border-bottom: 1px solid #f1f5f9;
       color: var(--text-main);
       vertical-align: middle;
@@ -998,7 +1010,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
-      padding: 0.3rem 0.65rem;
+      padding: 0.28rem 0.6rem;
       border-radius: 6px;
       font-weight: 800;
       font-size: 0.73rem;
@@ -1010,9 +1022,7 @@
     .phase-3 { background: #f0f9ff; color: #0369a1; border: 1px solid #bae6fd; }
     .phase-4 { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
 
-    .gantt-bar-cell {
-      width: 38%;
-    }
+    .gantt-bar-cell { width: 38%; }
 
     .gantt-track {
       height: 24px;
@@ -1036,13 +1046,13 @@
       color: #fff;
     }
 
-    /* SLIDE 7: PRESUPUESTO & HITOS DE PAGO */
+    /* SLIDE 8 (PRESUPUESTO E HITOS) */
     .budget-container {
       margin-top: 0.3rem;
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 0.9rem;
+      gap: 0.85rem;
     }
 
     .budget-table {
@@ -1069,25 +1079,15 @@
     }
 
     .budget-table td {
-      padding: 0.7rem 1.1rem;
+      padding: 0.75rem 1.1rem;
       border-bottom: 1px solid #f1f5f9;
       color: var(--text-main);
     }
 
-    .budget-table tr:hover td {
-      background: #f8fafc;
-    }
+    .budget-table tr:hover td { background: #f8fafc; }
 
-    .budget-row-total {
-      background: linear-gradient(90deg, #0b291b 0%, #1e3a8a 100%) !important;
-    }
-
-    .budget-row-total td {
-      font-weight: 800;
-      color: #ffffff !important;
-      font-size: 0.92rem;
-      padding: 0.85rem 1.1rem;
-      border-bottom: none !important;
+    .budget-row-highlight {
+      background: #f0fdf4 !important;
     }
 
     .price-ars {
@@ -1102,7 +1102,6 @@
       font-weight: 600;
     }
 
-    /* Payment Milestones Card Grid */
     .payment-milestones-card {
       background: #f8fafc;
       border: 1px solid #cbd5e1;
@@ -1147,13 +1146,8 @@
       border-left: 3.5px solid var(--green-primary);
     }
 
-    .milestone-item:nth-child(2) {
-      border-left-color: var(--sky-primary);
-    }
-
-    .milestone-item:nth-child(3) {
-      border-left-color: var(--navy-primary);
-    }
+    .milestone-item:nth-child(2) { border-left-color: var(--sky-primary); }
+    .milestone-item:nth-child(3) { border-left-color: var(--navy-primary); }
 
     .milestone-badge {
       font-size: 0.68rem;
@@ -1178,8 +1172,8 @@
       gap: 0.4rem;
     }
 
-    /* SLIDE 8: PRÓXIMOS PASOS */
-    .slide-8-layout {
+    /* SLIDE 9 */
+    .slide-9-layout {
       height: 100%;
       display: flex;
       flex-direction: column;
@@ -1256,7 +1250,7 @@
       margin-top: 0.2rem;
     }
 
-    /* OVERVIEW MODAL (GRID OF SLIDES) */
+    /* MODAL DE ÍNDICE / RESUMEN */
     .modal-backdrop {
       position: fixed;
       inset: 0;
@@ -1321,13 +1315,11 @@
       transition: all 0.2s;
     }
 
-    .modal-close-btn:hover {
-      background: #e2e8f0;
-    }
+    .modal-close-btn:hover { background: #e2e8f0; }
 
     .grid-thumbnails {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 1rem;
     }
 
@@ -1372,24 +1364,10 @@
 
     /* Print Styles */
     @media print {
-      body {
-        background: #fff;
-        color: #000;
-        overflow: visible;
-      }
-      .deck-viewport {
-        padding: 0;
-        width: 100%;
-        height: auto;
-      }
-      .deck-stage {
-        aspect-ratio: auto;
-        box-shadow: none;
-        border: none;
-      }
-      .deck-topbar, .deck-bottombar, .ambient-bg {
-        display: none !important;
-      }
+      body { background: #fff; color: #000; overflow: visible; }
+      .deck-viewport { padding: 0; width: 100%; height: auto; }
+      .deck-stage { aspect-ratio: auto; box-shadow: none; border: none; }
+      .deck-topbar, .deck-bottombar, .ambient-bg { display: none !important; }
       .slide {
         position: relative !important;
         opacity: 1 !important;
@@ -1401,260 +1379,45 @@
       }
     }
 
-    /* Responsive Adjustments for Tablets and Mobile Displays */
+    /* Responsive: Tablets */
     @media (max-width: 1024px) {
       .hero-title { font-size: 2.1rem; }
       .slide { padding: 1.5rem 2rem; }
       .slide-3-grid, .slide-5-grid, .steps-grid, .milestones-grid { grid-template-columns: 1fr 1fr; }
-      .slide-2-grid, .slide-4-grid { grid-template-columns: 1fr; }
+      .slide-2-grid, .slide-4-grid, .slide-6-grid { grid-template-columns: 1fr; }
       .grid-thumbnails { grid-template-columns: repeat(3, 1fr); }
     }
 
-    /* Dedicated Mobile Viewport (Phones ≤ 768px) */
+    /* Responsive: Mobile */
     @media (max-width: 768px) {
-      body {
-        overflow: hidden;
-        height: 100dvh;
-        width: 100vw;
-      }
-
-      .deck-viewport {
-        padding: 0;
-        width: 100vw;
-        height: 100dvh;
-        align-items: stretch;
-        justify-content: stretch;
-      }
-
-      .deck-stage {
-        max-width: 100%;
-        width: 100%;
-        height: 100dvh;
-        max-height: 100dvh;
-        aspect-ratio: auto;
-        border-radius: 0;
-        border: none;
-        box-shadow: none;
-      }
-
-      .deck-topbar {
-        height: 46px;
-        padding: 0 1rem;
-      }
-
-      .topbar-brand {
-        font-size: 0.72rem;
-        gap: 0.5rem;
-      }
-
-      .topbar-badge {
-        display: none;
-      }
-
-      .deck-slide-indicator {
-        font-size: 0.72rem;
-        padding: 0.2rem 0.5rem;
-      }
-
-      .deck-content {
-        height: calc(100dvh - 46px - 60px);
-      }
-
-      .slide {
-        padding: 1.1rem 1rem 1.4rem;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        justify-content: flex-start;
-        gap: 1rem;
-      }
-
-      /* Slide Titles & Typography */
-      .slide-header {
-        margin-bottom: 0.8rem;
-      }
-
-      .slide-tag {
-        font-size: 0.68rem;
-      }
-
-      .slide-title {
-        font-size: 1.35rem;
-        line-height: 1.25;
-      }
-
-      .slide-subtitle {
-        font-size: 0.82rem;
-        line-height: 1.45;
-      }
-
-      /* Slide 1 Mobile */
-      .slide-1-layout {
-        justify-content: flex-start;
-        padding: 0.5rem 0 1.5rem;
-        gap: 1rem;
-      }
-
-      .hero-badge-container {
-        font-size: 0.72rem;
-        padding: 0.35rem 0.75rem;
-        margin-bottom: 0.4rem;
-      }
-
-      .hero-badge-text {
-        font-size: 0.72rem;
-        letter-spacing: 0.08em;
-      }
-
-      .hero-title {
-        font-size: 1.55rem;
-        line-height: 1.2;
-        margin-bottom: 0.4rem;
-      }
-
-      .hero-subtitle {
-        font-size: 0.88rem;
-        line-height: 1.5;
-        margin-bottom: 0.8rem;
-        padding-left: 0.8rem;
-      }
-
-      .hero-highlights {
-        gap: 0.5rem;
-        margin-bottom: 1rem;
-      }
-
-      .highlight-pill {
-        font-size: 0.75rem;
-        padding: 0.35rem 0.7rem;
-        width: 100%;
-      }
-
-      .hero-presenter-card {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.8rem;
-        padding: 1rem;
-      }
-
-      .presenter-link {
-        width: 100%;
-        justify-content: space-between;
-        padding-top: 0.5rem;
-        border-top: 1px solid var(--border-subtle);
-      }
-
-      /* Grid Layouts Stacked on Mobile */
-      .slide-2-grid,
-      .slide-3-grid,
-      .slide-4-grid,
-      .slide-5-grid,
-      .steps-grid,
-      .milestones-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-      }
-
-      .diagnosis-card,
-      .metric-card,
-      .digital-block,
-      .automation-module,
-      .step-card {
-        padding: 1.1rem;
-      }
-
-      .metric-hero {
-        font-size: 2.1rem;
-      }
-
-      .metric-hero.crest-font {
-        font-size: 1.6rem;
-      }
-
-      /* Slide 6 Mobile Table */
-      .timeline-table-card {
-        padding: 0.8rem;
-        overflow-x: auto;
-      }
-
-      .gantt-table {
-        min-width: 540px;
-        font-size: 0.78rem;
-      }
-
-      .gantt-table th,
-      .gantt-table td {
-        padding: 0.55rem 0.65rem;
-      }
-
-      /* Slide 7 Mobile Budget */
-      .budget-table {
-        min-width: 480px;
-        font-size: 0.78rem;
-      }
-
-      .budget-container {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-      }
-
-      .budget-table th,
-      .budget-table td {
-        padding: 0.6rem 0.8rem;
-      }
-
-      .payment-milestones-card {
-        padding: 0.75rem 0.9rem;
-      }
-
-      /* Slide 8 Mobile */
-      .kickoff-callout {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 1rem;
-        padding: 1.1rem;
-      }
-
-      .kickoff-callout .nav-btn {
-        width: 100%;
-        justify-content: center;
-      }
-
-      /* Bottom Bar Mobile */
-      .deck-bottombar {
-        height: 60px;
-        padding: 0 0.8rem;
-        padding-bottom: max(0.4rem, env(safe-area-inset-bottom));
-      }
-
-      .progress-track {
-        margin: 0 0.6rem;
-      }
-
-      .nav-btn {
-        padding: 0.45rem 0.7rem;
-        font-size: 0.75rem;
-      }
-
-      .nav-btn .key-hint {
-        display: none;
-      }
-
-      /* Modal Overview on Mobile */
-      .modal-grid-container {
-        padding: 1.2rem;
-        max-height: 85vh;
-      }
-
-      .grid-thumbnails {
-        grid-template-columns: 1fr;
-        gap: 0.75rem;
-      }
+      body { overflow: hidden; height: 100dvh; width: 100vw; }
+      .deck-viewport { padding: 0; width: 100vw; height: 100dvh; align-items: stretch; }
+      .deck-stage { max-width: 100%; width: 100%; height: 100dvh; max-height: 100dvh; aspect-ratio: auto; border-radius: 0; border: none; box-shadow: none; }
+      .deck-topbar { height: 46px; padding: 0 1rem; }
+      .topbar-brand { font-size: 0.72rem; gap: 0.5rem; }
+      .topbar-badge { display: none; }
+      .deck-slide-indicator { font-size: 0.72rem; padding: 0.2rem 0.5rem; }
+      .deck-content { height: calc(100dvh - 46px - 60px); }
+      .slide { padding: 1.1rem 1rem 1.4rem; overflow-y: auto; justify-content: flex-start; gap: 1rem; }
+      .slide-header { margin-bottom: 0.8rem; }
+      .slide-title { font-size: 1.35rem; line-height: 1.25; }
+      .slide-subtitle { font-size: 0.82rem; line-height: 1.45; }
+      .hero-title { font-size: 1.55rem; line-height: 1.2; }
+      .slide-2-grid, .slide-3-grid, .slide-4-grid, .slide-5-grid, .slide-6-grid, .steps-grid, .milestones-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .timeline-table-card { padding: 0.8rem; overflow-x: auto; }
+      .gantt-table { min-width: 540px; font-size: 0.78rem; }
+      .budget-table { min-width: 480px; font-size: 0.78rem; }
+      .budget-container { overflow-x: auto; }
+      .kickoff-callout { flex-direction: column; align-items: stretch; gap: 1rem; }
+      .deck-bottombar { height: 60px; padding: 0 0.8rem; }
+      .nav-btn .key-hint { display: none; }
+      .grid-thumbnails { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Ambient Light Backdrops (Light Theme) -->
+  <!-- Fondos de Iluminación Ambiental -->
   <div class="ambient-bg">
     <div class="ambient-orb orb-1"></div>
     <div class="ambient-orb orb-2"></div>
@@ -1662,11 +1425,11 @@
     <div class="grid-overlay"></div>
   </div>
 
-  <!-- Deck Viewport -->
+  <!-- Contenedor Principal (16:9 Centrado) -->
   <main class="deck-viewport">
     <div class="deck-stage">
       
-      <!-- Top Institutional Ribbon -->
+      <!-- Encabezado Institucional -->
       <header class="deck-topbar">
         <div class="topbar-brand">
           <span class="brand-crest-dot"></span>
@@ -1680,11 +1443,11 @@
         </div>
 
         <div class="deck-slide-indicator" id="slideIndicator">
-          Slide 1 de 8
+          Slide 1 de 9
         </div>
       </header>
 
-      <!-- Slides Container -->
+      <!-- Contenedor de Slides -->
       <div class="deck-content" id="slidesDeck">
 
         <!-- ============================================================
@@ -1695,7 +1458,7 @@
             
             <div class="hero-badge-container">
               <div class="school-shield">PR</div>
-              <span class="hero-badge-text">Virtutis Gloria Merces • Since 1963</span>
+              <span class="hero-badge-text">VIRTUTIS GLORIA MERCES • SINCE 1963</span>
               <span class="hero-badge-pill">Monte Grande</span>
             </div>
 
@@ -1715,7 +1478,7 @@
               </div>
               <div class="highlight-pill">
                 <span class="pill-icon pill-sky"></span>
-                <span>Fast-Track Landing & WhatsApp Oficial</span>
+                <span>Landing Page de Conversión Pura</span>
               </div>
               <div class="highlight-pill">
                 <span class="pill-icon pill-red"></span>
@@ -1792,7 +1555,7 @@
               <ul class="evidence-list">
                 <li class="evidence-item amber">
                   <span>⚠️</span>
-                  <div><strong>1/3 desaprovechado:</strong> Espacio destinado a líneas de "Observaciones" que raramente se completan.</div>
+                  <div><strong>1/3 desaprovechado:</strong> Espacio destinado a líneas manuscritas de "Observaciones" que raramente se completan.</div>
                 </li>
                 <li class="evidence-item amber">
                   <span>⚠️</span>
@@ -1857,46 +1620,46 @@
                 <div class="metric-hero purple">QR Dinámico</div>
                 <h3>Puente Directo a la Conversión</h3>
                 <p>
-                  El papel actúa como puente inmediato a la landing page y a WhatsApp, segmentado por nivel (Maternal/Inicial, Primaria y Secundaria).
+                  El papel actúa como puente inmediato a la landing page institucional, segmentado por nivel (Maternal/Inicial, Primaria y Secundaria).
                 </p>
               </div>
               <div class="pill-metric-footer">
                 <span>Papel → Teléfono en 2 seg</span>
-                <strong style="color: #4f46e5;">Mobile-First</strong>
+                <strong style="color: #4f46e5;">Conversión Pura</strong>
               </div>
             </div>
           </div>
         </section>
 
         <!-- ============================================================
-             SLIDE 4: ECOSISTEMA DIGITAL (FAST-TRACK)
+             SLIDE 4: LANDING PAGE DE ADMISIONES (SIN PUNTOS DE FUGA)
              ============================================================ -->
         <section class="slide" data-slide="4" id="slide-4">
           <div class="slide-header">
-            <span class="slide-tag">Captación y Experiencia de Usuario</span>
+            <span class="slide-tag">Captación de Familias y Conversión Directa</span>
             <h2 class="slide-title">03. Landing Page de Admisiones Mobile-First</h2>
-            <p class="slide-subtitle">Un portal ágil, sin fricciones, diseñado para responder dudas clave y registrar el interés en segundos.</p>
+            <p class="slide-subtitle">Arquitectura orientada a la acción inmediata sin distracciones ni fugas hacia chats informales.</p>
           </div>
 
           <div class="slide-4-grid">
             <!-- Bloque 1 -->
             <div class="card digital-block">
               <div>
-                <span class="block-tag">Estructura de Conversión</span>
-                <h3>Propuesta Bilingüe Clara</h3>
+                <span class="block-tag" style="background: #fef2f2; color: #991b1b; border-color: #fecaca;">Túnel de Conversión Puro</span>
+                <h3>Cero Dispersión & Foco Absoluto</h3>
                 <p>
-                  Presentación clara y moderna de la propuesta bilingüe de Maternal a Secundaria, sin textos densos obsoletos. Preguntas frecuentes (horarios, aranceles, comedor).
+                  Se eliminan botones flotantes de WhatsApp o enlaces externos que distraigan al usuario. Toda la arquitectura guía la atención hacia la acción principal de registro institucional.
                 </p>
               </div>
 
               <div class="feature-points">
                 <div class="feature-point-item">
                   <span class="check-icon">✓</span>
-                  <span><strong>Sección FAQ Dinámica:</strong> Horarios de doble jornada, aranceles y comedor.</span>
+                  <span><strong>100% Tráfico al Formulario:</strong> Sin salidas secundarias ni chats abiertos sin calificar.</span>
                 </div>
                 <div class="feature-point-item">
                   <span class="check-icon">✓</span>
-                  <span><strong>Galería de Infraestructura:</strong> Instalaciones, deportes, laboratorios y arte.</span>
+                  <span><strong>Sección FAQ Dinámica:</strong> Horarios de doble jornada, aranceles y comedor.</span>
                 </div>
                 <div class="feature-point-item">
                   <span class="check-icon">✓</span>
@@ -1909,9 +1672,9 @@
             <div class="card digital-block">
               <div>
                 <span class="block-tag" style="background: #ecfdf5; color: #065f46; border-color: #a7f3d0;">Captación Inmediata</span>
-                <h3>Formulario Ágil & WhatsApp</h3>
+                <h3>Formulario Ágil en 3 Campos</h3>
                 <p>
-                  Formulario ágil en 3 campos (Nombre del tutor, WhatsApp y Nivel de interés). Botón flotante omnipresente de WhatsApp. La misma interfaz estandariza consultas presenciales y telefónicas en recepción.
+                  Formulario ágil en 3 campos clave (Nombre del tutor, WhatsApp y Nivel de interés). Una vez enviado, se dispara una respuesta automatizada por WhatsApp/Email.
                 </p>
               </div>
 
@@ -1921,12 +1684,12 @@
                   <span><strong>3 Campos Clave:</strong> Nombre del tutor, WhatsApp y Nivel de interés.</span>
                 </div>
                 <div class="feature-point-item">
-                  <span class="check-icon" style="color: #16a34a;">💬</span>
-                  <span><strong>Botón Flotante WhatsApp:</strong> Comunicación omnipresente con secretaría.</span>
+                  <span class="check-icon" style="color: #16a34a;">🤖</span>
+                  <span><strong>WhatsApp Post-Conversión:</strong> Mensaje automático disparado sólo tras completar el formulario.</span>
                 </div>
                 <div class="feature-point-item">
                   <span class="check-icon" style="color: #d97706;">🏛️</span>
-                  <span><strong>Uso en Recepción:</strong> Estandarización de consultas presenciales y telefónicas.</span>
+                  <span><strong>Uso en Recepción:</strong> La secretaría utiliza la misma interfaz para digitalizar llamadas y visitas.</span>
                 </div>
               </div>
             </div>
@@ -1988,26 +1751,89 @@
               <div>
                 <div class="module-header">
                   <div class="module-num">3</div>
-                  <h3>Email Automatizado</h3>
+                  <h3>Email & WhatsApp Automatizado</h3>
                 </div>
                 <p>
-                  Envío instantáneo de correo con el Dossier Informativo en PDF ante cada consulta, más recordatorios programados de visitas.
+                  Envío instantáneo de correo con el Dossier Informativo en PDF y confirmación automática vía webhook post-formulario.
                 </p>
               </div>
               <div class="info-banner-blue">
-                ✉️ Dossier PDF inmediato + recordatorios 24/7 sin demoras
+                ✉️ Dossier PDF inmediato + confirmación 24/7 sin demora operativa
               </div>
             </div>
           </div>
         </section>
 
         <!-- ============================================================
-             SLIDE 6: CRONOGRAMA REAJUSTADO (KICKOFF 10 DE OCTUBRE)
+             SLIDE 6: MÓDULO EXTRA: REDISEÑO WEB & OPTIMIZACIÓN AEO
              ============================================================ -->
         <section class="slide" data-slide="6" id="slide-6">
           <div class="slide-header">
+            <span class="slide-tag">Ecosistema Institucional & IA</span>
+            <h2 class="slide-title">05. Modernización Web Integral & AEO (Módulo Transversal)</h2>
+            <p class="slide-subtitle">Posicionamiento estratégico en motores de búsqueda tradicionales y en la nueva generación de IA generativa.</p>
+          </div>
+
+          <div class="slide-6-grid">
+            <!-- Diagnóstico Actual -->
+            <div class="card aeo-card current">
+              <div>
+                <div class="card-header-badge">
+                  <span class="status-badge amber">Diagnóstico parishrobertson.com.ar</span>
+                  <div class="card-icon-box" style="background: #fef3c7; color: #d97706;">🔍</div>
+                </div>
+                <h3>Sitio Actual: Invisible para Motores de IA</h3>
+                <p>
+                  Carencia de estructura mobile-first y arquitectura invisible para motores de respuesta de IA (Search Generative Experience de Google, Perplexity, ChatGPT). Tiempos lentos y falta de metadatos educativos.
+                </p>
+              </div>
+
+              <ul class="evidence-list">
+                <li class="evidence-item amber">
+                  <span>⚠️</span>
+                  <div><strong>Sin marcado Schema.org:</strong> Los motores de IA no pueden indexar niveles, horarios ni propuesta bilingüe estructurada.</div>
+                </li>
+                <li class="evidence-item amber">
+                  <span>⚠️</span>
+                  <div><strong>Carga lenta en móviles:</strong> Fricción técnica que penaliza el posicionamiento en Monte Grande y Canning.</div>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Alcance Rediseño AEO -->
+            <div class="card aeo-card future">
+              <div>
+                <div class="card-header-badge">
+                  <span class="status-badge blue">Solución AEO & SEO 2026</span>
+                  <div class="card-icon-box" style="background: #dbeafe; color: #1e40af;">🚀</div>
+                </div>
+                <h3>Rediseño Institucional AEO/SEO</h3>
+                <p>
+                  Implementación de marcado de datos Schema.org (EducationalOrganization), arquitectura por niveles, velocidad de carga optimizada y contenido semántico estructurado para consultas por voz e IA en Monte Grande/Canning/Ezeiza.
+                </p>
+              </div>
+
+              <ul class="evidence-list">
+                <li class="evidence-item blue">
+                  <span>✓</span>
+                  <div><strong>Optimizado para ChatGPT y Google SGE:</strong> Respuestas precisas cuando las familias consultan por colegios en la zona sur.</div>
+                </li>
+                <li class="evidence-item blue">
+                  <span>✓</span>
+                  <div><strong>Experiencia Fluida:</strong> Navegación institucional moderna con estética alineada a los valores del colegio.</div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================
+             SLIDE 7: CRONOGRAMA REAJUSTADO (KICKOFF 10 DE OCTUBRE)
+             ============================================================ -->
+        <section class="slide" data-slide="7" id="slide-7">
+          <div class="slide-header">
             <span class="slide-tag">Planificación Temporal</span>
-            <h2 class="slide-title">05. Plan de Trabajo Quincenal (Octubre – Enero)</h2>
+            <h2 class="slide-title">06. Plan de Trabajo Quincenal (Octubre – Enero)</h2>
             <p class="slide-subtitle">Cronograma reajustado con solapamiento operativo y Kickoff el 10 de octubre para la campaña de matriculaciones.</p>
           </div>
 
@@ -2026,7 +1852,7 @@
                     <span class="phase-badge phase-1">Fase 1 • 10 al 24 Oct</span>
                   </td>
                   <td>
-                    <strong>Identidad & Preprensa:</strong> Identidad visual, integración cromática, sello "Since 1963", diseño 1/2 A4 y arquitectura de la Landing Page.
+                    <strong>Identidad & Preprensa:</strong> Identidad visual, integración cromática, sello "Since 1963", diseño 1/2 A4, arquitectura Landing Page y auditoría AEO del sitio.
                   </td>
                   <td class="gantt-bar-cell">
                     <div class="gantt-track">
@@ -2039,7 +1865,7 @@
                     <span class="phase-badge phase-2">Fase 2 • 25 Oct al 10 Nov</span>
                   </td>
                   <td>
-                    <strong>Producción & Conexión:</strong> Impresión de nueva folletería, maquetación mobile-first y conexión con Google Sheets en Drive.
+                    <strong>Producción & Conexión:</strong> Impresión 1/2 A4, maquetación mobile-first de la landing y conexión directa con Google Sheets en Drive.
                   </td>
                   <td class="gantt-bar-cell">
                     <div class="gantt-track">
@@ -2052,7 +1878,7 @@
                     <span class="phase-badge phase-3">Fase 3 • 11 al 30 Nov</span>
                   </td>
                   <td>
-                    <strong>Lanzamiento & Despliegue:</strong> Lanzamiento en vivo de la landing, distribución física de folletos y despliegue del Dashboard interno.
+                    <strong>Lanzamiento & Despliegue:</strong> Salida en vivo de la landing, distribución del material físico y despliegue del Dashboard interno de admisiones.
                   </td>
                   <td class="gantt-bar-cell">
                     <div class="gantt-track">
@@ -2065,7 +1891,7 @@
                     <span class="phase-badge phase-4">Fase 4 • Dic – Ene</span>
                   </td>
                   <td>
-                    <strong>Conversión & Guardia:</strong> Gestión intensiva del embudo de entrevistas, conversión y guardia de admisión para vacantes remanentes.
+                    <strong>Conversión & Guardia:</strong> Gestión intensiva del embudo de entrevistas, guardias de verano y desarrollo continuo del nuevo sitio institucional AEO.
                   </td>
                   <td class="gantt-bar-cell">
                     <div class="gantt-track">
@@ -2079,12 +1905,12 @@
         </section>
 
         <!-- ============================================================
-             SLIDE 7: PRESUPUESTO & ESQUEMA ESCALONADO DE PAGOS
+             SLIDE 8: PRESUPUESTO & ESQUEMA ESCALONADO DE PAGOS
              ============================================================ -->
-        <section class="slide" data-slide="7" id="slide-7">
+        <section class="slide" data-slide="8" id="slide-8">
           <div class="slide-header">
             <span class="slide-tag">Propuesta Económica & Financiación</span>
-            <h2 class="slide-title">06. Estimación Presupuestaria & Modalidad de Inversión</h2>
+            <h2 class="slide-title">07. Estimación Presupuestaria & Modalidad de Inversión</h2>
             <p class="slide-subtitle">Estructura modular por entregables y esquema financiero escalonado por hitos de avance.</p>
           </div>
 
@@ -2098,52 +1924,28 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <tr class="budget-row-highlight">
                   <td>
-                    <strong>1. Identidad Visual & Preprensa 1/2 A4</strong><br>
-                    <small style="color: #64748b;">Normalización gráfica, paleta cromática unificada, sello "Since 1963" y originales listos para imprenta.</small>
+                    <strong>1. Núcleo Admisiones (Identidad 1/2 A4, Landing pura, Sheets & Dashboard)</strong><br>
+                    <small style="color: #64748b;">Normalización gráfica, piezas 1/2 A4, landing mobile-first sin puntos de fuga, CRM Sheets y pipeline interno de secretaría.</small>
                   </td>
                   <td>
-                    <span class="price-ars">$380.000 – $490.000 ARS</span>
+                    <span class="price-ars">$1.380.000 – $1.920.000 ARS</span>
                   </td>
                   <td>
-                    <span class="price-usd">~USD 320 – 420</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <strong>2. Landing Page de Admisiones Mobile-First</strong><br>
-                    <small style="color: #64748b;">Desarrollo web responsive bilingüe, FAQ, formulario ágil en 3 campos y botón de WhatsApp.</small>
-                  </td>
-                  <td>
-                    <span class="price-ars">$550.000 – $780.000 ARS</span>
-                  </td>
-                  <td>
-                    <span class="price-usd">~USD 460 – 650</span>
+                    <span class="price-usd">~USD 1.160 – 1.610</span>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <strong>3. Automatización, Sheets & Panel Web</strong><br>
-                    <small style="color: #64748b;">Conexión con Drive oficial, Dashboard con embudo de secretaría y confirmación por email con PDF.</small>
+                    <strong>2. Módulo Extra (Sitio Institucional Completo + Optimización AEO/SEO)</strong><br>
+                    <small style="color: #64748b;">Rediseño web general parishrobertson.com.ar, arquitectura por niveles, Schema.org y posicionamiento en motores de IA.</small>
                   </td>
                   <td>
-                    <span class="price-ars">$450.000 – $650.000 ARS</span>
+                    <span class="price-ars">$1.200.000 – $1.750.000 ARS</span>
                   </td>
                   <td>
-                    <span class="price-usd">~USD 380 – 540</span>
-                  </td>
-                </tr>
-                <tr class="budget-row-total">
-                  <td>
-                    <strong>🚀 Implementación Integral Llave en Mano</strong><br>
-                    <small style="color: #e2e8f0; font-weight: normal;">Coordinación integral de imprenta, testing, despliegue en dominio institucional y soporte operativo.</small>
-                  </td>
-                  <td>
-                    <span class="price-ars" style="font-size: 1.05rem; color: #38bdf8;">$1.380.000 – $1.920.000 ARS</span>
-                  </td>
-                  <td>
-                    <span class="price-usd" style="color: #ffffff; font-weight: 800; font-size: 0.9rem;">~USD 1.160 – 1.610</span>
+                    <span class="price-usd">~USD 990 – 1.470</span>
                   </td>
                 </tr>
               </tbody>
@@ -2160,17 +1962,17 @@
 
               <div class="milestones-grid">
                 <div class="milestone-item">
-                  <div class="milestone-badge" style="color: #065f46;">Pago 1 • Lanzador / Kickoff</div>
+                  <div class="milestone-badge" style="color: #065f46;">Hito 1 • Launcher / Kickoff</div>
                   <div class="milestone-text"><strong>Previo al 10 de Octubre:</strong> Pago inicial para activación de recursos y reserva operativa del equipo.</div>
                 </div>
 
                 <div class="milestone-item">
-                  <div class="milestone-badge" style="color: #0369a1;">Pago 2 • Noviembre (Etapa 2/3)</div>
+                  <div class="milestone-badge" style="color: #0369a1;">Hito 2 • Noviembre (Etapa 2/3)</div>
                   <div class="milestone-text"><strong>20% del total:</strong> Contra entrega de originales de imprenta 1/2 A4 y salida online de la Landing Page.</div>
                 </div>
 
                 <div class="milestone-item">
-                  <div class="milestone-badge" style="color: #1e3a8a;">Pago 3 • Diciembre (Etapa 4)</div>
+                  <div class="milestone-badge" style="color: #1e3a8a;">Hito 3 • Diciembre (Etapa 4)</div>
                   <div class="milestone-text"><strong>20% del total:</strong> Contra despliegue del Dashboard interno, automatizaciones activas y seguimiento del embudo.</div>
                 </div>
               </div>
@@ -2184,13 +1986,13 @@
         </section>
 
         <!-- ============================================================
-             SLIDE 8: PRÓXIMOS PASOS (KICKOFF INMEDIATO)
+             SLIDE 9: PRÓXIMOS PASOS (KICKOFF INMEDIATO)
              ============================================================ -->
-        <section class="slide" data-slide="8" id="slide-8">
-          <div class="slide-8-layout">
+        <section class="slide" data-slide="9" id="slide-9">
+          <div class="slide-9-layout">
             <div class="slide-header">
               <span class="slide-tag" style="color: #059669;">Kickoff Inmediato • 10 de Octubre</span>
-              <h2 class="slide-title">07. Próximos Pasos para la Puesta en Marcha</h2>
+              <h2 class="slide-title">08. Próximos Pasos para la Puesta en Marcha</h2>
               <p class="slide-subtitle">Acciones inmediatas para coordinar el inicio formal de las tareas según el cronograma acordado.</p>
             </div>
 
@@ -2201,7 +2003,7 @@
                   <div class="step-badge-num">1</div>
                   <h3>Aprobación y Formalización</h3>
                   <p>
-                    Validación de partidas presupuestarias y firma de acuerdo para inicio formal el 10 de octubre.
+                    Validación de partidas presupuestarias y firma de acuerdo para inicio el 10 de octubre.
                   </p>
                 </div>
                 <div style="font-size: 0.75rem; color: #0284c7; font-weight: 700; margin-top: 0.8rem;">
@@ -2215,7 +2017,7 @@
                   <div class="step-badge-num">2</div>
                   <h3>Relevamiento Técnico</h3>
                   <p>
-                    Entrega de accesos a hosting/dominio del colegio y asignación de carpeta en el Google Drive institucional.
+                    Entrega de accesos a hosting/dominio del colegio y carpeta en Google Drive institucional.
                   </p>
                 </div>
                 <div style="font-size: 0.75rem; color: #059669; font-weight: 700; margin-top: 0.8rem;">
@@ -2255,7 +2057,7 @@
 
       </div>
 
-      <!-- Bottom Control Bar -->
+      <!-- Barra de Navegación y Controles -->
       <footer class="deck-bottombar">
         <div class="deck-controls">
           <button class="nav-btn" id="btnOverview" title="Ver resumen de diapositivas (Tecla 'O')">
@@ -2289,7 +2091,7 @@
     </div>
   </main>
 
-  <!-- Modal Overview Grid -->
+  <!-- Modal de Resumen y Selección Rápida de Slides -->
   <div class="modal-backdrop" id="modalOverview">
     <div class="modal-grid-container">
       <div class="modal-header">
@@ -2302,7 +2104,7 @@
     </div>
   </div>
 
-  <!-- Interactive Slide Controller Script -->
+  <!-- Controlador Interactivo JS -->
   <script>
     (function () {
       const slides = Array.from(document.querySelectorAll('.slide'));
@@ -2319,19 +2121,20 @@
       const btnCloseOverview = document.getElementById('btnCloseOverview');
       const thumbnailsGrid = document.getElementById('thumbnailsGrid');
 
-      // Titles for the overview modal
+      // Títulos para el modal de vista general (9 Diapositivas)
       const slideTitles = [
         "00. Portada Institucional",
         "01. Diagnóstico del Material",
         "02. Reingeniería Gráfica (-50%)",
-        "03. Landing Page Mobile-First",
+        "03. Landing Page Sin Puntos de Fuga",
         "04. Sheets & Dashboard de Gestión",
-        "05. Cronograma (Kickoff 10 Oct)",
-        "06. Presupuesto & Hitos de Pago",
-        "07. Próximos Pasos (Kickoff)"
+        "05. Rediseño Web & Optimización AEO",
+        "06. Cronograma (Kickoff 10 Oct)",
+        "07. Presupuesto & Hitos de Pago",
+        "08. Próximos Pasos (Kickoff)"
       ];
 
-      // Build thumbnails in modal
+      // Construcción dinámica de miniaturas en el modal
       slideTitles.forEach((title, idx) => {
         const thumb = document.createElement('div');
         thumb.className = `slide-thumb ${idx === 0 ? 'active' : ''}`;
@@ -2357,18 +2160,18 @@
           }
         });
 
-        // Update indicator & progress
+        // Actualizar indicador y barra de progreso
         slideIndicator.textContent = `Slide ${currentSlide} de ${totalSlides}`;
         const progressPercentage = (currentSlide / totalSlides) * 100;
         progressBar.style.width = `${progressPercentage}%`;
 
-        // Update button states
+        // Estados de botones
         btnPrev.disabled = currentSlide === 1;
         btnNext.innerHTML = currentSlide === totalSlides 
           ? `<span>Reiniciar</span> <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>`
           : `<span>Siguiente</span> <span class="key-hint" style="background: rgba(255,255,255,0.25); color: #fff; border: none;">→</span> <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 18l6-6-6-6"/></svg>`;
 
-        // Update active thumbnail in overview
+        // Actualizar miniatura activa
         document.querySelectorAll('.slide-thumb').forEach((thumb, idx) => {
           if (idx + 1 === currentSlide) {
             thumb.classList.add('active');
@@ -2389,7 +2192,7 @@
         if (currentSlide < totalSlides) {
           currentSlide++;
         } else {
-          currentSlide = 1; // Loop back
+          currentSlide = 1;
         }
         updateDeck();
       }
@@ -2419,7 +2222,7 @@
         }
       }
 
-      // Event Listeners
+      // Event Listeners de Botones
       btnNext.addEventListener('click', nextSlide);
       btnPrev.addEventListener('click', prevSlide);
       btnOverview.addEventListener('click', openOverview);
@@ -2430,9 +2233,8 @@
         if (e.target === modalOverview) closeOverview();
       });
 
-      // Keyboard navigation
+      // Navegación por teclado (1 al 9)
       window.addEventListener('keydown', (e) => {
-        // If modal is open, ESC closes it
         if (modalOverview.classList.contains('open')) {
           if (e.key === 'Escape') closeOverview();
           return;
@@ -2474,20 +2276,14 @@
           case 'F':
             toggleFullscreen();
             break;
-          case '1':
-          case '2':
-          case '3':
-          case '4':
-          case '5':
-          case '6':
-          case '7':
-          case '8':
+          case '1': case '2': case '3': case '4':
+          case '5': case '6': case '7': case '8': case '9':
             goToSlide(parseInt(e.key, 10));
             break;
         }
       });
 
-      // Touch / Swipe support (optimized for mobile)
+      // Soporte Gestual Móvil (Swipe Horizontal)
       let touchStartX = 0;
       let touchStartY = 0;
 
@@ -2499,17 +2295,13 @@
       window.addEventListener('touchend', (e) => {
         const diffX = e.changedTouches[0].screenX - touchStartX;
         const diffY = e.changedTouches[0].screenY - touchStartY;
-        // Trigger slide navigation only on deliberate horizontal swipe
         if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY) * 1.3) {
-          if (diffX < 0) {
-            nextSlide();
-          } else {
-            prevSlide();
-          }
+          if (diffX < 0) nextSlide();
+          else prevSlide();
         }
       }, { passive: true });
 
-      // Init
+      // Inicialización
       updateDeck();
     })();
   </script>
