@@ -575,9 +575,24 @@
       font-size: 0.8rem;
       font-weight: 700;
       color: var(--sky-primary);
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
+      gap: 0.45rem;
+      text-decoration: none;
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      padding: 0.45rem 0.95rem;
+      border-radius: var(--radius-sm);
+      transition: all 0.2s ease;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+
+    .presenter-link:hover {
+      background: var(--sky-soft);
+      border-color: var(--sky-primary);
+      color: #0369a1;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.15);
     }
 
     /* SLIDE 2 */
@@ -1529,14 +1544,14 @@
               <div class="presenter-info">
                 <div class="presenter-avatar">AL</div>
                 <div class="presenter-meta">
-                  <h4>[Tu Nombre / Tu Estudio]</h4>
-                  <p>Project Manager & Lead Designer | Portafolio: [tu-sitio-web.com]</p>
+                  <h4>Agustin Licari | alicari</h4>
+                  <p>Project Manager & Lead Designer | Identidad, UX/UI & Desarrollo Web</p>
                 </div>
               </div>
-              <span class="presenter-link">
-                Presentación Directiva 2026
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </span>
+              <a href="../index.html" target="_blank" rel="noopener" class="presenter-link" title="Ver portafolio de trabajos de Agustin Licari (alicari)">
+                <span>Ver Portafolio de Trabajos</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
             </div>
 
           </div>
