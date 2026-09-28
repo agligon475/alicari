@@ -11,11 +11,11 @@
 
   <style>
     /* ==========================================================================
-       DESIGN TOKENS & SYSTEM — MODO LIGHT (INSTITUCIONAL)
+       DESIGN TOKENS & SYSTEM — MODO LIGHT (INSTITUCIONAL ELEGANTE)
        Institutional Palette:
        - English Green: #004d2c, #0b291b, #064e3b
        - Institutional Navy: #1e3a8a, #0f172a, #172554
-       - Sky Blue: #0284c7, #0369a1, #e0f2fe
+       - Sky Blue: #0284c7, #38bdf8, #e0f2fe
        - Carmine Red (Uniform Accent): #b91c1c, #dc2626, #fef2f2
        ========================================================================== */
     :root {
@@ -158,27 +158,27 @@
     .deck-stage {
       position: relative;
       width: 100%;
-      max-width: 1380px;
+      max-width: 1400px;
       aspect-ratio: 16 / 9;
-      max-height: calc(100vh - 3rem);
-      background: #ffffff;
-      border: 1px solid var(--border-subtle);
+      background: var(--bg-stage);
       border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
       box-shadow: var(--shadow-stage);
-      overflow: hidden;
       display: flex;
       flex-direction: column;
+      overflow: hidden;
     }
 
-    /* Top Institution Ribbon Bar */
+    /* Top Institutional Ribbon */
     .deck-topbar {
-      height: 48px;
+      height: 58px;
       padding: 0 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       border-bottom: 1px solid var(--border-subtle);
-      background: #f8fafc;
+      background: #ffffff;
+      flex-shrink: 0;
       z-index: 20;
     }
 
@@ -188,41 +188,42 @@
       gap: 0.75rem;
       font-size: 0.82rem;
       font-weight: 700;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.04em;
+      color: var(--text-dim);
       text-transform: uppercase;
-      color: var(--text-main);
     }
 
     .brand-crest-dot {
-      width: 8px;
-      height: 8px;
-      background: var(--green-primary);
+      width: 9px;
+      height: 9px;
       border-radius: 50%;
-      box-shadow: 0 0 10px rgba(0, 77, 44, 0.4);
+      background: var(--green-primary);
+      box-shadow: 0 0 10px rgba(0, 77, 44, 0.5);
     }
 
     .school-name-highlight {
-      color: var(--navy-primary);
+      color: var(--green-deep);
+      font-weight: 800;
     }
 
     .topbar-badge {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.25rem 0.85rem;
-      background: var(--green-soft);
-      border: 1px solid rgba(0, 77, 44, 0.2);
-      border-radius: 100px;
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       font-weight: 700;
-      color: var(--green-primary);
-      letter-spacing: 0.04em;
+      color: var(--navy-primary);
+      background: var(--navy-soft);
+      padding: 0.35rem 0.85rem;
+      border-radius: 100px;
+      border: 1px solid rgba(30, 58, 138, 0.15);
     }
 
     .topbar-badge .motto {
       font-family: var(--font-crest);
-      letter-spacing: 0.1em;
-      color: var(--green-deep);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 800;
     }
 
     .deck-slide-indicator {
@@ -230,19 +231,19 @@
       font-weight: 700;
       color: var(--text-muted);
       background: #f1f5f9;
-      padding: 0.25rem 0.65rem;
-      border-radius: var(--radius-sm);
+      padding: 0.3rem 0.75rem;
+      border-radius: 100px;
       border: 1px solid var(--border-subtle);
+      font-variant-numeric: tabular-nums;
     }
 
-    /* Main Slides Canvas */
+    /* Deck Content / Slide Carousel */
     .deck-content {
       position: relative;
       flex: 1;
       width: 100%;
-      height: calc(100% - 48px - 58px);
+      height: calc(100% - 58px - 64px);
       overflow: hidden;
-      background: #ffffff;
     }
 
     /* Individual Slide */
@@ -250,36 +251,28 @@
       position: absolute;
       inset: 0;
       padding: 2.2rem 3rem;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(18px) scale(0.985);
-      transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-                  visibility 0.45s;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(30px);
+      transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
+      pointer-events: none;
       overflow-y: auto;
-    }
-
-    .slide::-webkit-scrollbar {
-      width: 5px;
-    }
-    .slide::-webkit-scrollbar-thumb {
-      background: rgba(15, 23, 42, 0.15);
-      border-radius: 10px;
     }
 
     .slide.active {
       opacity: 1;
       visibility: visible;
-      transform: translateY(0) scale(1);
-      z-index: 5;
+      transform: translateX(0);
+      pointer-events: auto;
     }
 
     /* Slide Header standard */
     .slide-header {
       margin-bottom: 1.2rem;
+      flex-shrink: 0;
     }
 
     .slide-tag {
@@ -288,14 +281,14 @@
       gap: 0.4rem;
       font-size: 0.75rem;
       font-weight: 800;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
       color: var(--sky-primary);
       margin-bottom: 0.4rem;
     }
 
     .slide-tag::before {
-      content: '';
+      content: "";
       display: inline-block;
       width: 6px;
       height: 6px;
@@ -304,198 +297,177 @@
     }
 
     .slide-title {
-      font-size: 1.85rem;
+      font-size: 1.95rem;
       font-weight: 800;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.025em;
+      line-height: 1.18;
       color: var(--green-deep);
-      background: linear-gradient(135deg, #0b291b 20%, #1e3a8a 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.35rem;
     }
 
     .slide-subtitle {
       font-size: 0.95rem;
       color: var(--text-muted);
-      margin-top: 0.3rem;
-      font-weight: 500;
+      line-height: 1.45;
+      max-width: 900px;
     }
 
-    /* Common Card Styles (Light Theme) */
+    /* Standard Card Component */
     .card {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      padding: 1.3rem 1.4rem;
+      border-radius: var(--radius-md);
       box-shadow: var(--shadow-card);
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
-      overflow: hidden;
+      transition: all 0.25s ease;
     }
 
     .card:hover {
-      border-color: var(--sky-primary);
+      border-color: rgba(2, 132, 199, 0.3);
+      box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.08);
       transform: translateY(-2px);
-      box-shadow: 0 12px 30px -8px rgba(15, 23, 42, 0.12);
     }
 
-    .card::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--green-primary), var(--sky-primary));
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .card:hover::after {
-      opacity: 1;
-    }
-
-    /* Bottom Control & Progress Bar */
+    /* Bottom Control Bar */
     .deck-bottombar {
-      height: 58px;
+      height: 64px;
       padding: 0 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       border-top: 1px solid var(--border-subtle);
-      background: #f8fafc;
+      background: #ffffff;
+      flex-shrink: 0;
       z-index: 20;
     }
 
     .progress-track {
       flex: 1;
-      max-width: 420px;
       height: 6px;
-      background: #e2e8f0;
-      border-radius: 10px;
-      overflow: hidden;
-      margin: 0 1.5rem;
+      background: #f1f5f9;
+      border-radius: 100px;
+      margin: 0 2rem;
       position: relative;
+      overflow: hidden;
     }
 
     .progress-bar-fill {
+      position: absolute;
+      left: 0;
+      top: 0;
       height: 100%;
-      background: linear-gradient(90deg, var(--green-primary), var(--sky-primary));
       width: 12.5%;
-      border-radius: 10px;
-      transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      background: linear-gradient(90deg, var(--green-primary), var(--sky-primary));
+      border-radius: 100px;
+      transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .deck-controls {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.75rem;
     }
 
     .nav-btn {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 0.4rem;
+      gap: 0.5rem;
       background: #ffffff;
+      border: 1px solid var(--border-subtle);
       color: var(--text-main);
-      border: 1px solid #cbd5e1;
-      padding: 0.45rem 0.9rem;
-      border-radius: var(--radius-md);
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 700;
+      padding: 0.55rem 1.1rem;
+      border-radius: var(--radius-sm);
       cursor: pointer;
       transition: all 0.2s ease;
-      font-family: inherit;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      user-select: none;
     }
 
-    .nav-btn:hover:not(:disabled) {
-      background: #f1f5f9;
-      border-color: var(--sky-primary);
-      color: var(--navy-primary);
-      transform: translateY(-1px);
+    .nav-btn:hover {
+      background: #f8fafc;
+      border-color: #cbd5e1;
+      color: var(--green-deep);
     }
 
-    .nav-btn:active:not(:disabled) {
-      transform: translateY(0);
+    .nav-btn:active {
+      transform: scale(0.97);
+    }
+
+    .nav-btn.primary {
+      background: var(--green-primary);
+      border-color: var(--green-primary);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 77, 44, 0.25);
+    }
+
+    .nav-btn.primary:hover {
+      background: #003820;
+      border-color: #003820;
+      box-shadow: 0 4px 14px rgba(0, 77, 44, 0.35);
     }
 
     .nav-btn:disabled {
       opacity: 0.35;
       cursor: not-allowed;
-      box-shadow: none;
-    }
-
-    .nav-btn.primary {
-      background: linear-gradient(135deg, var(--green-primary), var(--green-medium));
-      color: #ffffff;
-      border-color: var(--green-primary);
-      box-shadow: 0 4px 12px rgba(0, 77, 44, 0.25);
-    }
-
-    .nav-btn.primary:hover:not(:disabled) {
-      background: linear-gradient(135deg, var(--green-light), var(--green-primary));
-      color: #ffffff;
-      border-color: var(--green-light);
-    }
-
-    .key-hint {
-      font-size: 0.68rem;
-      color: var(--text-dim);
-      background: #f1f5f9;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-family: monospace;
-      border: 1px solid var(--border-subtle);
+      pointer-events: none;
     }
 
     .nav-icon {
-      width: 14px;
-      height: 14px;
+      width: 16px;
+      height: 16px;
       stroke-width: 2.2;
     }
 
+    .key-hint {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      background: #f1f5f9;
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      border: 1px solid #e2e8f0;
+      font-weight: 600;
+    }
+
     /* ==========================================================================
-       SLIDE-SPECIFIC DESIGNS (LIGHT THEME)
+       SPECIFIC SLIDES STYLES
        ========================================================================== */
 
-    /* SLIDE 1: PORTADA */
+    /* SLIDE 1: PORTADA INSTITUCIONAL */
     .slide-1-layout {
       height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      position: relative;
-      padding: 1rem 0;
+      max-width: 1100px;
     }
 
     .hero-badge-container {
       display: inline-flex;
       align-items: center;
       gap: 0.75rem;
-      margin-bottom: 1.3rem;
-      background: linear-gradient(90deg, #ecfdf5 0%, #eff6ff 100%);
-      padding: 0.45rem 1.1rem;
-      border-radius: 100px;
-      border: 1px solid rgba(0, 77, 44, 0.2);
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-left: 4px solid var(--green-primary);
+      padding: 0.5rem 1.1rem;
+      border-radius: var(--radius-sm);
+      margin-bottom: 1.2rem;
       width: fit-content;
-      box-shadow: 0 2px 10px rgba(0, 77, 44, 0.08);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
     }
 
     .school-shield {
-      width: 24px;
-      height: 24px;
-      background: linear-gradient(135deg, #004d2c, #1e3a8a);
-      border-radius: 5px;
-      border: 1.5px solid #ffffff;
+      width: 26px;
+      height: 26px;
+      background: var(--green-deep);
+      color: #ffffff;
+      border-radius: 6px;
       display: flex;
       align-items: center;
       justify-content: center;
+      font-family: var(--font-crest);
       font-size: 0.75rem;
-      font-weight: 900;
-      color: #fff;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+      font-weight: 800;
+      letter-spacing: 0.05em;
     }
 
     .hero-badge-text {
@@ -519,23 +491,23 @@
     }
 
     .hero-title {
-      font-size: 2.65rem;
+      font-size: 2.55rem;
       font-weight: 800;
-      line-height: 1.12;
+      line-height: 1.14;
       letter-spacing: -0.03em;
       margin-bottom: 1.1rem;
-      max-width: 950px;
+      max-width: 980px;
       background: linear-gradient(135deg, #0b291b 0%, #004d2c 45%, #1e3a8a 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .hero-subtitle {
-      font-size: 1.15rem;
+      font-size: 1.12rem;
       color: #334155;
       line-height: 1.55;
-      max-width: 860px;
-      margin-bottom: 2rem;
+      max-width: 890px;
+      margin-bottom: 1.8rem;
       font-weight: 500;
       border-left: 3.5px solid var(--sky-primary);
       padding-left: 1.1rem;
@@ -545,7 +517,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.8rem;
-      margin-bottom: 2rem;
+      margin-bottom: 1.8rem;
     }
 
     .highlight-pill {
@@ -579,7 +551,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      max-width: 780px;
+      max-width: 820px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     }
 
@@ -590,42 +562,41 @@
     }
 
     .presenter-avatar {
-      width: 40px;
-      height: 40px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--green-primary), var(--navy-primary));
       border: 2px solid #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
+      color: #fff;
       font-weight: 800;
       font-size: 0.9rem;
-      color: #fff;
-      box-shadow: 0 2px 8px rgba(0, 77, 44, 0.25);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
     .presenter-meta h4 {
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--text-main);
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--green-deep);
     }
 
     .presenter-meta p {
-      font-size: 0.76rem;
-      color: var(--text-muted);
+      font-size: 0.78rem;
+      color: var(--text-dim);
     }
 
     .presenter-link {
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       font-weight: 700;
       color: var(--sky-primary);
-      text-decoration: none;
       display: flex;
       align-items: center;
       gap: 0.35rem;
     }
 
-    /* SLIDE 2: DIAGNÓSTICO */
+    /* SLIDE 2: DIAGNÓSTICO EN 2 COLUMNAS */
     .slide-2-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -635,76 +606,73 @@
     }
 
     .diagnosis-card {
-      padding: 1.5rem;
+      padding: 1.6rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       border-radius: var(--radius-lg);
+      position: relative;
+      background: #ffffff;
     }
 
     .diagnosis-card.warning-red {
-      background: linear-gradient(145deg, #fff8f8 0%, #ffffff 100%);
-      border: 1px solid #fecaca;
+      border-top: 4px solid var(--carmine-primary);
     }
 
     .diagnosis-card.warning-amber {
-      background: linear-gradient(145deg, #fffdf5 0%, #ffffff 100%);
-      border: 1px solid #fde68a;
+      border-top: 4px solid #d97706;
     }
 
     .card-header-badge {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 1rem;
+      margin-bottom: 0.8rem;
     }
 
     .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.3rem 0.75rem;
-      border-radius: 100px;
       font-size: 0.72rem;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
+      padding: 0.3rem 0.65rem;
+      border-radius: 6px;
     }
 
     .status-badge.red {
-      background: #fee2e2;
-      color: #991b1b;
-      border: 1px solid #fca5a5;
+      background: var(--carmine-soft);
+      color: var(--carmine-primary);
+      border: 1px solid rgba(185, 28, 28, 0.2);
     }
 
     .status-badge.amber {
       background: #fef3c7;
       color: #92400e;
-      border: 1px solid #fcd34d;
+      border: 1px solid rgba(217, 119, 6, 0.2);
     }
 
     .card-icon-box {
-      width: 36px;
-      height: 36px;
-      border-radius: var(--radius-sm);
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
 
     .diagnosis-card h3 {
       font-size: 1.25rem;
       font-weight: 800;
       color: var(--green-deep);
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.6rem;
     }
 
     .diagnosis-card p {
       font-size: 0.88rem;
-      line-height: 1.6;
       color: var(--text-muted);
-      margin-bottom: 1rem;
+      line-height: 1.55;
+      margin-bottom: 1.2rem;
     }
 
     .evidence-list {
@@ -712,111 +680,102 @@
       display: flex;
       flex-direction: column;
       gap: 0.6rem;
-      margin-top: 0.5rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid var(--border-subtle);
     }
 
     .evidence-item {
       display: flex;
       align-items: flex-start;
-      gap: 0.65rem;
+      gap: 0.6rem;
       font-size: 0.82rem;
+      line-height: 1.45;
       color: var(--text-main);
-      background: #ffffff;
-      padding: 0.65rem 0.85rem;
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--border-subtle);
-      border-left: 3.5px solid;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
     }
 
-    .evidence-item.red { border-left-color: var(--carmine-primary); }
-    .evidence-item.amber { border-left-color: #d97706; }
+    .evidence-item.red span:first-child { color: var(--carmine-primary); font-weight: 800; }
+    .evidence-item.amber span:first-child { color: #d97706; font-weight: 800; }
 
-    /* SLIDE 3: REINGENIERÍA */
+    /* SLIDE 3: REINGENIERÍA GRÁFICA (3 TARJETAS) */
     .slide-3-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.3rem;
-      margin-top: 0.8rem;
+      margin-top: 0.5rem;
       flex: 1;
     }
 
     .metric-card {
+      padding: 1.5rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 1.5rem;
+      border-radius: var(--radius-lg);
       background: #ffffff;
       border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
     }
 
     .metric-card.highlight {
-      background: linear-gradient(160deg, #f0fdf4 0%, #ffffff 100%);
-      border-color: #86efac;
-      box-shadow: 0 8px 25px -5px rgba(5, 150, 105, 0.12);
+      border-color: var(--green-light);
+      background: linear-gradient(180deg, #ffffff 0%, var(--green-soft) 100%);
+      box-shadow: 0 10px 30px -5px rgba(0, 77, 44, 0.12);
+    }
+
+    .metric-card-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 0.5rem;
     }
 
     .metric-hero {
       font-size: 2.5rem;
       font-weight: 800;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.04em;
       line-height: 1;
-      margin-bottom: 0.4rem;
-      background: linear-gradient(135deg, #0284c7 0%, #059669 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.6rem;
+      color: var(--green-deep);
     }
 
     .metric-hero.crest-font {
       font-family: var(--font-crest);
       font-size: 1.85rem;
-      background: linear-gradient(135deg, #0b291b 0%, #1e3a8a 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: var(--navy-primary);
     }
 
     .metric-hero.purple {
-      background: linear-gradient(135deg, #0284c7 0%, #6366f1 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .metric-card-label {
-      font-size: 0.75rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text-dim);
-      margin-bottom: 0.8rem;
+      color: #4f46e5;
+      font-size: 1.85rem;
     }
 
     .metric-card h3 {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 800;
       color: var(--green-deep);
       margin-bottom: 0.5rem;
     }
 
     .metric-card p {
-      font-size: 0.84rem;
+      font-size: 0.83rem;
       color: var(--text-muted);
-      line-height: 1.55;
+      line-height: 1.5;
     }
 
     .pill-metric-footer {
-      margin-top: 1rem;
-      padding-top: 0.75rem;
-      border-top: 1px solid var(--border-subtle);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 0.75rem;
+      margin-top: 1.1rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      font-size: 0.74rem;
+      font-weight: 700;
       color: var(--text-dim);
-      font-weight: 600;
     }
 
-    /* SLIDE 4: ECOSISTEMA DIGITAL */
+    /* SLIDE 4: ECOSISTEMA DIGITAL (2 BLOQUES) */
     .slide-4-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -826,28 +785,26 @@
     }
 
     .digital-block {
-      padding: 1.5rem;
+      padding: 1.6rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      border-radius: var(--radius-lg);
       background: #ffffff;
       border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
     }
 
     .block-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
+      display: inline-block;
       font-size: 0.72rem;
       font-weight: 800;
-      text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: var(--sky-primary);
-      background: var(--sky-soft);
-      border: 1px solid rgba(2, 132, 199, 0.2);
-      padding: 0.25rem 0.65rem;
-      border-radius: 100px;
+      text-transform: uppercase;
+      padding: 0.3rem 0.65rem;
+      border-radius: 6px;
+      background: #eff6ff;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
       margin-bottom: 0.8rem;
     }
 
@@ -855,46 +812,46 @@
       font-size: 1.25rem;
       font-weight: 800;
       color: var(--green-deep);
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.6rem;
     }
 
     .digital-block p {
       font-size: 0.86rem;
-      line-height: 1.6;
       color: var(--text-muted);
-      margin-bottom: 1.2rem;
+      line-height: 1.55;
+      margin-bottom: 1.1rem;
     }
 
     .feature-points {
       display: flex;
       flex-direction: column;
-      gap: 0.65rem;
+      gap: 0.6rem;
+      background: #f8fafc;
+      border-radius: var(--radius-sm);
+      padding: 0.9rem 1.1rem;
+      border: 1px solid var(--border-subtle);
     }
 
     .feature-point-item {
       display: flex;
       align-items: center;
-      gap: 0.7rem;
+      gap: 0.6rem;
       font-size: 0.82rem;
       color: var(--text-main);
-      background: #f8fafc;
-      padding: 0.6rem 0.85rem;
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--border-subtle);
     }
 
     .check-icon {
-      color: #059669;
-      font-weight: 900;
+      color: var(--green-light);
+      font-weight: 800;
       font-size: 0.9rem;
     }
 
-    /* SLIDE 5: AUTOMATIZACIÓN & DASHBOARD */
+    /* SLIDE 5: AUTOMATIZACIÓN & CRM */
     .slide-5-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.3rem;
-      margin-top: 0.8rem;
+      margin-top: 0.5rem;
       flex: 1;
     }
 
@@ -997,14 +954,14 @@
       color: #1e40af;
     }
 
-    /* SLIDE 6: CRONOGRAMA GANTT */
+    /* SLIDE 6: CRONOGRAMA REAJUSTADO (KICKOFF 10 DE OCTUBRE) */
     .timeline-table-card {
       background: #ffffff;
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
       padding: 1.2rem;
       overflow: hidden;
-      margin-top: 0.5rem;
+      margin-top: 0.4rem;
       flex: 1;
       display: flex;
       flex-direction: column;
@@ -1041,10 +998,11 @@
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
-      padding: 0.25rem 0.6rem;
+      padding: 0.3rem 0.65rem;
       border-radius: 6px;
       font-weight: 800;
-      font-size: 0.72rem;
+      font-size: 0.73rem;
+      white-space: nowrap;
     }
 
     .phase-1 { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
@@ -1078,31 +1036,31 @@
       color: #fff;
     }
 
-    /* SLIDE 7: PRESUPUESTO */
+    /* SLIDE 7: PRESUPUESTO & HITOS DE PAGO */
     .budget-container {
-      margin-top: 0.4rem;
+      margin-top: 0.3rem;
       flex: 1;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      gap: 0.9rem;
     }
 
     .budget-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.88rem;
+      font-size: 0.84rem;
       background: #ffffff;
       border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
+      border-radius: var(--radius-md);
       overflow: hidden;
       box-shadow: var(--shadow-card);
     }
 
     .budget-table th {
       background: var(--green-deep);
-      padding: 0.85rem 1.2rem;
+      padding: 0.7rem 1.1rem;
       text-align: left;
-      font-size: 0.76rem;
+      font-size: 0.74rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: #ffffff;
@@ -1111,7 +1069,7 @@
     }
 
     .budget-table td {
-      padding: 0.9rem 1.2rem;
+      padding: 0.7rem 1.1rem;
       border-bottom: 1px solid #f1f5f9;
       color: var(--text-main);
     }
@@ -1127,8 +1085,8 @@
     .budget-row-total td {
       font-weight: 800;
       color: #ffffff !important;
-      font-size: 1rem;
-      padding: 1.1rem 1.2rem;
+      font-size: 0.92rem;
+      padding: 0.85rem 1.1rem;
       border-bottom: none !important;
     }
 
@@ -1144,17 +1102,80 @@
       font-weight: 600;
     }
 
-    .budget-note-card {
+    /* Payment Milestones Card Grid */
+    .payment-milestones-card {
       background: #f8fafc;
       border: 1px solid #cbd5e1;
       border-radius: var(--radius-md);
-      padding: 0.75rem 1.2rem;
+      padding: 0.85rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .milestones-header {
       display: flex;
       align-items: center;
-      gap: 0.85rem;
-      font-size: 0.78rem;
+      justify-content: space-between;
+    }
+
+    .milestones-title {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--green-deep);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .milestones-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+
+    .milestone-item {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 0.65rem 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      border-left: 3.5px solid var(--green-primary);
+    }
+
+    .milestone-item:nth-child(2) {
+      border-left-color: var(--sky-primary);
+    }
+
+    .milestone-item:nth-child(3) {
+      border-left-color: var(--navy-primary);
+    }
+
+    .milestone-badge {
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: var(--green-deep);
+      text-transform: uppercase;
+    }
+
+    .milestone-text {
+      font-size: 0.76rem;
       color: var(--text-muted);
-      margin-top: 0.8rem;
+      line-height: 1.4;
+    }
+
+    .milestones-note {
+      font-size: 0.73rem;
+      color: var(--text-dim);
+      border-top: 1px dashed #cbd5e1;
+      padding-top: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
     }
 
     /* SLIDE 8: PRÓXIMOS PASOS */
@@ -1169,14 +1190,14 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.3rem;
-      margin-top: 0.6rem;
+      margin-top: 0.4rem;
     }
 
     .step-card {
       background: #ffffff;
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
-      padding: 1.5rem;
+      padding: 1.4rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -1184,9 +1205,9 @@
     }
 
     .step-badge-num {
-      width: 36px;
-      height: 36px;
-      border-radius: var(--radius-md);
+      width: 34px;
+      height: 34px;
+      border-radius: var(--radius-sm);
       background: linear-gradient(135deg, var(--green-primary), var(--navy-primary));
       border: 1px solid var(--green-primary);
       display: flex;
@@ -1194,20 +1215,20 @@
       justify-content: center;
       font-weight: 800;
       color: #fff;
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
+      font-size: 1rem;
+      margin-bottom: 0.85rem;
       box-shadow: 0 4px 12px rgba(0, 77, 44, 0.2);
     }
 
     .step-card h3 {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 800;
       color: var(--green-deep);
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.5rem;
     }
 
     .step-card p {
-      font-size: 0.85rem;
+      font-size: 0.83rem;
       line-height: 1.55;
       color: var(--text-muted);
     }
@@ -1215,22 +1236,22 @@
     .kickoff-callout {
       background: linear-gradient(90deg, #0b291b 0%, #1e3a8a 100%);
       border-radius: var(--radius-lg);
-      padding: 1.2rem 1.6rem;
+      padding: 1.1rem 1.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-top: 1rem;
+      margin-top: 0.8rem;
       box-shadow: 0 10px 30px -10px rgba(0, 77, 44, 0.3);
     }
 
     .callout-text h4 {
-      font-size: 1.05rem;
+      font-size: 1.02rem;
       font-weight: 800;
       color: #ffffff;
     }
 
     .callout-text p {
-      font-size: 0.84rem;
+      font-size: 0.82rem;
       color: #e0f2fe;
       margin-top: 0.2rem;
     }
@@ -1384,7 +1405,7 @@
     @media (max-width: 1024px) {
       .hero-title { font-size: 2.1rem; }
       .slide { padding: 1.5rem 2rem; }
-      .slide-3-grid, .slide-5-grid, .steps-grid { grid-template-columns: 1fr 1fr; }
+      .slide-3-grid, .slide-5-grid, .steps-grid, .milestones-grid { grid-template-columns: 1fr 1fr; }
       .slide-2-grid, .slide-4-grid { grid-template-columns: 1fr; }
       .grid-thumbnails { grid-template-columns: repeat(3, 1fr); }
     }
@@ -1527,7 +1548,8 @@
       .slide-3-grid,
       .slide-4-grid,
       .slide-5-grid,
-      .steps-grid {
+      .steps-grid,
+      .milestones-grid {
         grid-template-columns: 1fr;
         gap: 1rem;
       }
@@ -1566,8 +1588,8 @@
 
       /* Slide 7 Mobile Budget */
       .budget-table {
-        min-width: 500px;
-        font-size: 0.8rem;
+        min-width: 480px;
+        font-size: 0.78rem;
       }
 
       .budget-container {
@@ -1577,12 +1599,11 @@
 
       .budget-table th,
       .budget-table td {
-        padding: 0.65rem 0.85rem;
+        padding: 0.6rem 0.8rem;
       }
 
-      .budget-note-card {
-        padding: 0.65rem 0.9rem;
-        font-size: 0.74rem;
+      .payment-milestones-card {
+        padding: 0.75rem 0.9rem;
       }
 
       /* Slide 8 Mobile */
@@ -1659,7 +1680,7 @@
         </div>
 
         <div class="deck-slide-indicator" id="slideIndicator">
-          Diapositiva 1 de 8
+          Slide 1 de 8
         </div>
       </header>
 
@@ -1684,7 +1705,7 @@
             </h1>
 
             <p class="hero-subtitle">
-              Estrategia integral para el ciclo lectivo: Reducción del 50% en costos de imprenta, identidad atemporal y captación automatizada de familias.
+              Campaña de Matriculación Ciclo Lectivo | Colegio Parish Robertson (Monte Grande)
             </p>
 
             <div class="hero-highlights">
@@ -1706,8 +1727,8 @@
               <div class="presenter-info">
                 <div class="presenter-avatar">AL</div>
                 <div class="presenter-meta">
-                  <h4>Estudio de Diseño & Estrategia Digital</h4>
-                  <p>Project Manager & Lead Designer | Especialistas en Identidad y Conversión Escolar</p>
+                  <h4>[Tu Nombre / Tu Estudio]</h4>
+                  <p>Project Manager & Lead Designer | Portafolio: [tu-sitio-web.com]</p>
                 </div>
               </div>
               <span class="presenter-link">
@@ -1739,7 +1760,7 @@
                 </div>
                 <h3>Anacronía & Desperdicio en Stock</h3>
                 <p>
-                  Se detectó la convivencia simultánea en stock de folletos con sellos de aniversarios caducos (<strong>"50 Años" de 2013</strong> y <strong>"60 Años" de 2023</strong>).
+                  Coexistencia en stock de folletos con sellos de <strong>"50 Años" (2013)</strong> y <strong>"60 Años" (2023)</strong>, provocando vencimiento prematuro de piezas y gasto innecesario. Dispersión visual y tipográfica.
                 </p>
               </div>
 
@@ -1764,22 +1785,22 @@
                 </div>
                 <h3>Ineficiencia de Formato & Fricción</h3>
                 <p>
-                  Uso de hojas A4 completas a dos tintas (verde inglés y negro) con baja densidad informativa y quiebre de identidad.
+                  Uso de hojas A4 completas a dos tintas (verde inglés y negro) donde <strong>1/3 de la superficie está desaprovechada</strong> en líneas manuscritas de "Observaciones". Quiebre cromático evidente frente al uniforme escolar (azul, celeste y rojo). Proceso de registro 100% analógico.
                 </p>
               </div>
 
               <ul class="evidence-list">
                 <li class="evidence-item amber">
                   <span>⚠️</span>
-                  <div><strong>1/3 de superficie desaprovechada:</strong> Espacio destinado a líneas manuscritas de "Observaciones" que raramente se completan.</div>
+                  <div><strong>1/3 desaprovechado:</strong> Espacio destinado a líneas de "Observaciones" que raramente se completan.</div>
                 </li>
                 <li class="evidence-item amber">
                   <span>⚠️</span>
-                  <div><strong>Quiebre cromático con el uniforme:</strong> No se integran los tonos azul marino, celeste y rojo presentes en el escudo y vestimenta.</div>
+                  <div><strong>Quiebre cromático con el uniforme:</strong> No se integran los tonos azul marino, celeste y rojo presentes en la vestimenta.</div>
                 </li>
                 <li class="evidence-item amber">
                   <span>⚠️</span>
-                  <div><strong>Registro 100% analógico:</strong> Pérdida de trazabilidad al no digitalizar inmediatamente la consulta de la familia.</div>
+                  <div><strong>Registro analógico:</strong> Pérdida de trazabilidad al no digitalizar inmediatamente la consulta de la familia.</div>
                 </li>
               </ul>
             </div>
@@ -1800,11 +1821,11 @@
             <!-- Tarjeta 1 -->
             <div class="card metric-card highlight">
               <div>
-                <div class="metric-card-label">Eficiencia de Imprenta</div>
+                <div class="metric-card-label">Ahorro Directo</div>
                 <div class="metric-hero">-50%</div>
                 <h3>Formato 1/2 A4 Vertical (105 × 297 mm)</h3>
                 <p>
-                  Rinde exactamente el doble por cada pliego de papel A4. Se reduce al 50% el costo directo de resmas y tiradas en imprenta, concentrando el contenido esencial con tipografía jerárquica y lectura dinámica.
+                  Rinde el doble por pliego A4, recortando a la mitad el gasto en papel y tirada de imprenta, concentrando el contenido esencial con tipografía jerárquica y lectura dinámica.
                 </p>
               </div>
               <div class="pill-metric-footer">
@@ -1816,11 +1837,11 @@
             <!-- Tarjeta 2 -->
             <div class="card metric-card">
               <div>
-                <div class="metric-card-label">Identidad Atemporal</div>
+                <div class="metric-card-label">Atemporalidad</div>
                 <div class="metric-hero crest-font">Since 1963</div>
                 <h3>Sello Histórico y Permanente</h3>
                 <p>
-                  Reemplazo definitivo de aniversarios cerrados (50 o 60 años) por la marca fundacional y el lema institucional. El material gráfico impreso mantiene vigencia inalterable durante todos los ciclos lectivos futuros.
+                  Reemplazo definitivo de aniversarios cerrados por una marca temporal permanente que protege la inversión y nunca caduca a lo largo de los ciclos lectivos.
                 </p>
               </div>
               <div class="pill-metric-footer">
@@ -1832,11 +1853,11 @@
             <!-- Tarjeta 3 -->
             <div class="card metric-card">
               <div>
-                <div class="metric-card-label">Conexión Phygital</div>
+                <div class="metric-card-label">Enfoque Phygital</div>
                 <div class="metric-hero purple">QR Dinámico</div>
                 <h3>Puente Directo a la Conversión</h3>
                 <p>
-                  El folleto físico deja de ser estático: incluye códigos QR segmentados por nivel (Maternal/Inicial, Primaria y Secundaria) que conducen a la landing oficial y al chat directo de WhatsApp con mensaje preconfigurado.
+                  El papel actúa como puente inmediato a la landing page y a WhatsApp, segmentado por nivel (Maternal/Inicial, Primaria y Secundaria).
                 </p>
               </div>
               <div class="pill-metric-footer">
@@ -1862,16 +1883,16 @@
             <div class="card digital-block">
               <div>
                 <span class="block-tag">Estructura de Conversión</span>
-                <h3>Experiencia Bilingüe Integral</h3>
+                <h3>Propuesta Bilingüe Clara</h3>
                 <p>
-                  Presentación clara y moderna de la propuesta académica desde Maternal hasta Nivel Secundario, eliminando párrafos densos y priorizando los diferenciales pedagógicos.
+                  Presentación clara y moderna de la propuesta bilingüe de Maternal a Secundaria, sin textos densos obsoletos. Preguntas frecuentes (horarios, aranceles, comedor).
                 </p>
               </div>
 
               <div class="feature-points">
                 <div class="feature-point-item">
                   <span class="check-icon">✓</span>
-                  <span><strong>Sección FAQ Dinámica:</strong> Horarios de doble jornada, aranceles y servicio de comedor.</span>
+                  <span><strong>Sección FAQ Dinámica:</strong> Horarios de doble jornada, aranceles y comedor.</span>
                 </div>
                 <div class="feature-point-item">
                   <span class="check-icon">✓</span>
@@ -1888,24 +1909,24 @@
             <div class="card digital-block">
               <div>
                 <span class="block-tag" style="background: #ecfdf5; color: #065f46; border-color: #a7f3d0;">Captación Inmediata</span>
-                <h3>Formulario Fast-Track & WhatsApp</h3>
+                <h3>Formulario Ágil & WhatsApp</h3>
                 <p>
-                  Reducción máxima de la fricción: solo 3 campos requeridos para no perder postulantes en formularios extensos de 15 preguntas.
+                  Formulario ágil en 3 campos (Nombre del tutor, WhatsApp y Nivel de interés). Botón flotante omnipresente de WhatsApp. La misma interfaz estandariza consultas presenciales y telefónicas en recepción.
                 </p>
               </div>
 
               <div class="feature-points">
                 <div class="feature-point-item">
                   <span class="check-icon" style="color: #0284c7;">⚡</span>
-                  <span><strong>3 Campos Clave:</strong> Nombre del tutor, WhatsApp y Nivel educativo de interés.</span>
+                  <span><strong>3 Campos Clave:</strong> Nombre del tutor, WhatsApp y Nivel de interés.</span>
                 </div>
                 <div class="feature-point-item">
                   <span class="check-icon" style="color: #16a34a;">💬</span>
-                  <span><strong>Botón Flotante WhatsApp:</strong> Apertura de conversación directa con secretaría.</span>
+                  <span><strong>Botón Flotante WhatsApp:</strong> Comunicación omnipresente con secretaría.</span>
                 </div>
                 <div class="feature-point-item">
                   <span class="check-icon" style="color: #d97706;">🏛️</span>
-                  <span><strong>Uso en Secretaría:</strong> Carga rápida de consultas telefónicas y presenciales en la misma base.</span>
+                  <span><strong>Uso en Recepción:</strong> Estandarización de consultas presenciales y telefónicas.</span>
                 </div>
               </div>
             </div>
@@ -1919,7 +1940,7 @@
           <div class="slide-header">
             <span class="slide-tag">Gestión Centralizada y CRM Liviano</span>
             <h2 class="slide-title">04. Base de Datos Centralizada y Panel de Gestión</h2>
-            <p class="slide-subtitle">Control total del pipeline de admisiones en el entorno Google de la institución, sin costos mensuales extras.</p>
+            <p class="slide-subtitle">Control total del pipeline de admisiones en el entorno Google de la institución, sin licencias extras.</p>
           </div>
 
           <div class="slide-5-grid">
@@ -1931,7 +1952,7 @@
                   <h3>Google Sheets en Drive Institucional</h3>
                 </div>
                 <p>
-                  Cada consulta ingresada por la web o por secretaría impacta al instante en una planilla protegida en el Google Drive oficial del colegio. Cero costo de licencias y facilidad absoluta de uso.
+                  Cada lead web o telefónico ingresa al instante a una hoja oficial en el Drive del colegio, sin licencias caras ni curvas de aprendizaje complejas.
                 </p>
               </div>
               <div class="info-banner-green">
@@ -1944,21 +1965,21 @@
               <div>
                 <div class="module-header">
                   <div class="module-num">2</div>
-                  <h3>Dashboard Web de Secretaría</h3>
+                  <h3>Dashboard Web Interno</h3>
                 </div>
                 <p>
-                  Panel visual alojado en el subdominio del colegio que organiza a los aspirantes en un embudo claro para el equipo directivo y secretaría:
+                  Panel alojado en el dominio institucional con pipeline de estados para secretaría:
                 </p>
               </div>
               
               <div class="pipeline-preview">
-                <div class="pipeline-step active">1. Nuevo Lead</div>
+                <div class="pipeline-step active">Nuevo Contacto</div>
                 <span class="pipeline-arrow">→</span>
-                <div class="pipeline-step">2. Contacto</div>
+                <div class="pipeline-step">Llamado</div>
                 <span class="pipeline-arrow">→</span>
-                <div class="pipeline-step">3. Visita</div>
+                <div class="pipeline-step">Visita Agendada</div>
                 <span class="pipeline-arrow">→</span>
-                <div class="pipeline-step" style="background: #ecfdf5; color: #065f46; border-color: #a7f3d0;">4. Matrícula</div>
+                <div class="pipeline-step" style="background: #ecfdf5; color: #065f46; border-color: #a7f3d0;">Matriculado</div>
               </div>
             </div>
 
@@ -1967,75 +1988,75 @@
               <div>
                 <div class="module-header">
                   <div class="module-num">3</div>
-                  <h3>Respuestas & Dossier Automatizado</h3>
+                  <h3>Email Automatizado</h3>
                 </div>
                 <p>
-                  Envío inmediato y programado del Dossier Informativo Institucional en PDF al correo del solicitante, acompañado de recordatorios automáticos previos a la entrevista presencial.
+                  Envío instantáneo de correo con el Dossier Informativo en PDF ante cada consulta, más recordatorios programados de visitas.
                 </p>
               </div>
               <div class="info-banner-blue">
-                ✉️ Confirmación inmediata 24/7 sin demora operativa
+                ✉️ Dossier PDF inmediato + recordatorios 24/7 sin demoras
               </div>
             </div>
           </div>
         </section>
 
         <!-- ============================================================
-             SLIDE 6: CRONOGRAMA DE EJECUCIÓN (GANTT)
+             SLIDE 6: CRONOGRAMA REAJUSTADO (KICKOFF 10 DE OCTUBRE)
              ============================================================ -->
         <section class="slide" data-slide="6" id="slide-6">
           <div class="slide-header">
             <span class="slide-tag">Planificación Temporal</span>
             <h2 class="slide-title">05. Plan de Trabajo Quincenal (Octubre – Enero)</h2>
-            <p class="slide-subtitle">Ruta de implementación por etapas para garantizar la disponibilidad operativa en el período clave de matrículas.</p>
+            <p class="slide-subtitle">Cronograma reajustado con solapamiento operativo y Kickoff el 10 de octubre para la campaña de matriculaciones.</p>
           </div>
 
           <div class="timeline-table-card">
             <table class="gantt-table">
               <thead>
                 <tr>
-                  <th style="width: 22%;">Etapa / Período</th>
-                  <th style="width: 40%;">Entregables y Acciones Clave</th>
+                  <th style="width: 25%;">Fase / Período</th>
+                  <th style="width: 45%;">Acciones Clave y Entregables</th>
                   <th>Visualización Temporal</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>
-                    <span class="phase-badge phase-1">Fase 1 • Oct Sem 1-2</span>
+                    <span class="phase-badge phase-1">Fase 1 • 10 al 24 Oct</span>
                   </td>
                   <td>
-                    <strong>Identidad & Preprensa 1/2 A4:</strong> Aprobación de paleta cromática unificada, sello "Since 1963", diseño de piezas y arquitectura web.
+                    <strong>Identidad & Preprensa:</strong> Identidad visual, integración cromática, sello "Since 1963", diseño 1/2 A4 y arquitectura de la Landing Page.
                   </td>
                   <td class="gantt-bar-cell">
                     <div class="gantt-track">
-                      <div class="gantt-fill" style="width: 25%; background: #059669;">Sem 1-2</div>
+                      <div class="gantt-fill" style="width: 25%; background: #059669;">10 – 24 Oct</div>
                     </div>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span class="phase-badge phase-2">Fase 2 • Oct Sem 3-4</span>
+                    <span class="phase-badge phase-2">Fase 2 • 25 Oct al 10 Nov</span>
                   </td>
                   <td>
-                    <strong>Producción & Conexión:</strong> Impresión de nuevos folletos 1/2 A4, desarrollo de la Landing Page y vinculación con Google Sheets.
+                    <strong>Producción & Conexión:</strong> Impresión de nueva folletería, maquetación mobile-first y conexión con Google Sheets en Drive.
                   </td>
                   <td class="gantt-bar-cell">
                     <div class="gantt-track">
-                      <div class="gantt-fill" style="width: 25%; margin-left: 25%; background: #2563eb;">Sem 3-4</div>
+                      <div class="gantt-fill" style="width: 25%; margin-left: 25%; background: #2563eb;">25 Oct – 10 Nov</div>
                     </div>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span class="phase-badge phase-3">Fase 3 • Noviembre</span>
+                    <span class="phase-badge phase-3">Fase 3 • 11 al 30 Nov</span>
                   </td>
                   <td>
-                    <strong>Lanzamiento & Despliegue:</strong> Salida en vivo de la web, distribución de folletería en secretaría y puesta en marcha del Dashboard de admisiones.
+                    <strong>Lanzamiento & Despliegue:</strong> Lanzamiento en vivo de la landing, distribución física de folletos y despliegue del Dashboard interno.
                   </td>
                   <td class="gantt-bar-cell">
                     <div class="gantt-track">
-                      <div class="gantt-fill" style="width: 25%; margin-left: 50%; background: #0284c7;">Noviembre</div>
+                      <div class="gantt-fill" style="width: 25%; margin-left: 50%; background: #0284c7;">11 – 30 Nov</div>
                     </div>
                   </td>
                 </tr>
@@ -2044,11 +2065,11 @@
                     <span class="phase-badge phase-4">Fase 4 • Dic – Ene</span>
                   </td>
                   <td>
-                    <strong>Seguimiento & Conversión:</strong> Monitoreo del embudo de entrevistas, optimización de pauta y guardia digital para vacantes remanentes.
+                    <strong>Conversión & Guardia:</strong> Gestión intensiva del embudo de entrevistas, conversión y guardia de admisión para vacantes remanentes.
                   </td>
                   <td class="gantt-bar-cell">
                     <div class="gantt-track">
-                      <div class="gantt-fill" style="width: 25%; margin-left: 75%; background: #b91c1c;">Dic — Ene</div>
+                      <div class="gantt-fill" style="width: 25%; margin-left: 75%; background: #b91c1c;">Dic – Ene</div>
                     </div>
                   </td>
                 </tr>
@@ -2058,94 +2079,119 @@
         </section>
 
         <!-- ============================================================
-             SLIDE 7: ESTIMACIÓN PRESUPUESTARIA
+             SLIDE 7: PRESUPUESTO & ESQUEMA ESCALONADO DE PAGOS
              ============================================================ -->
         <section class="slide" data-slide="7" id="slide-7">
           <div class="slide-header">
-            <span class="slide-tag">Propuesta Económica • Tarifario 2026</span>
-            <h2 class="slide-title">06. Estimación Presupuestaria (Base para Iterar)</h2>
-            <p class="slide-subtitle">Inversión profesional parametrizada según el Tarifario Nacional de Diseño y Desarrollo Web (tarifario.org Argentina).</p>
+            <span class="slide-tag">Propuesta Económica & Financiación</span>
+            <h2 class="slide-title">06. Estimación Presupuestaria & Modalidad de Inversión</h2>
+            <p class="slide-subtitle">Estructura modular por entregables y esquema financiero escalonado por hitos de avance.</p>
           </div>
 
           <div class="budget-container">
             <table class="budget-table">
               <thead>
                 <tr>
-                  <th style="width: 45%;">Módulo de Trabajo</th>
-                  <th style="width: 30%;">Inversión Estimada (ARS)</th>
-                  <th style="width: 25%;">Referencia (USD)</th>
+                  <th style="width: 50%;">Módulo de Trabajo</th>
+                  <th style="width: 28%;">Inversión Estimada (ARS)</th>
+                  <th style="width: 22%;">Referencia (USD)</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>
-                    <strong>1. Identidad Visual, Sello "Since 1963" & Preprensa 1/2 A4</strong><br>
-                    <small style="color: #64748b;">Rediseño y normalización de marca, paleta cromática unificada, sello histórico atemporal y originales de imprenta (preprensa digital).</small>
+                    <strong>1. Identidad Visual & Preprensa 1/2 A4</strong><br>
+                    <small style="color: #64748b;">Normalización gráfica, paleta cromática unificada, sello "Since 1963" y originales listos para imprenta.</small>
                   </td>
                   <td>
-                    <span class="price-ars">$580.000 – $850.000 ARS</span>
+                    <span class="price-ars">$380.000 – $490.000 ARS</span>
                   </td>
                   <td>
-                    <span class="price-usd">~USD 480 – 710</span>
+                    <span class="price-usd">~USD 320 – 420</span>
                   </td>
                 </tr>
                 <tr>
                   <td>
                     <strong>2. Landing Page de Admisiones Mobile-First</strong><br>
-                    <small style="color: #64748b;">Diseño y programación web responsiva, arquitectura UX orientada a conversión escolar, formulario ágil en 3 pasos y botón WhatsApp.</small>
+                    <small style="color: #64748b;">Desarrollo web responsive bilingüe, FAQ, formulario ágil en 3 campos y botón de WhatsApp.</small>
                   </td>
                   <td>
-                    <span class="price-ars">$680.000 – $1.050.000 ARS</span>
+                    <span class="price-ars">$550.000 – $780.000 ARS</span>
                   </td>
                   <td>
-                    <span class="price-usd">~USD 570 – 875</span>
+                    <span class="price-usd">~USD 460 – 650</span>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <strong>3. Automatización, Google Sheets & Panel Web</strong><br>
-                    <small style="color: #64748b;">Integración con Google Sheets / Drive oficial, embudo Kanban de secretaría directiva y confirmación automática por email con dossier PDF.</small>
+                    <strong>3. Automatización, Sheets & Panel Web</strong><br>
+                    <small style="color: #64748b;">Conexión con Drive oficial, Dashboard con embudo de secretaría y confirmación por email con PDF.</small>
                   </td>
                   <td>
-                    <span class="price-ars">$620.000 – $920.000 ARS</span>
+                    <span class="price-ars">$450.000 – $650.000 ARS</span>
                   </td>
                   <td>
-                    <span class="price-usd">~USD 520 – 770</span>
+                    <span class="price-usd">~USD 380 – 540</span>
                   </td>
                 </tr>
                 <tr class="budget-row-total">
                   <td>
                     <strong>🚀 Implementación Integral Llave en Mano</strong><br>
-                    <small style="color: #e2e8f0; font-weight: normal;">Incluye coordinación completa de imprenta, testing integral, despliegue en subdominio escolar y capacitación al equipo directivo.</small>
+                    <small style="color: #e2e8f0; font-weight: normal;">Coordinación integral de imprenta, testing, despliegue en dominio institucional y soporte operativo.</small>
                   </td>
                   <td>
-                    <span class="price-ars" style="font-size: 1.15rem; color: #38bdf8;">$1.880.000 – $2.820.000 ARS</span>
+                    <span class="price-ars" style="font-size: 1.05rem; color: #38bdf8;">$1.380.000 – $1.920.000 ARS</span>
                   </td>
                   <td>
-                    <span class="price-usd" style="color: #ffffff; font-weight: 800; font-size: 0.95rem;">~USD 1.570 – 2.350</span>
+                    <span class="price-usd" style="color: #ffffff; font-weight: 800; font-size: 0.9rem;">~USD 1.160 – 1.610</span>
                   </td>
                 </tr>
               </tbody>
             </table>
 
-            <div class="budget-note-card">
-              <span style="font-size: 1.1rem;">📌</span>
-              <div>
-                <strong>Condiciones comerciales sugeridas:</strong> Modalidad 50% anticipo al iniciar, 25% contra entrega de originales gráficos y web en staging, 25% final contra despliegue del panel y capacitación. <em>Valores de referencia calculados en base al Tarifario Nacional de Diseño Gráfico y Programación Web (<a href="https://tarifario.org/" target="_blank" rel="noopener" style="color: #0284c7; text-decoration: underline; font-weight: 600;">tarifario.org</a> Argentina). Costos directos de imprenta tercerizada e insumos a cargo de la institución.</em>
+            <!-- Esquema de Pagos por Hitos -->
+            <div class="payment-milestones-card">
+              <div class="milestones-header">
+                <span class="milestones-title">
+                  <span>💳</span> Esquema de Pagos Estructurado por Hitos de Avance
+                </span>
+                <span style="font-size: 0.72rem; color: #0284c7; font-weight: 700;">Kickoff: 10 de Octubre</span>
+              </div>
+
+              <div class="milestones-grid">
+                <div class="milestone-item">
+                  <div class="milestone-badge" style="color: #065f46;">Pago 1 • Lanzador / Kickoff</div>
+                  <div class="milestone-text"><strong>Previo al 10 de Octubre:</strong> Pago inicial para activación de recursos y reserva operativa del equipo.</div>
+                </div>
+
+                <div class="milestone-item">
+                  <div class="milestone-badge" style="color: #0369a1;">Pago 2 • Noviembre (Etapa 2/3)</div>
+                  <div class="milestone-text"><strong>20% del total:</strong> Contra entrega de originales de imprenta 1/2 A4 y salida online de la Landing Page.</div>
+                </div>
+
+                <div class="milestone-item">
+                  <div class="milestone-badge" style="color: #1e3a8a;">Pago 3 • Diciembre (Etapa 4)</div>
+                  <div class="milestone-text"><strong>20% del total:</strong> Contra despliegue del Dashboard interno, automatizaciones activas y seguimiento del embudo.</div>
+                </div>
+              </div>
+
+              <div class="milestones-note">
+                <span>📌</span>
+                <span><strong>Nota Operativa:</strong> Los costos directos de imprenta e insumos físicos corren por cuenta de la escuela.</span>
               </div>
             </div>
           </div>
         </section>
 
         <!-- ============================================================
-             SLIDE 8: PRÓXIMOS PASOS (KICKOFF)
+             SLIDE 8: PRÓXIMOS PASOS (KICKOFF INMEDIATO)
              ============================================================ -->
         <section class="slide" data-slide="8" id="slide-8">
           <div class="slide-8-layout">
             <div class="slide-header">
-              <span class="slide-tag" style="color: #059669;">Puesta en Marcha Inmediata</span>
+              <span class="slide-tag" style="color: #059669;">Kickoff Inmediato • 10 de Octubre</span>
               <h2 class="slide-title">07. Próximos Pasos para la Puesta en Marcha</h2>
-              <p class="slide-subtitle">Plan de acción coordinado para iniciar la ejecución del proyecto esta misma semana.</p>
+              <p class="slide-subtitle">Acciones inmediatas para coordinar el inicio formal de las tareas según el cronograma acordado.</p>
             </div>
 
             <div class="steps-grid">
@@ -2153,13 +2199,13 @@
               <div class="card step-card">
                 <div>
                   <div class="step-badge-num">1</div>
-                  <h3>Aprobación y Alcance</h3>
+                  <h3>Aprobación y Formalización</h3>
                   <p>
-                    Alineación con el equipo directivo respecto al alcance presupuestario definitivo y prioridades por nivel educativo.
+                    Validación de partidas presupuestarias y firma de acuerdo para inicio formal el 10 de octubre.
                   </p>
                 </div>
                 <div style="font-size: 0.75rem; color: #0284c7; font-weight: 700; margin-top: 0.8rem;">
-                  → Validación de propuesta
+                  → Validación del acuerdo
                 </div>
               </div>
 
@@ -2167,13 +2213,13 @@
               <div class="card step-card">
                 <div>
                   <div class="step-badge-num">2</div>
-                  <h3>Relevamiento & Accesos</h3>
+                  <h3>Relevamiento Técnico</h3>
                   <p>
-                    Relevamiento técnico institucional: hosting/dominio del colegio y asignación de carpeta en el Google Drive oficial.
+                    Entrega de accesos a hosting/dominio del colegio y asignación de carpeta en el Google Drive institucional.
                   </p>
                 </div>
                 <div style="font-size: 0.75rem; color: #059669; font-weight: 700; margin-top: 0.8rem;">
-                  → Setup de entorno
+                  → Setup de accesos
                 </div>
               </div>
 
@@ -2181,13 +2227,13 @@
               <div class="card step-card">
                 <div>
                   <div class="step-badge-num">3</div>
-                  <h3>Primeras Muestras Gráficas</h3>
+                  <h3>Primeros Entregables</h3>
                   <p>
-                    Presentación de los primeros bocetos impresos 1/2 A4 y prototipo de pantalla interactivo para validación directiva.
+                    Presentación de muestras gráficas 1/2 A4 vertical y prototipo de pantalla para validación directiva.
                   </p>
                 </div>
                 <div style="font-size: 0.75rem; color: #d97706; font-weight: 700; margin-top: 0.8rem;">
-                  → Aprobación de originales
+                  → Validación de diseño
                 </div>
               </div>
             </div>
@@ -2196,7 +2242,7 @@
             <div class="kickoff-callout">
               <div class="callout-text">
                 <h4>Transformemos juntos el proceso de admisiones del Colegio Parish Robertson.</h4>
-                <p>Una identidad atemporal que honra los 60+ años de historia, con la agilidad digital que demandan las nuevas familias.</p>
+                <p>Muchas gracias por su confianza e interés en innovar y potenciar la captación institucional para el próximo ciclo lectivo.</p>
               </div>
 
               <button class="nav-btn primary" onclick="goToSlide(1)" style="padding: 0.65rem 1.2rem; font-size: 0.85rem; border: none;">
@@ -2278,10 +2324,10 @@
         "00. Portada Institucional",
         "01. Diagnóstico del Material",
         "02. Reingeniería Gráfica (-50%)",
-        "03. Landing Page Fast-Track",
+        "03. Landing Page Mobile-First",
         "04. Sheets & Dashboard de Gestión",
-        "05. Cronograma Quincenal",
-        "06. Estimación Presupuestaria",
+        "05. Cronograma (Kickoff 10 Oct)",
+        "06. Presupuesto & Hitos de Pago",
         "07. Próximos Pasos (Kickoff)"
       ];
 
@@ -2312,7 +2358,7 @@
         });
 
         // Update indicator & progress
-        slideIndicator.textContent = `Diapositiva ${currentSlide} de ${totalSlides}`;
+        slideIndicator.textContent = `Slide ${currentSlide} de ${totalSlides}`;
         const progressPercentage = (currentSlide / totalSlides) * 100;
         progressBar.style.width = `${progressPercentage}%`;
 
