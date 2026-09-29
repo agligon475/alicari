@@ -61,10 +61,10 @@ async function generatePDF() {
     path: outputPath,
     printBackground: true,
     preferCSSPageSize: true,
-    landscape: true,
+    landscape: false,
     width: '1920px',
     height: '1080px',
-    margin: { top: 0, right: 0, bottom: 0, left: 0 }
+    margin: { top: '0px', right: '0px', bottom: '0px', left: '0px' }
   });
 
   await browser.close();
