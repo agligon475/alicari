@@ -460,20 +460,20 @@
       transform: translateY(-1px);
     }
 
-    .nav-btn.pptx-btn {
-      background: #f0f9ff;
-      border-color: rgba(2, 132, 199, 0.35);
-      color: var(--sky-primary);
+    .nav-btn.pdf-btn {
+      background: #f0fdf4;
+      border-color: rgba(0, 77, 44, 0.35);
+      color: var(--green-primary);
     }
 
-    .nav-btn.pptx-btn:hover {
-      background: #e0f2fe;
-      border-color: var(--sky-primary);
-      color: #0369a1;
-      box-shadow: 0 2px 10px rgba(2, 132, 199, 0.2);
+    .nav-btn.pdf-btn:hover {
+      background: #dcfce7;
+      border-color: var(--green-primary);
+      color: var(--green-deep);
+      box-shadow: 0 2px 10px rgba(0, 77, 44, 0.2);
     }
 
-    body.exporting-pptx .slide {
+    body.exporting-pdf .slide {
       transition: none !important;
       animation: none !important;
     }
@@ -1613,21 +1613,88 @@
       color: var(--text-dim);
     }
 
-    /* Print Styles */
+    /* Print Styles (Formato Horizontal 16:9 para PDF) */
+    @page {
+      size: 1920px 1080px landscape;
+      margin: 0;
+    }
+
     @media print {
-      body { background: #fff; color: #000; overflow: visible; }
-      .deck-viewport { padding: 0; width: 100%; height: auto; }
-      .deck-stage { aspect-ratio: auto; box-shadow: none; border: none; }
-      .deck-topbar, .deck-bottombar, .ambient-bg, .export-modal-backdrop { display: none !important; }
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      html, body {
+        width: 1920px !important;
+        height: auto !important;
+        background: #ffffff !important;
+        color: #0f172a !important;
+        overflow: visible !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      .ambient-bg, .deck-topbar, .deck-bottombar, .export-modal-backdrop, .modal-backdrop {
+        display: none !important;
+      }
+      .deck-viewport {
+        padding: 0 !important;
+        width: 1920px !important;
+        height: auto !important;
+        display: block !important;
+      }
+      .deck-stage {
+        width: 1920px !important;
+        max-width: 1920px !important;
+        aspect-ratio: auto !important;
+        box-shadow: none !important;
+        border: none !important;
+        border-radius: 0 !important;
+        background: #ffffff !important;
+        display: block !important;
+        overflow: visible !important;
+      }
+      .deck-content {
+        height: auto !important;
+        overflow: visible !important;
+        display: block !important;
+        position: static !important;
+      }
       .slide {
         position: relative !important;
+        inset: auto !important;
         opacity: 1 !important;
         visibility: visible !important;
         transform: none !important;
-        page-break-after: always;
-        height: 100vh;
-        padding: 2rem;
+        width: 1920px !important;
+        height: 1080px !important;
+        min-height: 1080px !important;
+        max-height: 1080px !important;
+        box-sizing: border-box !important;
+        page-break-before: always !important;
+        break-before: page !important;
+        page-break-after: always !important;
+        break-after: page !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        padding: 4rem 5rem !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        background: #ffffff !important;
       }
+      .slide:first-child {
+        page-break-before: avoid !important;
+        break-before: avoid !important;
+      }
+      .hero-title { font-size: 2.6rem !important; line-height: 1.25 !important; }
+      .hero-subtitle { font-size: 1.3rem !important; }
+      .slide-title { font-size: 2.2rem !important; }
+      .slide-subtitle { font-size: 1.1rem !important; }
+      .slide-2-grid, .slide-4-grid, .slide-6-grid { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 2rem !important; }
+      .slide-3-grid, .slide-5-grid, .steps-grid { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 1.8rem !important; }
+      .milestones-grid { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 1rem !important; }
+      .card { box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important; border: 1px solid #e2e8f0 !important; }
     }
 
     /* Responsive: Tablets */
@@ -1780,13 +1847,15 @@
         </div>
 
         <div class="topbar-actions">
-          <button class="topbar-export-btn" id="btnExportPptxTop" title="Descargar presentación completa en PowerPoint (.pptx)">
+          <button class="topbar-export-btn" id="btnExportPdfTop" title="Descargar presentación completa en PDF Horizontal (16:9)">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="12" y1="18" x2="12" y2="12"/>
+              <line x1="9" y1="15" x2="12" y2="18"/>
+              <line x1="15" y1="15" x2="12" y2="18"/>
             </svg>
-            <span>Descargar PPTX</span>
+            <span>Descargar PDF</span>
           </button>
           <div class="deck-slide-indicator" id="slideIndicator">
             Slide 1 de 9
@@ -2468,13 +2537,15 @@
           <button class="nav-btn" id="btnFullscreen" title="Pantalla completa (Tecla 'F')">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
           </button>
-          <button class="nav-btn pptx-btn" id="btnExportPptx" title="Descargar presentación en PowerPoint (.pptx)">
+          <button class="nav-btn pdf-btn" id="btnExportPdf" title="Descargar presentación completa en PDF Horizontal (16:9)">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="12" y1="18" x2="12" y2="12"/>
+              <line x1="9" y1="15" x2="12" y2="18"/>
+              <line x1="15" y1="15" x2="12" y2="18"/>
             </svg>
-            <span>PPTX</span>
+            <span>PDF</span>
           </button>
         </div>
 
@@ -2509,13 +2580,15 @@
           <p style="font-size: 0.8rem; color: var(--text-dim); margin-top: 0.2rem;">Haz clic en cualquier miniatura para ir directamente a la diapositiva.</p>
         </div>
         <div style="display: flex; align-items: center; gap: 0.75rem;">
-          <button class="topbar-export-btn" id="btnExportPptxModal" title="Descargar presentación completa en PowerPoint (.pptx)">
+          <button class="topbar-export-btn" id="btnExportPdfModal" title="Descargar presentación completa en PDF Horizontal (16:9)">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="12" y1="18" x2="12" y2="12"/>
+              <line x1="9" y1="15" x2="12" y2="18"/>
+              <line x1="15" y1="15" x2="12" y2="18"/>
             </svg>
-            <span>Descargar PPTX</span>
+            <span>Descargar PDF</span>
           </button>
           <button class="modal-close-btn" id="btnCloseOverview">✕</button>
         </div>
@@ -2526,8 +2599,8 @@
     </div>
   </div>
 
-  <!-- Modal de Progreso de Exportación PPTX -->
-  <div class="export-modal-backdrop" id="modalExportPptx" aria-hidden="true">
+  <!-- Modal de Progreso de Exportación PDF -->
+  <div class="export-modal-backdrop" id="modalExportPdf" aria-hidden="true">
     <div class="export-modal-card">
       <div class="export-icon-box" id="exportIconBox">
         <svg class="export-spin-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -2535,13 +2608,13 @@
           <path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/>
         </svg>
       </div>
-      <h3 class="export-title" id="exportTitle">Generando PowerPoint (.pptx)</h3>
-      <p class="export-status-desc" id="exportDesc">Iniciando renderizado en alta resolución...</p>
+      <h3 class="export-title" id="exportTitle">Descargando Presentación PDF</h3>
+      <p class="export-status-desc" id="exportDesc">Iniciando descarga en formato horizontal 16:9 de alta definición...</p>
       
       <div class="export-progress-bar-wrap">
         <div class="export-progress-bar-fill" id="exportProgressFill" style="width: 0%;"></div>
       </div>
-      <span class="export-counter" id="exportCounter">0 de 9 diapositivas</span>
+      <span class="export-counter" id="exportCounter">9 diapositivas vectoriales</span>
     </div>
   </div>
 
@@ -2559,9 +2632,9 @@
       const btnNext = document.getElementById('btnNext');
       const btnOverview = document.getElementById('btnOverview');
       const btnFullscreen = document.getElementById('btnFullscreen');
-      const btnExportPptx = document.getElementById('btnExportPptx');
-      const btnExportPptxTop = document.getElementById('btnExportPptxTop');
-      const btnExportPptxModal = document.getElementById('btnExportPptxModal');
+      const btnExportPdf = document.getElementById('btnExportPdf');
+      const btnExportPdfTop = document.getElementById('btnExportPdfTop');
+      const btnExportPdfModal = document.getElementById('btnExportPdfModal');
       const modalOverview = document.getElementById('modalOverview');
       const btnCloseOverview = document.getElementById('btnCloseOverview');
       const thumbnailsGrid = document.getElementById('thumbnailsGrid');
@@ -2667,11 +2740,11 @@
         }
       }
 
-      // Motor de Descarga de PowerPoint (.pptx) Nativo Editable
-      function exportToPptx() {
+      // Motor de Descarga de PDF Horizontal (16:9)
+      function exportToPdf() {
         closeOverview();
 
-        const exportModal = document.getElementById('modalExportPptx');
+        const exportModal = document.getElementById('modalExportPdf');
         const exportTitle = document.getElementById('exportTitle');
         const exportDesc = document.getElementById('exportDesc');
         const exportProgressFill = document.getElementById('exportProgressFill');
@@ -2685,15 +2758,15 @@
             <polyline points="20 6 9 17 4 12"/>
           </svg>
         `;
-        exportTitle.textContent = '¡Descargando PowerPoint (.pptx)!';
-        exportDesc.textContent = 'Iniciando descarga del archivo nativo editable con 9 diapositivas estructuradas...';
+        exportTitle.textContent = '¡Descargando Presentación PDF (16:9)!';
+        exportDesc.textContent = 'Iniciando descarga del documento en formato horizontal de alta resolución...';
         exportProgressFill.style.width = '100%';
-        exportCounter.textContent = 'Presentación Completa 16:9';
+        exportCounter.textContent = 'Documento Listo • 9 Diapositivas';
 
-        // Disparo de descarga directa del archivo PPTX nativo
+        // Disparo de descarga directa del archivo PDF
         const link = document.createElement('a');
-        link.href = 'Plan_Modernizacion_Colegio_Parish_Robertson_2026.pptx';
-        link.download = 'Plan_Modernizacion_Colegio_Parish_Robertson_2026.pptx';
+        link.href = 'Plan_Modernizacion_Colegio_Parish_Robertson_2026.pdf';
+        link.download = 'Plan_Modernizacion_Colegio_Parish_Robertson_2026.pdf';
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -2710,9 +2783,9 @@
       btnCloseOverview.addEventListener('click', closeOverview);
       btnFullscreen.addEventListener('click', toggleFullscreen);
 
-      if (btnExportPptx) btnExportPptx.addEventListener('click', exportToPptx);
-      if (btnExportPptxTop) btnExportPptxTop.addEventListener('click', exportToPptx);
-      if (btnExportPptxModal) btnExportPptxModal.addEventListener('click', exportToPptx);
+      if (btnExportPdf) btnExportPdf.addEventListener('click', exportToPdf);
+      if (btnExportPdfTop) btnExportPdfTop.addEventListener('click', exportToPdf);
+      if (btnExportPdfModal) btnExportPdfModal.addEventListener('click', exportToPdf);
 
       modalOverview.addEventListener('click', (e) => {
         if (e.target === modalOverview) closeOverview();
@@ -2764,7 +2837,7 @@
           case 'd':
           case 'D':
             e.preventDefault();
-            exportToPptx();
+            exportToPdf();
             break;
           case '1': case '2': case '3': case '4':
           case '5': case '6': case '7': case '8': case '9':
