@@ -14,9 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Motor de Exportación a PowerPoint (PPTX) y Renderizado Canvas -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
+
 
   <style>
     /* ==========================================================================
@@ -2669,16 +2667,8 @@
         }
       }
 
-      // Motor de Exportación a PowerPoint (.pptx)
-      async function exportToPptx() {
-        if (isExporting) return;
-
-        if (typeof PptxGenJS === 'undefined' || typeof html2canvas === 'undefined') {
-          alert('Las herramientas de exportación se están inicializando. Por favor aguarda unos segundos e intenta nuevamente.');
-          return;
-        }
-
-        isExporting = true;
+      // Motor de Descarga de PowerPoint (.pptx) Nativo Editable
+      function exportToPptx() {
         closeOverview();
 
         const exportModal = document.getElementById('modalExportPptx');
@@ -2688,104 +2678,29 @@
         const exportCounter = document.getElementById('exportCounter');
         const exportIconBox = document.getElementById('exportIconBox');
 
-        // Mostrar modal de progreso
         exportModal.classList.add('open');
-        exportIconBox.className = 'export-icon-box';
+        exportIconBox.className = 'export-icon-box success';
         exportIconBox.innerHTML = `
-          <svg class="export-spin-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <circle cx="12" cy="12" r="10" stroke-opacity="0.25"/>
-            <path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/>
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
           </svg>
         `;
-        exportTitle.textContent = 'Generando PowerPoint (.pptx)';
-        exportDesc.textContent = 'Iniciando captura de diapositivas en alta resolución...';
-        exportProgressFill.style.width = '4%';
-        exportCounter.textContent = `0 de ${totalSlides} diapositivas`;
+        exportTitle.textContent = '¡Descargando PowerPoint (.pptx)!';
+        exportDesc.textContent = 'Iniciando descarga del archivo nativo editable con 9 diapositivas estructuradas...';
+        exportProgressFill.style.width = '100%';
+        exportCounter.textContent = 'Presentación Completa 16:9';
 
-        const previousSlide = currentSlide;
+        // Disparo de descarga directa del archivo PPTX nativo
+        const link = document.createElement('a');
+        link.href = 'Plan_Modernizacion_Colegio_Parish_Robertson_2026.pptx';
+        link.download = 'Plan_Modernizacion_Colegio_Parish_Robertson_2026.pptx';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
 
-        try {
-          const pptx = new PptxGenJS();
-          pptx.layout = 'LAYOUT_16x9';
-          pptx.title = 'Plan de Modernización de Admisiones & Ecosistema Digital — Colegio Parish Robertson';
-          pptx.subject = 'Propuesta de Modernización de Admisiones y Ecosistema Digital 2026';
-          pptx.author = 'Agustín Licari (ALICARI)';
-          pptx.company = 'Colegio Parish Robertson & ALICARI';
-
-          document.body.classList.add('exporting-pptx');
-
-          for (let i = 0; i < totalSlides; i++) {
-            const slideNum = i + 1;
-            const targetSlide = slides[i];
-
-            // Actualizar modal
-            exportDesc.textContent = `Procesando: ${slideTitles[i] || `Diapositiva ${slideNum}`}`;
-            exportProgressFill.style.width = `${Math.round((i / totalSlides) * 85) + 6}%`;
-            exportCounter.textContent = `${i} de ${totalSlides} procesadas`;
-
-            // Activar slide actual
-            slides.forEach((s, sIdx) => {
-              if (sIdx === i) {
-                s.classList.add('active');
-                s.scrollTop = 0;
-              } else {
-                s.classList.remove('active');
-              }
-            });
-
-            // Pausa breve para renderizado de fuentes y estilos
-            await new Promise((resolve) => setTimeout(resolve, 140));
-
-            // Captura canvas en escala 2 (alta fidelidad)
-            const canvas = await html2canvas(targetSlide, {
-              scale: 2,
-              useCORS: true,
-              allowTaint: true,
-              backgroundColor: '#ffffff',
-              logging: false
-            });
-
-            const imgData = canvas.toDataURL('image/jpeg', 0.95);
-
-            // Agregar a PPTX
-            const pptSlide = pptx.addSlide();
-            pptSlide.background = { data: imgData };
-            if (slideTitles[i]) {
-              pptSlide.addNotes(`Colegio Parish Robertson — ${slideTitles[i]}`);
-            }
-          }
-
-          exportProgressFill.style.width = '94%';
-          exportDesc.textContent = 'Empaquetando archivo PowerPoint final...';
-
-          await pptx.writeFile({ fileName: 'Colegio_Parish_Robertson_Modernizacion_Admisiones_2026.pptx' });
-
-          exportProgressFill.style.width = '100%';
-          exportTitle.textContent = '¡Descarga Exitosa!';
-          exportDesc.textContent = 'El archivo .pptx se ha descargado a tu equipo.';
-          exportIconBox.className = 'export-icon-box success';
-          exportIconBox.innerHTML = `
-            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="20 6 9 17 4 12"/>
-            </svg>
-          `;
-
-          setTimeout(() => {
-            exportModal.classList.remove('open');
-          }, 2000);
-
-        } catch (err) {
-          console.error('Error al exportar PPTX:', err);
-          exportTitle.textContent = 'Error al exportar';
-          exportDesc.textContent = 'Ocurrió un inconveniente al generar el PPTX. Por favor intenta nuevamente.';
-          setTimeout(() => {
-            exportModal.classList.remove('open');
-          }, 3000);
-        } finally {
-          document.body.classList.remove('exporting-pptx');
-          isExporting = false;
-          goToSlide(previousSlide);
-        }
+        setTimeout(() => {
+          exportModal.classList.remove('open');
+        }, 2200);
       }
 
       // Event Listeners de Botones
