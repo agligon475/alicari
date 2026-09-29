@@ -14,6 +14,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet">
 
+  <!-- Motor de Exportación a PowerPoint (PPTX) y Renderizado Canvas -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
+
   <style>
     /* ==========================================================================
        DESIGN TOKENS & PALETA INSTITUCIONAL COLEGIO PARISH ROBERTSON
@@ -426,6 +430,54 @@
       border-radius: 4px;
       border: 1px solid #e2e8f0;
       font-weight: 600;
+    }
+
+    /* Estilos Botón PPTX & Topbar Actions */
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .topbar-export-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.38rem 0.85rem;
+      background: #f0fdf4;
+      border: 1px solid rgba(0, 77, 44, 0.25);
+      color: var(--green-primary);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .topbar-export-btn:hover {
+      background: var(--green-primary);
+      color: #ffffff;
+      border-color: var(--green-primary);
+      box-shadow: 0 2px 8px rgba(0, 77, 44, 0.25);
+      transform: translateY(-1px);
+    }
+
+    .nav-btn.pptx-btn {
+      background: #f0f9ff;
+      border-color: rgba(2, 132, 199, 0.35);
+      color: var(--sky-primary);
+    }
+
+    .nav-btn.pptx-btn:hover {
+      background: #e0f2fe;
+      border-color: var(--sky-primary);
+      color: #0369a1;
+      box-shadow: 0 2px 10px rgba(2, 132, 199, 0.2);
+    }
+
+    body.exporting-pptx .slide {
+      transition: none !important;
+      animation: none !important;
     }
 
     /* -------------------------------------------------------------
@@ -1454,12 +1506,121 @@
       line-height: 1.25;
     }
 
+    /* MODAL DE EXPORTACIÓN PPTX */
+    .export-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(8px);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .export-modal-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .export-modal-card {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      padding: 2.2rem 2rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      width: 100%;
+      max-width: 440px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.9rem;
+      animation: modalPopIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes modalPopIn {
+      from { transform: scale(0.92); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .export-icon-box {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--green-soft);
+      color: var(--green-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 20px rgba(0, 77, 44, 0.15);
+      transition: all 0.3s ease;
+    }
+
+    .export-icon-box.success {
+      background: #ecfdf5;
+      color: #10b981;
+      box-shadow: 0 0 25px rgba(16, 185, 129, 0.3);
+    }
+
+    .export-spin-icon {
+      width: 28px;
+      height: 28px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+
+    .export-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--green-deep);
+      margin: 0;
+    }
+
+    .export-status-desc {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+      margin: 0;
+      min-height: 2.4em;
+    }
+
+    .export-progress-bar-wrap {
+      width: 100%;
+      height: 8px;
+      background: #f1f5f9;
+      border-radius: 100px;
+      overflow: hidden;
+      margin-top: 0.3rem;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .export-progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--green-primary), var(--sky-primary));
+      border-radius: 100px;
+      transition: width 0.25s ease;
+    }
+
+    .export-counter {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-dim);
+    }
+
     /* Print Styles */
     @media print {
       body { background: #fff; color: #000; overflow: visible; }
       .deck-viewport { padding: 0; width: 100%; height: auto; }
       .deck-stage { aspect-ratio: auto; box-shadow: none; border: none; }
-      .deck-topbar, .deck-bottombar, .ambient-bg { display: none !important; }
+      .deck-topbar, .deck-bottombar, .ambient-bg, .export-modal-backdrop { display: none !important; }
       .slide {
         position: relative !important;
         opacity: 1 !important;
@@ -1490,6 +1651,8 @@
       .topbar-brand { font-size: 0.72rem; gap: 0.45rem; }
       .topbar-school-logo { width: 20px; height: 20px; }
       .topbar-badge { display: none; }
+      .topbar-export-btn span { display: none; }
+      .topbar-export-btn { padding: 0.35rem 0.5rem; }
       .deck-slide-indicator { font-size: 0.72rem; padding: 0.2rem 0.55rem; }
       
       .deck-content { height: calc(100dvh - 48px - 60px); }
@@ -1618,8 +1781,18 @@
           <span>Since 1963</span>
         </div>
 
-        <div class="deck-slide-indicator" id="slideIndicator">
-          Slide 1 de 9
+        <div class="topbar-actions">
+          <button class="topbar-export-btn" id="btnExportPptxTop" title="Descargar presentación completa en PowerPoint (.pptx)">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            <span>Descargar PPTX</span>
+          </button>
+          <div class="deck-slide-indicator" id="slideIndicator">
+            Slide 1 de 9
+          </div>
         </div>
       </header>
 
@@ -2297,6 +2470,14 @@
           <button class="nav-btn" id="btnFullscreen" title="Pantalla completa (Tecla 'F')">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
           </button>
+          <button class="nav-btn pptx-btn" id="btnExportPptx" title="Descargar presentación en PowerPoint (.pptx)">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            <span>PPTX</span>
+          </button>
         </div>
 
         <div class="progress-track" title="Progreso de la presentación">
@@ -2325,12 +2506,44 @@
   <div class="modal-backdrop" id="modalOverview">
     <div class="modal-grid-container">
       <div class="modal-header">
-        <h3 class="modal-title">Navegación Rápida de Diapositivas</h3>
-        <button class="modal-close-btn" id="btnCloseOverview">✕</button>
+        <div>
+          <h3 class="modal-title">Navegación Rápida de Diapositivas</h3>
+          <p style="font-size: 0.8rem; color: var(--text-dim); margin-top: 0.2rem;">Haz clic en cualquier miniatura para ir directamente a la diapositiva.</p>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <button class="topbar-export-btn" id="btnExportPptxModal" title="Descargar presentación completa en PowerPoint (.pptx)">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            <span>Descargar PPTX</span>
+          </button>
+          <button class="modal-close-btn" id="btnCloseOverview">✕</button>
+        </div>
       </div>
       <div class="grid-thumbnails" id="thumbnailsGrid">
         <!-- Generado dinámicamente con JS -->
       </div>
+    </div>
+  </div>
+
+  <!-- Modal de Progreso de Exportación PPTX -->
+  <div class="export-modal-backdrop" id="modalExportPptx" aria-hidden="true">
+    <div class="export-modal-card">
+      <div class="export-icon-box" id="exportIconBox">
+        <svg class="export-spin-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <circle cx="12" cy="12" r="10" stroke-opacity="0.25"/>
+          <path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3 class="export-title" id="exportTitle">Generando PowerPoint (.pptx)</h3>
+      <p class="export-status-desc" id="exportDesc">Iniciando renderizado en alta resolución...</p>
+      
+      <div class="export-progress-bar-wrap">
+        <div class="export-progress-bar-fill" id="exportProgressFill" style="width: 0%;"></div>
+      </div>
+      <span class="export-counter" id="exportCounter">0 de 9 diapositivas</span>
     </div>
   </div>
 
@@ -2340,6 +2553,7 @@
       const slides = Array.from(document.querySelectorAll('.slide'));
       const totalSlides = slides.length;
       let currentSlide = 1;
+      let isExporting = false;
 
       const slideIndicator = document.getElementById('slideIndicator');
       const progressBar = document.getElementById('progressBar');
@@ -2347,6 +2561,9 @@
       const btnNext = document.getElementById('btnNext');
       const btnOverview = document.getElementById('btnOverview');
       const btnFullscreen = document.getElementById('btnFullscreen');
+      const btnExportPptx = document.getElementById('btnExportPptx');
+      const btnExportPptxTop = document.getElementById('btnExportPptxTop');
+      const btnExportPptxModal = document.getElementById('btnExportPptxModal');
       const modalOverview = document.getElementById('modalOverview');
       const btnCloseOverview = document.getElementById('btnCloseOverview');
       const thumbnailsGrid = document.getElementById('thumbnailsGrid');
@@ -2452,6 +2669,125 @@
         }
       }
 
+      // Motor de Exportación a PowerPoint (.pptx)
+      async function exportToPptx() {
+        if (isExporting) return;
+
+        if (typeof PptxGenJS === 'undefined' || typeof html2canvas === 'undefined') {
+          alert('Las herramientas de exportación se están inicializando. Por favor aguarda unos segundos e intenta nuevamente.');
+          return;
+        }
+
+        isExporting = true;
+        closeOverview();
+
+        const exportModal = document.getElementById('modalExportPptx');
+        const exportTitle = document.getElementById('exportTitle');
+        const exportDesc = document.getElementById('exportDesc');
+        const exportProgressFill = document.getElementById('exportProgressFill');
+        const exportCounter = document.getElementById('exportCounter');
+        const exportIconBox = document.getElementById('exportIconBox');
+
+        // Mostrar modal de progreso
+        exportModal.classList.add('open');
+        exportIconBox.className = 'export-icon-box';
+        exportIconBox.innerHTML = `
+          <svg class="export-spin-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <circle cx="12" cy="12" r="10" stroke-opacity="0.25"/>
+            <path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/>
+          </svg>
+        `;
+        exportTitle.textContent = 'Generando PowerPoint (.pptx)';
+        exportDesc.textContent = 'Iniciando captura de diapositivas en alta resolución...';
+        exportProgressFill.style.width = '4%';
+        exportCounter.textContent = `0 de ${totalSlides} diapositivas`;
+
+        const previousSlide = currentSlide;
+
+        try {
+          const pptx = new PptxGenJS();
+          pptx.layout = 'LAYOUT_16x9';
+          pptx.title = 'Plan de Modernización de Admisiones & Ecosistema Digital — Colegio Parish Robertson';
+          pptx.subject = 'Propuesta de Modernización de Admisiones y Ecosistema Digital 2026';
+          pptx.author = 'Agustín Licari (ALICARI)';
+          pptx.company = 'Colegio Parish Robertson & ALICARI';
+
+          document.body.classList.add('exporting-pptx');
+
+          for (let i = 0; i < totalSlides; i++) {
+            const slideNum = i + 1;
+            const targetSlide = slides[i];
+
+            // Actualizar modal
+            exportDesc.textContent = `Procesando: ${slideTitles[i] || `Diapositiva ${slideNum}`}`;
+            exportProgressFill.style.width = `${Math.round((i / totalSlides) * 85) + 6}%`;
+            exportCounter.textContent = `${i} de ${totalSlides} procesadas`;
+
+            // Activar slide actual
+            slides.forEach((s, sIdx) => {
+              if (sIdx === i) {
+                s.classList.add('active');
+                s.scrollTop = 0;
+              } else {
+                s.classList.remove('active');
+              }
+            });
+
+            // Pausa breve para renderizado de fuentes y estilos
+            await new Promise((resolve) => setTimeout(resolve, 140));
+
+            // Captura canvas en escala 2 (alta fidelidad)
+            const canvas = await html2canvas(targetSlide, {
+              scale: 2,
+              useCORS: true,
+              allowTaint: true,
+              backgroundColor: '#ffffff',
+              logging: false
+            });
+
+            const imgData = canvas.toDataURL('image/jpeg', 0.95);
+
+            // Agregar a PPTX
+            const pptSlide = pptx.addSlide();
+            pptSlide.background = { data: imgData };
+            if (slideTitles[i]) {
+              pptSlide.addNotes(`Colegio Parish Robertson — ${slideTitles[i]}`);
+            }
+          }
+
+          exportProgressFill.style.width = '94%';
+          exportDesc.textContent = 'Empaquetando archivo PowerPoint final...';
+
+          await pptx.writeFile({ fileName: 'Colegio_Parish_Robertson_Modernizacion_Admisiones_2026.pptx' });
+
+          exportProgressFill.style.width = '100%';
+          exportTitle.textContent = '¡Descarga Exitosa!';
+          exportDesc.textContent = 'El archivo .pptx se ha descargado a tu equipo.';
+          exportIconBox.className = 'export-icon-box success';
+          exportIconBox.innerHTML = `
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          `;
+
+          setTimeout(() => {
+            exportModal.classList.remove('open');
+          }, 2000);
+
+        } catch (err) {
+          console.error('Error al exportar PPTX:', err);
+          exportTitle.textContent = 'Error al exportar';
+          exportDesc.textContent = 'Ocurrió un inconveniente al generar el PPTX. Por favor intenta nuevamente.';
+          setTimeout(() => {
+            exportModal.classList.remove('open');
+          }, 3000);
+        } finally {
+          document.body.classList.remove('exporting-pptx');
+          isExporting = false;
+          goToSlide(previousSlide);
+        }
+      }
+
       // Event Listeners de Botones
       btnNext.addEventListener('click', nextSlide);
       btnPrev.addEventListener('click', prevSlide);
@@ -2459,11 +2795,15 @@
       btnCloseOverview.addEventListener('click', closeOverview);
       btnFullscreen.addEventListener('click', toggleFullscreen);
 
+      if (btnExportPptx) btnExportPptx.addEventListener('click', exportToPptx);
+      if (btnExportPptxTop) btnExportPptxTop.addEventListener('click', exportToPptx);
+      if (btnExportPptxModal) btnExportPptxModal.addEventListener('click', exportToPptx);
+
       modalOverview.addEventListener('click', (e) => {
         if (e.target === modalOverview) closeOverview();
       });
 
-      // Navegación por teclado (1 al 9)
+      // Navegación por teclado (1 al 9, D para descargar)
       window.addEventListener('keydown', (e) => {
         if (modalOverview.classList.contains('open')) {
           if (e.key === 'Escape') closeOverview();
@@ -2505,6 +2845,11 @@
           case 'f':
           case 'F':
             toggleFullscreen();
+            break;
+          case 'd':
+          case 'D':
+            e.preventDefault();
+            exportToPptx();
             break;
           case '1': case '2': case '3': case '4':
           case '5': case '6': case '7': case '8': case '9':
