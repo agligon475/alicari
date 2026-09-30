@@ -9,6 +9,18 @@
     {
       "source": "/vertical.html",
       "destination": "/main-stage/vertical.html"
+    },
+    {
+      "source": "/ParishRobertson/triptico",
+      "destination": "/ParishRobertson/triptico.html"
+    },
+    {
+      "source": "/triptico",
+      "destination": "/ParishRobertson/triptico.html"
+    },
+    {
+      "source": "/triptico.html",
+      "destination": "/ParishRobertson/triptico.html"
     }
   ],
   "headers": [
