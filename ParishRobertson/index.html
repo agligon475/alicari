@@ -849,6 +849,1072 @@
       color: var(--text-dim);
     }
 
+    /* ==========================================================================
+       TRÍPTICO INTERACTIVO 3D (ADMISIONES)
+       ========================================================================== */
+    .triptych-layout {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.65rem;
+    }
+
+    .triptych-header-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .triptych-quick-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    .triptych-action-pill {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: 100px;
+      padding: 0.35rem 0.8rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    .triptych-action-pill:hover {
+      background: var(--sky-soft);
+      border-color: var(--sky-primary);
+      color: var(--sky-primary);
+      transform: translateY(-1px);
+    }
+
+    .triptych-action-pill.active {
+      background: #ecfdf5;
+      border-color: #10b981;
+      color: #065f46;
+    }
+
+    .triptych-action-pill .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 6px rgba(16, 185, 129, 0.5);
+    }
+
+    /* Barra de Control de Pasos */
+    .triptych-control-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 0.4rem 0.75rem;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+      gap: 0.8rem;
+    }
+
+    .triptych-steps-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+    }
+
+    .triptych-step-btn {
+      background: #f8fafc;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 0.32rem 0.65rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      transition: all 0.22s ease;
+      color: var(--text-muted);
+      text-align: left;
+    }
+
+    .triptych-step-btn:hover {
+      background: #ffffff;
+      border-color: rgba(2, 132, 199, 0.4);
+      color: var(--text-main);
+      transform: translateY(-1px);
+    }
+
+    .triptych-step-btn.active {
+      background: linear-gradient(135deg, var(--green-soft) 0%, #ffffff 100%);
+      border-color: var(--green-primary);
+      color: var(--green-deep);
+      box-shadow: 0 0 0 1.5px var(--green-primary), 0 3px 8px rgba(0, 77, 44, 0.12);
+    }
+
+    .step-num-bubble {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #e2e8f0;
+      color: #334155;
+      font-size: 0.68rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .triptych-step-btn.active .step-num-bubble {
+      background: var(--green-primary);
+      color: #ffffff;
+    }
+
+    .triptych-step-btn.dorso-btn.active {
+      border-color: var(--navy-accent);
+      box-shadow: 0 0 0 1.5px var(--navy-accent), 0 3px 8px rgba(37, 99, 235, 0.15);
+      background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+      color: var(--navy-primary);
+    }
+
+    .triptych-step-btn.dorso-btn.active .dorso-icon {
+      color: var(--navy-accent);
+    }
+
+    .step-btn-content {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .step-btn-title {
+      font-size: 0.73rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+
+    .step-btn-desc {
+      font-size: 0.62rem;
+      color: var(--text-dim);
+      font-weight: 500;
+    }
+
+    .step-connector {
+      color: #cbd5e1;
+      font-weight: 700;
+      font-size: 0.78rem;
+    }
+
+    .step-divider {
+      color: #e2e8f0;
+      margin: 0 0.15rem;
+    }
+
+    .triptych-view-mode-toggles {
+      display: flex;
+      align-items: center;
+      background: #f1f5f9;
+      padding: 0.18rem;
+      border-radius: var(--radius-sm);
+      gap: 0.15rem;
+    }
+
+    .mode-toggle-btn {
+      background: transparent;
+      border: none;
+      padding: 0.28rem 0.6rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--text-dim);
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .mode-toggle-btn.active {
+      background: #ffffff;
+      color: var(--green-deep);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+
+    /* Escenario Viewport 3D */
+    .triptych-viewport-container {
+      position: relative;
+      width: 100%;
+      height: 385px;
+      min-height: 385px;
+      background: radial-gradient(ellipse at center 60%, #ffffff 0%, #f1f5f9 100%);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      perspective: 1800px;
+      perspective-origin: 50% 50%;
+      overflow: hidden;
+      box-shadow: inset 0 2px 8px rgba(15, 23, 42, 0.03);
+    }
+
+    .triptych-quadrant-indicator {
+      position: absolute;
+      top: 0.7rem;
+      left: 0.85rem;
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 100px;
+      padding: 0.22rem 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.68rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    .quadrant-badge {
+      font-weight: 800;
+      color: var(--green-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .quadrant-text {
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* 3D Stage & Rig */
+    .triptych-3d-stage {
+      position: relative;
+      width: 750px;
+      height: 345px;
+      transform-style: preserve-3d;
+      transition: transform 0.9s cubic-bezier(0.2, 0.9, 0.3, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .triptych-shadow-base {
+      position: absolute;
+      width: 720px;
+      height: 28px;
+      bottom: -14px;
+      left: 15px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(15, 23, 42, 0.22) 0%, rgba(15, 23, 42, 0.05) 55%, transparent 75%);
+      filter: blur(8px);
+      transform: translateZ(-30px);
+      transition: all 0.8s ease;
+      pointer-events: none;
+    }
+
+    .triptych-book-rig {
+      position: relative;
+      width: 690px;
+      height: 335px;
+      display: flex;
+      transform-style: preserve-3d;
+      transition: transform 0.9s cubic-bezier(0.2, 0.9, 0.3, 1);
+    }
+
+    /* Paneles / Leaves */
+    .triptych-leaf {
+      position: relative;
+      width: 230px;
+      height: 335px;
+      transform-style: preserve-3d;
+      transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.85s ease;
+    }
+
+    .leaf-left {
+      transform-origin: right center;
+      z-index: 2;
+    }
+
+    .leaf-center {
+      z-index: 1;
+    }
+
+    .leaf-right {
+      transform-origin: left center;
+      z-index: 3;
+    }
+
+    /* Caras del papel (Doble faz) */
+    .leaf-face {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 0.85rem;
+      box-shadow: 0 4px 18px rgba(15, 23, 42, 0.1), 0 0 0 1px rgba(15, 23, 42, 0.06);
+      background: #ffffff;
+      user-select: none;
+    }
+
+    .face-front {
+      transform: rotateY(0deg);
+    }
+
+    .face-back {
+      transform: rotateY(180deg);
+    }
+
+    /* Pliegues de doblez */
+    .leaf-left::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 14px;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0,0,0,0.08));
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .leaf-right::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 14px;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(0,0,0,0.08), transparent);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /* ============================================================
+       ESTILOS DE CONTENIDO DE CADA PANEL (Folleto 1/2 A4)
+       ============================================================ */
+
+    /* 1. PORTADA INSTITUCIONAL (Face Back de Hoja Derecha) */
+    .front-cover-face {
+      background: linear-gradient(155deg, #0b291b 0%, #004d2c 45%, #064e3b 100%);
+      color: #ffffff;
+      padding: 0.95rem 0.9rem;
+      border: 1px solid rgba(255,255,255,0.15);
+      cursor: pointer;
+      position: relative;
+    }
+
+    .cover-frame-inner {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 4px;
+      padding: 0.75rem 0.6rem;
+      position: relative;
+      background: radial-gradient(circle at center 25%, rgba(56, 189, 248, 0.08), transparent 70%);
+    }
+
+    .cover-crest-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .cover-crest-image {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35));
+    }
+
+    .cover-motto-ribbon {
+      font-family: var(--font-crest);
+      font-size: 0.58rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      color: #fef08a;
+      text-transform: uppercase;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    }
+
+    .cover-school-name {
+      font-size: 0.92rem;
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: 0.06em;
+      color: #ffffff;
+      text-transform: uppercase;
+    }
+
+    .cover-school-name .school-bold {
+      font-weight: 800;
+      font-size: 1.02rem;
+      letter-spacing: 0.04em;
+      color: #ffffff;
+      display: block;
+    }
+
+    .cover-foundation-pill {
+      display: inline-block;
+      margin-top: 0.25rem;
+      font-size: 0.58rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      color: #e0f2fe;
+      background: rgba(255, 255, 255, 0.12);
+      padding: 0.15rem 0.5rem;
+      border-radius: 100px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .cover-levels-ribbon {
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.09em;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: rgba(15, 23, 42, 0.35);
+      padding: 0.25rem 0.55rem;
+      border-radius: 4px;
+      border-left: 2.5px solid var(--carmine-primary);
+      border-right: 2.5px solid var(--sky-light);
+    }
+
+    .ribbon-sep {
+      color: var(--sky-light);
+    }
+
+    .cover-accent-stripes {
+      display: flex;
+      width: 85%;
+      height: 3.5px;
+      border-radius: 100px;
+      overflow: hidden;
+      margin: 0.2rem 0;
+    }
+
+    .stripe-navy { flex: 1; background: #1e3a8a; }
+    .stripe-sky { flex: 1; background: #38bdf8; }
+    .stripe-carmine { flex: 1; background: #b91c1c; }
+
+    .cover-footer {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .cover-web-url {
+      font-size: 0.67rem;
+      font-weight: 700;
+      color: #93c5fd;
+      letter-spacing: 0.04em;
+    }
+
+    .cover-tap-prompt {
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.18);
+      padding: 0.18rem 0.5rem;
+      border-radius: 100px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      animation: pulseCoverPrompt 2s infinite ease-in-out;
+    }
+
+    @keyframes pulseCoverPrompt {
+      0%, 100% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.05); opacity: 1; background: rgba(56, 189, 248, 0.3); }
+    }
+
+    /* 2. SOLAPA INTERNA (Face Back de Hoja Izquierda): "desde 1963" */
+    .flap-inside-face {
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      border-left: 4px solid var(--green-primary);
+      cursor: pointer;
+    }
+
+    .flap-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 0.35rem;
+    }
+
+    .flap-year-badge {
+      font-family: var(--font-crest);
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--green-deep);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .crest-img-micro {
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+    }
+
+    .flap-title {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--green-deep);
+      line-height: 1.25;
+      margin-top: 0.3rem;
+    }
+
+    .flap-lead-copy {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+      margin-top: 0.2rem;
+    }
+
+    .flap-pillars-box {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      margin: 0.35rem 0;
+      background: #f1f5f9;
+      padding: 0.4rem 0.5rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .pillar-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.35rem;
+      font-size: 0.62rem;
+      line-height: 1.35;
+    }
+
+    .pillar-icon {
+      font-size: 0.72rem;
+      line-height: 1;
+      margin-top: 0.1rem;
+    }
+
+    .pillar-text strong {
+      color: var(--navy-primary);
+      display: block;
+    }
+
+    .pillar-text span {
+      color: var(--text-dim);
+    }
+
+    .flap-prompt-action {
+      font-size: 0.62rem;
+      font-weight: 700;
+      color: var(--sky-primary);
+      text-align: right;
+      padding-top: 0.25rem;
+      border-top: 1px dashed var(--border-subtle);
+    }
+
+    /* 3. PANELES INTERIORES (Caras Frontales: Inicial, Primario, Secundario) */
+    .panel-header-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.5rem;
+      border-radius: var(--radius-sm);
+      margin-bottom: 0.3rem;
+    }
+
+    .badge-green { background: var(--green-soft); border-left: 3.5px solid var(--green-primary); }
+    .badge-blue { background: var(--navy-soft); border-left: 3.5px solid var(--navy-primary); }
+    .badge-carmine { background: #fef2f2; border-left: 3.5px solid var(--carmine-primary); }
+
+    .panel-level-icon { font-size: 1rem; }
+    .panel-level-tag { font-size: 0.72rem; font-weight: 800; display: block; color: var(--text-main); line-height: 1.1; }
+    .panel-level-subtag { font-size: 0.56rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.04em; }
+
+    .panel-schedule-chips {
+      display: flex;
+      flex-direction: column;
+      gap: 0.18rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .sched-chip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.62rem;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      background: #f8fafc;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .sched-label { color: var(--text-dim); font-weight: 600; }
+    .sched-chip strong { color: var(--text-main); }
+
+    .panel-section-title {
+      font-size: 0.63rem;
+      font-weight: 800;
+      color: var(--green-deep);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.2rem;
+    }
+
+    .panel-feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.22rem;
+      font-size: 0.61rem;
+      line-height: 1.35;
+      color: var(--text-muted);
+    }
+
+    .panel-feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.32rem;
+    }
+
+    .feat-bullet { font-size: 0.52rem; line-height: 1.2; margin-top: 0.15rem; }
+    .feat-bullet.green { color: var(--green-primary); }
+    .feat-bullet.blue { color: var(--navy-accent); }
+
+    .panel-feature-list strong {
+      color: var(--text-main);
+    }
+
+    .panel-footer-pill {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.61rem;
+      font-weight: 700;
+      color: var(--text-dim);
+      padding-top: 0.3rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .panel-tag-mini {
+      font-size: 0.55rem;
+      font-weight: 800;
+      padding: 0.12rem 0.38rem;
+      border-radius: 100px;
+      background: var(--green-soft);
+      color: var(--green-primary);
+      text-transform: uppercase;
+    }
+
+    .panel-tag-mini.blue { background: #eff6ff; color: #1e40af; }
+    .panel-tag-mini.carmine { background: #fee2e2; color: #b91c1c; }
+
+    /* Nivel Secundario Específico */
+    .secundario-cycles-box {
+      display: flex;
+      flex-direction: column;
+      gap: 0.22rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .cycle-pill {
+      font-size: 0.61rem;
+      padding: 0.2rem 0.4rem;
+      background: #f8fafc;
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      color: var(--text-muted);
+    }
+
+    .cycle-pill.highlight-gold {
+      background: #fefce8;
+      border-color: #fef08a;
+      color: #854d0e;
+    }
+
+    .orientations-tags {
+      display: flex;
+      gap: 0.22rem;
+      margin-top: 0.12rem;
+    }
+
+    .or-tag {
+      font-size: 0.54rem;
+      font-weight: 800;
+      background: #ffffff;
+      padding: 0.06rem 0.28rem;
+      border-radius: 3px;
+      border: 1px solid #fde047;
+      color: #713f12;
+    }
+
+    .certifications-box {
+      display: flex;
+      flex-direction: column;
+      gap: 0.18rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .cert-item {
+      display: flex;
+      align-items: center;
+      gap: 0.32rem;
+      font-size: 0.58rem;
+      color: var(--text-muted);
+    }
+
+    .cert-badge {
+      font-size: 0.52rem;
+      font-weight: 800;
+      padding: 0.08rem 0.32rem;
+      border-radius: 3px;
+      background: #0284c7;
+      color: #ffffff;
+      text-transform: uppercase;
+    }
+
+    .cert-badge.cambridge { background: #1e3a8a; }
+
+    .sports-camp-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.61rem;
+      font-weight: 700;
+      color: var(--text-main);
+      padding-top: 0.3rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    /* 4. CONTRATAPA / DORSO ADMISIONES & QR (Face Back de Hoja Central) */
+    .back-cover-face {
+      background: linear-gradient(165deg, #0f172a 0%, #1e3a8a 50%, #0b291b 100%);
+      color: #ffffff;
+      padding: 0.8rem 0.75rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .back-cover-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.12rem;
+    }
+
+    .back-badge {
+      font-size: 0.55rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.15);
+      padding: 0.1rem 0.45rem;
+      border-radius: 100px;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+    }
+
+    .back-headline {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+    }
+
+    .back-cta-text {
+      font-size: 0.58rem;
+      line-height: 1.32;
+      color: #e2e8f0;
+      margin: 0.15rem 0;
+      max-width: 95%;
+    }
+
+    .back-qr-card {
+      background: #ffffff;
+      border-radius: 6px;
+      padding: 0.4rem 0.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.22rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+      width: 82%;
+    }
+
+    .back-qr-frame {
+      position: relative;
+      width: 74px;
+      height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .qr-svg-code {
+      width: 100%;
+      height: 100%;
+    }
+
+    .qr-scan-line {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #ef4444, transparent);
+      box-shadow: 0 0 6px rgba(239, 68, 68, 0.8);
+      animation: scanQrMotion 2.2s infinite ease-in-out;
+    }
+
+    @keyframes scanQrMotion {
+      0%, 100% { top: 0%; opacity: 0; }
+      15%, 85% { opacity: 1; }
+      50% { top: 95%; }
+    }
+
+    .qr-action-hint {
+      font-size: 0.54rem;
+      font-weight: 700;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .qr-pulse-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 4px #10b981;
+    }
+
+    .back-contact-box {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.45);
+      border-radius: 4px;
+      padding: 0.3rem 0.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.18rem;
+      text-align: left;
+    }
+
+    .contact-row {
+      font-size: 0.56rem;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      line-height: 1.22;
+    }
+
+    .contact-row.web-highlight {
+      color: #38bdf8;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 0.12rem;
+      margin-top: 0.08rem;
+    }
+
+    /* ============================================================
+       TRANSICIONES 3D POR ESTADOS (FOLDING LOGIC)
+       ============================================================ */
+
+    /* ESTADO 1: Folleto Cerrado (Portada Exterior Centrada) */
+    .triptych-3d-stage.state-1 {
+      transform: rotateX(8deg) rotateY(-12deg) translateZ(0);
+    }
+
+    .triptych-3d-stage.state-1 .triptych-book-rig {
+      transform: translateX(0px);
+    }
+
+    .triptych-3d-stage.state-1 .leaf-left {
+      transform: rotateY(179deg);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .triptych-3d-stage.state-1 .leaf-center {
+      z-index: 1;
+    }
+
+    .triptych-3d-stage.state-1 .leaf-right {
+      transform: rotateY(-180deg);
+      z-index: 10;
+      box-shadow: -8px 12px 28px rgba(15, 23, 42, 0.22);
+    }
+
+    .triptych-3d-stage.state-1 .triptych-shadow-base {
+      width: 280px;
+      left: 235px;
+      opacity: 0.6;
+    }
+
+    /* ESTADO 2: Abrir Tapa (Primer Pliegue Abierto) */
+    .triptych-3d-stage.state-2 {
+      transform: rotateX(6deg) rotateY(-8deg) translateZ(0);
+    }
+
+    .triptych-3d-stage.state-2 .triptych-book-rig {
+      transform: translateX(0px);
+    }
+
+    .triptych-3d-stage.state-2 .leaf-left {
+      transform: rotateY(155deg);
+      z-index: 4;
+      box-shadow: 6px 8px 24px rgba(15, 23, 42, 0.16);
+    }
+
+    .triptych-3d-stage.state-2 .leaf-center {
+      z-index: 2;
+    }
+
+    .triptych-3d-stage.state-2 .leaf-right {
+      transform: rotateY(-25deg);
+      z-index: 3;
+      box-shadow: 8px 10px 24px rgba(15, 23, 42, 0.18);
+    }
+
+    .triptych-3d-stage.state-2 .triptych-shadow-base {
+      width: 580px;
+      left: 85px;
+      opacity: 0.75;
+    }
+
+    /* ESTADO 3: Desplegar Interior Completo (3 Paneles Visibles) */
+    .triptych-3d-stage.state-3 {
+      transform: rotateX(4deg) rotateY(0deg) translateZ(0);
+    }
+
+    .triptych-3d-stage.state-3 .triptych-book-rig {
+      transform: translateX(0);
+    }
+
+    .triptych-3d-stage.state-3 .leaf-left {
+      transform: rotateY(8deg);
+      box-shadow: 4px 6px 18px rgba(15, 23, 42, 0.12);
+    }
+
+    .triptych-3d-stage.state-3 .leaf-center {
+      transform: translateZ(0);
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
+    }
+
+    .triptych-3d-stage.state-3 .leaf-right {
+      transform: rotateY(-8deg);
+      box-shadow: -4px 6px 18px rgba(15, 23, 42, 0.12);
+    }
+
+    .triptych-3d-stage.state-3 .triptych-shadow-base {
+      width: 710px;
+      left: 20px;
+      opacity: 0.85;
+    }
+
+    /* ESTADO DORSO / CONTRATAPA */
+    .triptych-3d-stage.state-dorso {
+      transform: rotateX(5deg) rotateY(180deg) translateZ(0);
+    }
+
+    .triptych-3d-stage.state-dorso .triptych-book-rig {
+      transform: translateX(0);
+    }
+
+    .triptych-3d-stage.state-dorso .leaf-left {
+      transform: rotateY(-8deg);
+      box-shadow: -4px 6px 20px rgba(15, 23, 42, 0.15);
+    }
+
+    .triptych-3d-stage.state-dorso .leaf-center {
+      transform: translateZ(10px);
+      box-shadow: 0 8px 30px rgba(15, 23, 42, 0.25);
+    }
+
+    .triptych-3d-stage.state-dorso .leaf-right {
+      transform: rotateY(8deg);
+      box-shadow: 4px 6px 20px rgba(15, 23, 42, 0.15);
+    }
+
+    .triptych-3d-stage.state-dorso .triptych-shadow-base {
+      width: 710px;
+      left: 20px;
+      opacity: 0.9;
+    }
+
+    /* MODO PLANO 2D */
+    .triptych-3d-stage.view-2d {
+      transform: none !important;
+    }
+
+    .triptych-3d-stage.view-2d .leaf-left,
+    .triptych-3d-stage.view-2d .leaf-center,
+    .triptych-3d-stage.view-2d .leaf-right {
+      transform: none !important;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.08) !important;
+    }
+
+    .triptych-3d-stage.view-2d .triptych-shadow-base {
+      display: none;
+    }
+
+    /* Barra de Narrativa / Leyenda */
+    .triptych-narrative-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 0.5rem 0.95rem;
+      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.03);
+      gap: 1rem;
+    }
+
+    .narrative-step-desc {
+      font-size: 0.76rem;
+      color: var(--text-main);
+      line-height: 1.4;
+      flex: 1;
+    }
+
+    .narrative-step-desc strong {
+      color: var(--green-deep);
+    }
+
+    .triptych-interaction-hint {
+      font-size: 0.71rem;
+      color: var(--text-dim);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
     /* SLIDE 4 */
     .slide-4-grid {
       display: grid;
@@ -1695,6 +2761,15 @@
       .slide-3-grid, .slide-5-grid, .steps-grid { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 1.8rem !important; }
       .milestones-grid { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 1rem !important; }
       .card { box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important; border: 1px solid #e2e8f0 !important; }
+      
+      /* Print Styles Tríptico */
+      .triptych-layout { height: auto !important; display: block !important; }
+      .triptych-quick-actions, .triptych-control-bar, .triptych-quadrant-indicator, .triptych-interaction-hint { display: none !important; }
+      .triptych-viewport-container { height: auto !important; background: transparent !important; border: none !important; box-shadow: none !important; perspective: none !important; display: block !important; }
+      .triptych-3d-stage { width: 100% !important; height: auto !important; transform: none !important; display: block !important; }
+      .triptych-book-rig { width: 100% !important; height: auto !important; display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 1.5rem !important; transform: none !important; }
+      .triptych-leaf { width: 100% !important; height: 500px !important; transform: none !important; }
+      .triptych-leaf .leaf-face { position: relative !important; height: 100% !important; transform: none !important; backface-visibility: visible !important; box-shadow: 0 1px 4px rgba(0,0,0,0.1) !important; }
     }
 
     /* Responsive: Tablets */
@@ -1704,6 +2779,7 @@
       .slide-3-grid, .slide-5-grid, .steps-grid, .milestones-grid { grid-template-columns: 1fr 1fr; }
       .slide-2-grid, .slide-4-grid, .slide-6-grid { grid-template-columns: 1fr; }
       .grid-thumbnails { grid-template-columns: repeat(3, 1fr); }
+      .triptych-3d-stage { transform: scale(0.85); }
     }
 
     /* Responsive: Mobile */
@@ -1785,6 +2861,22 @@
 
       .metric-hero { font-size: 2.1rem; }
       .metric-hero.crest-font, .metric-hero.purple { font-size: 1.6rem; }
+
+      /* Mobile Tríptico */
+      .triptych-header-row { flex-direction: column; gap: 0.5rem; }
+      .triptych-quick-actions { width: 100%; justify-content: flex-start; }
+      .triptych-control-bar { flex-direction: column; align-items: stretch; gap: 0.5rem; padding: 0.5rem; }
+      .triptych-steps-nav { justify-content: space-between; width: 100%; }
+      .triptych-step-btn { padding: 0.3rem 0.45rem; gap: 0.35rem; }
+      .step-btn-desc { display: none; }
+      .step-connector, .step-divider { display: none; }
+      .triptych-view-mode-toggles { width: 100%; justify-content: center; }
+      .mode-toggle-btn { flex: 1; text-align: center; }
+      
+      .triptych-viewport-container { height: 320px; min-height: 320px; }
+      .triptych-3d-stage { width: 100%; transform: scale(0.48); }
+      .triptych-narrative-bar { flex-direction: column; align-items: flex-start; gap: 0.3rem; padding: 0.5rem 0.75rem; }
+      .triptych-interaction-hint { white-space: normal; }
 
       /* Timeline & Budget Mobile */
       .dual-timeline-container { gap: 0.85rem; }
@@ -2050,12 +3142,465 @@
         </section>
 
         <!-- ============================================================
-             SLIDE 4: LANDING PAGE DE ADMISIONES (SIN PUNTOS DE FUGA)
+             SLIDE 4: TRÍPTICO INTERACTIVO 3D (ADMISIONES)
              ============================================================ -->
-        <section class="slide" data-slide="4" id="slide-4">
+        <section class="slide" data-slide="4" id="slide-triptico">
+          <div class="triptych-layout">
+            
+            <!-- Header del Slide -->
+            <div class="slide-header" style="margin-bottom: 0.4rem;">
+              <div class="triptych-header-row">
+                <div>
+                  <span class="slide-tag" style="background: rgba(0, 77, 44, 0.08); color: var(--green-primary); border-color: rgba(0, 77, 44, 0.2);">
+                    📐 Maqueta 3D Interactiva • Formato 1/2 A4 Vertical (105 × 297 mm)
+                  </span>
+                  <h2 class="slide-title">03. Tríptico de Admisiones: Apertura & Lectura Secuencial</h2>
+                  <p class="slide-subtitle">Simulación de manipulación física: experimentá el doblado envolvente, las solapas de identidad institucional y la propuesta académica completa.</p>
+                </div>
+
+                <!-- Botones de Modo y Recorrido -->
+                <div class="triptych-quick-actions">
+                  <button class="triptych-action-pill" id="btnTriptychTour" title="Iniciar recorrido guiado automático">
+                    <span class="pill-dot"></span>
+                    <span id="triptychTourLabel">▶ Auto-Tour</span>
+                  </button>
+                  <button class="triptych-action-pill" id="btnTriptychReset" title="Reiniciar a vista de Portada">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                    <span>Reset</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Barra de Control de Pasos / Estados de Navegación -->
+            <div class="triptych-control-bar">
+              <div class="triptych-steps-nav">
+                <button class="triptych-step-btn active" data-step="1" id="btnStep1" title="Paso 1: Folleto Cerrado - Portada Frontal">
+                  <span class="step-num-bubble">1</span>
+                  <span class="step-btn-content">
+                    <span class="step-btn-title">Folleto Cerrado</span>
+                    <span class="step-btn-desc">Portada Exterior</span>
+                  </span>
+                </button>
+
+                <span class="step-connector">→</span>
+
+                <button class="triptych-step-btn" data-step="2" id="btnStep2" title="Paso 2: Abrir Tapa - Solapa Interna">
+                  <span class="step-num-bubble">2</span>
+                  <span class="step-btn-content">
+                    <span class="step-btn-title">Abrir Tapa</span>
+                    <span class="step-btn-desc">Solapa "Desde 1963"</span>
+                  </span>
+                </button>
+
+                <span class="step-connector">→</span>
+
+                <button class="triptych-step-btn" data-step="3" id="btnStep3" title="Paso 3: Desplegar Interior Completo">
+                  <span class="step-num-bubble">3</span>
+                  <span class="step-btn-content">
+                    <span class="step-btn-title">Interior Completo</span>
+                    <span class="step-btn-desc">3 Niveles Educativos</span>
+                  </span>
+                </button>
+
+                <span class="step-divider">|</span>
+
+                <button class="triptych-step-btn dorso-btn" data-step="dorso" id="btnStepDorso" title="Ver Dorso / Contratapa con QR y Contacto">
+                  <svg class="dorso-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 21h5v-5"/></svg>
+                  <span class="step-btn-content">
+                    <span class="step-btn-title">Ver Dorso</span>
+                    <span class="step-btn-desc">Contratapa + QR</span>
+                  </span>
+                </button>
+              </div>
+
+              <div class="triptych-view-mode-toggles">
+                <button class="mode-toggle-btn active" id="btnMode3D" title="Modo 3D Perspectiva Táctil">Modo 3D</button>
+                <button class="mode-toggle-btn" id="btnMode2D" title="Modo 2D Plano Extendido">Plano 2D</button>
+              </div>
+            </div>
+
+            <!-- Escenario 3D del Tríptico -->
+            <div class="triptych-viewport-container" id="triptychViewport">
+              
+              <!-- Indicador / Badge de Estado Dinámico -->
+              <div class="triptych-quadrant-indicator" id="triptychQuadrantIndicator">
+                <span class="quadrant-badge">Cuadrante Mapeado:</span>
+                <span class="quadrant-text" id="quadrantText">Inferior Derecho (Portada Institucional 1/2 A4)</span>
+              </div>
+
+              <!-- Stage 3D -->
+              <div class="triptych-3d-stage state-1" id="triptych3DStage">
+                
+                <!-- Sombra proyectada del papel -->
+                <div class="triptych-shadow-base"></div>
+
+                <!-- Tríptico Rig: 3 Hojas Conectadas con Doble Cara -->
+                <div class="triptych-book-rig" id="triptychBookRig">
+
+                  <!-- HOJA IZQUIERDA (Panel A) -->
+                  <!-- Cara Interior: NIVEL INICIAL & SALA MATERNAL -->
+                  <!-- Cara Exterior: SOLAPA INTERNA "desde 1963" -->
+                  <div class="triptych-leaf leaf-left" id="leafLeft">
+                    
+                    <!-- Cara Interior: Nivel Inicial -->
+                    <div class="leaf-face face-front level-inicial-face">
+                      <div class="panel-header-badge badge-green">
+                        <span class="panel-level-icon">🌱</span>
+                        <div>
+                          <span class="panel-level-tag">NIVEL INICIAL</span>
+                          <span class="panel-level-subtag">SALA MATERNAL (2 AÑOS)</span>
+                        </div>
+                      </div>
+
+                      <div class="panel-schedule-chips">
+                        <div class="sched-chip">
+                          <span class="sched-label">☀️ Mañana:</span>
+                          <strong>7:45 a 12:00 hs</strong>
+                        </div>
+                        <div class="sched-chip">
+                          <span class="sched-label">🌤️ Tarde:</span>
+                          <strong>12:45 a 17:00 hs</strong>
+                        </div>
+                      </div>
+
+                      <div class="panel-section-title">Espacios Formativos & Talleres:</div>
+                      <ul class="panel-feature-list">
+                        <li>
+                          <span class="feat-bullet green">●</span>
+                          <div><strong>Huerta Orgánica:</strong> Educación ambiental viva y contacto directo con la naturaleza.</div>
+                        </li>
+                        <li>
+                          <span class="feat-bullet green">●</span>
+                          <div><strong>Inmersión en Inglés:</strong> Enfoque lúdico, canciones y juegos dinámicos.</div>
+                        </li>
+                        <li>
+                          <span class="feat-bullet green">●</span>
+                          <div><strong>Expresión Musical:</strong> Sensibilización rítmica e iniciación instrumental.</div>
+                        </li>
+                        <li>
+                          <span class="feat-bullet green">●</span>
+                          <div><strong>Juegos & Títeres:</strong> Desarrollo psicomotor y socialización temprana.</div>
+                        </li>
+                      </ul>
+
+                      <div class="panel-footer-pill">
+                        <span>Ambiente cálido y cuidado</span>
+                        <span class="panel-tag-mini">Salas 2 a 5</span>
+                      </div>
+                    </div>
+
+                    <!-- Cara Exterior (Dorso / Solapa Interna): "desde 1963" -->
+                    <div class="leaf-face face-back flap-inside-face" id="faceFlap">
+                      <div class="flap-header">
+                        <div class="flap-year-badge">desde 1963</div>
+                        <div class="flap-crest-mini">
+                          <img src="logo-parish-robertson.png" alt="Escudo" class="crest-img-micro" />
+                        </div>
+                      </div>
+
+                      <h4 class="flap-title">Más de Cinco Décadas de Trayectoria Educativa</h4>
+
+                      <p class="flap-lead-copy">
+                        Desde hace más de cinco décadas, el <strong>Instituto Parish Robertson</strong> brinda una formación integral, bilingüe y humana desde Sala de 2 años hasta el último año del Nivel Secundario...
+                      </p>
+
+                      <div class="flap-pillars-box">
+                        <div class="pillar-item">
+                          <div class="pillar-icon">🇬🇧</div>
+                          <div class="pillar-text">
+                            <strong>15 Años de Inmersión en Inglés:</strong>
+                            <span>Trayecto continuo bilingüe con certificaciones internacionales.</span>
+                          </div>
+                        </div>
+
+                        <div class="pillar-item">
+                          <div class="pillar-icon">💻</div>
+                          <div class="pillar-text">
+                            <strong>Competencias Digitales & Robótica:</strong>
+                            <span>Pensamiento computacional y herramientas del siglo XXI.</span>
+                          </div>
+                        </div>
+
+                        <div class="pillar-item">
+                          <div class="pillar-icon">🤝</div>
+                          <div class="pillar-text">
+                            <strong>Pensamiento Crítico y Valores:</strong>
+                            <span>Formación ética, académica y comunitaria personalizada.</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="flap-prompt-action">
+                        <span>Desplegá para ver la propuesta por niveles →</span>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <!-- HOJA CENTRAL (Panel B - Base de giro) -->
+                  <!-- Cara Interior: NIVEL PRIMARIO - DOBLE ESCOLARIDAD -->
+                  <!-- Cara Exterior: CONTRATAPA / DORSO ADMISIONES & QR -->
+                  <div class="triptych-leaf leaf-center" id="leafCenter">
+
+                    <!-- Cara Interior: Nivel Primario -->
+                    <div class="leaf-face face-front level-primario-face">
+                      <div class="panel-header-badge badge-blue">
+                        <span class="panel-level-icon">📚</span>
+                        <div>
+                          <span class="panel-level-tag">NIVEL PRIMARIO</span>
+                          <span class="panel-level-subtag">DOBLE ESCOLARIDAD</span>
+                        </div>
+                      </div>
+
+                      <div class="panel-schedule-chips">
+                        <div class="sched-chip">
+                          <span class="sched-label">☀️ Mañana:</span>
+                          <strong>8:00 a 12:00 hs</strong>
+                        </div>
+                        <div class="sched-chip">
+                          <span class="sched-label">📘 Tarde:</span>
+                          <strong>13:50 a 16:55 hs</strong>
+                        </div>
+                      </div>
+
+                      <div class="panel-section-title">Pilares Académicos & Espacios:</div>
+                      <ul class="panel-feature-list">
+                        <li>
+                          <span class="feat-bullet blue">●</span>
+                          <div><strong>Inglés Intensivo:</strong> Certificación de nivel nacional progresivo.</div>
+                        </li>
+                        <li>
+                          <span class="feat-bullet blue">●</span>
+                          <div><strong>Computación & Tecnología:</strong> Laboratorio digital, lógica y programación.</div>
+                        </li>
+                        <li>
+                          <span class="feat-bullet blue">●</span>
+                          <div><strong>Arte Visual & Música:</strong> Expresión plástica, coros y ensambles.</div>
+                        </li>
+                        <li>
+                          <span class="feat-bullet blue">●</span>
+                          <div><strong>Taller de Ajedrez:</strong> Estrategia, cálculo táctico y concentración.</div>
+                        </li>
+                        <li>
+                          <span class="feat-bullet blue">●</span>
+                          <div><strong>Orientación Psicopedagógica:</strong> Seguimiento y gabinete permanente.</div>
+                        </li>
+                      </ul>
+
+                      <div class="panel-footer-pill">
+                        <span>1° a 6° Año</span>
+                        <span class="panel-tag-mini blue">Bilingüe</span>
+                      </div>
+                    </div>
+
+                    <!-- Cara Exterior (Dorso / Contratapa): ADMISIONES & QR & CONTACTO -->
+                    <div class="leaf-face face-back back-cover-face" id="faceBackCover">
+                      <div class="back-cover-header">
+                        <span class="back-badge">NUEVO CICLO LECTIVO</span>
+                        <h4 class="back-headline">Admisiones Abiertas</h4>
+                      </div>
+
+                      <p class="back-cta-text">
+                        Asegurá tu lugar para el próximo ciclo lectivo. Escaneá el código QR, completá la solicitud de vacante y coordiná tu entrevista personalizada con el equipo directivo.
+                      </p>
+
+                      <!-- QR Interactivo -->
+                      <div class="back-qr-card">
+                        <div class="back-qr-frame">
+                          <svg class="qr-svg-code" viewBox="0 0 100 100">
+                            <rect x="0" y="0" width="100" height="100" fill="#ffffff" rx="6"/>
+                            <!-- Posicionador Sup Izq -->
+                            <rect x="10" y="10" width="24" height="24" fill="#004d2c" rx="3"/>
+                            <rect x="14" y="14" width="16" height="16" fill="#ffffff" rx="2"/>
+                            <rect x="18" y="18" width="8" height="8" fill="#1e3a8a" rx="1"/>
+                            <!-- Posicionador Sup Der -->
+                            <rect x="66" y="10" width="24" height="24" fill="#004d2c" rx="3"/>
+                            <rect x="70" y="14" width="16" height="16" fill="#ffffff" rx="2"/>
+                            <rect x="74" y="18" width="8" height="8" fill="#1e3a8a" rx="1"/>
+                            <!-- Posicionador Inf Izq -->
+                            <rect x="10" y="66" width="24" height="24" fill="#004d2c" rx="3"/>
+                            <rect x="14" y="70" width="16" height="16" fill="#ffffff" rx="2"/>
+                            <rect x="18" y="74" width="8" height="8" fill="#1e3a8a" rx="1"/>
+                            <!-- Módulos de datos estilizados -->
+                            <rect x="38" y="12" width="6" height="6" fill="#004d2c"/>
+                            <rect x="48" y="12" width="10" height="6" fill="#1e3a8a"/>
+                            <rect x="38" y="22" width="8" height="6" fill="#0284c7"/>
+                            <rect x="50" y="22" width="8" height="8" fill="#004d2c"/>
+                            <rect x="12" y="38" width="6" height="10" fill="#1e3a8a"/>
+                            <rect x="22" y="42" width="10" height="6" fill="#004d2c"/>
+                            <rect x="38" y="38" width="24" height="24" fill="#004d2c" rx="4"/>
+                            <circle cx="50" cy="50" r="8" fill="#ffffff"/>
+                            <circle cx="50" cy="50" r="5" fill="#b91c1c"/>
+                            <rect x="66" y="38" width="8" height="6" fill="#0284c7"/>
+                            <rect x="78" y="42" width="10" height="8" fill="#004d2c"/>
+                            <rect x="66" y="52" width="6" height="8" fill="#1e3a8a"/>
+                            <rect x="76" y="56" width="12" height="6" fill="#004d2c"/>
+                            <rect x="38" y="68" width="8" height="8" fill="#1e3a8a"/>
+                            <rect x="50" y="72" width="10" height="6" fill="#0284c7"/>
+                            <rect x="68" y="68" width="20" height="6" fill="#004d2c"/>
+                            <rect x="68" y="78" width="8" height="10" fill="#1e3a8a"/>
+                            <rect x="80" y="82" width="8" height="6" fill="#004d2c"/>
+                          </svg>
+                          <span class="qr-scan-line"></span>
+                        </div>
+                        <div class="qr-action-hint">
+                          <span class="qr-pulse-dot"></span>
+                          <span>Escaneá o tocá para solicitar vacante</span>
+                        </div>
+                      </div>
+
+                      <!-- Contacto Institucional -->
+                      <div class="back-contact-box">
+                        <div class="contact-row">
+                          <span class="contact-icon">📍</span>
+                          <span>Parish Robertson 159, Monte Grande (CP 1842)</span>
+                        </div>
+                        <div class="contact-row">
+                          <span class="contact-icon">📞</span>
+                          <span><strong>Tel:</strong> 4296-4446</span>
+                        </div>
+                        <div class="contact-row">
+                          <span class="contact-icon">✉️</span>
+                          <span>administracion@parishrobertson.com.ar</span>
+                        </div>
+                        <div class="contact-row web-highlight">
+                          <span class="contact-icon">🌐</span>
+                          <span><strong>parishrobertson.com.ar</strong></span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <!-- HOJA DERECHA (Panel C) -->
+                  <!-- Cara Interior: NIVEL SECUNDARIO - DOBLE ESCOLARIDAD -->
+                  <!-- Cara Exterior: PORTADA / TAPA INSTITUCIONAL -->
+                  <div class="triptych-leaf leaf-right" id="leafRight">
+
+                    <!-- Cara Interior: Nivel Secundario -->
+                    <div class="leaf-face face-front level-secundario-face">
+                      <div class="panel-header-badge badge-carmine">
+                        <span class="panel-level-icon">🎓</span>
+                        <div>
+                          <span class="panel-level-tag">NIVEL SECUNDARIO</span>
+                          <span class="panel-level-subtag">DOBLE ESCOLARIDAD</span>
+                        </div>
+                      </div>
+
+                      <div class="panel-schedule-chips">
+                        <div class="sched-chip">
+                          <span class="sched-label">⏰ Ingreso General:</span>
+                          <strong>7:25 hs</strong>
+                        </div>
+                      </div>
+
+                      <div class="panel-section-title">Estructura & Orientaciones:</div>
+                      <div class="secundario-cycles-box">
+                        <div class="cycle-pill">
+                          <strong>Ciclo Básico:</strong> 1° a 3° Año
+                        </div>
+                        <div class="cycle-pill highlight-gold">
+                          <strong>Ciclo Superior:</strong> 4° a 6° Año
+                          <div class="orientations-tags">
+                            <span class="or-tag">Cs. Sociales</span>
+                            <span class="or-tag">Cs. Naturales</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="panel-section-title" style="margin-top: 0.3rem;">Certificaciones Internacionales:</div>
+                      <div class="certifications-box">
+                        <div class="cert-item">
+                          <span class="cert-badge">Oxford</span>
+                          <span>Oxford University Press Quality</span>
+                        </div>
+                        <div class="cert-item">
+                          <span class="cert-badge cambridge">Cambridge</span>
+                          <span>PET • First Certificate (FCE) • CAE</span>
+                        </div>
+                      </div>
+
+                      <div class="sports-camp-footer">
+                        <span>🏆 Deportes & Campamentos</span>
+                        <span class="panel-tag-mini carmine">1° a 6° Año</span>
+                      </div>
+                    </div>
+
+                    <!-- Cara Exterior: PORTADA INSTITUCIONAL / TAPA -->
+                    <div class="leaf-face face-back front-cover-face" id="faceFrontCover">
+                      <div class="cover-frame-inner">
+                        
+                        <!-- Escudo con Lema -->
+                        <div class="cover-crest-container">
+                          <img src="logo-parish-robertson.png" alt="Escudo Institucional Parish Robertson" class="cover-crest-image" />
+                          <div class="cover-motto-ribbon">
+                            <span>VIRTUTIS GLORIA MERCES</span>
+                          </div>
+                        </div>
+
+                        <!-- Título Institucional -->
+                        <div class="cover-title-group">
+                          <h3 class="cover-school-name">INSTITUTO<br><span class="school-bold">PARISH ROBERTSON</span></h3>
+                          <div class="cover-foundation-pill">FUNDADO EN 1963</div>
+                        </div>
+
+                        <!-- Cinta de Niveles -->
+                        <div class="cover-levels-ribbon">
+                          <span>INICIAL</span>
+                          <span class="ribbon-sep">•</span>
+                          <span>PRIMARIO</span>
+                          <span class="ribbon-sep">•</span>
+                          <span>SECUNDARIO</span>
+                        </div>
+
+                        <!-- Tricolor Acento Uniforme -->
+                        <div class="cover-accent-stripes">
+                          <span class="stripe-navy"></span>
+                          <span class="stripe-sky"></span>
+                          <span class="stripe-carmine"></span>
+                        </div>
+
+                        <!-- Footer Portada -->
+                        <div class="cover-footer">
+                          <span class="cover-web-url">parishrobertson.com.ar</span>
+                          <div class="cover-tap-prompt">
+                            <span>Tocar para abrir folleto</span>
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- Barra de Leyenda y Descripción Guiada -->
+            <div class="triptych-narrative-bar">
+              <div class="narrative-step-desc" id="triptychNarrativeDesc">
+                <strong>Paso 1 (Portada Cerrada):</strong> Muestra el <em>Cuadrante Inferior Derecho</em> con el escudo institucional, lema "Virtutis Gloria Merces", niveles y dominio web oficial.
+              </div>
+              <div class="triptych-interaction-hint">
+                💡 Hacé clic en las solapas o utilizá los controles para recorrer el folleto
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ============================================================
+             SLIDE 5: LANDING PAGE DE ADMISIONES (SIN PUNTOS DE FUGA)
+             ============================================================ -->
+        <section class="slide" data-slide="5" id="slide-5">
           <div class="slide-header">
             <span class="slide-tag">Captación de Familias y Conversión Directa</span>
-            <h2 class="slide-title">03. Landing Page de Admisiones Mobile-First</h2>
+            <h2 class="slide-title">04. Landing Page de Admisiones Mobile-First</h2>
             <p class="slide-subtitle">Arquitectura orientada a la acción inmediata sin distracciones ni fugas hacia chats informales.</p>
           </div>
 
@@ -2115,12 +3660,12 @@
         </section>
 
         <!-- ============================================================
-             SLIDE 5: AUTOMATIZACIÓN, GOOGLE SHEETS & FLUJOS DE CONTACTO
+             SLIDE 6: AUTOMATIZACIÓN, GOOGLE SHEETS & FLUJOS DE CONTACTO
              ============================================================ -->
-        <section class="slide" data-slide="5" id="slide-5">
+        <section class="slide" data-slide="6" id="slide-6">
           <div class="slide-header">
             <span class="slide-tag">Gestión Centralizada y CRM Liviano</span>
-            <h2 class="slide-title">04. Base de Datos Centralizada y Automatizaciones</h2>
+            <h2 class="slide-title">05. Base de Datos Centralizada y Automatizaciones</h2>
             <p class="slide-subtitle">Control total del pipeline de admisiones en el entorno Google de la institución, sin licencias extras.</p>
           </div>
 
@@ -2183,12 +3728,12 @@
         </section>
 
         <!-- ============================================================
-             SLIDE 6: MÓDULO EXTRA: REDISEÑO WEB & OPTIMIZACIÓN AEO
+             SLIDE 7: MÓDULO EXTRA: REDISEÑO WEB & OPTIMIZACIÓN AEO
              ============================================================ -->
-        <section class="slide" data-slide="6" id="slide-6">
+        <section class="slide" data-slide="7" id="slide-7">
           <div class="slide-header">
             <span class="slide-tag">Ecosistema Institucional & IA</span>
-            <h2 class="slide-title">05. Modernización Web Integral & AEO (Módulo Transversal)</h2>
+            <h2 class="slide-title">06. Modernización Web Integral & AEO (Módulo Transversal)</h2>
             <p class="slide-subtitle">Posicionamiento estratégico en motores de búsqueda tradicionales y en la nueva generación de IA generativa.</p>
           </div>
 
@@ -2246,12 +3791,12 @@
         </section>
 
         <!-- ============================================================
-             SLIDE 7: CRONOGRAMA EN DOS VÍAS (OCTUBRE – ENERO)
+             SLIDE 8: CRONOGRAMA EN DOS VÍAS (OCTUBRE – ENERO)
              ============================================================ -->
-        <section class="slide" data-slide="7" id="slide-7">
+        <section class="slide" data-slide="8" id="slide-8">
           <div class="slide-header">
             <span class="slide-tag">Planificación Temporal en Paralelo</span>
-            <h2 class="slide-title">06. Plan de Trabajo en Dos Vías (Octubre – Enero)</h2>
+            <h2 class="slide-title">07. Plan de Trabajo en Dos Vías (Octubre – Enero)</h2>
             <p class="slide-subtitle">Dos líneas de tiempo simultáneas con Kickoff a partir del 10 de octubre: prioridad operativa de admisiones y desarrollo web continuo.</p>
           </div>
 
@@ -2363,12 +3908,12 @@
         </section>
 
         <!-- ============================================================
-             SLIDE 8: PRESUPUESTO & ESQUEMA ESCALONADO DE PAGOS
+             SLIDE 9: PRESUPUESTO & ESQUEMA ESCALONADO DE PAGOS
              ============================================================ -->
-        <section class="slide" data-slide="8" id="slide-8">
+        <section class="slide" data-slide="9" id="slide-9">
           <div class="slide-header">
             <span class="slide-tag">Propuesta Económica & Financiación</span>
-            <h2 class="slide-title">07. Estimación Presupuestaria & Modalidad de Inversión</h2>
+            <h2 class="slide-title">08. Estimación Presupuestaria & Modalidad de Inversión</h2>
             <p class="slide-subtitle">Estructura modular por entregables y esquema financiero escalonado por hitos de avance.</p>
           </div>
 
@@ -2456,13 +4001,13 @@
         </section>
 
         <!-- ============================================================
-             SLIDE 9: PRÓXIMOS PASOS (KICKOFF INMEDIATO)
+             SLIDE 10: PRÓXIMOS PASOS (KICKOFF INMEDIATO)
              ============================================================ -->
-        <section class="slide" data-slide="9" id="slide-9">
+        <section class="slide" data-slide="10" id="slide-10">
           <div class="slide-8-layout">
             <div class="slide-header">
               <span class="slide-tag" style="color: #059669;">Kickoff Inmediato • 10 de Octubre</span>
-              <h2 class="slide-title">08. Próximos Pasos para la Puesta en Marcha</h2>
+              <h2 class="slide-title">09. Próximos Pasos para la Puesta en Marcha</h2>
               <p class="slide-subtitle">Acciones inmediatas para coordinar el inicio formal de las tareas según el cronograma acordado.</p>
             </div>
 
@@ -2639,17 +4184,18 @@
       const btnCloseOverview = document.getElementById('btnCloseOverview');
       const thumbnailsGrid = document.getElementById('thumbnailsGrid');
 
-      // Títulos para el modal de vista general (9 Diapositivas)
+      // Títulos para el modal de vista general (10 Diapositivas)
       const slideTitles = [
         "00. Portada Institucional",
         "01. Diagnóstico del Material",
         "02. Reingeniería Gráfica (-50%)",
-        "03. Landing Page Sin Puntos de Fuga",
-        "04. Sheets & Flujos de Contacto",
-        "05. Rediseño Web & Optimización AEO",
-        "06. Cronograma en Dos Vías",
-        "07. Presupuesto & Hitos de Pago",
-        "08. Próximos Pasos (Kickoff)"
+        "03. Tríptico Interactivo 3D",
+        "04. Landing Page Sin Puntos de Fuga",
+        "05. Sheets & Flujos de Contacto",
+        "06. Rediseño Web & Optimización AEO",
+        "07. Cronograma en Dos Vías",
+        "08. Presupuesto & Hitos de Pago",
+        "09. Próximos Pasos (Kickoff)"
       ];
 
       // Construcción dinámica de miniaturas en el modal
@@ -2761,7 +4307,7 @@
         exportTitle.textContent = '¡Descargando Presentación PDF (16:9)!';
         exportDesc.textContent = 'Iniciando descarga del documento en formato horizontal de alta resolución...';
         exportProgressFill.style.width = '100%';
-        exportCounter.textContent = 'Documento Listo • 9 Diapositivas';
+        exportCounter.textContent = 'Documento Listo • 10 Diapositivas';
 
         // Disparo de descarga directa del archivo PDF
         const link = document.createElement('a');
@@ -2774,6 +4320,195 @@
         setTimeout(() => {
           exportModal.classList.remove('open');
         }, 2200);
+      }
+
+      // ============================================================
+      // CONTROLADOR INTERACTIVO 3D DEL TRÍPTICO DE ADMISIONES
+      // ============================================================
+      const triptych3DStage = document.getElementById('triptych3DStage');
+      const triptychViewport = document.getElementById('triptychViewport');
+      const quadrantText = document.getElementById('quadrantText');
+      const narrativeDesc = document.getElementById('triptychNarrativeDesc');
+      const btnStep1 = document.getElementById('btnStep1');
+      const btnStep2 = document.getElementById('btnStep2');
+      const btnStep3 = document.getElementById('btnStep3');
+      const btnStepDorso = document.getElementById('btnStepDorso');
+      const btnMode3D = document.getElementById('btnMode3D');
+      const btnMode2D = document.getElementById('btnMode2D');
+      const btnTriptychTour = document.getElementById('btnTriptychTour');
+      const btnTriptychReset = document.getElementById('btnTriptychReset');
+      const triptychTourLabel = document.getElementById('triptychTourLabel');
+      
+      const faceFrontCover = document.getElementById('faceFrontCover');
+      const faceFlap = document.getElementById('faceFlap');
+      const faceBackCover = document.getElementById('faceBackCover');
+
+      let currentTriptychStep = '1';
+      let is2DMode = false;
+      let tourInterval = null;
+      const tourSteps = ['1', '2', '3', 'dorso'];
+      let tourIndex = 0;
+
+      const stepDescriptions = {
+        '1': {
+          quadrant: 'Inferior Derecho (Portada Institucional 1/2 A4)',
+          desc: '<strong>Paso 1 (Folleto Cerrado):</strong> Muestra el <em>Cuadrante Inferior Derecho</em> con el escudo institucional, lema "Virtutis Gloria Merces", niveles educativos (Inicial | Primario | Secundario) y dominio oficial parishrobertson.com.ar.'
+        },
+        '2': {
+          quadrant: 'Inferior Izquierdo (Solapa Interna de Identidad)',
+          desc: '<strong>Paso 2 (Apertura de Tapa):</strong> Al abrir el primer pliegue se revela la Solapa Interna con el titular <em>"desde 1963"</em>, los 15 años de inmersión en inglés, competencias digitales y formación en valores.'
+        },
+        '3': {
+          quadrant: 'Paneles Superiores (Izquierdo | Central | Derecho)',
+          desc: '<strong>Paso 3 (Despliegue Interior Completo):</strong> Folleto abierto en su totalidad horizontal mostrando los 3 niveles: <em>Nivel Inicial & Maternal</em> (huerta, música, inglés lúdico), <em>Nivel Primario</em> (doble escolaridad, ajedrez, gabinete) y <em>Nivel Secundario</em> (Cs. Sociales / Naturales, certificaciones Oxford & Cambridge).'
+        },
+        'dorso': {
+          quadrant: 'Inferior Central (Contratapa & Solapa Posterior)',
+          desc: '<strong>Dorso / Contratapa:</strong> Muestra el llamado a la acción <em>"Admisiones Abiertas"</em> con código QR escaneable para solicitud de vacante, dirección en Monte Grande (Parish Robertson 159), teléfono (4296-4446) y contacto oficial.'
+        }
+      };
+
+      function playPaperSound() {
+        try {
+          const ctx = new (window.AudioContext || window.webkitAudioContext)();
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(220, ctx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(70, ctx.currentTime + 0.08);
+          gain.gain.setValueAtTime(0.03, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.08);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start();
+          osc.stop(ctx.currentTime + 0.09);
+        } catch (e) {}
+      }
+
+      function setTriptychStep(step) {
+        currentTriptychStep = step;
+        playPaperSound();
+
+        if (triptych3DStage) {
+          triptych3DStage.classList.remove('state-1', 'state-2', 'state-3', 'state-dorso');
+          triptych3DStage.classList.add(`state-${step}`);
+        }
+
+        // Actualizar botones de navegación de pasos
+        [btnStep1, btnStep2, btnStep3, btnStepDorso].forEach(btn => {
+          if (btn) {
+            if (btn.dataset.step === step) {
+              btn.classList.add('active');
+            } else {
+              btn.classList.remove('active');
+            }
+          }
+        });
+
+        // Actualizar descripciones informativas
+        if (stepDescriptions[step]) {
+          if (quadrantText) quadrantText.textContent = stepDescriptions[step].quadrant;
+          if (narrativeDesc) narrativeDesc.innerHTML = stepDescriptions[step].desc;
+        }
+      }
+
+      function toggle2DView(enable2D) {
+        is2DMode = enable2D;
+        if (triptych3DStage) {
+          if (is2DMode) {
+            triptych3DStage.classList.add('view-2d');
+            if (btnMode2D) btnMode2D.classList.add('active');
+            if (btnMode3D) btnMode3D.classList.remove('active');
+          } else {
+            triptych3DStage.classList.remove('view-2d');
+            if (btnMode3D) btnMode3D.classList.add('active');
+            if (btnMode2D) btnMode2D.classList.remove('active');
+          }
+        }
+      }
+
+      function stopTour() {
+        if (tourInterval) {
+          clearInterval(tourInterval);
+          tourInterval = null;
+          if (btnTriptychTour) btnTriptychTour.classList.remove('active');
+          if (triptychTourLabel) triptychTourLabel.textContent = '▶ Auto-Tour';
+        }
+      }
+
+      function startTour() {
+        if (tourInterval) {
+          stopTour();
+          return;
+        }
+        if (btnTriptychTour) btnTriptychTour.classList.add('active');
+        if (triptychTourLabel) triptychTourLabel.textContent = '⏹ Detener';
+        
+        tourIndex = tourSteps.indexOf(currentTriptychStep);
+        if (tourIndex === -1) tourIndex = 0;
+
+        tourInterval = setInterval(() => {
+          tourIndex = (tourIndex + 1) % tourSteps.length;
+          setTriptychStep(tourSteps[tourIndex]);
+        }, 3400);
+      }
+
+      // Eventos de botones del tríptico
+      if (btnStep1) btnStep1.addEventListener('click', () => { stopTour(); setTriptychStep('1'); });
+      if (btnStep2) btnStep2.addEventListener('click', () => { stopTour(); setTriptychStep('2'); });
+      if (btnStep3) btnStep3.addEventListener('click', () => { stopTour(); setTriptychStep('3'); });
+      if (btnStepDorso) btnStepDorso.addEventListener('click', () => { stopTour(); setTriptychStep('dorso'); });
+      if (btnMode3D) btnMode3D.addEventListener('click', () => toggle2DView(false));
+      if (btnMode2D) btnMode2D.addEventListener('click', () => toggle2DView(true));
+      if (btnTriptychTour) btnTriptychTour.addEventListener('click', startTour);
+      if (btnTriptychReset) btnTriptychReset.addEventListener('click', () => { stopTour(); setTriptychStep('1'); });
+
+      // Clics secuenciales directos en las solapas del tríptico
+      if (faceFrontCover) {
+        faceFrontCover.addEventListener('click', (e) => {
+          e.stopPropagation();
+          stopTour();
+          if (currentTriptychStep === '1') setTriptychStep('2');
+          else if (currentTriptychStep === 'dorso') setTriptychStep('1');
+        });
+      }
+
+      if (faceFlap) {
+        faceFlap.addEventListener('click', (e) => {
+          e.stopPropagation();
+          stopTour();
+          if (currentTriptychStep === '2') setTriptychStep('3');
+          else setTriptychStep('2');
+        });
+      }
+
+      if (faceBackCover) {
+        faceBackCover.addEventListener('click', (e) => {
+          e.stopPropagation();
+          stopTour();
+          setTriptychStep('3');
+        });
+      }
+
+      // Efecto sutil de Parallax / Inclinación del ratón en desktop
+      if (triptychViewport) {
+        triptychViewport.addEventListener('mousemove', (e) => {
+          if (is2DMode || window.innerWidth <= 768 || !triptych3DStage) return;
+          const rect = triptychViewport.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - 0.5;
+          const y = (e.clientY - rect.top) / rect.height - 0.5;
+          
+          let baseRotY = currentTriptychStep === '1' ? -12 : (currentTriptychStep === '2' ? -8 : (currentTriptychStep === '3' ? 0 : 180));
+          let baseRotX = currentTriptychStep === '1' ? 8 : (currentTriptychStep === '2' ? 6 : (currentTriptychStep === '3' ? 4 : 5));
+          
+          triptych3DStage.style.transform = `rotateX(${baseRotX - y * 10}deg) rotateY(${baseRotY + x * 15}deg)`;
+        });
+
+        triptychViewport.addEventListener('mouseleave', () => {
+          if (!is2DMode && triptych3DStage) {
+            triptych3DStage.style.transform = '';
+          }
+        });
       }
 
       // Event Listeners de Botones
@@ -2791,7 +4526,7 @@
         if (e.target === modalOverview) closeOverview();
       });
 
-      // Navegación por teclado (1 al 9, D para descargar)
+      // Navegación por teclado (1 al 9 y 0 para 10, D para descargar)
       window.addEventListener('keydown', (e) => {
         if (modalOverview.classList.contains('open')) {
           if (e.key === 'Escape') closeOverview();
@@ -2842,6 +4577,9 @@
           case '1': case '2': case '3': case '4':
           case '5': case '6': case '7': case '8': case '9':
             goToSlide(parseInt(e.key, 10));
+            break;
+          case '0':
+            goToSlide(10);
             break;
         }
       });
