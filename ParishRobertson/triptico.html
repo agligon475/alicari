@@ -726,19 +726,7 @@
       filter: brightness(1.03);
     }
 
-    .panel-fold-divider {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 16px;
-      z-index: 10;
-      pointer-events: none;
-    }
 
-    .fold-edge-left {
-      right: -8px;
-      background: linear-gradient(90deg, rgba(0,0,0,0.12), transparent 40%, rgba(0,0,0,0.15) 50%, rgba(255,255,255,0.4) 60%, transparent);
-    }
 
     .panel-label-pill {
       position: absolute;
@@ -1175,7 +1163,6 @@
               <!-- Izquierda: 2. Contracara Tapa (QR / Admisiones) -->
               <div class="panel-slice-item" style="background-image: url('images/triptico/2_contracara_qr.png');" onclick="openZoom('images/triptico/2_contracara_qr.png', '2. CONTRACARA TAPA — Admisiones Abiertas & QR')">
                 <span class="panel-label-pill">2. Admisiones & QR (Detrás de Tapa)</span>
-                <div class="panel-fold-divider fold-edge-left"></div>
               </div>
               <!-- Derecha: 3. Dorso Apertura (Solapa "desde 1963") -->
               <div class="panel-slice-item" style="background-image: url('images/triptico/3_dorso_desde1963.png');" onclick="openZoom('images/triptico/3_dorso_desde1963.png', '3. DORSO APERTURA — Solapa \'desde 1963\'')">
@@ -1192,12 +1179,10 @@
               <!-- Izquierda: 2. Contracara Tapa -->
               <div class="panel-slice-item" style="background-image: url('images/triptico/2_contracara_qr.png');" onclick="openZoom('images/triptico/2_contracara_qr.png', '2. CONTRACARA TAPA — Admisiones & QR')">
                 <span class="panel-label-pill">2. Admisiones & QR</span>
-                <div class="panel-fold-divider fold-edge-left"></div>
               </div>
               <!-- Centro: 4. Nivel Inicial & Primario -->
               <div class="panel-slice-item" style="background-image: url('images/triptico/4_centro_inicial_primario.png');" onclick="openZoom('images/triptico/4_centro_inicial_primario.png', '4. CENTRO — Nivel Inicial & Primario')">
                 <span class="panel-label-pill">4. Nivel Inicial & Primario</span>
-                <div class="panel-fold-divider fold-edge-left"></div>
               </div>
               <!-- Derecha: 5. Nivel Secundario -->
               <div class="panel-slice-item" style="background-image: url('images/triptico/5_interior_secundario.png');" onclick="openZoom('images/triptico/5_interior_secundario.png', '5. INTERIOR — Nivel Secundario & Certificaciones')">
