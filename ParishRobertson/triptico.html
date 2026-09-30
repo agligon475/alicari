@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow, noarchive" />
-  <title>Visor Interactivo Secuencial del Tríptico — Colegio Parish Robertson</title>
+  <title>Tríptico Institucional de Admisiones — Colegio Parish Robertson</title>
   
   <link rel="icon" type="image/png" href="isologo-alicari.png" />
 
@@ -32,7 +32,7 @@
 
       --carmine-primary: #b91c1c;
       
-      --bg-body: #090e17;
+      --bg-body: #080d16;
       --bg-card: rgba(15, 23, 42, 0.75);
       --border-subtle: rgba(255, 255, 255, 0.12);
       
@@ -51,6 +51,10 @@
       -webkit-font-smoothing: antialiased;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       background-color: var(--bg-body);
       color: var(--text-main);
@@ -59,10 +63,9 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      user-select: none;
     }
 
-    /* Ambient Glow Background */
+    /* Ambient Background Glow */
     .ambient-bg {
       position: fixed;
       inset: 0;
@@ -74,171 +77,435 @@
     .ambient-orb {
       position: absolute;
       border-radius: 50%;
-      filter: blur(140px);
-      opacity: 0.3;
+      filter: blur(150px);
+      opacity: 0.28;
     }
 
     .orb-1 {
-      width: 600px;
-      height: 600px;
+      width: 700px;
+      height: 700px;
       background: radial-gradient(circle, rgba(0, 77, 44, 0.5), transparent 70%);
-      top: -150px;
+      top: -180px;
       left: -150px;
     }
 
     .orb-2 {
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(30, 58, 138, 0.5), transparent 70%);
+      top: 40%;
+      right: -200px;
+    }
+
+    .orb-3 {
       width: 600px;
       height: 600px;
-      background: radial-gradient(circle, rgba(30, 58, 138, 0.5), transparent 70%);
+      background: radial-gradient(circle, rgba(2, 132, 199, 0.35), transparent 70%);
       bottom: -150px;
-      right: -100px;
+      left: 10%;
     }
 
     .grid-overlay {
       position: absolute;
       inset: 0;
       background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-      background-size: 32px 32px;
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 36px 36px;
     }
 
-    /* Header Bar */
-    .viewer-topbar {
-      position: relative;
-      z-index: 20;
-      height: 64px;
-      background: rgba(15, 23, 42, 0.85);
-      backdrop-filter: blur(12px);
+    /* Navbar Header */
+    .landing-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      height: 68px;
+      background: rgba(8, 13, 22, 0.88);
+      backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-subtle);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 1.8rem;
+      padding: 0 2rem;
     }
 
-    .topbar-left {
+    .header-brand {
       display: flex;
       align-items: center;
       gap: 1.2rem;
     }
 
-    .back-deck-link {
+    .back-btn-pill {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      color: #94a3b8;
+      color: #cbd5e1;
       text-decoration: none;
       font-size: 0.82rem;
       font-weight: 700;
-      padding: 0.45rem 0.9rem;
+      padding: 0.45rem 0.95rem;
       border-radius: 8px;
       background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       transition: all 0.2s ease;
     }
 
-    .back-deck-link:hover {
+    .back-btn-pill:hover {
       background: rgba(255, 255, 255, 0.12);
       color: #ffffff;
       border-color: rgba(56, 189, 248, 0.4);
       transform: translateX(-2px);
     }
 
-    .school-branding {
+    .school-id-group {
       display: flex;
       align-items: center;
       gap: 0.75rem;
     }
 
-    .school-logo-img {
-      width: 26px;
-      height: 26px;
+    .school-crest-img {
+      width: 28px;
+      height: 28px;
       object-fit: contain;
     }
 
-    .branding-text {
+    .school-title-text {
       display: flex;
       flex-direction: column;
     }
 
-    .branding-title {
-      font-size: 0.84rem;
+    .school-title-main {
+      font-size: 0.88rem;
       font-weight: 800;
       color: #ffffff;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.03em;
     }
 
-    .branding-sub {
+    .school-title-sub {
       font-size: 0.68rem;
       color: var(--sky-light);
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 0.06em;
       text-transform: uppercase;
     }
 
-    .topbar-right {
+    .header-actions {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.85rem;
     }
 
-    .tour-toggle-btn {
+    .cta-jump-btn {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      background: rgba(16, 185, 129, 0.12);
-      border: 1px solid rgba(16, 185, 129, 0.35);
-      color: #34d399;
-      font-size: 0.78rem;
-      font-weight: 700;
-      padding: 0.45rem 0.95rem;
-      border-radius: 100px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .tour-toggle-btn:hover {
-      background: rgba(16, 185, 129, 0.22);
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
       color: #ffffff;
-      border-color: #34d399;
-    }
-
-    .tour-toggle-btn.active {
-      background: #10b981;
-      color: #042f2e;
+      font-size: 0.8rem;
       font-weight: 800;
-      border-color: #10b981;
-      box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+      padding: 0.5rem 1.1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+      transition: all 0.2s ease;
     }
 
-    .tour-pulse-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: currentColor;
+    .cta-jump-btn:hover {
+      background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
     }
 
-    /* Main Container */
-    .viewer-layout {
+    /* Container */
+    .landing-wrapper {
       position: relative;
       z-index: 10;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      max-width: 1350px;
+      max-width: 1280px;
       width: 100%;
       margin: 0 auto;
-      padding: 1.2rem 1.8rem 1.6rem;
+      padding: 2.5rem 2rem 4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3.5rem;
+    }
+
+    /* ============================================================
+       SECCIÓN 1: HERO BANNER & ENTREGA EN ENTREVISTA
+       ============================================================ */
+    .hero-section {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .hero-badge-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #34d399;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 0.35rem 0.85rem;
+      border-radius: 100px;
+      width: fit-content;
+    }
+
+    .hero-badge-tag::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 8px #10b981;
+    }
+
+    .hero-title {
+      font-size: 2.45rem;
+      font-weight: 800;
+      line-height: 1.18;
+      letter-spacing: -0.03em;
+      color: #ffffff;
+    }
+
+    .hero-title span.highlight {
+      background: linear-gradient(135deg, #34d399 0%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-lead-text {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .hero-stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.9rem;
+      margin-top: 0.5rem;
+    }
+
+    .hero-stat-card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 0.9rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .stat-number {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #34d399;
+      letter-spacing: -0.02em;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .hero-visual-card {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7), 0 10px 30px rgba(0, 77, 44, 0.25);
+      background: #0f172a;
+    }
+
+    .hero-img {
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .hero-visual-card:hover .hero-img {
+      transform: scale(1.03);
+    }
+
+    .hero-img-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.2rem;
+      background: linear-gradient(0deg, rgba(8, 13, 22, 0.95) 0%, rgba(8, 13, 22, 0.7) 60%, transparent 100%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       gap: 1rem;
     }
 
-    /* Step Selector Navigation Bar */
-    .steps-navigation-bar {
-      background: rgba(15, 23, 42, 0.7);
-      backdrop-filter: blur(10px);
+    .caption-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .caption-title {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .caption-desc {
+      font-size: 0.7rem;
+      color: #cbd5e1;
+    }
+
+    .caption-badge-pill {
+      font-size: 0.65rem;
+      font-weight: 800;
+      color: #042f2e;
+      background: #34d399;
+      padding: 0.25rem 0.6rem;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    /* ============================================================
+       SECCIÓN 2: PUNTOS DE VALOR DEL NUEVO DISEÑO
+       ============================================================ */
+    .values-section {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+    }
+
+    .section-header-centered {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .section-subtitle-tag {
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--sky-light);
+    }
+
+    .section-title {
+      font-size: 1.95rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.025em;
+    }
+
+    .section-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+    }
+
+    .value-card {
+      background: rgba(15, 23, 42, 0.65);
       border: 1px solid var(--border-subtle);
       border-radius: 16px;
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+      transition: all 0.25s ease;
+    }
+
+    .value-card:hover {
+      border-color: rgba(56, 189, 248, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.4);
+      background: rgba(15, 23, 42, 0.85);
+    }
+
+    .value-icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .value-card h3 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.3;
+    }
+
+    .value-card p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .value-card-footer {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #34d399;
+      padding-top: 0.6rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* ============================================================
+       SECCIÓN 3: VISOR INTERACTIVO SECUENCIAL DEL TRÍPTICO
+       ============================================================ */
+    .viewer-section {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+      scroll-margin-top: 90px;
+    }
+
+    .viewer-container-card {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Steps Nav Controls */
+    .viewer-steps-nav {
+      background: rgba(8, 13, 22, 0.6);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
       padding: 0.6rem 0.8rem;
       display: flex;
       align-items: center;
@@ -247,100 +514,97 @@
       flex-wrap: wrap;
     }
 
-    .steps-btn-group {
+    .steps-list {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.5rem;
       flex-wrap: wrap;
     }
 
-    .step-nav-btn {
+    .step-tab-btn {
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 12px;
-      padding: 0.5rem 0.95rem;
+      border-radius: 10px;
+      padding: 0.5rem 0.85rem;
       display: inline-flex;
       align-items: center;
-      gap: 0.65rem;
+      gap: 0.6rem;
       cursor: pointer;
       color: #94a3b8;
       text-align: left;
-      transition: all 0.22s ease;
+      transition: all 0.2s ease;
     }
 
-    .step-nav-btn:hover {
-      background: rgba(255, 255, 255, 0.09);
+    .step-tab-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
       color: #ffffff;
       border-color: rgba(56, 189, 248, 0.3);
-      transform: translateY(-1px);
     }
 
-    .step-nav-btn.active {
-      background: linear-gradient(135deg, rgba(0, 77, 44, 0.8) 0%, rgba(6, 78, 59, 0.9) 100%);
+    .step-tab-btn.active {
+      background: linear-gradient(135deg, rgba(0, 77, 44, 0.9) 0%, rgba(6, 78, 59, 0.95) 100%);
       border-color: #10b981;
       color: #ffffff;
-      box-shadow: 0 4px 15px rgba(0, 77, 44, 0.35);
+      box-shadow: 0 4px 14px rgba(0, 77, 44, 0.4);
     }
 
-    .step-num-badge {
-      width: 24px;
-      height: 24px;
+    .step-badge {
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.12);
       color: #ffffff;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 800;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    .step-nav-btn.active .step-num-badge {
+    .step-tab-btn.active .step-badge {
       background: #10b981;
       color: #042f2e;
     }
 
-    .step-btn-text {
+    .step-tab-text {
       display: flex;
       flex-direction: column;
       line-height: 1.2;
     }
 
-    .step-btn-main {
+    .step-tab-title {
       font-size: 0.78rem;
       font-weight: 800;
-      letter-spacing: -0.01em;
     }
 
-    .step-btn-sub {
-      font-size: 0.64rem;
-      color: rgba(255, 255, 255, 0.6);
-      font-weight: 500;
+    .step-tab-sub {
+      font-size: 0.63rem;
+      color: rgba(255, 255, 255, 0.55);
     }
 
-    .step-nav-btn.active .step-btn-sub {
+    .step-tab-btn.active .step-tab-sub {
       color: #a7f3d0;
     }
 
-    .nav-arrow-indicator {
-      color: rgba(255, 255, 255, 0.25);
-      font-size: 0.9rem;
+    .step-arrow-divider {
+      color: rgba(255, 255, 255, 0.2);
       font-weight: 700;
+      font-size: 0.85rem;
     }
 
-    .stage-quick-controls {
+    .viewer-nav-actions {
       display: flex;
       align-items: center;
       gap: 0.5rem;
     }
 
-    .nav-ctrl-btn {
+    .viewer-action-btn {
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid rgba(255, 255, 255, 0.12);
       color: #ffffff;
       font-size: 0.78rem;
       font-weight: 700;
-      padding: 0.5rem 0.9rem;
+      padding: 0.48rem 0.85rem;
       border-radius: 8px;
       cursor: pointer;
       display: inline-flex;
@@ -349,225 +613,187 @@
       transition: all 0.2s;
     }
 
-    .nav-ctrl-btn:hover {
+    .viewer-action-btn:hover {
       background: rgba(255, 255, 255, 0.14);
       border-color: rgba(255, 255, 255, 0.25);
     }
 
-    .nav-ctrl-btn:disabled {
+    .viewer-action-btn:disabled {
       opacity: 0.3;
       cursor: not-allowed;
       pointer-events: none;
     }
 
     /* Stage Canvas Area */
-    .viewer-canvas-card {
+    .stage-canvas-card {
       position: relative;
-      flex: 1;
-      min-height: 480px;
-      background: radial-gradient(ellipse at center 40%, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.95) 100%);
-      border: 1px solid var(--border-subtle);
-      border-radius: 20px;
+      min-height: 520px;
+      background: radial-gradient(ellipse at center 40%, rgba(30, 41, 59, 0.7) 0%, rgba(8, 13, 22, 0.95) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 1.5rem;
-      box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.5), 0 20px 50px rgba(0, 0, 0, 0.4);
+      padding: 2rem 1.5rem;
+      box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.5);
       overflow: hidden;
     }
 
-    .canvas-status-badge {
+    .status-quadrant-indicator {
       position: absolute;
-      top: 1.1rem;
-      left: 1.3rem;
+      top: 1rem;
+      left: 1.2rem;
       z-index: 10;
-      background: rgba(15, 23, 42, 0.85);
+      background: rgba(15, 23, 42, 0.88);
       backdrop-filter: blur(8px);
       border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: 100px;
-      padding: 0.35rem 0.9rem;
+      padding: 0.32rem 0.85rem;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      font-size: 0.74rem;
+      gap: 0.45rem;
+      font-size: 0.72rem;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 
-    .badge-pill-tag {
+    .quadrant-tag-pill {
       font-weight: 800;
       color: #34d399;
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
 
-    .badge-pill-title {
+    .quadrant-title-pill {
       color: #e2e8f0;
       font-weight: 600;
     }
 
-    .canvas-hint-pill {
+    .zoom-hint-badge {
       position: absolute;
-      top: 1.1rem;
-      right: 1.3rem;
+      top: 1rem;
+      right: 1.2rem;
       z-index: 10;
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 100px;
-      padding: 0.35rem 0.85rem;
-      font-size: 0.7rem;
+      padding: 0.32rem 0.8rem;
+      font-size: 0.68rem;
       color: #94a3b8;
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.35rem;
     }
 
-    /* Step Views (Crisp 2D Flat & Structured Sequence) */
-    .step-view {
+    /* Views */
+    .step-canvas-view {
       display: none;
       width: 100%;
       height: 100%;
       align-items: center;
       justify-content: center;
-      animation: fadeInStep 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      animation: fadeInStep 0.32s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .step-view.active {
+    .step-canvas-view.active {
       display: flex;
     }
 
     @keyframes fadeInStep {
-      from { opacity: 0; transform: scale(0.97); }
+      from { opacity: 0; transform: scale(0.98); }
       to { opacity: 1; transform: scale(1); }
     }
 
-    /* Paper Display Rig (Crisp shadows, no 3D clipping) */
-    .paper-display-frame {
+    /* Paper Frame */
+    .paper-frame {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0;
       position: relative;
-      box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.6), 0 10px 25px -5px rgba(0, 77, 44, 0.2);
+      box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.65), 0 10px 25px -5px rgba(0, 77, 44, 0.25);
       border-radius: 6px;
       overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.18);
       background: #ffffff;
-      transition: transform 0.3s ease;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
-    .paper-display-frame:hover {
-      box-shadow: 0 30px 70px -10px rgba(0, 0, 0, 0.7), 0 12px 30px -5px rgba(16, 185, 129, 0.25);
+    .paper-frame:hover {
+      box-shadow: 0 30px 70px -10px rgba(0, 0, 0, 0.75), 0 12px 30px -5px rgba(16, 185, 129, 0.3);
     }
 
-    /* Individual Panel Slice Image */
-    .panel-slice-card {
+    .panel-slice-item {
       position: relative;
-      height: 440px;
+      height: 450px;
       aspect-ratio: 105 / 297;
       background-size: 100% 100%;
       background-repeat: no-repeat;
       background-position: center;
       cursor: pointer;
-      transition: filter 0.2s ease, transform 0.2s ease;
+      transition: filter 0.2s ease;
     }
 
-    .panel-slice-card:hover {
+    .panel-slice-item:hover {
       filter: brightness(1.04);
     }
 
-    .panel-slice-card:active {
-      transform: scale(0.99);
-    }
-
-    /* Pliegue vertical divider */
-    .panel-fold-line {
+    .panel-fold-divider {
       position: absolute;
       top: 0;
       bottom: 0;
-      width: 16px;
+      width: 18px;
       z-index: 10;
       pointer-events: none;
     }
 
-    .fold-left {
-      right: -8px;
-      background: linear-gradient(90deg, rgba(0,0,0,0.15), transparent 40%, rgba(0,0,0,0.2) 50%, rgba(255,255,255,0.15) 60%, transparent);
+    .fold-edge-left {
+      right: -9px;
+      background: linear-gradient(90deg, rgba(0,0,0,0.18), transparent 40%, rgba(0,0,0,0.22) 50%, rgba(255,255,255,0.18) 60%, transparent);
     }
 
-    .fold-right {
-      left: -8px;
-      background: linear-gradient(90deg, transparent, rgba(0,0,0,0.2) 50%, rgba(255,255,255,0.15) 60%, transparent);
-    }
-
-    /* Panel Overlay Label */
-    .panel-tag-indicator {
+    .panel-label-pill {
       position: absolute;
       bottom: 10px;
       left: 50%;
       transform: translateX(-50%);
-      background: rgba(15, 23, 42, 0.88);
+      background: rgba(15, 23, 42, 0.9);
       backdrop-filter: blur(6px);
       border: 1px solid rgba(255, 255, 255, 0.2);
       color: #ffffff;
-      font-size: 0.65rem;
+      font-size: 0.64rem;
       font-weight: 800;
       padding: 0.2rem 0.55rem;
       border-radius: 100px;
       white-space: nowrap;
       pointer-events: none;
       box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-      opacity: 0.85;
-      transition: opacity 0.2s;
+      opacity: 0.9;
     }
 
-    .panel-slice-card:hover .panel-tag-indicator {
-      opacity: 1;
+    .panel-slice-item:hover .panel-label-pill {
       background: var(--green-primary);
       border-color: #34d399;
     }
 
-    /* Step Specific Custom Layouts */
-    /* Step 1: Single closed cover */
-    .step-1-stage .panel-slice-card {
-      height: 480px;
-    }
-
-    /* Step 2: 2 Panels side-by-side (First opening) */
-    .step-2-stage .panel-slice-card {
-      height: 450px;
-    }
-
-    /* Step 3: 3 Panels side-by-side (Full interior spread) */
-    .step-3-stage .panel-slice-card {
-      height: 440px;
-    }
-
-    /* Step 4: 3 Panels side-by-side (Full exterior spread) */
-    .step-4-stage .panel-slice-card {
-      height: 440px;
-    }
-
-    /* Bottom Information & Narrative Bar */
-    .viewer-narrative-card {
-      background: rgba(15, 23, 42, 0.7);
-      backdrop-filter: blur(10px);
+    /* Narrative Card */
+    .narrative-footer-card {
+      background: rgba(8, 13, 22, 0.6);
       border: 1px solid var(--border-subtle);
-      border-radius: 16px;
-      padding: 0.85rem 1.4rem;
+      border-radius: 14px;
+      padding: 0.95rem 1.4rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 1.5rem;
     }
 
-    .narrative-info-group {
+    .narrative-text-box {
       display: flex;
       flex-direction: column;
       gap: 0.25rem;
     }
 
-    .narrative-step-title {
+    .narrative-title-row {
       font-size: 0.88rem;
       font-weight: 800;
       color: #34d399;
@@ -576,18 +802,18 @@
       gap: 0.45rem;
     }
 
-    .narrative-step-desc {
-      font-size: 0.8rem;
+    .narrative-body-text {
+      font-size: 0.82rem;
       color: var(--text-muted);
       line-height: 1.45;
-      max-width: 900px;
+      max-width: 920px;
     }
 
-    .narrative-step-desc strong {
+    .narrative-body-text strong {
       color: #ffffff;
     }
 
-    .narrative-cta-btn {
+    .narrative-step-btn {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
@@ -595,7 +821,7 @@
       color: #ffffff;
       font-size: 0.82rem;
       font-weight: 800;
-      padding: 0.6rem 1.15rem;
+      padding: 0.65rem 1.25rem;
       border-radius: 8px;
       border: none;
       cursor: pointer;
@@ -605,13 +831,13 @@
       flex-shrink: 0;
     }
 
-    .narrative-cta-btn:hover {
+    .narrative-step-btn:hover {
       background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
       transform: translateY(-2px);
       box-shadow: 0 6px 18px rgba(16, 185, 129, 0.5);
     }
 
-    /* Modal Zoom / Fullscreen Inspect */
+    /* Modal Zoom */
     .zoom-modal-backdrop {
       position: fixed;
       inset: 0;
@@ -680,14 +906,6 @@
       background: rgba(255, 255, 255, 0.25);
     }
 
-    .zoom-image-container {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
     .zoom-preview-img {
       max-height: 78vh;
       max-width: 82vw;
@@ -696,288 +914,417 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
 
+    /* Footer */
+    .landing-footer {
+      border-top: 1px solid var(--border-subtle);
+      background: rgba(8, 13, 22, 0.9);
+      padding: 2rem;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.8rem;
+    }
+
     /* Responsive */
-    @media (max-width: 900px) {
-      .viewer-topbar { padding: 0 1rem; height: 56px; }
-      .viewer-layout { padding: 0.8rem 1rem; }
-      .steps-btn-group { gap: 0.4rem; }
-      .step-nav-btn { padding: 0.4rem 0.7rem; }
-      .step-btn-sub { display: none; }
-      .panel-slice-card { height: 320px !important; }
-      .narrative-cta-btn { display: none; }
+    @media (max-width: 1024px) {
+      .hero-section { grid-template-columns: 1fr; }
+      .values-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .landing-header { padding: 0 1rem; height: 60px; }
+      .landing-wrapper { padding: 1.5rem 1rem 3rem; gap: 2.5rem; }
+      .hero-title { font-size: 1.8rem; }
+      .hero-stats-row { grid-template-columns: 1fr; }
+      .values-grid { grid-template-columns: 1fr; }
+      .step-tab-sub { display: none; }
+      .panel-slice-item { height: 320px !important; }
+      .narrative-footer-card { flex-direction: column; align-items: stretch; }
+      .narrative-step-btn { width: 100%; justify-content: center; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Ambient background glow -->
+  <!-- Background Ambient Glow -->
   <div class="ambient-bg">
     <div class="ambient-orb orb-1"></div>
     <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
     <div class="grid-overlay"></div>
   </div>
 
   <!-- Header Superior -->
-  <header class="viewer-topbar">
-    <div class="topbar-left">
-      <a href="index.html#slide-3" class="back-deck-link" title="Volver a la presentación institucional">
+  <header class="landing-header">
+    <div class="header-brand">
+      <a href="index.html#slide-3" class="back-btn-pill" title="Volver a la presentación institucional">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
         <span>Volver a Presentación</span>
       </a>
-      <div class="school-branding">
-        <img src="logo-parish-robertson.png" alt="Escudo Colegio Parish Robertson" class="school-logo-img" />
-        <div class="branding-text">
-          <span class="branding-title">Colegio Parish Robertson</span>
-          <span class="branding-sub">Secuencia de Recorrido • Tríptico 1/2 A4</span>
+      <div class="school-id-group">
+        <img src="logo-parish-robertson.png" alt="Escudo Colegio Parish Robertson" class="school-crest-img" />
+        <div class="school-title-text">
+          <span class="school-title-main">Colegio Parish Robertson</span>
+          <span class="school-title-sub">Admisiones • Tríptico Institucional</span>
         </div>
       </div>
     </div>
 
-    <div class="topbar-right">
-      <button class="tour-toggle-btn" id="btnTourToggle" title="Iniciar recorrido automático guiado">
-        <span class="tour-pulse-dot"></span>
-        <span id="tourBtnLabel">▶ Auto-Tour</span>
-      </button>
+    <div class="header-actions">
+      <a href="#visor" class="cta-jump-btn" title="Ir directamente al visor interactivo">
+        <span>Abrir Visor Interactivo</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+      </a>
     </div>
   </header>
 
-  <!-- Layout Principal del Visor -->
-  <main class="viewer-layout">
+  <!-- Contenedor Principal con Recorrido Completo -->
+  <div class="landing-wrapper">
 
-    <!-- Selector Superior de Pasos -->
-    <nav class="steps-navigation-bar" aria-label="Navegación de pasos del folleto">
-      <div class="steps-btn-group">
+    <!-- ============================================================
+         SECCIÓN 1: HERO BANNER & SIMULACIÓN EN ENTREVISTA
+         ============================================================ -->
+    <section class="hero-section">
+      
+      <div class="hero-content">
+        <div class="hero-badge-tag">Primera Impresión & Experiencia de Admisiones</div>
         
-        <button class="step-nav-btn active" data-step="1" id="btnStep1" title="Paso 1: Folleto Cerrado - Portada Exterior">
-          <span class="step-num-badge">1</span>
-          <div class="step-btn-text">
-            <span class="step-btn-main">Folleto Cerrado</span>
-            <span class="step-btn-sub">Tapa / Portada</span>
+        <h1 class="hero-title">
+          El Tríptico Institucional:<br>
+          <span class="highlight">Calidez Humana y Puente Digital</span>
+        </h1>
+
+        <p class="hero-lead-text">
+          Diseñado con apertura tipo libro y formato compacto de mano (9,23 × 9,52 cm cerrado / 1/2 A4), este folleto está concebido para entregarse en mano a cada familia durante su entrevista personalizada, transmitiendo los más de 50 años de prestigio de la institución y conectando instantáneamente con la plataforma digital de admisiones.
+        </p>
+
+        <div class="hero-stats-row">
+          <div class="hero-stat-card">
+            <span class="stat-number">-50%</span>
+            <span class="stat-label">Ahorro en papel y preprensa eficiente</span>
           </div>
-        </button>
-
-        <span class="nav-arrow-indicator">→</span>
-
-        <button class="step-nav-btn" data-step="2" id="btnStep2" title="Paso 2: Primera Apertura - Solapa 'Desde 1963'">
-          <span class="step-num-badge">2</span>
-          <div class="step-btn-text">
-            <span class="step-btn-main">Primera Apertura</span>
-            <span class="step-btn-sub">Solapa Interna</span>
+          <div class="hero-stat-card">
+            <span class="stat-number">1963</span>
+            <span class="stat-label">Sello histórico permanente y atemporal</span>
           </div>
-        </button>
-
-        <span class="nav-arrow-indicator">→</span>
-
-        <button class="step-nav-btn" data-step="3" id="btnStep3" title="Paso 3: Interior Desplegado Completo - 3 Niveles">
-          <span class="step-num-badge">3</span>
-          <div class="step-btn-text">
-            <span class="step-btn-main">Interior Completo</span>
-            <span class="step-btn-sub">3 Niveles Educativos</span>
-          </div>
-        </button>
-
-        <span class="nav-arrow-indicator">|</span>
-
-        <button class="step-nav-btn" data-step="4" id="btnStep4" title="Paso 4: Dorso Posterior - Contratapa y Contacto">
-          <span class="step-num-badge">4</span>
-          <div class="step-btn-text">
-            <span class="step-btn-main">Dorso / Contratapa</span>
-            <span class="step-btn-sub">Contacto & Observaciones</span>
-          </div>
-        </button>
-
-      </div>
-
-      <div class="stage-quick-controls">
-        <button class="nav-ctrl-btn" id="btnPrevStep" title="Paso anterior (Flecha Izquierda ←)" disabled>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
-          <span>Anterior</span>
-        </button>
-        <button class="nav-ctrl-btn" id="btnNextStep" title="Paso siguiente (Flecha Derecha → / Espacio)">
-          <span>Siguiente</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
-        </button>
-      </div>
-    </nav>
-
-    <!-- Escenario Visual Principal -->
-    <section class="viewer-canvas-card" id="viewerCanvas">
-
-      <!-- Indicador de Estado del Cuadrante Mapeado -->
-      <div class="canvas-status-badge">
-        <span class="badge-pill-tag">Cuadrante Mapeado:</span>
-        <span class="badge-pill-title" id="canvasStatusText">1. TAPA — Portada Frontal Exterior</span>
-      </div>
-
-      <div class="canvas-hint-pill">
-        <span>🔍 Clic en cualquier panel para ampliar en alta resolución</span>
-      </div>
-
-      <!-- ============================================================
-           PASO 1: FOLLETO CERRADO (PORTADA)
-           ============================================================ -->
-      <div class="step-view step-1-stage active" id="viewStep1">
-        <div class="paper-display-frame" title="Folleto Cerrado: Portada Frontal">
-          <div class="panel-slice-card" style="background-image: url('images/triptico/1_tapa_portada.png');" onclick="openZoomModal('images/triptico/1_tapa_portada.png', '1. TAPA — Portada Institucional')">
-            <span class="panel-tag-indicator">1. Portada / Tapa</span>
+          <div class="hero-stat-card">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Conexión Phygital vía QR a la Landing</span>
           </div>
         </div>
       </div>
 
-      <!-- ============================================================
-           PASO 2: PRIMERA APERTURA (SOLAPA INTERNA + CONTRACARA)
-           ============================================================ -->
-      <div class="step-view step-2-stage" id="viewStep2">
-        <div class="paper-display-frame" title="Primera Apertura: Solapa 'desde 1963' y Contracara">
-          <!-- Solapa Interna (3. Dorso Apertura) -->
-          <div class="panel-slice-card" style="background-image: url('images/triptico/3_dorso_desde1963.png');" onclick="openZoomModal('images/triptico/3_dorso_desde1963.png', '3. DORSO APERTURA — Solapa \'desde 1963\'')">
-            <span class="panel-tag-indicator">3. Solapa 'desde 1963'</span>
-            <div class="panel-fold-line fold-left"></div>
+      <div class="hero-visual-card">
+        <img src="images/hero_entrega_triptico.jpg" alt="Simulación de entrega del tríptico a una familia en una entrevista de admisiones" class="hero-img" />
+        <div class="hero-img-caption">
+          <div class="caption-info">
+            <span class="caption-title">Entrega en Mano en la Entrevista Directiva</span>
+            <span class="caption-desc">Formato ergonómico de lectura progresiva y toque distinguido</span>
           </div>
-          <!-- Contracara Tapa / QR (2. Contracara) -->
-          <div class="panel-slice-card" style="background-image: url('images/triptico/2_contracara_qr.png');" onclick="openZoomModal('images/triptico/2_contracara_qr.png', '2. CONTRACARA TAPA — Admisiones & QR')">
-            <span class="panel-tag-indicator">2. Admisiones & QR</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- ============================================================
-           PASO 3: INTERIOR DESPLEGADO COMPLETO (3 NIVELES)
-           ============================================================ -->
-      <div class="step-view step-3-stage" id="viewStep3">
-        <div class="paper-display-frame" title="Interior Desplegado Completo: Inicial, Primario y Secundario">
-          <!-- Panel Izquierdo: 2. Contracara Tapa -->
-          <div class="panel-slice-card" style="background-image: url('images/triptico/2_contracara_qr.png');" onclick="openZoomModal('images/triptico/2_contracara_qr.png', '2. CONTRACARA — Admisiones Abiertas & QR')">
-            <span class="panel-tag-indicator">2. Admisiones & QR</span>
-            <div class="panel-fold-line fold-left"></div>
-          </div>
-          <!-- Panel Central: 4. Nivel Inicial & Primario -->
-          <div class="panel-slice-card" style="background-image: url('images/triptico/4_centro_inicial_primario.png');" onclick="openZoomModal('images/triptico/4_centro_inicial_primario.png', '4. CENTRO — Nivel Inicial & Primario')">
-            <span class="panel-tag-indicator">4. Nivel Inicial & Primario</span>
-            <div class="panel-fold-line fold-left"></div>
-          </div>
-          <!-- Panel Derecho: 5. Nivel Secundario -->
-          <div class="panel-slice-card" style="background-image: url('images/triptico/5_interior_secundario.png');" onclick="openZoomModal('images/triptico/5_interior_secundario.png', '5. INTERIOR — Nivel Secundario & Certificaciones')">
-            <span class="panel-tag-indicator">5. Nivel Secundario</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- ============================================================
-           PASO 4: DORSO / PLIEGO EXTERIOR COMPLETO
-           ============================================================ -->
-      <div class="step-view step-4-stage" id="viewStep4">
-        <div class="paper-display-frame" title="Pliego Exterior Completo: Solapa, Observaciones y Tapa">
-          <!-- Panel Izquierdo: 3. Dorso Apertura -->
-          <div class="panel-slice-card" style="background-image: url('images/triptico/3_dorso_desde1963.png');" onclick="openZoomModal('images/triptico/3_dorso_desde1963.png', '3. DORSO APERTURA — Historia & Valores')">
-            <span class="panel-tag-indicator">3. Solapa 'desde 1963'</span>
-            <div class="panel-fold-line fold-left"></div>
-          </div>
-          <!-- Panel Central: Centro Trasero Observaciones & Contacto -->
-          <div class="panel-slice-card" style="background-image: url('images/triptico/centro_trasero_observaciones.png');" onclick="openZoomModal('images/triptico/centro_trasero_observaciones.png', 'CENTRO TRASERO — Observaciones & Contacto Oficial')">
-            <span class="panel-tag-indicator">Centro Trasero</span>
-            <div class="panel-fold-line fold-left"></div>
-          </div>
-          <!-- Panel Derecho: 1. Tapa Portada -->
-          <div class="panel-slice-card" style="background-image: url('images/triptico/1_tapa_portada.png');" onclick="openZoomModal('images/triptico/1_tapa_portada.png', '1. TAPA — Portada Institucional')">
-            <span class="panel-tag-indicator">1. Portada / Tapa</span>
-          </div>
+          <span class="caption-badge-pill">Enfoque Phygital</span>
         </div>
       </div>
 
     </section>
 
-    <!-- Barra Inferior de Narrativa y Acciones -->
-    <footer class="viewer-narrative-card">
-      <div class="narrative-info-group">
-        <div class="narrative-step-title" id="narrativeTitle">
-          <span>●</span> <span id="narrativeTitleText">Paso 1 — Folleto Cerrado (Vista Frontal)</span>
-        </div>
-        <p class="narrative-step-desc" id="narrativeDescText">
-          Muestra el <strong>Cuadrante Inferior Derecho (1. TAPA)</strong> con el escudo oficial, el lema institucional <em>"Virtutis Gloria Merces"</em>, los tres niveles educativos (Inicial, Primario y Secundario) y el dominio oficial parishrobertson.com.ar en formato estilizado 1/2 A4 (105 × 297 mm).
+    <!-- ============================================================
+         SECCIÓN 2: PUNTOS DE VALOR DEL NUEVO DISEÑO
+         ============================================================ -->
+    <section class="values-section">
+      
+      <div class="section-header-centered">
+        <span class="section-subtitle-tag">Optimización Gráfica & Estratégica</span>
+        <h2 class="section-title">Pilares de Valor del Nuevo Tríptico</h2>
+        <p class="section-desc">
+          Superando las fallas del formato anterior (desperdicio de espacio en blanco, vencimiento de aniversarios y desconexión digital), la nueva pieza optimiza cada milímetro cuadrado.
         </p>
       </div>
 
-      <button class="narrative-cta-btn" id="btnNextAction">
-        <span id="nextActionLabel">Abrir Folleto (Paso 2)</span>
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </button>
-    </footer>
+      <div class="values-grid">
+        
+        <div class="value-card">
+          <div class="value-icon-box">📖</div>
+          <div>
+            <h3>Apertura Tipo Libro</h3>
+            <p>La tapa se abre hacia la izquierda revelando en primera instancia la solapa histórica y el QR de admisión antes de desplegar los 3 niveles educativos.</p>
+          </div>
+          <div class="value-card-footer">Lectura Guiada & Sin Sobrecarga</div>
+        </div>
 
-  </main>
+        <div class="value-card">
+          <div class="value-icon-box">🌿</div>
+          <div>
+            <h3>Ergonomía & Ahorro 50%</h3>
+            <p>Formato de 1/2 A4 vertical que rinde 2 folletos listos por pliego impreso, eliminando el tercio desaprovechado de líneas manuscritas.</p>
+          </div>
+          <div class="value-card-footer">Cero Desperdicio de Papel</div>
+        </div>
+
+        <div class="value-card">
+          <div class="value-icon-box">🏛️</div>
+          <div>
+            <h3>Sello "Since 1963"</h3>
+            <p>Reemplaza los sellos cerrados de 50 o 60 años por una marca atemporal continua que nunca vence, protegiendo el presupuesto escolar.</p>
+          </div>
+          <div class="value-card-footer">Inversión Perdurante</div>
+        </div>
+
+        <div class="value-card">
+          <div class="value-icon-box">⚡</div>
+          <div>
+            <h3>Puente Phygital Directo</h3>
+            <p>El código QR estratégico en la contracara interna traslada a los padres en 2 segundos a la solicitud de vacante en la landing web.</p>
+          </div>
+          <div class="value-card-footer">Conversión Inmediata</div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ============================================================
+         SECCIÓN 3: VISOR INTERACTIVO SECUENCIAL DEL TRÍPTICO
+         ============================================================ -->
+    <section class="viewer-section" id="visor">
+      
+      <div class="section-header-centered">
+        <span class="section-subtitle-tag">Experiencia Interactiva Paso a Paso</span>
+        <h2 class="section-title">Visor Secuencial del Folleto Tríptico</h2>
+        <p class="section-desc">
+          Explorá el recorrido físico exacto de apertura y lectura tal como lo experimentan las familias al recibir la pieza en mano.
+        </p>
+      </div>
+
+      <div class="viewer-container-card">
+
+        <!-- Barra de Navegación de Pasos -->
+        <nav class="viewer-steps-nav">
+          <div class="steps-list">
+            
+            <button class="step-tab-btn active" data-step="1" id="tabStep1" title="Paso 1: Folleto Cerrado - Portada Frontal">
+              <span class="step-badge">1</span>
+              <div class="step-tab-text">
+                <span class="step-tab-title">Folleto Cerrado</span>
+                <span class="step-tab-sub">Tapa / Portada</span>
+              </div>
+            </button>
+
+            <span class="step-arrow-divider">→</span>
+
+            <button class="step-tab-btn" data-step="2" id="tabStep2" title="Paso 2: Primera Apertura - Solapa 'Desde 1963' y QR">
+              <span class="step-badge">2</span>
+              <div class="step-tab-text">
+                <span class="step-tab-title">Primera Apertura</span>
+                <span class="step-tab-sub">QR + Solapa 'desde 1963'</span>
+              </div>
+            </button>
+
+            <span class="step-arrow-divider">→</span>
+
+            <button class="step-tab-btn" data-step="3" id="tabStep3" title="Paso 3: Segunda Apertura - Interior Completo de 3 Niveles">
+              <span class="step-badge">3</span>
+              <div class="step-tab-text">
+                <span class="step-tab-title">Interior Completo</span>
+                <span class="step-tab-sub">3 Niveles Educativos</span>
+              </div>
+            </button>
+
+            <span class="step-arrow-divider">|</span>
+
+            <button class="step-tab-btn" data-step="4" id="tabStep4" title="Paso 4: Folleto Cerrado Reverso - Observaciones y Contacto">
+              <span class="step-badge">4</span>
+              <div class="step-tab-text">
+                <span class="step-tab-title">Dorso Cerrado</span>
+                <span class="step-tab-sub">Observaciones & Contacto</span>
+              </div>
+            </button>
+
+          </div>
+
+          <div class="viewer-nav-actions">
+            <button class="viewer-action-btn" id="btnPrev" title="Paso anterior (←)" disabled>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+              <span>Anterior</span>
+            </button>
+            <button class="viewer-action-btn" id="btnNext" title="Paso siguiente (→)">
+              <span>Siguiente</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+        </nav>
+
+        <!-- Canvas Visual Central -->
+        <div class="stage-canvas-card">
+          
+          <!-- Badge de Cuadrante Activo -->
+          <div class="status-quadrant-indicator">
+            <span class="quadrant-tag-pill">Cuadrante:</span>
+            <span class="quadrant-title-pill" id="statusQuadrantLabel">1. TAPA — Portada Frontal Exterior</span>
+          </div>
+
+          <div class="zoom-hint-badge">
+            <span>🔍 Clic en cualquier panel para ampliar en alta definición</span>
+          </div>
+
+          <!-- ============================================================
+               PASO 1: FOLLETO CERRADO (FRENTE / PORTADA)
+               ============================================================ -->
+          <div class="step-canvas-view active" id="canvasStep1">
+            <div class="paper-frame" title="Folleto Cerrado: Portada Frontal">
+              <div class="panel-slice-item" style="background-image: url('images/triptico/1_tapa_portada.png');" onclick="openZoom('images/triptico/1_tapa_portada.png', '1. TAPA — Portada Institucional')">
+                <span class="panel-label-pill">1. Tapa / Portada</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============================================================
+               PASO 2: PRIMERA APERTURA (COMO UN LIBRO: QR + "DESDE 1963")
+               ============================================================ -->
+          <div class="step-canvas-view" id="canvasStep2">
+            <div class="paper-frame" title="Primera Apertura: Tapa abierta a la izquierda mostrando QR y Solapa 'desde 1963'">
+              <!-- Izquierda: 2. Contracara Tapa (QR / Admisiones) -->
+              <div class="panel-slice-item" style="background-image: url('images/triptico/2_contracara_qr.png');" onclick="openZoom('images/triptico/2_contracara_qr.png', '2. CONTRACARA TAPA — Admisiones Abiertas & QR')">
+                <span class="panel-label-pill">2. Admisiones & QR (Detrás de Tapa)</span>
+                <div class="panel-fold-divider fold-edge-left"></div>
+              </div>
+              <!-- Derecha: 3. Dorso Apertura (Solapa "desde 1963") -->
+              <div class="panel-slice-item" style="background-image: url('images/triptico/3_dorso_desde1963.png');" onclick="openZoom('images/triptico/3_dorso_desde1963.png', '3. DORSO APERTURA — Solapa \'desde 1963\'')">
+                <span class="panel-label-pill">3. Solapa 'desde 1963'</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============================================================
+               PASO 3: SEGUNDA APERTURA (INTERIOR COMPLETO DE LOS 3 NIVELES)
+               ============================================================ -->
+          <div class="step-canvas-view" id="canvasStep3">
+            <div class="paper-frame" title="Interior Desplegado Completo: Admisiones, Inicial/Primario y Secundario">
+              <!-- Izquierda: 2. Contracara Tapa -->
+              <div class="panel-slice-item" style="background-image: url('images/triptico/2_contracara_qr.png');" onclick="openZoom('images/triptico/2_contracara_qr.png', '2. CONTRACARA TAPA — Admisiones & QR')">
+                <span class="panel-label-pill">2. Admisiones & QR</span>
+                <div class="panel-fold-divider fold-edge-left"></div>
+              </div>
+              <!-- Centro: 4. Nivel Inicial & Primario -->
+              <div class="panel-slice-item" style="background-image: url('images/triptico/4_centro_inicial_primario.png');" onclick="openZoom('images/triptico/4_centro_inicial_primario.png', '4. CENTRO — Nivel Inicial & Primario')">
+                <span class="panel-label-pill">4. Nivel Inicial & Primario</span>
+                <div class="panel-fold-divider fold-edge-left"></div>
+              </div>
+              <!-- Derecha: 5. Nivel Secundario -->
+              <div class="panel-slice-item" style="background-image: url('images/triptico/5_interior_secundario.png');" onclick="openZoom('images/triptico/5_interior_secundario.png', '5. INTERIOR — Nivel Secundario & Certificaciones')">
+                <span class="panel-label-pill">5. Nivel Secundario</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============================================================
+               PASO 4: FOLLETO CERRADO DADO VUELTA (OBSERVACIONES & CONTACTO)
+               ============================================================ -->
+          <div class="step-canvas-view" id="canvasStep4">
+            <div class="paper-frame" title="Dorso Posterior del Folleto Cerrado: Observaciones y Datos de Contacto">
+              <div class="panel-slice-item" style="background-image: url('images/triptico/centro_trasero_observaciones.png');" onclick="openZoom('images/triptico/centro_trasero_observaciones.png', 'CENTRO TRASERO — Observaciones & Datos de Contacto')">
+                <span class="panel-label-pill">Centro Trasero — Observaciones & Contacto</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Narrativa Dinámica de Cada Paso -->
+        <footer class="narrative-footer-card">
+          <div class="narrative-text-box">
+            <div class="narrative-title-row" id="narrativeTitle">
+              <span>●</span> <span id="narrativeTitleText">Paso 1 — Folleto Cerrado (Vista Frontal)</span>
+            </div>
+            <p class="narrative-body-text" id="narrativeBodyText">
+              Muestra el <strong>Cuadrante Inferior Derecho (1. TAPA)</strong> con el escudo oficial, el lema institucional <em>"Virtutis Gloria Merces"</em>, los tres niveles educativos (Inicial, Primario y Secundario) y el dominio oficial parishrobertson.com.ar en formato estilizado 1/2 A4 (105 × 297 mm).
+            </p>
+          </div>
+
+          <button class="narrative-step-btn" id="btnNextAction">
+            <span id="nextActionLabel">Abrir Tapa (Paso 2)</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </footer>
+
+      </div>
+
+    </section>
+
+  </div>
 
   <!-- Modal de Zoom / Inspección en Alta Resolución -->
-  <div class="zoom-modal-backdrop" id="zoomModal" onclick="closeZoomModal(event)">
+  <div class="zoom-modal-backdrop" id="zoomModal" onclick="closeZoom(event)">
     <div class="zoom-modal-card" onclick="event.stopPropagation()">
       <div class="zoom-modal-header">
         <span class="zoom-modal-title" id="zoomModalTitle">Inspección de Cuadrante</span>
-        <button class="zoom-close-btn" onclick="closeZoomModal()">✕</button>
+        <button class="zoom-close-btn" onclick="closeZoom()">✕</button>
       </div>
-      <div class="zoom-image-container">
-        <img src="" alt="Vista ampliada" class="zoom-preview-img" id="zoomImage" />
+      <div style="display: flex; align-items: center; justify-content: center;">
+        <img src="" alt="Vista ampliada" class="zoom-preview-img" id="zoomImg" />
       </div>
     </div>
   </div>
+
+  <!-- Footer Institucional -->
+  <footer class="landing-footer">
+    <p>Colegio Parish Robertson • Monte Grande (CP 1842) • Tel: 4296-4446 • administracion@parishrobertson.com.ar</p>
+    <p style="margin-top: 0.4rem; font-size: 0.74rem;">Plan de Modernización de Admisiones & Identidad Gráfica 2026</p>
+  </footer>
 
   <script>
     (function () {
       let currentStep = 1;
       const totalSteps = 4;
-      let tourInterval = null;
 
-      const stepData = {
+      const stepDetails = {
         1: {
-          status: '1. TAPA — Portada Frontal Exterior (1/2 A4 Vertical)',
+          quadrant: '1. TAPA — Portada Frontal Exterior (1/2 A4)',
           title: 'Paso 1 — Folleto Cerrado (Vista Frontal)',
-          desc: 'Muestra el <strong>Cuadrante Inferior Derecho (1. TAPA)</strong> con el escudo oficial, el lema institucional <em>"Virtutis Gloria Merces"</em>, los tres niveles educativos (Inicial, Primario y Secundario) y el dominio oficial parishrobertson.com.ar en formato estilizado 1/2 A4 (105 × 297 mm).',
-          cta: 'Abrir Folleto (Paso 2)'
+          desc: 'Muestra el <strong>Cuadrante Inferior Derecho (1. TAPA)</strong> con el escudo oficial, el lema institucional <em>"Virtutis Gloria Merces"</em>, los tres niveles educativos (Inicial, Primario y Secundario) y el dominio oficial parishrobertson.com.ar en formato estilizado 1/2 A4.',
+          cta: 'Abrir Tapa (Paso 2)'
         },
         2: {
-          status: '3. DORSO APERTURA + 2. CONTRACARA TAPA',
-          title: 'Paso 2 — Primera Apertura (Solapa Interna & Admisiones)',
-          desc: 'Al desplegar el primer pliegue se revela la <strong>Solapa Interna "desde 1963"</strong> (3. Dorso Apertura) que destaca los más de 50 años de trayectoria, la inmersión en inglés y competencias digitales, junto a la <strong>Contracara de Tapa</strong> (2. Admisiones & QR directo).',
-          cta: 'Desplegar Interior Completo (Paso 3)'
+          quadrant: '2. CONTRACARA TAPA (QR) + 3. SOLAPA "DESDE 1963"',
+          title: 'Paso 2 — Primera Apertura (Como un Libro)',
+          desc: 'Al abrir la tapa hacia la izquierda como en un libro, se observan simultáneamente la <strong>Contracara con QR de Admisiones (2)</strong> —ubicada en la parte interna detrás de la tapa— y la <strong>Solapa Histórica "desde 1963" (3)</strong> que resume la inmersión en inglés y la trayectoria institucional.',
+          cta: 'Desplegar Niveles (Paso 3)'
         },
         3: {
-          status: 'INTERIOR COMPLETO — 2. Contracara + 4. Centro + 5. Secundario',
-          title: 'Paso 3 — Interior Desplegado Completo (Propuesta Académica)',
-          desc: 'Folleto extendido en su totalidad horizontal mostrando los 3 cuerpos: <strong>2. Admisiones & QR</strong>, <strong>4. Nivel Inicial & Maternal + Nivel Primario</strong> (doble escolaridad, talleres, ajedrez) y <strong>5. Nivel Secundario</strong> (Ciclo Básico, Cs. Sociales / Naturales, certificaciones Oxford & Cambridge).',
-          cta: 'Ver Pliego Exterior (Paso 4)'
+          quadrant: 'INTERIOR COMPLETO — 2. QR + 4. Inicial/Primario + 5. Secundario',
+          title: 'Paso 3 — Segunda Apertura (Despliegue Interior de Niveles)',
+          desc: 'Al desplegar la solapa "desde 1963" hacia la derecha, se revelan los cuadrantes de los niveles educativos: <strong>4. Nivel Inicial & Primario</strong> (talleres, huerta, ajedrez y doble escolaridad) y <strong>5. Nivel Secundario</strong> (Ciclos Básico/Superior, orientaciones y certificaciones Oxford & Cambridge).',
+          cta: 'Ver Dorso con Observaciones (Paso 4)'
         },
         4: {
-          status: 'PLIEGO EXTERIOR COMPLETO — 3. Solapa + Centro Trasero + 1. Tapa',
-          title: 'Paso 4 — Pliego Exterior (Dorso, Observaciones & Contacto)',
-          desc: 'Vista completa de la cara exterior que incluye la <strong>Solapa Histórica (3)</strong>, el <strong>Centro Trasero</strong> con espacio de Observaciones, dirección oficial en Monte Grande (Parish Robertson 159), líneas telefónicas (4296-4446) y la <strong>Tapa de Portada (1)</strong>.',
+          quadrant: 'CENTRO TRASERO — Observaciones, Dirección & Contacto',
+          title: 'Paso 4 — Folleto Cerrado Dado Vuelta (Reverso / Observaciones)',
+          desc: 'Al dar vuelta el folleto cerrado, se aprecia el <strong>Centro Trasero</strong> con el espacio de Observaciones, la dirección oficial en Monte Grande (Parish Robertson 159), líneas telefónicas (4296-4446) y canales directos de secretaría.',
           cta: 'Volver a Portada (Paso 1)'
         }
       };
 
-      const btnStep1 = document.getElementById('btnStep1');
-      const btnStep2 = document.getElementById('btnStep2');
-      const btnStep3 = document.getElementById('btnStep3');
-      const btnStep4 = document.getElementById('btnStep4');
-      const stepBtns = [btnStep1, btnStep2, btnStep3, btnStep4];
+      const tabStep1 = document.getElementById('tabStep1');
+      const tabStep2 = document.getElementById('tabStep2');
+      const tabStep3 = document.getElementById('tabStep3');
+      const tabStep4 = document.getElementById('tabStep4');
+      const tabs = [tabStep1, tabStep2, tabStep3, tabStep4];
 
-      const viewStep1 = document.getElementById('viewStep1');
-      const viewStep2 = document.getElementById('viewStep2');
-      const viewStep3 = document.getElementById('viewStep3');
-      const viewStep4 = document.getElementById('viewStep4');
-      const stepViews = [viewStep1, viewStep2, viewStep3, viewStep4];
+      const canvasStep1 = document.getElementById('canvasStep1');
+      const canvasStep2 = document.getElementById('canvasStep2');
+      const canvasStep3 = document.getElementById('canvasStep3');
+      const canvasStep4 = document.getElementById('canvasStep4');
+      const canvasViews = [canvasStep1, canvasStep2, canvasStep3, canvasStep4];
 
-      const btnPrevStep = document.getElementById('btnPrevStep');
-      const btnNextStep = document.getElementById('btnNextStep');
+      const btnPrev = document.getElementById('btnPrev');
+      const btnNext = document.getElementById('btnNext');
       const btnNextAction = document.getElementById('btnNextAction');
       const nextActionLabel = document.getElementById('nextActionLabel');
 
-      const canvasStatusText = document.getElementById('canvasStatusText');
+      const statusQuadrantLabel = document.getElementById('statusQuadrantLabel');
       const narrativeTitleText = document.getElementById('narrativeTitleText');
-      const narrativeDescText = document.getElementById('narrativeDescText');
-
-      const btnTourToggle = document.getElementById('btnTourToggle');
-      const tourBtnLabel = document.getElementById('tourBtnLabel');
+      const narrativeBodyText = document.getElementById('narrativeBodyText');
 
       const zoomModal = document.getElementById('zoomModal');
-      const zoomImage = document.getElementById('zoomImage');
+      const zoomImg = document.getElementById('zoomImg');
       const zoomModalTitle = document.getElementById('zoomModalTitle');
 
       function playPaperSound() {
@@ -997,128 +1344,83 @@
         } catch (e) {}
       }
 
-      function goToStep(step) {
+      function setStep(step) {
         if (step < 1 || step > totalSteps) return;
         currentStep = step;
         playPaperSound();
 
-        // Actualizar vistas
-        stepViews.forEach((view, idx) => {
-          if (idx + 1 === currentStep) {
-            view.classList.add('active');
-          } else {
-            view.classList.remove('active');
-          }
+        canvasViews.forEach((view, idx) => {
+          if (idx + 1 === currentStep) view.classList.add('active');
+          else view.classList.remove('active');
         });
 
-        // Actualizar botones de pasos
-        stepBtns.forEach((btn, idx) => {
-          if (idx + 1 === currentStep) {
-            btn.classList.add('active');
-          } else {
-            btn.classList.remove('active');
-          }
+        tabs.forEach((tab, idx) => {
+          if (idx + 1 === currentStep) tab.classList.add('active');
+          else tab.classList.remove('active');
         });
 
-        // Actualizar textos informativos
-        const info = stepData[currentStep];
-        if (info) {
-          canvasStatusText.textContent = info.status;
-          narrativeTitleText.textContent = info.title;
-          narrativeDescText.innerHTML = info.desc;
-          nextActionLabel.textContent = info.cta;
+        const detail = stepDetails[currentStep];
+        if (detail) {
+          statusQuadrantLabel.textContent = detail.quadrant;
+          narrativeTitleText.textContent = detail.title;
+          narrativeBodyText.innerHTML = detail.desc;
+          nextActionLabel.textContent = detail.cta;
         }
 
-        // Estado botones de control
-        btnPrevStep.disabled = currentStep === 1;
-        btnNextStep.innerHTML = currentStep === totalSteps 
+        btnPrev.disabled = currentStep === 1;
+        btnNext.innerHTML = currentStep === totalSteps 
           ? `<span>Reiniciar</span> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>`
           : `<span>Siguiente</span> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>`;
       }
 
-      function nextStep() {
-        if (currentStep < totalSteps) goToStep(currentStep + 1);
-        else goToStep(1);
+      function next() {
+        if (currentStep < totalSteps) setStep(currentStep + 1);
+        else setStep(1);
       }
 
-      function prevStep() {
-        if (currentStep > 1) goToStep(currentStep - 1);
+      function prev() {
+        if (currentStep > 1) setStep(currentStep - 1);
       }
 
-      // Auto-Tour
-      function stopTour() {
-        if (tourInterval) {
-          clearInterval(tourInterval);
-          tourInterval = null;
-          btnTourToggle.classList.remove('active');
-          tourBtnLabel.textContent = '▶ Auto-Tour';
-        }
-      }
+      tabStep1.addEventListener('click', () => setStep(1));
+      tabStep2.addEventListener('click', () => setStep(2));
+      tabStep3.addEventListener('click', () => setStep(3));
+      tabStep4.addEventListener('click', () => setStep(4));
 
-      function startTour() {
-        if (tourInterval) {
-          stopTour();
-          return;
-        }
-        btnTourToggle.classList.add('active');
-        tourBtnLabel.textContent = '⏹ Detener';
+      btnNext.addEventListener('click', next);
+      btnPrev.addEventListener('click', prev);
+      btnNextAction.addEventListener('click', next);
 
-        tourInterval = setInterval(() => {
-          nextStep();
-        }, 3600);
-      }
-
-      // Eventos
-      btnStep1.addEventListener('click', () => { stopTour(); goToStep(1); });
-      btnStep2.addEventListener('click', () => { stopTour(); goToStep(2); });
-      btnStep3.addEventListener('click', () => { stopTour(); goToStep(3); });
-      btnStep4.addEventListener('click', () => { stopTour(); goToStep(4); });
-
-      btnNextStep.addEventListener('click', () => { stopTour(); nextStep(); });
-      btnPrevStep.addEventListener('click', () => { stopTour(); prevStep(); });
-      btnNextAction.addEventListener('click', () => { stopTour(); nextStep(); });
-      btnTourToggle.addEventListener('click', startTour);
-
-      // Navegación por teclado (1..4, Flechas ← / →, Espacio)
+      // Teclado
       window.addEventListener('keydown', (e) => {
         if (zoomModal.classList.contains('open')) {
-          if (e.key === 'Escape') closeZoomModal();
+          if (e.key === 'Escape') closeZoom();
           return;
         }
-
         if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
           e.preventDefault();
-          stopTour();
-          nextStep();
+          next();
         } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
           e.preventDefault();
-          stopTour();
-          prevStep();
-        } else if (e.key === '1') {
-          stopTour(); goToStep(1);
-        } else if (e.key === '2') {
-          stopTour(); goToStep(2);
-        } else if (e.key === '3') {
-          stopTour(); goToStep(3);
-        } else if (e.key === '4') {
-          stopTour(); goToStep(4);
-        }
+          prev();
+        } else if (e.key === '1') setStep(1);
+        else if (e.key === '2') setStep(2);
+        else if (e.key === '3') setStep(3);
+        else if (e.key === '4') setStep(4);
       });
 
-      // Modal Zoom
-      window.openZoomModal = function (imgSrc, title) {
-        stopTour();
-        zoomImage.src = imgSrc;
+      // Zoom
+      window.openZoom = function (imgSrc, title) {
+        zoomImg.src = imgSrc;
         zoomModalTitle.textContent = title || 'Inspección de Cuadrante';
         zoomModal.classList.add('open');
       };
 
-      window.closeZoomModal = function () {
+      window.closeZoom = function () {
         zoomModal.classList.remove('open');
       };
 
-      // Inicializar en paso 1
-      goToStep(1);
+      setStep(1);
     })();
   </script>
 </body>
