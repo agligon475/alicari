@@ -15,9 +15,9 @@
 
   <style>
     :root {
-      --green-deep: #0b291b;
+      --green-deep: #004d2c;
       --green-primary: #004d2c;
-      --green-medium: #064e3b;
+      --green-medium: #065f46;
       --green-light: #059669;
       --green-soft: #ecfdf5;
       
@@ -27,18 +27,20 @@
       --navy-soft: #eff6ff;
 
       --sky-primary: #0284c7;
-      --sky-light: #38bdf8;
+      --sky-light: #0284c7;
       --sky-soft: #f0f9ff;
 
       --carmine-primary: #b91c1c;
       
-      --bg-body: #080d16;
-      --bg-card: rgba(15, 23, 42, 0.75);
-      --border-subtle: rgba(255, 255, 255, 0.12);
+      --bg-body: #f8fafc;
+      --bg-card: #ffffff;
+      --bg-stage: #ffffff;
+      --border-subtle: #e2e8f0;
+      --border-card: #cbd5e1;
       
-      --text-main: #f8fafc;
-      --text-muted: #cbd5e1;
-      --text-dim: #94a3b8;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-dim: #64748b;
       
       --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
       --font-crest: 'Cinzel', serif;
@@ -65,64 +67,16 @@
       flex-direction: column;
     }
 
-    /* Ambient Background Glow */
-    .ambient-bg {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-    }
-
-    .ambient-orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(150px);
-      opacity: 0.28;
-    }
-
-    .orb-1 {
-      width: 700px;
-      height: 700px;
-      background: radial-gradient(circle, rgba(0, 77, 44, 0.5), transparent 70%);
-      top: -180px;
-      left: -150px;
-    }
-
-    .orb-2 {
-      width: 700px;
-      height: 700px;
-      background: radial-gradient(circle, rgba(30, 58, 138, 0.5), transparent 70%);
-      top: 40%;
-      right: -200px;
-    }
-
-    .orb-3 {
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(2, 132, 199, 0.35), transparent 70%);
-      bottom: -150px;
-      left: 10%;
-    }
-
-    .grid-overlay {
-      position: absolute;
-      inset: 0;
-      background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-      background-size: 36px 36px;
-    }
-
     /* Navbar Header */
     .landing-header {
       position: sticky;
       top: 0;
       z-index: 50;
       height: 68px;
-      background: rgba(8, 13, 22, 0.88);
+      background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-subtle);
+      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.04);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -139,21 +93,22 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      color: #cbd5e1;
+      color: var(--text-main);
       text-decoration: none;
       font-size: 0.82rem;
       font-weight: 700;
       padding: 0.45rem 0.95rem;
       border-radius: 8px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
       transition: all 0.2s ease;
     }
 
     .back-btn-pill:hover {
-      background: rgba(255, 255, 255, 0.12);
-      color: #ffffff;
-      border-color: rgba(56, 189, 248, 0.4);
+      background: #f1f5f9;
+      color: var(--green-deep);
+      border-color: #cbd5e1;
       transform: translateX(-2px);
     }
 
@@ -177,15 +132,15 @@
     .school-title-main {
       font-size: 0.88rem;
       font-weight: 800;
-      color: #ffffff;
-      letter-spacing: 0.03em;
+      color: var(--green-deep);
+      letter-spacing: 0.02em;
     }
 
     .school-title-sub {
       font-size: 0.68rem;
-      color: var(--sky-light);
+      color: var(--navy-primary);
       font-weight: 700;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
     }
 
@@ -199,27 +154,25 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      background: var(--green-primary);
       color: #ffffff;
       font-size: 0.8rem;
       font-weight: 800;
-      padding: 0.5rem 1.1rem;
+      padding: 0.52rem 1.15rem;
       border-radius: 8px;
       text-decoration: none;
-      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+      box-shadow: 0 2px 8px rgba(0, 77, 44, 0.2);
       transition: all 0.2s ease;
     }
 
     .cta-jump-btn:hover {
-      background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+      background: #003820;
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+      box-shadow: 0 4px 14px rgba(0, 77, 44, 0.3);
     }
 
     /* Container */
     .landing-wrapper {
-      position: relative;
-      z-index: 10;
       max-width: 1280px;
       width: 100%;
       margin: 0 auto;
@@ -230,12 +183,12 @@
     }
 
     /* ============================================================
-       SECCIÓN 1: HERO BANNER & ENTREGA EN ENTREVISTA
+       SECCIÓN 1: HERO BANNER & FOLLETO CERRADO EN PERSPECTIVA 3D
        ============================================================ */
     .hero-section {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 2.5rem;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3rem;
       align-items: center;
     }
 
@@ -253,9 +206,9 @@
       font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: #34d399;
-      background: rgba(16, 185, 129, 0.12);
-      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #065f46;
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
       padding: 0.35rem 0.85rem;
       border-radius: 100px;
       width: fit-content;
@@ -266,26 +219,23 @@
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: #10b981;
-      box-shadow: 0 0 8px #10b981;
+      background: #059669;
     }
 
     .hero-title {
-      font-size: 2.45rem;
+      font-size: 2.35rem;
       font-weight: 800;
-      line-height: 1.18;
+      line-height: 1.2;
       letter-spacing: -0.03em;
-      color: #ffffff;
+      color: var(--green-deep);
     }
 
-    .hero-title span.highlight {
-      background: linear-gradient(135deg, #34d399 0%, #38bdf8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .hero-title .highlight-blue {
+      color: var(--navy-primary);
     }
 
     .hero-lead-text {
-      font-size: 1rem;
+      font-size: 0.98rem;
       color: var(--text-muted);
       line-height: 1.6;
     }
@@ -293,24 +243,25 @@
     .hero-stats-row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 0.9rem;
+      gap: 1rem;
       margin-top: 0.5rem;
     }
 
     .hero-stat-card {
-      background: rgba(15, 23, 42, 0.6);
+      background: #ffffff;
       border: 1px solid var(--border-subtle);
       border-radius: 12px;
-      padding: 0.9rem 1rem;
+      padding: 0.9rem 1.1rem;
       display: flex;
       flex-direction: column;
       gap: 0.2rem;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
     }
 
     .stat-number {
       font-size: 1.4rem;
       font-weight: 800;
-      color: #34d399;
+      color: var(--green-deep);
       letter-spacing: -0.02em;
     }
 
@@ -318,69 +269,85 @@
       font-size: 0.72rem;
       color: var(--text-dim);
       font-weight: 600;
-      line-height: 1.3;
+      line-height: 1.35;
     }
 
-    .hero-visual-card {
+    /* Mockup 3D Estático del Tríptico Cerrado */
+    .hero-mockup-stage {
       position: relative;
-      border-radius: 20px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7), 0 10px 30px rgba(0, 77, 44, 0.25);
-      background: #0f172a;
-    }
-
-    .hero-img {
-      width: 100%;
-      height: 100%;
-      aspect-ratio: 16 / 10;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.4s ease;
-    }
-
-    .hero-visual-card:hover .hero-img {
-      transform: scale(1.03);
-    }
-
-    .hero-img-caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 1.2rem;
-      background: linear-gradient(0deg, rgba(8, 13, 22, 0.95) 0%, rgba(8, 13, 22, 0.7) 60%, transparent 100%);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .caption-info {
+      background: linear-gradient(145deg, #ffffff 0%, #f1f5f9 100%);
+      border: 1px solid var(--border-subtle);
+      border-radius: 24px;
+      padding: 2.5rem 1.5rem 2rem;
       display: flex;
       flex-direction: column;
-      gap: 0.15rem;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.06);
+      min-height: 440px;
     }
 
-    .caption-title {
-      font-size: 0.82rem;
-      font-weight: 800;
-      color: #ffffff;
+    .mockup-3d-wrapper {
+      position: relative;
+      perspective: 1200px;
+      perspective-origin: 50% 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .caption-desc {
-      font-size: 0.7rem;
-      color: #cbd5e1;
+    .mockup-closed-brochure {
+      position: relative;
+      height: 350px;
+      aspect-ratio: 9.23 / 9.52;
+      background-image: url('images/triptico/1_tapa_portada.png');
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 6px;
+      transform: rotateY(-10deg) rotateX(6deg);
+      box-shadow: -20px 25px 45px -10px rgba(15, 23, 42, 0.24), -5px 10px 20px rgba(0, 77, 44, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.06);
+      background-color: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.08);
     }
 
-    .caption-badge-pill {
-      font-size: 0.65rem;
-      font-weight: 800;
-      color: #042f2e;
-      background: #34d399;
-      padding: 0.25rem 0.6rem;
+    /* Sombra proyectada en la base */
+    .mockup-shadow-plane {
+      position: absolute;
+      width: 320px;
+      height: 24px;
+      bottom: -16px;
+      left: 15px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(15, 23, 42, 0.22) 0%, rgba(15, 23, 42, 0.04) 60%, transparent 80%);
+      filter: blur(8px);
+      pointer-events: none;
+    }
+
+    .mockup-caption-bar {
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
       border-radius: 100px;
-      white-space: nowrap;
+      padding: 0.35rem 0.95rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    }
+
+    .mockup-tag-label {
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: var(--green-deep);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .mockup-size-label {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      font-weight: 600;
     }
 
     /* ============================================================
@@ -398,21 +365,21 @@
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 0.6rem;
+      gap: 0.5rem;
     }
 
     .section-subtitle-tag {
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       font-weight: 800;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--sky-light);
+      color: var(--navy-primary);
     }
 
     .section-title {
       font-size: 1.95rem;
       font-weight: 800;
-      color: #ffffff;
+      color: var(--green-deep);
       letter-spacing: -0.025em;
     }
 
@@ -429,7 +396,7 @@
     }
 
     .value-card {
-      background: rgba(15, 23, 42, 0.65);
+      background: #ffffff;
       border: 1px solid var(--border-subtle);
       border-radius: 16px;
       padding: 1.4rem;
@@ -437,14 +404,14 @@
       flex-direction: column;
       justify-content: space-between;
       gap: 1rem;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
       transition: all 0.25s ease;
     }
 
     .value-card:hover {
-      border-color: rgba(56, 189, 248, 0.4);
+      border-color: #cbd5e1;
       transform: translateY(-3px);
-      box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.4);
-      background: rgba(15, 23, 42, 0.85);
+      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
     }
 
     .value-icon-box {
@@ -455,19 +422,19 @@
       align-items: center;
       justify-content: center;
       font-size: 1.3rem;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: #f8fafc;
+      border: 1px solid var(--border-subtle);
     }
 
     .value-card h3 {
       font-size: 1rem;
       font-weight: 800;
-      color: #ffffff;
+      color: var(--green-deep);
       line-height: 1.3;
     }
 
     .value-card p {
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       color: var(--text-muted);
       line-height: 1.5;
     }
@@ -475,9 +442,9 @@
     .value-card-footer {
       font-size: 0.72rem;
       font-weight: 700;
-      color: #34d399;
+      color: var(--navy-primary);
       padding-top: 0.6rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-top: 1px solid #f1f5f9;
     }
 
     /* ============================================================
@@ -491,19 +458,19 @@
     }
 
     .viewer-container-card {
-      background: rgba(15, 23, 42, 0.8);
+      background: #ffffff;
       border: 1px solid var(--border-subtle);
       border-radius: 20px;
       padding: 1.5rem;
       display: flex;
       flex-direction: column;
       gap: 1.2rem;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 10px 35px -5px rgba(15, 23, 42, 0.07);
     }
 
     /* Steps Nav Controls */
     .viewer-steps-nav {
-      background: rgba(8, 13, 22, 0.6);
+      background: #f8fafc;
       border: 1px solid var(--border-subtle);
       border-radius: 14px;
       padding: 0.6rem 0.8rem;
@@ -522,38 +489,38 @@
     }
 
     .step-tab-btn {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
       border-radius: 10px;
       padding: 0.5rem 0.85rem;
       display: inline-flex;
       align-items: center;
       gap: 0.6rem;
       cursor: pointer;
-      color: #94a3b8;
+      color: var(--text-muted);
       text-align: left;
       transition: all 0.2s ease;
     }
 
     .step-tab-btn:hover {
-      background: rgba(255, 255, 255, 0.1);
-      color: #ffffff;
-      border-color: rgba(56, 189, 248, 0.3);
+      background: #f8fafc;
+      color: var(--text-main);
+      border-color: #cbd5e1;
     }
 
     .step-tab-btn.active {
-      background: linear-gradient(135deg, rgba(0, 77, 44, 0.9) 0%, rgba(6, 78, 59, 0.95) 100%);
-      border-color: #10b981;
-      color: #ffffff;
-      box-shadow: 0 4px 14px rgba(0, 77, 44, 0.4);
+      background: #ecfdf5;
+      border-color: var(--green-primary);
+      color: var(--green-deep);
+      box-shadow: 0 0 0 1.5px var(--green-primary), 0 2px 8px rgba(0, 77, 44, 0.1);
     }
 
     .step-badge {
       width: 22px;
       height: 22px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.12);
-      color: #ffffff;
+      background: #e2e8f0;
+      color: #334155;
       font-size: 0.7rem;
       font-weight: 800;
       display: flex;
@@ -562,8 +529,8 @@
     }
 
     .step-tab-btn.active .step-badge {
-      background: #10b981;
-      color: #042f2e;
+      background: var(--green-primary);
+      color: #ffffff;
     }
 
     .step-tab-text {
@@ -579,15 +546,16 @@
 
     .step-tab-sub {
       font-size: 0.63rem;
-      color: rgba(255, 255, 255, 0.55);
+      color: var(--text-dim);
     }
 
     .step-tab-btn.active .step-tab-sub {
-      color: #a7f3d0;
+      color: #047857;
+      font-weight: 600;
     }
 
     .step-arrow-divider {
-      color: rgba(255, 255, 255, 0.2);
+      color: #cbd5e1;
       font-weight: 700;
       font-size: 0.85rem;
     }
@@ -599,9 +567,9 @@
     }
 
     .viewer-action-btn {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      color: #ffffff;
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
       font-size: 0.78rem;
       font-weight: 700;
       padding: 0.48rem 0.85rem;
@@ -614,12 +582,13 @@
     }
 
     .viewer-action-btn:hover {
-      background: rgba(255, 255, 255, 0.14);
-      border-color: rgba(255, 255, 255, 0.25);
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+      color: var(--green-deep);
     }
 
     .viewer-action-btn:disabled {
-      opacity: 0.3;
+      opacity: 0.35;
       cursor: not-allowed;
       pointer-events: none;
     }
@@ -627,16 +596,16 @@
     /* Stage Canvas Area */
     .stage-canvas-card {
       position: relative;
-      min-height: 520px;
-      background: radial-gradient(ellipse at center 40%, rgba(30, 41, 59, 0.7) 0%, rgba(8, 13, 22, 0.95) 100%);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      min-height: 500px;
+      background: radial-gradient(ellipse at center 50%, #ffffff 0%, #f1f5f9 100%);
+      border: 1px solid var(--border-subtle);
       border-radius: 16px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       padding: 2rem 1.5rem;
-      box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.5);
+      box-shadow: inset 0 2px 8px rgba(15, 23, 42, 0.03);
       overflow: hidden;
     }
 
@@ -645,27 +614,27 @@
       top: 1rem;
       left: 1.2rem;
       z-index: 10;
-      background: rgba(15, 23, 42, 0.88);
+      background: rgba(255, 255, 255, 0.94);
       backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      border: 1px solid var(--border-subtle);
       border-radius: 100px;
       padding: 0.32rem 0.85rem;
       display: flex;
       align-items: center;
       gap: 0.45rem;
       font-size: 0.72rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
     }
 
     .quadrant-tag-pill {
       font-weight: 800;
-      color: #34d399;
+      color: var(--green-deep);
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
 
     .quadrant-title-pill {
-      color: #e2e8f0;
+      color: var(--text-muted);
       font-weight: 600;
     }
 
@@ -674,15 +643,16 @@
       top: 1rem;
       right: 1.2rem;
       z-index: 10;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid var(--border-subtle);
       border-radius: 100px;
       padding: 0.32rem 0.8rem;
       font-size: 0.68rem;
-      color: #94a3b8;
+      color: var(--text-dim);
       display: flex;
       align-items: center;
       gap: 0.35rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
     }
 
     /* Views */
@@ -692,7 +662,7 @@
       height: 100%;
       align-items: center;
       justify-content: center;
-      animation: fadeInStep 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+      animation: fadeInStep 0.28s ease;
     }
 
     .step-canvas-view.active {
@@ -710,17 +680,17 @@
       align-items: center;
       justify-content: center;
       position: relative;
-      box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.65), 0 10px 25px -5px rgba(0, 77, 44, 0.25);
+      box-shadow: 0 15px 35px -5px rgba(15, 23, 42, 0.15), 0 2px 10px rgba(0, 77, 44, 0.08);
       border-radius: 6px;
       overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.18);
+      border: 1px solid #cbd5e1;
       background: #ffffff;
       max-width: 100%;
       transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
     .paper-frame:hover {
-      box-shadow: 0 30px 70px -10px rgba(0, 0, 0, 0.75), 0 12px 30px -5px rgba(16, 185, 129, 0.3);
+      box-shadow: 0 20px 45px -5px rgba(15, 23, 42, 0.2), 0 4px 14px rgba(0, 77, 44, 0.12);
     }
 
     /* Proporciones exactas: Cuadrante de 9,23 cm ancho × 9,52 cm alto (Aspect-Ratio ~0.97) */
@@ -733,40 +703,41 @@
       background-position: center;
       cursor: pointer;
       transition: filter 0.2s ease;
+      background-color: #ffffff;
     }
 
     #canvasStep1 .panel-slice-item,
     #canvasStep4 .panel-slice-item {
-      height: 420px;
+      height: 410px;
       aspect-ratio: 9.23 / 9.52;
     }
 
     #canvasStep2 .panel-slice-item {
-      height: 370px;
+      height: 365px;
       aspect-ratio: 9.23 / 9.52;
     }
 
     #canvasStep3 .panel-slice-item {
-      height: 310px;
+      height: 300px;
       aspect-ratio: 9.23 / 9.52;
     }
 
     .panel-slice-item:hover {
-      filter: brightness(1.04);
+      filter: brightness(1.03);
     }
 
     .panel-fold-divider {
       position: absolute;
       top: 0;
       bottom: 0;
-      width: 18px;
+      width: 16px;
       z-index: 10;
       pointer-events: none;
     }
 
     .fold-edge-left {
-      right: -9px;
-      background: linear-gradient(90deg, rgba(0,0,0,0.18), transparent 40%, rgba(0,0,0,0.22) 50%, rgba(255,255,255,0.18) 60%, transparent);
+      right: -8px;
+      background: linear-gradient(90deg, rgba(0,0,0,0.12), transparent 40%, rgba(0,0,0,0.15) 50%, rgba(255,255,255,0.4) 60%, transparent);
     }
 
     .panel-label-pill {
@@ -774,9 +745,9 @@
       bottom: 10px;
       left: 50%;
       transform: translateX(-50%);
-      background: rgba(15, 23, 42, 0.9);
+      background: rgba(15, 23, 42, 0.88);
       backdrop-filter: blur(6px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
       color: #ffffff;
       font-size: 0.64rem;
       font-weight: 800;
@@ -784,18 +755,18 @@
       border-radius: 100px;
       white-space: nowrap;
       pointer-events: none;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-      opacity: 0.9;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      opacity: 0.92;
     }
 
     .panel-slice-item:hover .panel-label-pill {
       background: var(--green-primary);
-      border-color: #34d399;
+      border-color: #ffffff;
     }
 
     /* Narrative Card */
     .narrative-footer-card {
-      background: rgba(8, 13, 22, 0.6);
+      background: #f8fafc;
       border: 1px solid var(--border-subtle);
       border-radius: 14px;
       padding: 0.95rem 1.4rem;
@@ -814,7 +785,7 @@
     .narrative-title-row {
       font-size: 0.88rem;
       font-weight: 800;
-      color: #34d399;
+      color: var(--green-deep);
       display: flex;
       align-items: center;
       gap: 0.45rem;
@@ -823,19 +794,19 @@
     .narrative-body-text {
       font-size: 0.82rem;
       color: var(--text-muted);
-      line-height: 1.45;
+      line-height: 1.5;
       max-width: 920px;
     }
 
     .narrative-body-text strong {
-      color: #ffffff;
+      color: var(--text-main);
     }
 
     .narrative-step-btn {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      background: var(--green-primary);
       color: #ffffff;
       font-size: 0.82rem;
       font-weight: 800;
@@ -843,24 +814,24 @@
       border-radius: 8px;
       border: none;
       cursor: pointer;
-      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+      box-shadow: 0 2px 8px rgba(0, 77, 44, 0.25);
       transition: all 0.2s;
       white-space: nowrap;
       flex-shrink: 0;
     }
 
     .narrative-step-btn:hover {
-      background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+      background: #003820;
       transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(16, 185, 129, 0.5);
+      box-shadow: 0 4px 14px rgba(0, 77, 44, 0.35);
     }
 
     /* Modal Zoom */
     .zoom-modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(10, 15, 26, 0.92);
-      backdrop-filter: blur(15px);
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(12px);
       z-index: 100;
       display: flex;
       align-items: center;
@@ -877,8 +848,8 @@
     }
 
     .zoom-modal-card {
-      background: rgba(15, 23, 42, 0.95);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
       border-radius: 16px;
       padding: 1.2rem;
       display: flex;
@@ -887,7 +858,7 @@
       gap: 0.8rem;
       max-height: 94vh;
       max-width: 90vw;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
     }
 
     .zoom-modal-header {
@@ -895,20 +866,20 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid var(--border-subtle);
       padding-bottom: 0.6rem;
     }
 
     .zoom-modal-title {
       font-size: 0.95rem;
       font-weight: 800;
-      color: #34d399;
+      color: var(--green-deep);
     }
 
     .zoom-close-btn {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: #ffffff;
+      background: #f1f5f9;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
       width: 32px;
       height: 32px;
       border-radius: 50%;
@@ -921,7 +892,7 @@
     }
 
     .zoom-close-btn:hover {
-      background: rgba(255, 255, 255, 0.25);
+      background: #e2e8f0;
     }
 
     .zoom-preview-img {
@@ -929,13 +900,14 @@
       max-width: 82vw;
       object-fit: contain;
       border-radius: 6px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      border: 1px solid #e2e8f0;
     }
 
     /* Footer */
     .landing-footer {
       border-top: 1px solid var(--border-subtle);
-      background: rgba(8, 13, 22, 0.9);
+      background: #ffffff;
       padding: 2rem;
       text-align: center;
       color: var(--text-dim);
@@ -946,9 +918,9 @@
     @media (max-width: 1024px) {
       .hero-section { grid-template-columns: 1fr; }
       .values-grid { grid-template-columns: repeat(2, 1fr); }
-      #canvasStep1 .panel-slice-item, #canvasStep4 .panel-slice-item { height: 360px; }
-      #canvasStep2 .panel-slice-item { height: 320px; }
-      #canvasStep3 .panel-slice-item { height: 240px; }
+      #canvasStep1 .panel-slice-item, #canvasStep4 .panel-slice-item { height: 350px; }
+      #canvasStep2 .panel-slice-item { height: 310px; }
+      #canvasStep3 .panel-slice-item { height: 230px; }
     }
 
     @media (max-width: 768px) {
@@ -960,23 +932,15 @@
       .step-tab-sub { display: none; }
       .status-quadrant-indicator { font-size: 0.65rem; }
       .zoom-hint-badge { display: none; }
-      #canvasStep1 .panel-slice-item, #canvasStep4 .panel-slice-item { height: 280px; }
-      #canvasStep2 .panel-slice-item { height: 200px; }
-      #canvasStep3 .panel-slice-item { height: 120px; }
+      #canvasStep1 .panel-slice-item, #canvasStep4 .panel-slice-item { height: 270px; }
+      #canvasStep2 .panel-slice-item { height: 190px; }
+      #canvasStep3 .panel-slice-item { height: 115px; }
       .narrative-footer-card { flex-direction: column; align-items: stretch; }
       .narrative-step-btn { width: 100%; justify-content: center; }
     }
   </style>
 </head>
 <body>
-
-  <!-- Background Ambient Glow -->
-  <div class="ambient-bg">
-    <div class="ambient-orb orb-1"></div>
-    <div class="ambient-orb orb-2"></div>
-    <div class="ambient-orb orb-3"></div>
-    <div class="grid-overlay"></div>
-  </div>
 
   <!-- Header Superior -->
   <header class="landing-header">
@@ -1006,7 +970,7 @@
   <div class="landing-wrapper">
 
     <!-- ============================================================
-         SECCIÓN 1: HERO BANNER & SIMULACIÓN EN ENTREVISTA
+         SECCIÓN 1: HERO BANNER & MOCKUP 3D DEL TRÍPTICO CERRADO
          ============================================================ -->
     <section class="hero-section">
       
@@ -1015,11 +979,11 @@
         
         <h1 class="hero-title">
           El Tríptico Institucional:<br>
-          <span class="highlight">Calidez Humana y Puente Digital</span>
+          <span class="highlight-blue">Calidez Humana y Puente Digital</span>
         </h1>
 
         <p class="hero-lead-text">
-          Diseñado con apertura tipo libro y formato compacto de mano (9,23 × 9,52 cm cerrado / 1/2 A4), este folleto está concebido para entregarse en mano a cada familia durante su entrevista personalizada, transmitiendo los más de 50 años de prestigio de la institución y conectando instantáneamente con la plataforma digital de admisiones.
+          Diseñado con apertura tipo libro y formato compacto de mano (9,23 × 9,52 cm cerrado / 27,7 × 9,52 cm extendido), este folleto está concebido para entregarse en mano a cada familia durante su entrevista personalizada, transmitiendo los más de 50 años de prestigio de la institución y conectando instantáneamente con la plataforma digital de admisiones.
         </p>
 
         <div class="hero-stats-row">
@@ -1029,7 +993,7 @@
           </div>
           <div class="hero-stat-card">
             <span class="stat-number">1963</span>
-            <span class="stat-label">Sello histórico permanente y atemporal</span>
+            <span class="stat-label">Sello histórico permanente "desde 1963"</span>
           </div>
           <div class="hero-stat-card">
             <span class="stat-number">100%</span>
@@ -1038,14 +1002,16 @@
         </div>
       </div>
 
-      <div class="hero-visual-card">
-        <img src="images/hero_entrega_triptico.jpg" alt="Simulación de entrega del tríptico a una familia en una entrevista de admisiones" class="hero-img" />
-        <div class="hero-img-caption">
-          <div class="caption-info">
-            <span class="caption-title">Entrega en Mano en la Entrevista Directiva</span>
-            <span class="caption-desc">Formato ergonómico de lectura progresiva y toque distinguido</span>
+      <!-- Mockup 3D Estático con Sutil Inclinación -->
+      <div class="hero-mockup-stage">
+        <div class="mockup-3d-wrapper">
+          <div class="mockup-closed-brochure" title="Folleto Cerrado: Portada Frontal (9,23 × 9,52 cm)">
+            <div class="mockup-shadow-plane"></div>
           </div>
-          <span class="caption-badge-pill">Enfoque Phygital</span>
+        </div>
+        <div class="mockup-caption-bar">
+          <span class="mockup-tag-label">Folleto Cerrado (Frente)</span>
+          <span class="mockup-size-label">• Formato 9,23 cm × 9,52 cm</span>
         </div>
       </div>
 
@@ -1079,7 +1045,7 @@
           <div class="value-icon-box">🌿</div>
           <div>
             <h3>Ergonomía & Ahorro 50%</h3>
-            <p>Formato de 1/2 A4 vertical que rinde 2 folletos listos por pliego impreso, eliminando el tercio desaprovechado de líneas manuscritas.</p>
+            <p>Formato compacto (9,23 × 9,52 cm cerrado / 27,7 × 9,52 cm abierto) que rinde 2 folletos listos por pliego impreso sin desperdicio.</p>
           </div>
           <div class="value-card-footer">Cero Desperdicio de Papel</div>
         </div>
@@ -1087,7 +1053,7 @@
         <div class="value-card">
           <div class="value-icon-box">🏛️</div>
           <div>
-            <h3>Sello "Since 1963"</h3>
+            <h3>Sello "desde 1963"</h3>
             <p>Reemplaza los sellos cerrados de 50 o 60 años por una marca atemporal continua que nunca vence, protegiendo el presupuesto escolar.</p>
           </div>
           <div class="value-card-footer">Inversión Perdurante</div>
@@ -1135,7 +1101,7 @@
 
             <span class="step-arrow-divider">→</span>
 
-            <button class="step-tab-btn" data-step="2" id="tabStep2" title="Paso 2: Primera Apertura - Solapa 'Desde 1963' y QR">
+            <button class="step-tab-btn" data-step="2" id="tabStep2" title="Paso 2: Primera Apertura - Solapa 'desde 1963' y QR">
               <span class="step-badge">2</span>
               <div class="step-tab-text">
                 <span class="step-tab-title">Primera Apertura</span>
@@ -1194,7 +1160,7 @@
                PASO 1: FOLLETO CERRADO (FRENTE / PORTADA)
                ============================================================ -->
           <div class="step-canvas-view active" id="canvasStep1">
-            <div class="paper-frame" title="Folleto Cerrado: Portada Frontal">
+            <div class="paper-frame" title="Folleto Cerrado: Portada Frontal (9,23 × 9,52 cm)">
               <div class="panel-slice-item" style="background-image: url('images/triptico/1_tapa_portada.png');" onclick="openZoom('images/triptico/1_tapa_portada.png', '1. TAPA — Portada Institucional')">
                 <span class="panel-label-pill">1. Tapa / Portada</span>
               </div>
@@ -1222,7 +1188,7 @@
                PASO 3: SEGUNDA APERTURA (INTERIOR COMPLETO DE LOS 3 NIVELES)
                ============================================================ -->
           <div class="step-canvas-view" id="canvasStep3">
-            <div class="paper-frame" title="Interior Desplegado Completo: Admisiones, Inicial/Primario y Secundario">
+            <div class="paper-frame" title="Interior Desplegado Completo: Admisiones, Inicial/Primario y Secundario (27,7 × 9,52 cm)">
               <!-- Izquierda: 2. Contracara Tapa -->
               <div class="panel-slice-item" style="background-image: url('images/triptico/2_contracara_qr.png');" onclick="openZoom('images/triptico/2_contracara_qr.png', '2. CONTRACARA TAPA — Admisiones & QR')">
                 <span class="panel-label-pill">2. Admisiones & QR</span>
@@ -1244,7 +1210,7 @@
                PASO 4: FOLLETO CERRADO DADO VUELTA (OBSERVACIONES & CONTACTO)
                ============================================================ -->
           <div class="step-canvas-view" id="canvasStep4">
-            <div class="paper-frame" title="Dorso Posterior del Folleto Cerrado: Observaciones y Datos de Contacto">
+            <div class="paper-frame" title="Dorso Posterior del Folleto Cerrado: Observaciones y Datos de Contacto (9,23 × 9,52 cm)">
               <div class="panel-slice-item" style="background-image: url('images/triptico/centro_trasero_observaciones.png');" onclick="openZoom('images/triptico/centro_trasero_observaciones.png', 'CENTRO TRASERO — Observaciones & Datos de Contacto')">
                 <span class="panel-label-pill">Centro Trasero — Observaciones & Contacto</span>
               </div>
@@ -1260,7 +1226,7 @@
               <span>●</span> <span id="narrativeTitleText">Paso 1 — Folleto Cerrado (Vista Frontal)</span>
             </div>
             <p class="narrative-body-text" id="narrativeBodyText">
-              Muestra el <strong>Cuadrante Inferior Derecho (1. TAPA)</strong> con el escudo oficial, el lema institucional <em>"Virtutis Gloria Merces"</em>, los tres niveles educativos (Inicial, Primario y Secundario) y el dominio oficial parishrobertson.com.ar en formato estilizado 1/2 A4 (105 × 297 mm).
+              Muestra el <strong>Cuadrante Inferior Derecho (1. TAPA)</strong> con el escudo oficial, el lema institucional <em>"Virtutis Gloria Merces"</em>, los tres niveles educativos (Inicial, Primario y Secundario) y el dominio oficial parishrobertson.com.ar en formato estilizado (9,23 × 9,52 cm).
             </p>
           </div>
 
@@ -1302,9 +1268,9 @@
 
       const stepDetails = {
         1: {
-          quadrant: '1. TAPA — Portada Frontal Exterior (1/2 A4)',
+          quadrant: '1. TAPA — Portada Frontal Exterior (9,23 × 9,52 cm)',
           title: 'Paso 1 — Folleto Cerrado (Vista Frontal)',
-          desc: 'Muestra el <strong>Cuadrante Inferior Derecho (1. TAPA)</strong> con el escudo oficial, el lema institucional <em>"Virtutis Gloria Merces"</em>, los tres niveles educativos (Inicial, Primario y Secundario) y el dominio oficial parishrobertson.com.ar en formato estilizado 1/2 A4.',
+          desc: 'Muestra el <strong>Cuadrante Inferior Derecho (1. TAPA)</strong> con el escudo oficial, el lema institucional <em>"Virtutis Gloria Merces"</em>, los tres niveles educativos (Inicial, Primario y Secundario) y el dominio oficial parishrobertson.com.ar en formato compacto.',
           cta: 'Abrir Tapa (Paso 2)'
         },
         2: {
@@ -1314,13 +1280,13 @@
           cta: 'Desplegar Niveles (Paso 3)'
         },
         3: {
-          quadrant: 'INTERIOR COMPLETO — 2. QR + 4. Inicial/Primario + 5. Secundario',
+          quadrant: 'INTERIOR COMPLETO — 2. QR + 4. Inicial/Primario + 5. Secundario (27,7 × 9,52 cm)',
           title: 'Paso 3 — Segunda Apertura (Despliegue Interior de Niveles)',
           desc: 'Al desplegar la solapa "desde 1963" hacia la derecha, se revelan los cuadrantes de los niveles educativos: <strong>4. Nivel Inicial & Primario</strong> (talleres, huerta, ajedrez y doble escolaridad) y <strong>5. Nivel Secundario</strong> (Ciclos Básico/Superior, orientaciones y certificaciones Oxford & Cambridge).',
           cta: 'Ver Dorso con Observaciones (Paso 4)'
         },
         4: {
-          quadrant: 'CENTRO TRASERO — Observaciones, Dirección & Contacto',
+          quadrant: 'CENTRO TRASERO — Observaciones, Dirección & Contacto (9,23 × 9,52 cm)',
           title: 'Paso 4 — Folleto Cerrado Dado Vuelta (Reverso / Observaciones)',
           desc: 'Al dar vuelta el folleto cerrado, se aprecia el <strong>Centro Trasero</strong> con el espacio de Observaciones, la dirección oficial en Monte Grande (Parish Robertson 159), líneas telefónicas (4296-4446) y canales directos de secretaría.',
           cta: 'Volver a Portada (Paso 1)'
@@ -1360,7 +1326,7 @@
           osc.type = 'sine';
           osc.frequency.setValueAtTime(240, ctx.currentTime);
           osc.frequency.exponentialRampToValueAtTime(80, ctx.currentTime + 0.08);
-          gain.gain.setValueAtTime(0.025, ctx.currentTime);
+          gain.gain.setValueAtTime(0.02, ctx.currentTime);
           gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.08);
           osc.connect(gain);
           gain.connect(ctx.destination);
