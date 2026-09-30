@@ -447,6 +447,150 @@
       border-top: 1px solid #f1f5f9;
     }
 
+    /* Tarjeta Estratégica: Transición Cromática Armoniosa */
+    .chromatic-transition-card {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-left: 5px solid var(--navy-primary);
+      border-radius: 16px;
+      padding: 1.6rem 1.8rem;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+
+    .chromatic-transition-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--navy-primary);
+      background: var(--navy-soft);
+      border: 1px solid #bfdbfe;
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+      width: fit-content;
+    }
+
+    .chromatic-transition-content {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .chromatic-transition-text h3 {
+      font-size: 1.18rem;
+      font-weight: 800;
+      color: var(--green-deep);
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+
+    .chromatic-transition-text p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 0.8rem;
+    }
+
+    .chromatic-pillars-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      margin-bottom: 0.9rem;
+      padding-left: 0.2rem;
+    }
+
+    .chromatic-pillar-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      font-size: 0.84rem;
+      color: var(--text-main);
+      line-height: 1.45;
+    }
+
+    .chromatic-pillar-item .pillar-bullet {
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .chromatic-conclusion-note {
+      font-size: 0.82rem;
+      color: var(--navy-primary);
+      background: #f8fafc;
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 0.65rem 0.9rem;
+      margin-bottom: 0 !important;
+    }
+
+    .chromatic-palette-visual {
+      background: #f8fafc;
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.9rem;
+      text-align: center;
+    }
+
+    .palette-swatch-group {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.9rem 1.2rem;
+      width: 100%;
+    }
+
+    .swatch-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .swatch-circle {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      transition: transform 0.2s ease;
+    }
+
+    .swatch-circle:hover {
+      transform: scale(1.1);
+    }
+
+    .swatch-item span {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .palette-caption {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 0.6rem;
+      width: 100%;
+    }
+
+    @media (max-width: 900px) {
+      .chromatic-transition-content {
+        grid-template-columns: 1fr;
+      }
+    }
+
     /* ============================================================
        SECCIÓN 3: VISOR INTERACTIVO SECUENCIAL DEL TRÍPTICO
        ============================================================ */
@@ -1014,8 +1158,61 @@
         <span class="section-subtitle-tag">Optimización Gráfica & Estratégica</span>
         <h2 class="section-title">Pilares de Valor del Nuevo Tríptico</h2>
         <p class="section-desc">
-          Superando las fallas del formato anterior (desperdicio de espacio en blanco, vencimiento de aniversarios y desconexión digital), la nueva pieza optimiza cada milímetro cuadrado.
+          Superando las fallas del formato anterior (desperdicio de espacio en blanco, vencimiento de aniversarios y desconexión digital), la nueva pieza optimiza cada milímetro cuadrado y alinea la identidad institucional.
         </p>
+      </div>
+
+      <!-- Tarjeta Estratégica de Transición Cromática Armoniosa -->
+      <div class="chromatic-transition-card">
+        <div class="chromatic-transition-badge">
+          <span>🎨 Transición Cromática Armoniosa & Unificación de Marca</span>
+        </div>
+        <div class="chromatic-transition-content">
+          <div class="chromatic-transition-text">
+            <h3>Del Verde Irlandés Histórico a la Identidad Viva del Colegio</h3>
+            <p>
+              Toda la papelería anterior del Instituto se imprimía tradicionalmente en <strong>verde irlandés</strong>. Como todo cambio de identidad en una institución con más de 50 años de historia representa una transición sensible y con potencial fricción interna, la propuesta no plantea una ruptura arbitraria, sino un <strong>alineamiento armónico con lo que el colegio ya comunica y vive en su realidad cotidiana</strong>:
+            </p>
+            <div class="chromatic-pillars-list">
+              <div class="chromatic-pillar-item">
+                <span class="pillar-bullet">🧥</span>
+                <div><strong>Indumentaria escolar de los alumnos:</strong> Azul marino clásico, detalles en tartán/escocés y escudo bordado.</div>
+              </div>
+              <div class="chromatic-pillar-item">
+                <span class="pillar-bullet">💻</span>
+                <div><strong>Ecosistema digital y web:</strong> Presencia online en azul institucional, contrastes limpios y tipografía contemporánea.</div>
+              </div>
+              <div class="chromatic-pillar-item">
+                <span class="pillar-bullet">📚</span>
+                <div><strong>Materiales didácticos y espacios formativos:</strong> Formatos dinámicos, fondos luminosos y acentos cromáticos del escudo.</div>
+              </div>
+            </div>
+            <p class="chromatic-conclusion-note">
+              <em>El resultado es una modernización armónica que elimina la disonancia visual y unifica el material en mano de las familias con la vivencia real en el aula y los canales digitales.</em>
+            </p>
+          </div>
+          <div class="chromatic-palette-visual">
+            <div class="palette-swatch-group">
+              <div class="swatch-item">
+                <div class="swatch-circle" style="background: #1e3a8a; border: 2px solid #ffffff; box-shadow: 0 2px 8px rgba(30,58,138,0.35);"></div>
+                <span>Azul Marino</span>
+              </div>
+              <div class="swatch-item">
+                <div class="swatch-circle" style="background: #eab308; border: 2px solid #ffffff; box-shadow: 0 2px 8px rgba(234,179,8,0.35);"></div>
+                <span>Dorado Oficial</span>
+              </div>
+              <div class="swatch-item">
+                <div class="swatch-circle" style="background: #b91c1c; border: 2px solid #ffffff; box-shadow: 0 2px 8px rgba(185,28,28,0.35);"></div>
+                <span>Acento Carmín</span>
+              </div>
+              <div class="swatch-item">
+                <div class="swatch-circle" style="background: #004d2c; border: 2px solid #ffffff; box-shadow: 0 2px 8px rgba(0,77,44,0.35);"></div>
+                <span>Verde Raíz</span>
+              </div>
+            </div>
+            <div class="palette-caption">Paleta Institucional Viva</div>
+          </div>
+        </div>
       </div>
 
       <div class="values-grid">
