@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow, noarchive" />
+  <title>ALICARI // Animate Edition — 20 Años en Diseño Multimedia, UX/UI & Motion</title>
+  <meta name="description" content="Portfolio interactivo de Agustín Licari (ALICARI). Edición cinematográfica orquestada con Anime.js. Dos décadas creando interfaces, sistemas de diseño y piezas audiovisuales." />
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="ALICARI // Animate Edition — Diseño Multimedia & UX/UI" />
+  <meta property="og:description" content="Edición cinematográfica orquestada con Anime.js. 20 años de oficio en diseño interactivo y dirección de arte." />
+  <meta property="og:image" content="../images/screenshot-home.jpg" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="../fav.png" />
+  <link rel="apple-touch-icon" href="../fav.png" />
+
+  <!-- Typography: Google Fonts (Outfit & Space Mono) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/animate-theme.css" />
+  <link rel="stylesheet" href="css/components.css" />
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "ALICARI // Animate Edition",
+    "url": "https://alicari.com.ar/animate/",
+    "logo": "https://alicari.com.ar/images/logo-alicari-05.svg",
+    "image": "https://alicari.com.ar/images/about-me.png",
+    "description": "Estudio de Diseño Multimedia, UX/UI, Branding y Desarrollo Front-End con 20 años de trayectoria profesional.",
+    "founder": {
+      "@type": "Person",
+      "name": "Agustín Licari",
+      "jobTitle": "Lead Multimedia & UX/UI Designer"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Buenos Aires",
+      "addressCountry": "AR"
+    }
+  }
+  </script>
+</head>
+
+<body class="is-loading">
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       0. KINETIC CURSOR (DESKTOP)
+       ═══════════════════════════════════════════════════════════════ -->
+  <div id="kinetic-cursor" aria-hidden="true"></div>
+  <div id="cursor-follower" aria-hidden="true">
+    <span id="cursor-badge"></span>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       1. PRELOADER & CINEMATIC INTRO
+       ═══════════════════════════════════════════════════════════════ -->
+  <div id="preloader-screen" role="dialog" aria-modal="true" aria-label="Cargando experiencia multimedia">
+    <div id="preloader-content">
+      <svg class="preloader-svg" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+        <path id="preloader-logo-path" d="M560,180h0c-21.68,0-40.68,11.5-51.22,28.74-32.08-18.29-69.21-28.74-108.78-28.74-121.5,0-220,98.5-220,220s98.5,220,220,220c39.57,0,76.7-10.45,108.78-28.74,10.54,17.24,29.54,28.74,51.22,28.74h0c33.14,0,60-26.86,60-60V240c0-33.14-26.86-60-60-60ZM394.78,491.13c-47.25,0-85.56-38.31-85.56-85.56s38.31-85.56,85.56-85.56,85.56,38.31,85.56,85.56-38.3,85.56-85.56,85.56Z"/>
+      </svg>
+      <div class="preloader-title">
+        <span>A</span><span>L</span><span>I</span><span>C</span><span>A</span><span>R</span><span>I</span>
+      </div>
+      <p class="preloader-tagline">20 Años de Oficio Multimedia & UX/UI</p>
+      <div class="preloader-bar-track">
+        <div id="preloader-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       BACKGROUND CANVAS & GLOW
+       ═══════════════════════════════════════════════════════════════ -->
+  <canvas id="kinetic-mesh-canvas" aria-hidden="true"></canvas>
+  <div class="ambient-glow-mesh" aria-hidden="true">
+    <div class="ambient-glow-orb ambient-glow-orb--top hero-ambient-glow"></div>
+    <div class="ambient-glow-orb ambient-glow-orb--bottom"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       2. TOP NAVIGATION BAR
+       ═══════════════════════════════════════════════════════════════ -->
+  <header>
+    <nav class="site-nav" id="site-nav" role="navigation" aria-label="Navegación principal">
+      <div class="container nav__inner">
+
+        <!-- Logo SVG -->
+        <a href="#inicio" class="nav__logo-link" aria-label="ALICARI - Inicio" data-magnetic>
+          <svg class="nav__logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2600 800">
+            <path fill="#e50914" d="M600,260h0c-21.68,0-40.68,11.5-51.22,28.74-32.08-18.29-69.21-28.74-108.78-28.74-121.5,0-220,98.5-220,220s98.5,220,220,220c39.57,0,76.7-10.45,108.78-28.74,10.54,17.24,29.54,28.74,51.22,28.74h0c33.14,0,60-26.86,60-60v-320c0-33.14-26.86-60-60-60ZM434.78,571.13c-47.25,0-85.56-38.31-85.56-85.56s38.31-85.56,85.56-85.56,85.56,38.31,85.56,85.56-38.3,85.56-85.56,85.56Z"/>
+            <path fill="#ffffff" d="M1800,260h0c-21.91,0-41.07,11.75-51.54,29.29-32.12-18.45-69.35-29.01-109.03-29.01-121.18,0-219.42,98.37-219.42,219.72s98.24,219.72,219.42,219.72c39.69,0,76.91-10.55,109.03-29.01,10.47,17.54,29.63,29.29,51.54,29.29h0c33.14,0,60-26.86,60-60v-320c0-33.14-26.86-60-60-60ZM1640,580.27c-55.23,0-100-44.83-100-100.14s44.77-100.14,100-100.14,100,44.83,100,100.14-44.77,100.14-100,100.14Z"/>
+            <rect fill="#ffffff" x="700" y="100" width="120" height="600" rx="60" ry="60"/>
+            <rect fill="#ffffff" x="860" y="260" width="120" height="440" rx="60" ry="60"/>
+            <rect fill="#ffffff" x="860" y="100" width="120" height="120" rx="60" ry="60"/>
+            <rect fill="#ffffff" x="2260" y="260.28" width="120" height="439.72" rx="60" ry="60"/>
+            <rect fill="#ffffff" x="2260" y="100" width="120" height="120" rx="59" ry="59"/>
+            <path fill="#ffffff" d="M2200.32,304.32c-8.13-6.54-16.79-12.46-25.9-17.68-29.52-16.94-63.77-26.64-100.3-26.64-.09,0-.17,0-.25,0-26.46.03-51.72,5.16-74.85,14.43-10.49-8.99-24.11-14.44-39.01-14.44h0c-33.14,0-60,26.86-60,60v320c0,33.14,26.86,60,60,60h0c33.14,0,60-26.86,60-60v-239.21c4.2-3.81,8.8-7.19,13.74-10.05,11.8-6.83,25.5-10.78,40.12-10.82.09,0,.17,0,.25,0,14.57,0,28.21,3.87,39.99,10.61.12.07.24.14.37.21,24.4,14.12,54.43,14.55,78.88.51h0c32.3-18.55,35.97-63.61,6.96-86.92Z"/>
+            <path fill="#ffffff" d="M1346.25,561.51c-16.11-9.5-38.63-11.59-56.53-4.94,0,0-9.52,4.3-14.25,6.06-55.47,20.66-122.48-21.82-120.82-82.97-.81-65.73,74.84-108.83,132.66-76.88.6.33,1.94.77,1.94.77,71.01,24.68,123.7-64.93,66.38-112.57,0,0-10.23-7.57-15.84-10.26-141.41-67.99-323.35,39.88-319.74,198.95-3.81,154.79,169.16,263.59,310.29,203.54,5.33-2.27,10.61-4.78,15.84-7.53l.06.1c3.42-1.99,9.77-6.77,9.77-6.77,35.46-27.71,30.06-86.3-9.77-107.49Z"/>
+          </svg>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <ul class="nav__menu">
+          <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+          <li><a href="#trayectoria" class="nav-link">20 Años</a></li>
+          <li><a href="#filosofia" class="nav-link">Filosofía</a></li>
+          <li><a href="#contacto" class="nav-link js-contact-trigger">Contacto</a></li>
+        </ul>
+
+        <!-- HUD Actions -->
+        <div class="nav__actions">
+          <button class="audio-toggle-btn" id="audio-toggle-btn" aria-label="Alternar audio háptico" data-magnetic>
+            <div class="audio-wave">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="audio-toggle__text">AUDIO ON</span>
+          </button>
+
+          <button class="nav__cta-btn js-contact-trigger" data-magnetic>
+            Hablemos
+          </button>
+
+          <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Abrir menú de navegación">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+
+      </div>
+    </nav>
+
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-drawer" id="mobile-menu-drawer">
+      <a href="#portfolio">Portfolio Completo</a>
+      <a href="#trayectoria">Trayectoria (20 Años)</a>
+      <a href="#filosofia">Filosofía & Pilares</a>
+      <a href="#contacto" class="js-contact-trigger">Contacto Directo</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ═══════════════════════════════════════════════════════════════
+         3. HERO SECTION (KINETIC TYPOGRAPHY & SHOWCASE)
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="hero-section" id="inicio">
+      <div class="container">
+        <div class="hero-grid">
+
+          <!-- Left Column: Kinetic Text -->
+          <div class="hero-content">
+            <div class="hero-badge">
+              <span class="hero-badge__dot"></span>
+              <span>20 Años Forjando Experiencias Digitales</span>
+            </div>
+
+            <h1 class="hero-title">
+              <span class="word">Diseño</span>
+              <span class="word">Multimedia,</span>
+              <span class="word gradient-text">UX/UI</span>
+              <span class="word">&</span>
+              <span class="word highlight-crimson">Motion</span>
+              <span class="word">que</span>
+              <span class="word">Perduran.</span>
+            </h1>
+
+            <p class="hero-description">
+              Desde las interfaces interactivas pioneras de 2004 hasta los sistemas de diseño de alta fidelidad, Anime.js y WebGL de 2026. Dos décadas uniendo psicología cognitiva, dirección de arte e ingeniería front-end sin concesiones.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#portfolio" class="btn btn-primary" data-cursor="EXPLORAR" data-magnetic>
+                Explorar Portfolio (27)
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <path d="M12 5v14M19 12l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <button class="btn btn-secondary js-contact-trigger" data-cursor="CONTACTAR" data-magnetic>
+                Iniciar Conversación
+              </button>
+            </div>
+
+            <!-- Kinetic Metric Counters -->
+            <div class="metric-grid">
+              <div class="metric-card">
+                <div class="metric-card__number has-crimson" data-counter-target="20" data-counter-suffix="+">20+</div>
+                <div class="metric-card__label">Años de Trayectoria</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-card__number" data-counter-target="27" data-counter-suffix="">27</div>
+                <div class="metric-card__label">Casos Seleccionados</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-card__number has-crimson" data-counter-target="100" data-counter-suffix="%">100%</div>
+                <div class="metric-card__label">Pasión por el Detalle</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-card__number" data-counter-target="4" data-counter-suffix="D">4D</div>
+                <div class="metric-card__label">Disciplinas Integradas</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Floating Showcase Panel -->
+          <div class="hero-showcase-panel">
+            <div class="hero-float-card hero-float-card--1">
+              <div class="hero-float-card__header">Motion Engine</div>
+              <div class="hero-float-card__body">
+                <span class="hero-float-card__badge-dot"></span>
+                Anime.js 60fps Orchestration
+              </div>
+            </div>
+
+            <div class="hero-main-card">
+              <img 
+                src="https://mir-s3-cdn-cf.behance.net/projects/max_808/29afee157960549.Y3JvcCwxMDA2LDc4NywyNzgsMA.jpg" 
+                alt="SIMpath Medical Simulation UX/UI" 
+                class="hero-main-card__img" 
+              />
+              <div class="hero-main-card__caption">
+                <div>
+                  <h2 class="hero-main-card__title">SIMpath Medical Systems</h2>
+                  <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 2px;">Arquitectura de Información & UI Design</p>
+                </div>
+                <span class="hero-main-card__tag">Destacado</span>
+              </div>
+            </div>
+
+            <div class="hero-float-card hero-float-card--2">
+              <div class="hero-float-card__header">Disponibilidad</div>
+              <div class="hero-float-card__body">
+                <span class="hero-float-card__badge-dot"></span>
+                Abierto a Nuevos Proyectos
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         4. PORTFOLIO SHOWCASE (27 PROYECTOS VERIFICADOS)
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="showcase-section" id="portfolio">
+      <div class="container">
+        
+        <header class="section-header">
+          <span class="section-tag">Colección Seleccionada</span>
+          <h2 class="section-title">Obras & Proyectos Multimedia</h2>
+          <p class="section-subtitle">
+            Un recorrido por 27 casos reales que abarcan diseño de interfaces complejas, identidad de marca, dirección audiovisual, fotografía escénica y desarrollo web a medida.
+          </p>
+        </header>
+
+        <!-- Category Filter Chips -->
+        <nav class="filter-bar" id="gallery-filters" aria-label="Filtrar proyectos por disciplina"></nav>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid" id="projects-grid"></div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         5. 20-YEAR TRAJECTORY & TIMELINE
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="timeline-section" id="trayectoria">
+      <div class="container">
+
+        <header class="section-header">
+          <span class="section-tag">Dos Décadas de Oficio</span>
+          <h2 class="section-title">Evolución de un Diseñador Multimedia</h2>
+          <p class="section-subtitle">
+            20 años de adaptación constante: de animar píxel a píxel en Flash a codificar sistemas de diseño escalables y experiencias hápticas fluidas.
+          </p>
+        </header>
+
+        <div id="timeline-interactive"></div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         6. FILOSOFÍA & PILARES MULTIMEDIA
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="philosophy-section" id="filosofia">
+      <div class="container">
+
+        <header class="section-header">
+          <span class="section-tag">Metodología Rigurosa</span>
+          <h2 class="section-title">Los 4 Pilares del Diseño de Autor</h2>
+          <p class="section-subtitle">
+            El verdadero diseño multimedia no es adorno superficial: es orquestación entre psicología humana, estética editorial y ejecución técnica implacable.
+          </p>
+        </header>
+
+        <div class="philosophy-grid">
+          
+          <article class="philosophy-card">
+            <div class="philosophy-card__num">01.</div>
+            <h3 class="philosophy-card__title">Arquitectura Cognitiva</h3>
+            <p class="philosophy-card__desc">
+              Investigación previa y mapas mentales. Eliminamos cualquier fricción visual o conceptual para que el usuario navegue con naturalidad intuitiva.
+            </p>
+          </article>
+
+          <article class="philosophy-card">
+            <div class="philosophy-card__num">02.</div>
+            <h3 class="philosophy-card__title">Dirección de Arte Pura</h3>
+            <p class="philosophy-card__desc">
+              Rechazo al diseño genérico. Cada tipografía, contraste cromático y proporción geométrica responde a una identidad con voz propia y memorable.
+            </p>
+          </article>
+
+          <article class="philosophy-card">
+            <div class="philosophy-card__num">03.</div>
+            <h3 class="philosophy-card__title">Cinética & Timing Físico</h3>
+            <p class="philosophy-card__desc">
+              Animación basada en curvas de resorte realistas. Con Anime.js logramos transiciones a 60fps que guían la mirada y recompensan cada interacción.
+            </p>
+          </article>
+
+          <article class="philosophy-card">
+            <div class="philosophy-card__num">04.</div>
+            <h3 class="philosophy-card__title">Ingeniería Front-End</h3>
+            <p class="philosophy-card__desc">
+              Código semántico y liviano. Construcción sin dependencias pesadas, optimizada para SEO, accesibilidad y tiempos de carga instantáneos en cualquier dispositivo.
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       7. LIGHTBOX MODAL (HIGH-RES DETAIL VIEWER)
+       ═══════════════════════════════════════════════════════════════ -->
+  <div class="lightbox-modal" id="lightbox-modal" role="dialog" aria-modal="true" aria-labelledby="lb-title">
+    <div class="lightbox-backdrop"></div>
+    <div class="lightbox-dialog">
+
+      <div class="lightbox-header">
+        <span class="lightbox-counter" id="lb-counter">01 / 27</span>
+        <button class="lightbox-close-btn" id="lb-close" aria-label="Cerrar visor">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="lightbox-body">
+        <div class="lightbox-media">
+          <button class="lightbox-nav-btn lightbox-nav-btn--prev" id="lb-prev" aria-label="Proyecto anterior">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          
+          <img src="" alt="" class="lightbox-img" id="lb-image" />
+
+          <button class="lightbox-nav-btn lightbox-nav-btn--next" id="lb-next" aria-label="Proyecto siguiente">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="lightbox-details">
+          <div class="lightbox-tags">
+            <span class="lightbox-tag" id="lb-category">UX/UI</span>
+            <span class="lightbox-tag" style="background: rgba(255,255,255,0.06); color: #fff;" id="lb-year">2024</span>
+          </div>
+
+          <h3 class="lightbox-title" id="lb-title">Proyecto</h3>
+          <p class="lightbox-role" id="lb-role">Lead Product Designer</p>
+          <p class="lightbox-desc" id="lb-desc">Descripción del proyecto...</p>
+
+          <div class="lightbox-actions">
+            <a href="#" target="_blank" rel="noopener" class="lightbox-behance-btn" id="lb-behance-btn">
+              Ver Proyecto Completo en Behance
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       8. CONTACT DRAWER MODAL
+       ═══════════════════════════════════════════════════════════════ -->
+  <div class="contact-modal" id="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-heading">
+    <div class="contact-modal__backdrop"></div>
+    <div class="contact-modal__panel">
+
+      <button class="contact-modal__close" id="contact-close" aria-label="Cerrar modal de contacto">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <div class="contact-modal__badge">
+        <span class="contact-modal__badge-dot"></span>
+        <span>Disponibilidad Inmediata</span>
+      </div>
+
+      <h2 class="contact-modal__title" id="contact-heading">Construyamos algo extraordinario.</h2>
+      <p class="contact-modal__lead">
+        Cuéntame tu visión, objetivo o desafío digital. Respondo habitualmente en menos de 24 horas hábiles.
+      </p>
+
+      <form class="kinetic-form" id="kinetic-contact-form" novalidate>
+        
+        <div class="form-group">
+          <label class="form-label" for="contact-name">Tu Nombre *</label>
+          <input type="text" id="contact-name" name="name" class="form-input" placeholder="Ej: Mariano Fernández" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="contact-email">Email de Contacto *</label>
+          <input type="email" id="contact-email" name="email" class="form-input" placeholder="ejemplo@empresa.com" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="contact-service">Tipo de Proyecto</label>
+          <select id="contact-service" name="service" class="form-select">
+            <option value="uxui">Diseño de Producto UX/UI & Design System</option>
+            <option value="multimedia">Producción Multimedia & Motion Graphics</option>
+            <option value="branding">Identidad de Marca & Branding Integral</option>
+            <option value="web">Desarrollo Web Front-End de Alta Fidelidad</option>
+            <option value="consultancy">Consultoría / Dirección de Arte Senior</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="contact-message">Detalles del Proyecto *</label>
+          <textarea id="contact-message" name="message" class="form-textarea" placeholder="Descríbeme los objetivos, alcance o plazos estimados..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">
+          Enviar Propuesta
+        </button>
+
+      </form>
+
+      <div class="form-success-box" id="form-success-msg" style="display: none;">
+        <div class="form-success-icon">✓</div>
+        <h3>Mensaje Recibido</h3>
+        <p style="color: var(--text-secondary); margin-top: 0.5rem; font-size: 0.95rem;">
+          Gracias por contactarte. Revisaré tu propuesta con detenimiento y te responderé a la brevedad.
+        </p>
+      </div>
+
+      <!-- Direct Channels -->
+      <div class="contact-direct">
+        <a href="mailto:licari.multimedios@gmail.com" class="contact-direct__item">
+          <div class="contact-direct__icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <span>licari.multimedios@gmail.com</span>
+        </a>
+
+        <a href="https://behance.net/alicari" target="_blank" rel="noopener" class="contact-direct__item">
+          <div class="contact-direct__icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+            </svg>
+          </div>
+          <span>behance.net/alicari (Portfolio Extendido)</span>
+        </a>
+
+        <a href="https://linkedin.com/in/alicari/" target="_blank" rel="noopener" class="contact-direct__item">
+          <div class="contact-direct__icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </div>
+          <span>linkedin.com/in/alicari (Perfil Profesional)</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       9. SITE FOOTER
+       ═══════════════════════════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="container">
+      
+      <div class="footer-grid">
+        
+        <div class="footer-brand">
+          <svg class="footer-brand__logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2600 800">
+            <path fill="#e50914" d="M600,260h0c-21.68,0-40.68,11.5-51.22,28.74-32.08-18.29-69.21-28.74-108.78-28.74-121.5,0-220,98.5-220,220s98.5,220,220,220c39.57,0,76.7-10.45,108.78-28.74,10.54,17.24,29.54,28.74,51.22,28.74h0c33.14,0,60-26.86,60-60v-320c0-33.14-26.86-60-60-60ZM434.78,571.13c-47.25,0-85.56-38.31-85.56-85.56s38.31-85.56,85.56-85.56,85.56,38.31,85.56,85.56-38.3,85.56-85.56,85.56Z"/>
+            <path fill="#ffffff" d="M1800,260h0c-21.91,0-41.07,11.75-51.54,29.29-32.12-18.45-69.35-29.01-109.03-29.01-121.18,0-219.42,98.37-219.42,219.72s98.24,219.72,219.42,219.72c39.69,0,76.91-10.55,109.03-29.01,10.47,17.54,29.63,29.29,51.54,29.29h0c33.14,0,60-26.86,60-60v-320c0-33.14-26.86-60-60-60ZM1640,580.27c-55.23,0-100-44.83-100-100.14s44.77-100.14,100-100.14,100,44.83,100,100.14-44.77,100.14-100,100.14Z"/>
+            <rect fill="#ffffff" x="700" y="100" width="120" height="600" rx="60" ry="60"/>
+            <rect fill="#ffffff" x="860" y="260" width="120" height="440" rx="60" rx="60"/>
+            <rect fill="#ffffff" x="860" y="100" width="120" height="120" rx="60" rx="60"/>
+            <rect fill="#ffffff" x="2260" y="260.28" width="120" height="439.72" rx="60" rx="60"/>
+            <rect fill="#ffffff" x="2260" y="100" width="120" height="120" rx="59" ry="59"/>
+            <path fill="#ffffff" d="M2200.32,304.32c-8.13-6.54-16.79-12.46-25.9-17.68-29.52-16.94-63.77-26.64-100.3-26.64-.09,0-.17,0-.25,0-26.46.03-51.72,5.16-74.85,14.43-10.49-8.99-24.11-14.44-39.01-14.44h0c-33.14,0-60,26.86-60,60v320c0,33.14,26.86,60,60,60h0c33.14,0,60-26.86,60-60v-239.21c4.2-3.81,8.8-7.19,13.74-10.05,11.8-6.83,25.5-10.78,40.12-10.82.09,0,.17,0,.25,0,14.57,0,28.21,3.87,39.99,10.61.12.07.24.14.37.21,24.4,14.12,54.43,14.55,78.88.51h0c32.3-18.55,35.97-63.61,6.96-86.92Z"/>
+            <path fill="#ffffff" d="M1346.25,561.51c-16.11-9.5-38.63-11.59-56.53-4.94,0,0-9.52,4.3-14.25,6.06-55.47,20.66-122.48-21.82-120.82-82.97-.81-65.73,74.84-108.83,132.66-76.88.6.33,1.94.77,1.94.77,71.01,24.68,123.7-64.93,66.38-112.57,0,0-10.23-7.57-15.84-10.26-141.41-67.99-323.35,39.88-319.74,198.95-3.81,154.79,169.16,263.59,310.29,203.54,5.33-2.27,10.61-4.78,15.84-7.53l.06.1c3.42-1.99,9.77-6.77,9.77-6.77,35.46-27.71,30.06-86.3-9.77-107.49Z"/>
+          </svg>
+          <p class="footer-brand__text">
+            Agustín Licari — Diseñador & desarrollador multimedia enfocado en experiencias interactivas y marcas memorables con 20 años de historia.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col__title">Navegación</h4>
+          <ul class="footer-links">
+            <li><a href="#inicio" class="footer-link">Inicio</a></li>
+            <li><a href="#portfolio" class="footer-link">Portfolio de Obras</a></li>
+            <li><a href="#trayectoria" class="footer-link">Trayectoria (20 Años)</a></li>
+            <li><a href="#filosofia" class="footer-link">Filosofía & Proceso</a></li>
+            <li><a href="../about.html" class="footer-link">Sobre Agustín Licari</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col__title">Conectar</h4>
+          <ul class="footer-links">
+            <li><a href="https://behance.net/alicari" target="_blank" rel="noopener" class="footer-link">Behance</a></li>
+            <li><a href="https://linkedin.com/in/alicari/" target="_blank" rel="noopener" class="footer-link">LinkedIn</a></li>
+            <li><a href="mailto:licari.multimedios@gmail.com" class="footer-link">licari.multimedios@gmail.com</a></li>
+            <li><a href="#contacto" class="footer-link js-contact-trigger">Formulario de Contacto</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2004–2026 ALICARI. Todos los derechos reservados. Buenos Aires, Argentina.</p>
+        <p class="footer-credits">Orquestado con <span>Anime.js</span> & Web Audio API.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SCRIPTS (LOCAL ANIME.JS VENDOR + APP MODULES)
+       ═══════════════════════════════════════════════════════════════ -->
+  <script src="js/vendor/anime.min.js"></script>
+  <script type="module" src="js/app.js"></script>
+
+</body>
+
+</html>
