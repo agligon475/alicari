@@ -38,6 +38,7 @@ class AlicariAnimateApp {
     this.bindLightboxEvents();
     this.bindContactEvents();
     this.bindAudioToggle();
+    this.bindNameMorph();
 
     // 4. Run Preloader sequence
     this.anim.playPreloader(() => {
@@ -354,6 +355,42 @@ class AlicariAnimateApp {
       if (e.target.closest('button, .btn, .nav-link')) {
         sound.playClick();
       }
+    });
+  }
+
+  // Name Morphing: agustín licari -> alicari
+  bindNameMorph() {
+    const stage = document.getElementById('name-morph-stage');
+    const replayBtn = document.getElementById('morph-replay-btn');
+    if (!stage) return;
+
+    let hasPlayed = false;
+
+    // Trigger on scroll intersection
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !hasPlayed) {
+          hasPlayed = true;
+          sound.playWhoosh();
+          this.anim.playNameMorph(() => {
+            sound.playChime();
+          });
+        }
+      });
+    }, { threshold: 0.35 });
+
+    observer.observe(stage);
+
+    // Interactive Replay button
+    replayBtn?.addEventListener('click', () => {
+      sound.playClick();
+      this.anim.resetNameMorph();
+      setTimeout(() => {
+        sound.playWhoosh();
+        this.anim.playNameMorph(() => {
+          sound.playChime();
+        });
+      }, 350);
     });
   }
 }

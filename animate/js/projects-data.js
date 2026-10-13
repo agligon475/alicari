@@ -326,8 +326,8 @@ export const PROJECTS_DATA = [
     year: "2024",
     role: "UX/UI & Front-End",
     behanceUrl: "https://www.behance.net/gallery/251227295/Web-ZonaMadrid",
-    thumbUrl: "../images/web-zonamadrid.jpg",
-    fullUrl: "../images/web-zonamadrid.jpg",
+    thumbUrl: "/images/web-zonamadrid.jpg",
+    fullUrl: "/images/web-zonamadrid.jpg",
     description: "Portal web de servicios inmobiliarios y turísticos en Madrid. Arquitectura de filtrado de propiedades, optimización SEO y experiencia fluida multidispositivo."
   },
   {
@@ -339,8 +339,8 @@ export const PROJECTS_DATA = [
     year: "2024",
     role: "Diseño Web & Branding",
     behanceUrl: "https://www.behance.net/gallery/251228853/Branding-Web-Design-Deset-Group",
-    thumbUrl: "../images/web-deset.jpg",
-    fullUrl: "../images/web-deset.jpg",
+    thumbUrl: "/images/web-deset.jpg",
+    fullUrl: "/images/web-deset.jpg",
     description: "Plataforma digital corporativa y manual de identidad para grupo de consultoría estratégica y desarrollo de proyectos industriales de alta gama."
   },
   {
@@ -352,8 +352,8 @@ export const PROJECTS_DATA = [
     year: "2024",
     role: "Lead UX/UI & Prototyping",
     behanceUrl: "https://www.behance.net/gallery/251297457/Web-design-ISG-Seguros",
-    thumbUrl: "../images/web-isg.jpg",
-    fullUrl: "../images/web-isg.jpg",
+    thumbUrl: "/images/web-isg.jpg",
+    fullUrl: "/images/web-isg.jpg",
     description: "Diseño de interfaz y cotizador interactivo de pólizas para broker de seguros. Enfoque centrado en la conversión y la claridad contractual."
   }
 ];

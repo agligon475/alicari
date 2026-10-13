@@ -436,4 +436,115 @@ export class AnimationManager {
       easing: 'easeInOutSine'
     });
   }
+
+  // Kinetic Name Morph: agustín licari -> alicari
+  playNameMorph(onComplete) {
+    if (!this.anime) return;
+
+    const fadeSegment = document.getElementById('morph-fade');
+    const spaceSegment = document.getElementById('morph-space');
+    const letterA = document.getElementById('morph-a');
+    const licariSegment = document.getElementById('morph-licari');
+    const resultBox = document.getElementById('name-morph-result');
+
+    if (!fadeSegment || !spaceSegment || !letterA || !licariSegment) return;
+
+    const tl = this.anime.timeline({
+      easing: 'easeInOutCubic',
+      complete: onComplete
+    });
+
+    // 1. Initial emphasis
+    tl.add({
+      targets: letterA,
+      scale: [1, 1.2, 1],
+      duration: 500,
+      easing: 'easeOutElastic(1, .5)'
+    })
+    // 2. Dissolve "gustín" and collapse width
+    .add({
+      targets: fadeSegment,
+      opacity: [1, 0],
+      maxWidth: ['280px', '0px'],
+      filter: ['blur(0px)', 'blur(10px)'],
+      letterSpacing: ['0.02em', '-0.35em'],
+      duration: 900,
+      easing: 'easeInOutQuart'
+    }, '-=200')
+    // 3. Collapse space
+    .add({
+      targets: spaceSegment,
+      width: ['0.25em', '0em'],
+      duration: 700,
+      easing: 'easeInOutQuart'
+    }, '-=850')
+    // 4. "licari" slides left and fuses with "a"
+    .add({
+      targets: licariSegment,
+      translateX: [0, 0],
+      duration: 300
+    }, '-=400')
+    // 5. Illuminate "a" in brand crimson and pop badge
+    .add({
+      targets: letterA,
+      color: ['#ffffff', '#e50914'],
+      scale: [1, 1.15, 1],
+      duration: 650,
+      easing: 'easeOutElastic(1, .6)',
+      begin: () => {
+        letterA.classList.add('is-active-brand');
+      }
+    }, '-=300')
+    .add({
+      targets: resultBox,
+      opacity: [0, 1],
+      translateY: [20, 0],
+      scale: [0.95, 1],
+      duration: 650,
+      easing: 'easeOutBack'
+    }, '-=450');
+  }
+
+  // Reset Name Morph to initial "agustín licari"
+  resetNameMorph() {
+    if (!this.anime) return;
+
+    const fadeSegment = document.getElementById('morph-fade');
+    const spaceSegment = document.getElementById('morph-space');
+    const letterA = document.getElementById('morph-a');
+    const resultBox = document.getElementById('name-morph-result');
+
+    letterA?.classList.remove('is-active-brand');
+
+    this.anime({
+      targets: [fadeSegment],
+      opacity: 1,
+      maxWidth: '280px',
+      filter: 'blur(0px)',
+      letterSpacing: '0.02em',
+      duration: 450,
+      easing: 'easeOutQuad'
+    });
+
+    this.anime({
+      targets: [spaceSegment],
+      width: '0.25em',
+      duration: 450,
+      easing: 'easeOutQuad'
+    });
+
+    this.anime({
+      targets: [letterA],
+      color: '#ffffff',
+      scale: 1,
+      duration: 350
+    });
+
+    this.anime({
+      targets: [resultBox],
+      opacity: 0,
+      translateY: 20,
+      duration: 350
+    });
+  }
 }

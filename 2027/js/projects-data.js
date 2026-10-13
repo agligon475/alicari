@@ -275,8 +275,8 @@ export const PROJECTS_DATA = [
     categoryName: "Web Design",
     meta: "Web Design · Behance",
     behanceUrl: "https://www.behance.net/gallery/251227295/Web-ZonaMadrid",
-    thumbUrl: "../images/web-zonamadrid.jpg",
-    fullUrl: "../images/web-zonamadrid.jpg",
+    thumbUrl: "/images/web-zonamadrid.jpg",
+    fullUrl: "/images/web-zonamadrid.jpg",
     description: "Diseño y desarrollo de plataforma web inmobiliaria y turística."
   },
   {
@@ -286,8 +286,8 @@ export const PROJECTS_DATA = [
     categoryName: "Web Design",
     meta: "Web Design · Behance",
     behanceUrl: "https://www.behance.net/gallery/251228853/Branding-Web-Design-Deset-Group",
-    thumbUrl: "../images/web-deset.jpg",
-    fullUrl: "../images/web-deset.jpg",
+    thumbUrl: "/images/web-deset.jpg",
+    fullUrl: "/images/web-deset.jpg",
     description: "Transformación digital completa: desde el manual de marca hasta el sitio web corporativo."
   },
   {
@@ -297,8 +297,8 @@ export const PROJECTS_DATA = [
     categoryName: "Web Design",
     meta: "Web Design · Behance",
     behanceUrl: "https://www.behance.net/gallery/251297457/Web-design-ISG-Seguros",
-    thumbUrl: "../images/web-isg.jpg",
-    fullUrl: "../images/web-isg.jpg",
+    thumbUrl: "/images/web-isg.jpg",
+    fullUrl: "/images/web-isg.jpg",
     description: "Diseño de interfaz para cotizador de seguros con foco en usabilidad y claridad."
   }
 ];
