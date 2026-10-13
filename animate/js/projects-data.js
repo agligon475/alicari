@@ -1,6 +1,6 @@
 /**
  * ALICARI - Complete Portfolio Projects Dataset
- * Curated for the Anime.js Multimedia Experience
+ * Curated for the Kinetic Multimedia Experience
  * Agustín Licari — 20 Años en Diseño Multimedia, UX/UI & Dirección de Arte
  */
 

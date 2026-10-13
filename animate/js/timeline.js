@@ -24,15 +24,15 @@ export const TIMELINE_ERAS = [
     year: "2016 — 2021",
     title: "Madurez de Producto, UX Research & Design Systems",
     tagline: "Psicología de Usuario, Atomic Design & Prototipado Avanzado",
-    description: "Evolución hacia la arquitectura de información rigurosa, entrevistas de usuario, pruebas de usabilidad y sistemas de diseño unificados en Figma. Creación de plataformas de simulación médica y soluciones de comercio electrónico sin fricción.",
+    description: "Evolución hacia la arquitectura de información rigurosa, entrevistas de usuario, pruebas de usabilidad y sistemas de diseño unificados en Figma. Soluciones de productos digitales y comercio electrónico de alto impacto.",
     skills: ["UX Research", "Figma Design Systems", "Arquitectura de Información", "Prototipado Interactivo", "UI Kits"]
   },
   {
     year: "2022 — 2026+",
     title: "Ecosistemas Cinéticos & Front-End de Próxima Generación",
-    tagline: "Anime.js, WebGL, Audio Háptico & Rendimiento Extremo",
+    tagline: "Kinetic UI, WebGL, Audio Háptico & Rendimiento Extremo",
     description: "La culminación de 20 años de oficio: interfaces vivas que respiran mediante curvas de aceleración física, Web Audio procedimental, reactividad instantánea a 60fps y código limpio que honra la visión estética original.",
-    skills: ["Anime.js Motion Engine", "Three.js / WebGL", "Modern JavaScript", "Web Audio API", "High-End UX"]
+    skills: ["Kinetic Motion Systems", "Three.js / WebGL", "Modern JavaScript", "Web Audio API", "High-End UX"]
   }
 ];
 

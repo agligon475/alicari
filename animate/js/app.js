@@ -1,5 +1,5 @@
 /**
- * ALICARI Animate Edition - Main Application Orchestrator
+ * ALICARI Interactive Edition - Main Application Orchestrator
  * Agustin Licari — 20 Años en Diseño Multimedia, UX/UI & Front-End
  */
 
@@ -74,7 +74,7 @@ class AlicariAnimateApp {
     });
   }
 
-  // Filter projects by category with Anime.js physics
+  // Filter projects by category with kinetic physics
   setCategory(catId, activeChip) {
     this.currentCategory = catId;
 

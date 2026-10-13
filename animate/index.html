@@ -5,13 +5,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow, noarchive" />
-  <title>ALICARI // Animate Edition — 20 Años en Diseño Multimedia, UX/UI & Motion</title>
-  <meta name="description" content="Portfolio interactivo de Agustín Licari (ALICARI). Edición cinematográfica orquestada con Anime.js. Dos décadas creando interfaces, sistemas de diseño y piezas audiovisuales." />
+  <title>ALICARI // Interactive Experience — 20 Años en Diseño Multimedia, UX/UI & Motion</title>
+  <meta name="description" content="Portfolio interactivo de Agustín Licari (ALICARI). Experiencia sensorial de alto rendimiento. Dos décadas creando interfaces, sistemas de diseño y piezas audiovisuales." />
 
   <!-- Open Graph / Meta -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="ALICARI // Animate Edition — Diseño Multimedia & UX/UI" />
-  <meta property="og:description" content="Edición cinematográfica orquestada con Anime.js. 20 años de oficio en diseño interactivo y dirección de arte." />
+  <meta property="og:title" content="ALICARI // Interactive Experience — Diseño Multimedia & UX/UI" />
+  <meta property="og:description" content="Experiencia sensorial cinemática interactiva. 20 años de oficio en diseño interactivo y dirección de arte." />
   <meta property="og:image" content="../images/screenshot-home.jpg" />
 
   <!-- Favicons -->
@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
-  <!-- Anime.js Motion Engine -->
+  <!-- Interactive Motion Engine -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 
   <!-- Stylesheets -->
@@ -35,7 +35,7 @@
   {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    "name": "ALICARI // Animate Edition",
+    "name": "ALICARI // Interactive Portfolio",
     "url": "https://alicari.com.ar/animate/",
     "logo": "https://alicari.com.ar/images/logo-alicari-05.svg",
     "image": "https://alicari.com.ar/images/about-me.png",
@@ -181,7 +181,7 @@
             </h1>
 
             <p class="hero-description">
-              Desde las interfaces interactivas pioneras de 2004 hasta los sistemas de diseño de alta fidelidad, Anime.js y WebGL de 2026. Dos décadas uniendo psicología cognitiva, dirección de arte e ingeniería front-end sin concesiones.
+              Desde las interfaces interactivas pioneras de 2004 hasta los sistemas de diseño de alta fidelidad, microinteracciones reactivas y WebGL de 2026. Dos décadas uniendo psicología cognitiva, dirección de arte e ingeniería front-end sin concesiones.
             </p>
 
             <div class="hero-actions">
@@ -217,28 +217,46 @@
             </div>
           </div>
 
-          <!-- Right Column: Interactive Floating Showcase Panel -->
+          <!-- Right Column: Interactive Monogram & Showcase Panel -->
           <div class="hero-showcase-panel">
             <div class="hero-float-card hero-float-card--1">
-              <div class="hero-float-card__header">Motion Engine</div>
+              <div class="hero-float-card__header">Sistemas Visuales</div>
               <div class="hero-float-card__body">
                 <span class="hero-float-card__badge-dot"></span>
-                Anime.js 60fps Orchestration
+                Identidad, UX &amp; Motion
               </div>
             </div>
 
-            <div class="hero-main-card">
-              <img 
-                src="https://mir-s3-cdn-cf.behance.net/projects/max_808/29afee157960549.Y3JvcCwxMDA2LDc4NywyNzgsMA.jpg" 
-                alt="SIMpath Medical Simulation UX/UI" 
-                class="hero-main-card__img" 
-              />
+            <div class="hero-monogram-card hero-main-card" data-magnetic>
+              <div class="hero-monogram-stage">
+                <div class="hero-monogram-glow" aria-hidden="true"></div>
+                <svg class="hero-monogram-svg" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Isotipo a de ALICARI">
+                  <defs>
+                    <linearGradient id="heroMonogramGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#ff3b47"/>
+                      <stop offset="45%" stop-color="#e50914"/>
+                      <stop offset="100%" stop-color="#a8050e"/>
+                    </linearGradient>
+                    <filter id="heroMonogramFilter" x="-20%" y="-20%" width="140%" height="140%">
+                      <feDropShadow dx="0" dy="12" stdDeviation="22" flood-color="rgba(229, 9, 20, 0.55)"/>
+                    </filter>
+                  </defs>
+                  <!-- Blueprint geometry rings -->
+                  <circle cx="400" cy="400" r="320" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1.5" stroke-dasharray="6 8"/>
+                  <circle cx="400" cy="400" r="220" fill="none" stroke="rgba(229,9,20,0.15)" stroke-width="1.5"/>
+                  <circle cx="400" cy="400" r="85.56" fill="none" stroke="rgba(229,9,20,0.2)" stroke-width="1" stroke-dasharray="3 3"/>
+                  <line x1="80" y1="400" x2="720" y2="400" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+                  <line x1="400" y1="80" x2="400" y2="720" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+                  <!-- Monograma 'a' de ALICARI -->
+                  <path class="hero-monogram-path" fill="url(#heroMonogramGradient)" filter="url(#heroMonogramFilter)" d="M560,180h0c-21.68,0-40.68,11.5-51.22,28.74-32.08-18.29-69.21-28.74-108.78-28.74-121.5,0-220,98.5-220,220s98.5,220,220,220c39.57,0,76.7-10.45,108.78-28.74,10.54,17.24,29.54,28.74,51.22,28.74h0c33.14,0,60-26.86,60-60V240c0-33.14-26.86-60-60-60ZM394.78,491.13c-47.25,0-85.56-38.31-85.56-85.56s38.31-85.56,85.56-85.56,85.56,38.31,85.56,85.56-38.3,85.56-85.56,85.56Z"/>
+                </svg>
+              </div>
               <div class="hero-main-card__caption">
                 <div>
-                  <h2 class="hero-main-card__title">SIMpath Medical Systems</h2>
-                  <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 2px;">Arquitectura de Información & UI Design</p>
+                  <h2 class="hero-main-card__title">Isotipo &ldquo;a&rdquo; • ALICARI</h2>
+                  <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 2px;">Síntesis de autor • Agustín Licari</p>
                 </div>
-                <span class="hero-main-card__tag">Destacado</span>
+                <span class="hero-main-card__tag">Identidad</span>
               </div>
             </div>
 
@@ -509,7 +527,7 @@
             <div class="philosophy-card__num">03.</div>
             <h3 class="philosophy-card__title">Cinética & Timing Físico</h3>
             <p class="philosophy-card__desc">
-              Animación basada en curvas de resorte realistas. Con Anime.js logramos transiciones a 60fps que guían la mirada y recompensan cada interacción.
+              Animación basada en curvas cinéticas y físicas reales. Transiciones fluidas a 60fps que guían la mirada y recompensan cada interacción sensorial.
             </p>
           </article>
 
@@ -736,7 +754,7 @@
 
       <div class="footer-bottom">
         <p>© 2004–2026 ALICARI. Todos los derechos reservados. Buenos Aires, Argentina.</p>
-        <p class="footer-credits">Orquestado con <span>Anime.js</span> & Web Audio API.</p>
+        <p class="footer-credits">Diseñado con <span>Pasión & Oficio</span> • Web Audio API & Físicas Cinéticas.</p>
       </div>
 
     </div>

@@ -1,5 +1,5 @@
 /**
- * ALICARI Animate Edition - Anime.js Master Choreographer
+ * ALICARI Interactive Edition - Master Choreographer
  * Orchestrates cinematic timelines, micro-interactions, kinetic typography and physics springs.
  */
 
@@ -7,7 +7,7 @@ export class AnimationManager {
   constructor() {
     this.anime = window.anime;
     if (!this.anime) {
-      console.error("Anime.js is not loaded.");
+      console.warn("Motion engine is not loaded.");
     }
   }
 
@@ -194,6 +194,25 @@ export class AnimationManager {
       direction: 'alternate',
       loop: true,
       easing: 'easeInOutQuad'
+    });
+
+    this.anime({
+      targets: '.hero-monogram-glow',
+      scale: [0.95, 1.25],
+      opacity: [0.35, 0.7],
+      duration: 3200,
+      direction: 'alternate',
+      loop: true,
+      easing: 'easeInOutSine'
+    });
+
+    this.anime({
+      targets: '.hero-monogram-svg',
+      translateY: [-6, 6],
+      duration: 4000,
+      direction: 'alternate',
+      loop: true,
+      easing: 'easeInOutSine'
     });
   }
 

@@ -1,6 +1,6 @@
 /**
- * ALICARI Animate Edition - Magnetic Kinetic Cursor
- * Physics-based inertia cursor with Anime.js magnetic snaps and interactive states.
+ * ALICARI Interactive Edition - Magnetic Kinetic Cursor
+ * Physics-based inertia cursor with magnetic snaps and interactive states.
  */
 
 export class KineticCursor {
