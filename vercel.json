@@ -3,6 +3,14 @@
   "trailingSlash": false,
   "rewrites": [
     {
+      "source": "/animate",
+      "destination": "/animate/index.html"
+    },
+    {
+      "source": "/animate/",
+      "destination": "/animate/index.html"
+    },
+    {
       "source": "/vertical",
       "destination": "/main-stage/vertical.html"
     },

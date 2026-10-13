@@ -26,6 +26,7 @@ export default defineConfig({
         about: path.resolve(__dirname, 'about.html'),
         portfolio2027: path.resolve(__dirname, '2027/index.html'),
         portfolio2027b: path.resolve(__dirname, '2027b/index.html'),
+        animate: path.resolve(__dirname, 'animate/index.html'),
         parishRobertson: path.resolve(__dirname, 'ParishRobertson/index.html'),
         parishRobertsonTriptico: path.resolve(__dirname, 'ParishRobertson/triptico.html'),
         vertical: path.resolve(__dirname, 'main-stage/vertical.html'),
