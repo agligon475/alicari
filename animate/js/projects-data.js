@@ -14,8 +14,8 @@ export const PROJECTS_DATA = [
     year: "2024",
     role: "Dirección de Arte & Edición",
     behanceUrl: "https://www.behance.net/gallery/232481039/Videoclip-Iruya",
-    thumbUrl: "https://mir-s3-cdn-cf.behance.net/projects/404/12f9fb232481039.Y3JvcCw5MjAsNzIwLDE4MCww.png",
-    fullUrl: "https://mir-s3-cdn-cf.behance.net/projects/max_808/12f9fb232481039.Y3JvcCw5MjAsNzIwLDE4MCww.png",
+    thumbUrl: "/images/projects/project-01.png",
+    fullUrl: "/images/projects/project-01.png",
     description: "Producción audiovisual y etalonaje digital para videoclip musical independiente filmado en Iruya, Salta. Puesta cinematográfica, ritmo narrativo y color grading experimental."
   },
   {
@@ -27,8 +27,8 @@ export const PROJECTS_DATA = [
     year: "2023",
     role: "Lead Product Designer",
     behanceUrl: "https://www.behance.net/gallery/157960549/SIMpath-proyecto-(UXUI-design)",
-    thumbUrl: "https://mir-s3-cdn-cf.behance.net/projects/404/29afee157960549.Y3JvcCwxMDA2LDc4NywyNzgsMA.jpg",
-    fullUrl: "https://mir-s3-cdn-cf.behance.net/projects/max_808/29afee157960549.Y3JvcCwxMDA2LDc4NywyNzgsMA.jpg",
+    thumbUrl: "/images/projects/project-02.jpg",
+    fullUrl: "/images/projects/project-02.jpg",
     description: "Investigación de usuarios, arquitectura de la información y sistema de diseño modular para software de simulación médica. Flujos optimizados para reducir la carga cognitiva."
   },
   {
@@ -40,8 +40,8 @@ export const PROJECTS_DATA = [
     year: "2022",
     role: "Identidad & Brand Architecture",
     behanceUrl: "https://www.behance.net/gallery/141701733/Brand-Guideline-FFO-Parts-Manual-de-marca",
-    thumbUrl: "https://mir-s3-cdn-cf.behance.net/projects/404/d44edf141701733.Y3JvcCwxOTE3LDE1MDAsMzc1LDA.jpg",
-    fullUrl: "https://mir-s3-cdn-cf.behance.net/projects/max_808/d44edf141701733.Y3JvcCwxOTE3LDE1MDAsMzc1LDA.jpg",
+    thumbUrl: "/images/projects/project-03.jpg",
+    fullUrl: "/images/projects/project-03.jpg",
     description: "Manual de normas gráficas y diseño de identidad integral para fabricante de autopartes. Grilla constructiva, tipografías técnicas y aplicaciones en packaging industrial."
   },
   {
@@ -53,8 +53,8 @@ export const PROJECTS_DATA = [
     year: "2021",
     role: "Identidad Visual",
     behanceUrl: "https://www.behance.net/gallery/109330367/VEGANOTECA-Manual-de-Marca",
-    thumbUrl: "https://mir-s3-cdn-cf.behance.net/projects/404/d93f65109330367.Y3JvcCwxMDIyLDgwMCwxMjksMA.png",
-    fullUrl: "https://mir-s3-cdn-cf.behance.net/projects/max_808/d93f65109330367.Y3JvcCwxMDIyLDgwMCwxMjksMA.png",
+    thumbUrl: "/images/projects/project-04.png",
+    fullUrl: "/images/projects/project-04.png",
     description: "Estrategia de marca y manual normativo para tienda de gastronomía plant-based. Logotipo orgánico, patrones modulares y papelería ecológica."
   },
   {
@@ -66,8 +66,8 @@ export const PROJECTS_DATA = [
     year: "2020",
     role: "Logo Design & Isotipo",
     behanceUrl: "https://www.behance.net/gallery/103448945/HotEnd-Diseno-de-logotipo",
-    thumbUrl: "https://mir-s3-cdn-cf.behance.net/projects/404/bb0c4f103448945.Y3JvcCw5OTksNzgyLDAsMTA4.jpg",
-    fullUrl: "https://mir-s3-cdn-cf.behance.net/projects/max_808/bb0c4f103448945.Y3JvcCw5OTksNzgyLDAsMTA4.jpg",
+    thumbUrl: "/images/projects/project-05.jpg",
+    fullUrl: "/images/projects/project-05.jpg",
     description: "Diseño y síntesis formal para insumos de impresión 3D. Geometría rigurosa inspirada en boquillas extrusoras de alta precisión térmica."
   },
   {
@@ -79,8 +79,8 @@ export const PROJECTS_DATA = [
     year: "2020",
     role: "Diseño de Marca",
     behanceUrl: "https://www.behance.net/gallery/103448859/WES-BELL-Diseno-de-logotipo",
-    thumbUrl: "https://mir-s3-cdn-cf.behance.net/projects/404/21e0c9103448859.Y3JvcCw5OTksNzgyLDAsMTA4.jpg",
-    fullUrl: "https://mir-s3-cdn-cf.behance.net/projects/max_808/21e0c9103448859.Y3JvcCw5OTksNzgyLDAsMTA4.jpg",
+    thumbUrl: "/images/projects/project-06.jpg",
+    fullUrl: "/images/projects/project-06.jpg",
     description: "Monograma corporativo con síntesis moderna para firma de servicios profesionales. Equilibrio óptico y paleta monocromática de alto contraste."
   },
   {
@@ -92,8 +92,8 @@ export const PROJECTS_DATA = [
     year: "2020",
     role: "Identidad & Aplicaciones",
     behanceUrl: "https://www.behance.net/gallery/101629005/SETUP-Manual-de-Marca-Usos-y-aplicaciones",
-    thumbUrl: "https://mir-s3-cdn-cf.behance.net/projects/404/7be27f101629005.Y3JvcCwxNTg2LDEyNDEsODIsMA.jpg",
-    fullUrl: "https://mir-s3-cdn-cf.behance.net/projects/max_808/7be27f101629005.Y3JvcCwxNTg2LDEyNDEsODIsMA.jpg",
+    thumbUrl: "/images/projects/project-07.jpg",
+    fullUrl: "/images/projects/project-07.jpg",
     description: "Identidad visual integral para estudio de diseño de interiores y mobiliario ergonómico. Aplicaciones en señalética, indumentaria y catálogos."
   },
   {
@@ -105,8 +105,8 @@ export const PROJECTS_DATA = [
     year: "2019",
     role: "Dirección Creativa",
     behanceUrl: "https://www.behance.net/gallery/67833389/Branding-Garz6n-Aplicaciones-y-Publicidad",
-    thumbUrl: "https://mir-s3-cdn-cf.behance.net/projects/404/9650b867833389.Y3JvcCw5OTAsNzc0LDAsMTEy.jpg",
-    fullUrl: "https://mir-s3-cdn-cf.behance.net/projects/max_808/9650b867833389.Y3JvcCw5OTAsNzc0LDAsMTEy.jpg",
+    thumbUrl: "/images/projects/project-08.jpg",
+    fullUrl: "/images/projects/project-08.jpg",
     description: "Campaña integral de relanzamiento y branding para empresa gastronómica gourmet. Piezas promocionales, gráfica vehicular y packaging."
   },
   {
@@ -118,8 +118,8 @@ export const PROJECTS_DATA = [
     year: "2019",
     role: "Brand Architecture",
     behanceUrl: "https://www.behance.net/gallery/67329539/Keeper-Manual-de-Uso-de-Marca",
-    thumbUrl: "https://mir-s3-cdn-cf.behance.net/projects/404/a007ed67329539.Y3JvcCw1NzksNDUzLDE3MCw5Nw.jpg",
-    fullUrl: "https://mir-s3-cdn-cf.behance.net/projects/max_808/a007ed67329539.Y3JvcCw1NzksNDUzLDE3MCw5Nw.jpg",
+    thumbUrl: "/images/projects/project-09.jpg",
+    fullUrl: "/images/projects/project-09.jpg",
     description: "Construcción de identidad y sistema de seguridad visual para plataforma fintech de custodia digital y autenticación biométrica."
   },
   {
@@ -131,8 +131,8 @@ export const PROJECTS_DATA = [
     year: "2018",
     role: "Diseño Gráfico & Composición",
     behanceUrl: "https://www.behance.net/gallery/63823491/El-Extratonauta-Flyer-Design",
-    thumbUrl: "https://mir-s3-cdn-cf.behance.net/projects/404/ab50d763823491.Y3JvcCw3MjAsNTYzLDI0MCwzMTg.jpg",
-    fullUrl: "https://mir-s3-cdn-cf.behance.net/projects/max_808/ab50d763823491.Y3JvcCw3MjAsNTYzLDI0MCwzMTg.jpg",
+    thumbUrl: "/images/projects/project-10.jpg",
+    fullUrl: "/images/projects/project-10.jpg",
     description: "Diseño de afiche y arte conceptual para evento cultural de ciencia ficción y música electrónica retro-futurista."
   },
   {
@@ -144,8 +144,8 @@ export const PROJECTS_DATA = [
     year: "2018",
     role: "Animación & Motion Graphics",
     behanceUrl: "https://www.behance.net/gallery/61440311/Spot-Mama-Isa-HD",
-    thumbUrl: "https://mir-s3-cdn-cf.behance.net/projects/404/ad0dd161440311.Y3JvcCwxMDAyLDc4NCwwLDEwOA.jpg",
-    fullUrl: "https://mir-s3-cdn-cf.behance.net/projects/max_808/ad0dd161440311.Y3JvcCwxMDAyLDc4NCwwLDEwOA.jpg",
+    thumbUrl: "/images/projects/project-11.jpg",
+    fullUrl: "/images/projects/project-11.jpg",
     description: "Campaña publicitaria audiovisual en alta definición orientada a televisión digital y redes sociales para productos familiares tradicionales."
   },
   {
@@ -157,8 +157,8 @@ export const PROJECTS_DATA = [
     year: "2018",
     role: "Retrato & Dirección de Luz",
     behanceUrl: "https://www.behance.net/gallery/59883205/Ph-Portfolios-Personales",
-    thumbUrl: "https://mir-s3-cdn-cf.behance.net/projects/404/bdf77359883205.Y3JvcCwxNDI0LDExMTQsMTY1LDExMg.jpg",
-    fullUrl: "https://mir-s3-cdn-cf.behance.net/projects/max_808/bdf77359883205.Y3JvcCwxNDI0LDExMTQsMTY1LDExMg.jpg",
+    thumbUrl: "/images/projects/project-12.jpg",
+    fullUrl: "/images/projects/project-12.jpg",
     description: "Serie de retratos editoriales en estudio y locaciones urbanas, explorando contrastes lumínicos y texturas naturales."
   },
   {
@@ -170,8 +170,8 @@ export const PROJECTS_DATA = [
     year: "2017",
     role: "Fotoperiodismo de Concierto",
     behanceUrl: "https://www.behance.net/gallery/59882877/Ph-Onda-Vaga-Teatro-Petrobras-Rio-de-Janeiro",
-    thumbUrl: "https://mir-s3-cdn-cf.behance.net/projects/404/ce6e7859882877.Y3JvcCwxODk2LDE0ODQsMzM3LDE2Mw.jpg",
-    fullUrl: "https://mir-s3-cdn-cf.behance.net/projects/max_808/ce6e7859882877.Y3JvcCwxODk2LDE0ODQsMzM3LDE2Mw.jpg",
+    thumbUrl: "/images/projects/project-13.jpg",
+    fullUrl: "/images/projects/project-13.jpg",
     description: "Cobertura fotográfica en vivo en Río de Janeiro, capturando la energía escénica acústica y las interacciones espontáneas con el público."
   },
   {
@@ -183,8 +183,8 @@ export const PROJECTS_DATA = [
     year: "2017",
     role: "Fotografía Escénica",
     behanceUrl: "https://www.behance.net/gallery/59882719/Ph-LODHO-Teatro-de-Quito",
-    thumbUrl: "https://mir-s3-cdn-cf.behance.net/projects/404/8a105b59882719.Y3JvcCwyNjI0LDIwNTQsMTQ5LDA.jpg",
-    fullUrl: "https://mir-s3-cdn-cf.behance.net/projects/max_808/8a105b59882719.Y3JvcCwyNjI0LDIwNTQsMTQ5LDA.jpg",
+    thumbUrl: "/images/projects/project-14.jpg",
+    fullUrl: "/images/projects/project-14.jpg",
     description: "Documentación visual de performance teatral y danza experimental en Ecuador. Manejo de luces bajas y sincronización con el movimiento."
   },
   {
@@ -196,8 +196,8 @@ export const PROJECTS_DATA = [
     year: "2017",
     role: "Fotografía de Danza",
     behanceUrl: "https://www.behance.net/gallery/59882423/Ph-Ballet-de-Montreal-Teatro-de-Quito",
-    thumbUrl: "https://mir-s3-cdn-cf.behance.net/projects/404/e4e21559882423.Y3JvcCwxOTc1LDE1NDYsMCww.jpg",
-    fullUrl: "https://mir-s3-cdn-cf.behance.net/projects/max_808/e4e21559882423.Y3JvcCwxOTc1LDE1NDYsMCww.jpg",
+    thumbUrl: "/images/projects/project-15.jpg",
+    fullUrl: "/images/projects/project-15.jpg",
     description: "Captura de alta velocidad de coreografías contemporáneas del prestigioso ballet canadiense. Congelamiento de saltos y dramatismo plástico."
   },
   {
@@ -209,8 +209,8 @@ export const PROJECTS_DATA = [
     year: "2017",
     role: "Fotografía de Banda",
     behanceUrl: "https://www.behance.net/gallery/59882193/Ph-Charles-Lee-Ray-No-Me-Olvides",
-    thumbUrl: "https://mir-s3-cdn-cf.behance.net/project_modules/max_632/0dedae59882193.5a32904f9d62f.jpg",
-    fullUrl: "https://mir-s3-cdn-cf.behance.net/project_modules/hd/0dedae59882193.5a32904f9d62f.jpg",
+    thumbUrl: "/images/projects/project-16.jpg",
+    fullUrl: "/images/projects/project-16.jpg",
     description: "Sesión fotográfica documental para conjunto musical independiente en club nocturno subterráneo. Estética analógica y grano pronunciado."
   },
   {
@@ -222,8 +222,8 @@ export const PROJECTS_DATA = [
     year: "2017",
     role: "Food Styling & Ph",
     behanceUrl: "https://www.behance.net/gallery/59856053/Fotografia-Producto-Gastronomico",
-    thumbUrl: "https://mir-s3-cdn-cf.behance.net/project_modules/max_632/84c86e59856053.5a319ab6d3e7d.jpg",
-    fullUrl: "https://mir-s3-cdn-cf.behance.net/project_modules/1400/84c86e59856053.5a319ab6d3e7d.jpg",
+    thumbUrl: "/images/projects/project-17.jpg",
+    fullUrl: "/images/projects/project-17.jpg",
     description: "Producción fotográfica de platos artesanales y coctelería para carta gastronómica premium y campañas de marketing gastronómico."
   },
   {
@@ -235,8 +235,8 @@ export const PROJECTS_DATA = [
     year: "2017",
     role: "Diseño & Animación Web",
     behanceUrl: "https://www.behance.net/gallery/59855921/Invitacion-Casamiento",
-    thumbUrl: "https://mir-s3-cdn-cf.behance.net/project_modules/max_632/5e8da759855921.5a3278dbe8ace.png",
-    fullUrl: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5e8da759855921.5a3278dbe8ace.png",
+    thumbUrl: "/images/projects/project-18.png",
+    fullUrl: "/images/projects/project-18.png",
     description: "Pieza digital interactiva con micro-animaciones, confirmación de asistencia en tiempo real y mapa dinámico para evento social privado."
   },
   {
@@ -248,8 +248,8 @@ export const PROJECTS_DATA = [
     year: "2017",
     role: "Diseño Gráfico Editorial",
     behanceUrl: "https://www.behance.net/gallery/59855651/Flyers-Grupos-Musicales",
-    thumbUrl: "https://mir-s3-cdn-cf.behance.net/project_modules/max_632/bc6f9b59855651.5a319725e97ad.png",
-    fullUrl: "https://mir-s3-cdn-cf.behance.net/project_modules/hd/bc6f9b59855651.5a319725e97ad.png",
+    thumbUrl: "/images/projects/project-19.png",
+    fullUrl: "/images/projects/project-19.png",
     description: "Diseño de afiches promocionales y cartelería para festivales de rock y bandas emergentes en el circuito cultural metropolitano."
   },
   {
@@ -261,8 +261,8 @@ export const PROJECTS_DATA = [
     year: "2017",
     role: "Motion Graphics DOOH",
     behanceUrl: "https://www.behance.net/gallery/59855149/Publicidad-Led-Via-Publica-2017",
-    thumbUrl: "https://mir-s3-cdn-cf.behance.net/projects/404/ae9c1e59855149.Y3JvcCwxMDAyLDc4NCwwLDEwOA.jpg",
-    fullUrl: "https://mir-s3-cdn-cf.behance.net/projects/max_808/ae9c1e59855149.Y3JvcCwxMDAyLDc4NCwwLDEwOA.jpg",
+    thumbUrl: "/images/projects/project-20.jpg",
+    fullUrl: "/images/projects/project-20.jpg",
     description: "Animaciones gráficas a medida para pantallas LED gigantes en vía pública. Alto impacto visual optimizado para visión diurna en avenidas clave."
   },
   {
@@ -274,8 +274,8 @@ export const PROJECTS_DATA = [
     year: "2017",
     role: "Postproducción & FX",
     behanceUrl: "https://www.behance.net/gallery/59852565/Punta-Roja-WebVideo",
-    thumbUrl: "https://mir-s3-cdn-cf.behance.net/projects/404/ee12e159852565.Y3JvcCw2ODQsNTM1LDYxMCwzNDg.jpg",
-    fullUrl: "https://mir-s3-cdn-cf.behance.net/projects/max_808/ee12e159852565.Y3JvcCw2ODQsNTM1LDYxMCwzNDg.jpg",
+    thumbUrl: "/images/projects/project-21.jpg",
+    fullUrl: "/images/projects/project-21.jpg",
     description: "Cápsula audiovisual institucional para plataforma digital. Montaje dinámico, motion graphics y diseño sonoro envolvente."
   },
   {
@@ -287,8 +287,8 @@ export const PROJECTS_DATA = [
     year: "2016",
     role: "Comunicaciones Visuales",
     behanceUrl: "https://www.behance.net/gallery/59855431/Diseno-piezas-institucionales",
-    thumbUrl: "https://mir-s3-cdn-cf.behance.net/project_modules/max_632/d75fb859855431.5a31958fcc4c5.jpg",
-    fullUrl: "https://mir-s3-cdn-cf.behance.net/project_modules/hd/d75fb859855431.5a31958fcc4c5.jpg",
+    thumbUrl: "/images/projects/project-22.jpg",
+    fullUrl: "/images/projects/project-22.jpg",
     description: "Brochures ejecutivos, carpetas corporativas y presentaciones de balance anual con infografías de precisión para directorios empresariales."
   },
   {
@@ -300,8 +300,8 @@ export const PROJECTS_DATA = [
     year: "2016",
     role: "Identidad & Gráfica",
     behanceUrl: "https://www.behance.net/gallery/59851603/MBF-Aberturas",
-    thumbUrl: "https://mir-s3-cdn-cf.behance.net/project_modules/max_632/553fac59851603.5a317e6f40e70.jpg",
-    fullUrl: "https://mir-s3-cdn-cf.behance.net/project_modules/hd/553fac59851603.5a317e6f40e70.jpg",
+    thumbUrl: "/images/projects/project-23.jpg",
+    fullUrl: "/images/projects/project-23.jpg",
     description: "Renovación de marca e identidad gráfica para empresa líder en aberturas de aluminio y PVC. Isologotipo sólido y rotulación comercial."
   },
   {
@@ -313,8 +313,8 @@ export const PROJECTS_DATA = [
     year: "2016",
     role: "Email Design & Maquetación",
     behanceUrl: "https://www.behance.net/gallery/59851171/Club-Margot-Mailing",
-    thumbUrl: "https://mir-s3-cdn-cf.behance.net/project_modules/max_632/54e46059851171.5a317b4691e37.jpg",
-    fullUrl: "https://mir-s3-cdn-cf.behance.net/project_modules/hd/54e46059851171.5a317b4691e37.jpg",
+    thumbUrl: "/images/projects/project-24.jpg",
+    fullUrl: "/images/projects/project-24.jpg",
     description: "Plantillas HTML responsive y diseño gráfico para campañas de fidelización gastronómica y beneficios exclusivos para socios."
   },
   {
@@ -326,8 +326,8 @@ export const PROJECTS_DATA = [
     year: "2024",
     role: "UX/UI & Front-End",
     behanceUrl: "https://www.behance.net/gallery/251227295/Web-ZonaMadrid",
-    thumbUrl: "/images/web-zonamadrid.jpg",
-    fullUrl: "/images/web-zonamadrid.jpg",
+    thumbUrl: "/images/projects/project-25.jpg",
+    fullUrl: "/images/projects/project-25.jpg",
     description: "Portal web de servicios inmobiliarios y turísticos en Madrid. Arquitectura de filtrado de propiedades, optimización SEO y experiencia fluida multidispositivo."
   },
   {
@@ -339,8 +339,8 @@ export const PROJECTS_DATA = [
     year: "2024",
     role: "Diseño Web & Branding",
     behanceUrl: "https://www.behance.net/gallery/251228853/Branding-Web-Design-Deset-Group",
-    thumbUrl: "/images/web-deset.jpg",
-    fullUrl: "/images/web-deset.jpg",
+    thumbUrl: "/images/projects/project-26.jpg",
+    fullUrl: "/images/projects/project-26.jpg",
     description: "Plataforma digital corporativa y manual de identidad para grupo de consultoría estratégica y desarrollo de proyectos industriales de alta gama."
   },
   {
@@ -352,8 +352,8 @@ export const PROJECTS_DATA = [
     year: "2024",
     role: "Lead UX/UI & Prototyping",
     behanceUrl: "https://www.behance.net/gallery/251297457/Web-design-ISG-Seguros",
-    thumbUrl: "/images/web-isg.jpg",
-    fullUrl: "/images/web-isg.jpg",
+    thumbUrl: "/images/projects/project-27.jpg",
+    fullUrl: "/images/projects/project-27.jpg",
     description: "Diseño de interfaz y cotizador interactivo de pólizas para broker de seguros. Enfoque centrado en la conversión y la claridad contractual."
   }
 ];
