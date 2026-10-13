@@ -562,149 +562,340 @@
 }
 
 /* Floating Showcase Panel */
-.hero-showcase-panel {
+/* ==========================================================================
+   SOLITARY MONOGRAM 'a' (Sin caja, sin tags, sin etiquetas, sola)
+   ========================================================================== */
+.hero-monogram-solo-container {
   position: relative;
-  perspective: 1200px;
-}
-
-.hero-main-card {
-  position: relative;
-  background: var(--bg-surface-elevated);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-elevated);
-  transform: rotate3d(0.5, 1, 0, 4deg);
-  transition: transform 0.4s var(--ease-spring), border-color 0.3s, box-shadow 0.3s;
-}
-
-.hero-main-card:hover {
-  transform: rotate3d(0, 0, 0, 0deg) scale(1.02);
-}
-
-.hero-monogram-card {
-  border-color: rgba(229, 9, 20, 0.28);
-  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.7), 0 0 45px -10px rgba(229, 9, 20, 0.25);
-  display: flex;
-  flex-direction: column;
-}
-
-.hero-monogram-card:hover {
-  border-color: rgba(229, 9, 20, 0.6);
-  box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.8), 0 0 65px -5px rgba(229, 9, 20, 0.45);
-}
-
-.hero-monogram-stage {
-  position: relative;
-  width: 100%;
-  height: 380px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at center, rgba(35, 12, 16, 0.65) 0%, rgba(12, 12, 17, 0.98) 75%);
-  overflow: hidden;
+  perspective: 1200px;
+  padding: 1.5rem;
 }
 
-.hero-monogram-glow {
+.hero-monogram-solo-stage {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.hero-monogram-solo-glow {
   position: absolute;
-  width: 250px;
-  height: 250px;
-  background: radial-gradient(circle, rgba(229, 9, 20, 0.42) 0%, rgba(229, 9, 20, 0) 70%);
-  filter: blur(35px);
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(229, 9, 20, 0.42) 0%, rgba(229, 9, 20, 0.12) 48%, rgba(0, 0, 0, 0) 72%);
+  filter: blur(50px);
   pointer-events: none;
   z-index: 1;
+  animation: breathe-glow 4.5s ease-in-out infinite alternate;
 }
 
-.hero-monogram-svg {
+@keyframes breathe-glow {
+  0% { transform: scale(0.88); opacity: 0.55; }
+  100% { transform: scale(1.18); opacity: 0.95; }
+}
+
+.hero-monogram-solo-svg {
   position: relative;
-  width: 260px;
-  height: 260px;
-  max-width: 82%;
-  z-index: 2;
-  filter: drop-shadow(0 14px 32px rgba(229, 9, 20, 0.5));
-  transition: filter 0.35s var(--ease-spring), transform 0.35s var(--ease-spring);
-}
-
-.hero-monogram-card:hover .hero-monogram-svg {
-  filter: drop-shadow(0 18px 45px rgba(229, 9, 20, 0.75));
-  transform: scale(1.05);
-}
-
-.hero-main-card__img {
-  width: 100%;
+  width: 380px;
   height: 380px;
-  object-fit: cover;
-  display: block;
+  max-width: 92%;
+  max-height: 92%;
+  z-index: 2;
+  filter: drop-shadow(0 22px 48px rgba(229, 9, 20, 0.6));
+  transition: transform 0.45s var(--ease-spring), filter 0.45s var(--ease-spring);
+  will-change: transform, filter;
 }
 
-.hero-main-card__caption {
-  padding: 1.25rem 1.5rem;
-  background: rgba(14, 14, 19, 0.95);
-  backdrop-filter: blur(12px);
+.hero-monogram-solo-container:hover .hero-monogram-solo-svg {
+  transform: scale(1.06) rotate3d(0.4, 1, 0, 8deg);
+  filter: drop-shadow(0 30px 65px rgba(229, 9, 20, 0.85));
+}
+
+/* ==========================================================================
+   DISRUPTIVE SECTION ARCHITECTURE & TELEMETRY
+   ========================================================================== */
+.disruptive-banner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.hero-main-card__title {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #ffffff;
-}
-
-.hero-main-card__tag {
+  gap: 1.5rem;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 2.5rem;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.03) 0%, rgba(229, 9, 20, 0.06) 50%, rgba(255, 255, 255, 0.01) 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(229, 9, 20, 0.25);
+  border-left: 3px solid var(--brand-crimson);
+  font-family: 'Space Mono', 'SF Mono', 'Roboto Mono', monospace;
   font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.disruptive-banner__code {
   color: var(--brand-crimson-bright);
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-/* Floating Cards Orbiting */
-.hero-float-card {
-  position: absolute;
-  background: rgba(22, 22, 31, 0.88);
-  border: 1px solid var(--border-medium);
-  backdrop-filter: blur(16px);
-  padding: 1rem 1.25rem;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-soft);
-  z-index: 2;
-}
-
-.hero-float-card--1 {
-  top: -20px;
-  right: -20px;
-}
-
-.hero-float-card--2 {
-  bottom: 20px;
-  left: -25px;
-}
-
-.hero-float-card__header {
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 0.35rem;
-}
-
-.hero-float-card__body {
-  font-size: 0.92rem;
   font-weight: 700;
-  color: #ffffff;
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.hero-float-card__badge-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #10b981;
+.disruptive-banner__track {
+  flex: 1;
+  height: 1px;
+  background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.12) 0, rgba(255, 255, 255, 0.12) 4px, transparent 4px, transparent 10px);
 }
+
+.disruptive-banner__spec {
+  color: var(--text-muted);
+  font-weight: 500;
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .disruptive-banner__spec {
+    display: inline-block;
+  }
+}
+
+/* ==========================================================================
+   VENTURES & PROPIETARY PRODUCTS (DaleTePido & DaleTeAnoto)
+   ========================================================================== */
+.ventures-section {
+  position: relative;
+  padding: 6.5rem 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(20, 8, 12, 0.35) 50%, transparent 100%);
+  z-index: 10;
+}
+
+.ventures-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+@media (min-width: 900px) {
+  .ventures-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.venture-card {
+  position: relative;
+  background: rgba(18, 18, 25, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem 2rem;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.4s var(--ease-spring), border-color 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+}
+
+.venture-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--brand-crimson), transparent);
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+.venture-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(229, 9, 20, 0.45);
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.7), 0 0 35px -5px rgba(229, 9, 20, 0.25);
+}
+
+.venture-card:hover::before {
+  opacity: 1;
+}
+
+.venture-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.75rem;
+}
+
+.venture-card__logo-wrapper {
+  height: 48px;
+  display: flex;
+  align-items: center;
+}
+
+.venture-card__logo-img {
+  max-height: 42px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.6));
+}
+
+.venture-brand-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.venture-card__icon-img {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  object-fit: contain;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.45);
+}
+
+.venture-card__brand-text {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+.venture-card__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-pill);
+}
+
+.venture-card__status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: pulse-dot 2s infinite ease-in-out;
+}
+
+.venture-card__title {
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.35rem;
+}
+
+.venture-card__tagline {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--brand-crimson-bright);
+  margin-bottom: 1.15rem;
+}
+
+.venture-card__desc {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.venture-card__features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.venture-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.88rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.venture-feature-check {
+  color: var(--brand-crimson);
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.venture-card__metrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.venture-metric-box__num {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.1;
+  margin-bottom: 0.25rem;
+}
+
+.venture-metric-box__label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.venture-card__footer {
+  margin-top: auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.venture-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.venture-tag {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}
+
+.venture-btn {
+  font-size: 0.82rem;
+  padding: 0.55rem 1.15rem;
+  border-radius: var(--radius-pill);
+  gap: 0.45rem;
+}
+
 
 /* ==========================================================================
    5. PORTFOLIO SHOWCASE & FILTERS
